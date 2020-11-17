@@ -1,0 +1,54 @@
+@page "/viewUsers"
+@using Blazor.Data
+@using Model
+@inject IAccountService AccountService
+@inject NavigationManager NavigationManager
+
+
+@if (accounts == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!accounts.Any())
+{
+    <p>
+        <em>No user items exist. Please add some.</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>User name</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var account in accountsToShow)
+        {
+            <tr>
+                <td>@account.username</td>
+                <td>@account.password</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private IList<Account> accounts;
+    private IList<Account> accountsToShow;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        accounts = await AccountService.GetAccountsAsync();
+        accountsToShow = accounts;
+        
+        base.OnInitialized();
+        
+    }
+}
