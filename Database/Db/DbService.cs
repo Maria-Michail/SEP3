@@ -39,6 +39,7 @@ namespace Db
         public async Task<Account> ValidateUser(string username, string password)
         {
             Account account = ctx.accounts.FirstOrDefault(u => u.username.Equals(username) && u.password.Equals(password));
+            Console.Write(account.username);
             return account;
         }
     }
