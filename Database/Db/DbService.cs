@@ -35,5 +35,11 @@ namespace Db
             ctx.accounts.Update(account);
             await ctx.SaveChangesAsync();
         }
+        
+        public async Task<Account> ValidateUser(string username, string password)
+        {
+            Account account = ctx.accounts.FirstOrDefault(u => u.username.Equals(username) && u.password.Equals(password));
+            return account;
+        }
     }
 }

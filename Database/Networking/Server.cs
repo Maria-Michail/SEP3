@@ -14,9 +14,9 @@ namespace Server
 {
     class Server{
 
-        private DbService dbService;
+        private IDbService dbService;
         private string content;
-        public Server(DbService dbService){
+        public Server(IDbService dbService){
             this.dbService = dbService;
         }
         public async Task start(){
@@ -44,6 +44,18 @@ namespace Server
                     case "GetAccounts":{
                         List<Account> accounts = await dbService.GetAccountsAcyns();
                         content = JsonSerializer.Serialize(accounts);
+                        Console.WriteLine(content);
+                        break;
+                    }
+                    case "ValidateUser":{
+                        byte[] usernameFromClient = new byte[1024];
+                        int usernameRead = stream.Read(usernameFromClient, 0, usernameFromClient.Length);
+                        string username = Encoding.ASCII.GetString(usernameFromClient, 0, usernameRead);
+                        byte[] passwordFromClient = new byte[1024];
+                        int passwordRead = stream.Read(passwordFromClient, 0, passwordFromClient.Length);
+                        string password = Encoding.ASCII.GetString(passwordFromClient, 0, passwordRead);
+                        Account account = await dbService.ValidateUser(username, password);
+                        content = JsonSerializer.Serialize(account);
                         Console.WriteLine(content);
                         break;
                     }

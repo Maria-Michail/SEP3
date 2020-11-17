@@ -11,5 +11,7 @@ namespace Db{
         Task removeAccountAsync(Account account);
 
         Task updateAccountAsync(Account account);
+        
+        Task<Account> ValidateUser(string username, string password);
     }
 }

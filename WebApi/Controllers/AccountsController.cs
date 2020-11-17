@@ -28,5 +28,18 @@ namespace WebApi.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+        public async Task<ActionResult<Account>> ValidateUser([FromQuery] string username, [FromQuery] string password)
+        {
+            Console.WriteLine("Here");
+            try
+            {
+                var user = await accountService.ValidateUser(username, password);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }   
 }
