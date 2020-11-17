@@ -25,7 +25,7 @@ namespace Data.Impl
             return accounts;
         }
         
-        public async Task<Account> ValidateUser(string username, string password)
+        /*public async Task<Account> ValidateUser(string username, string password)
         {
             Account user = (Account)so.ValidateUser(username, password);
             if (user != null)
@@ -33,6 +33,6 @@ namespace Data.Impl
                 return user;
             } 
             throw new Exception("User not found");
-        }
+        }*/
     }
 }

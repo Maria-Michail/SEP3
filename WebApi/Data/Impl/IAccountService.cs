@@ -8,6 +8,6 @@ namespace Data.Impl
     {
         Task<IList<Account>> getAccountsAsync();
         
-        Task<Account> ValidateUser(string username, string password);
+        //Task<Account> ValidateUser(string username, string password);
     }
 }

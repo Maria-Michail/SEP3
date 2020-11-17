@@ -47,7 +47,7 @@ namespace Server
                         Console.WriteLine(content);
                         break;
                     }
-                    case "ValidateUser":{
+                    /*case "ValidateUser":{
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
                         stream.Write(data1ToClient, 0, data1ToClient.Length);
                         byte[] usernameFromClient = new byte[1024];
@@ -62,7 +62,7 @@ namespace Server
                         content = JsonSerializer.Serialize(account);
                         Console.WriteLine(content);
                         break;
-                    }
+                    }*/
                 }
                 
                 // respond

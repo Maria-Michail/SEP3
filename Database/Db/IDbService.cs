@@ -12,6 +12,6 @@ namespace Db{
 
         Task updateAccountAsync(Account account);
         
-        Task<Account> ValidateUser(string username, string password);
+        //Task<Account> ValidateUser(string username, string password);
     }
 }

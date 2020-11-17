@@ -52,13 +52,17 @@ namespace Blazor.Authorization
             try
             {
                 Account account = await accountService.ValidateAccountAsync(username, password);
+                Console.WriteLine("Inside authentication " + account.username);
                 identity = SetupClaimsForUser(account);
                 string serialisedData = JsonSerializer.Serialize(account);
                 await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
                 accountUser = account;
+                Console.WriteLine(accountUser.username);
+                Console.WriteLine("Did authentication");
             }
             catch (Exception e)
             {
+                Console.WriteLine("Failed");
                 throw e;
             }
 

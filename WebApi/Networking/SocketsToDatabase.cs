@@ -28,7 +28,7 @@ class SocketsToDatabase {
         client.Close();
         return request;
     }
-    public Object ValidateUser(string username, string password) {
+    /*public Object ValidateUser(string username, string password) {
         Console.WriteLine("Starting client..");
 
         TcpClient client = new TcpClient("127.0.0.1", 2920);
@@ -60,6 +60,6 @@ class SocketsToDatabase {
         stream.Close();
         client.Close();
         return request;
-    }
+    }*/
 }
 }

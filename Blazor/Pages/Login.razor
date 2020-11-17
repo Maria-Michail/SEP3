@@ -29,6 +29,7 @@
         errorMessage = "";
         try
         {
+            Console.WriteLine("Trying login");
             await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
             username = "";
             password = "";
@@ -36,6 +37,7 @@
         }
         catch (Exception e)
         {
+            Console.WriteLine("login failed");
             errorMessage = e.Message;
         }
     }

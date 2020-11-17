@@ -36,11 +36,11 @@ namespace Db
             await ctx.SaveChangesAsync();
         }
         
-        public async Task<Account> ValidateUser(string username, string password)
+        /*public async Task<Account> ValidateUser(string username, string password)
         {
             Account account = ctx.accounts.FirstOrDefault(u => u.username.Equals(username) && u.password.Equals(password));
             Console.Write(account.username);
             return account;
-        }
+        }*/
     }
 }

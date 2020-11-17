@@ -102,6 +102,7 @@ using Blazor.Authorization;
         errorMessage = "";
         try
         {
+            Console.WriteLine("Trying login");
             await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
             username = "";
             password = "";
@@ -109,6 +110,7 @@ using Blazor.Authorization;
         }
         catch (Exception e)
         {
+            Console.WriteLine("login failed");
             errorMessage = e.Message;
         }
     }
