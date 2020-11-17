@@ -38,8 +38,14 @@ class SocketsToDatabase {
         byte[] dataToServer = Encoding.ASCII.GetBytes("ValidateUser");
         stream.Write(dataToServer, 0, dataToServer.Length);
         
+        byte[] receive = new byte[1024];
+        int receiveRead = stream.Read(receive, 0, receive.Length);
+        
         byte[] userToBytes = Encoding.ASCII.GetBytes(username);
         stream.Write(userToBytes, 0, userToBytes.Length);
+        
+        byte[] receive2 = new byte[1024];
+        int receiveRead2 = stream.Read(receive2, 0, receive2.Length);
         
         byte[] passwordToBytes = Encoding.ASCII.GetBytes(password);
         stream.Write(passwordToBytes, 0, passwordToBytes.Length);
@@ -48,7 +54,8 @@ class SocketsToDatabase {
         int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
         Account request = JsonSerializer.Deserialize<Account>(response);
-        Console.WriteLine(request.username);
+        Console.WriteLine("received username from database " + request.username);
+        Console.WriteLine("received age from database " + request.age);
         
         stream.Close();
         client.Close();

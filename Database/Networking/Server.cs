@@ -48,9 +48,13 @@ namespace Server
                         break;
                     }
                     case "ValidateUser":{
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
                         byte[] usernameFromClient = new byte[1024];
                         int usernameRead = stream.Read(usernameFromClient, 0, usernameFromClient.Length);
                         string username = Encoding.ASCII.GetString(usernameFromClient, 0, usernameRead);
+                        byte[] data2ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data2ToClient, 0, data2ToClient.Length);
                         byte[] passwordFromClient = new byte[1024];
                         int passwordRead = stream.Read(passwordFromClient, 0, passwordFromClient.Length);
                         string password = Encoding.ASCII.GetString(passwordFromClient, 0, passwordRead);

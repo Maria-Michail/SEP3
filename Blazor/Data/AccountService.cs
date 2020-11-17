@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
@@ -24,9 +25,12 @@ namespace Blazor.Data
             HttpResponseMessage response = await client.GetAsync($"https://localhost:5001/Accounts?username={username}&password={password}");
             if (response.StatusCode == HttpStatusCode.OK)
             {
+                Console.WriteLine("the username is valid " + username);
                 string userAsJson = await response.Content.ReadAsStringAsync();
-                Account resultAccount = JsonSerializer.Deserialize<Account>(userAsJson);
-                return resultAccount;
+                IList<Account> resultAccount = JsonSerializer.Deserialize<IList<Account>>(userAsJson);
+                Account account = new Account();
+                account = resultAccount.First();
+                return account;
             } 
             throw new Exception("User not found");
         }
