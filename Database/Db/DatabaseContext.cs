@@ -7,7 +7,7 @@ namespace Db{
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
-            optionsBuilder.UseSqlite(@"Data Source = C:\Users\Janni\OneDrive\Skrivebord\SEP3new-main\Database\MainDb.db");
+            optionsBuilder.UseSqlite(@"Data Source = C:\Users\Janni\OneDrive\Skrivebord\SEP3Code\Database\MainDb.db");
         }
     } 
 }

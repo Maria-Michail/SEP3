@@ -43,6 +43,7 @@ namespace Server
                 switch(s){
                     case "GetAccounts":{
                         List<Account> accounts = await dbService.GetAccountsAcyns();
+                        Console.WriteLine(accounts.Count);
                         content = JsonSerializer.Serialize(accounts);
                         Console.WriteLine(content);
                         break;
