@@ -19,13 +19,35 @@ namespace WebApi.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IList<Account>>> getAccounts(){
+        public async Task<ActionResult<IList<Account>>> getAccounts([FromQuery] string username, [FromQuery] string password){
             try{
-                IList<Account> accounts = await accountService.getAccountsAsync();
-                return Ok(accounts);
+                if (username == null)
+                {
+                    IList<Account> accounts = await accountService.getAccountsAsync();
+                    return Ok(accounts);
+                }
+                else
+                {
+                   return Ok(ValidateUser( username, password));
+                }
+                
             }catch(Exception e){
+                
                 Console.WriteLine(e);
                 return StatusCode(500, e.Message);
+            }
+        }
+        public async Task<ActionResult<Account>> ValidateUser(string username,  string password)
+        {
+            Console.WriteLine("Here");
+            try
+            {
+                var user = await accountService.ValidateUser(username, password);
+                return user;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }   

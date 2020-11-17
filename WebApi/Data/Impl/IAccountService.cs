@@ -7,5 +7,7 @@ namespace Data.Impl
     public interface IAccountService
     {
         Task<IList<Account>> getAccountsAsync();
+        
+        Task<Account> ValidateUser(string username, string password);
     }
 }
