@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.IO;
 using Db;
 using System.Threading.Tasks;
+using Model;
 
 namespace Server
 {
@@ -48,6 +49,18 @@ namespace Server
                         Console.WriteLine(content);
                         break;
                     }
+                    case "GetSupermarkets": {
+                        List<SuperMarket> superMarkets = await dbService.getSuperMarketsAsync();
+                        Console.WriteLine(superMarkets.Count);
+                        content = JsonSerializer.Serialize(superMarkets);
+                        Console.WriteLine(content);
+                        break;
+                    }
+                    case "GetIngredients": {
+                        IList<Ingredient> ingredients = await dbService.getIngredientsAsync();
+                        content = JsonSerializer.Serialize(ingredients);
+                        break;
+                    }
                 }
                 
                 // respond
@@ -58,6 +71,5 @@ namespace Server
                 client.Close();
             }
         }
-
     }
 }
