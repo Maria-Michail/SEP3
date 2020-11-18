@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Blazor.Shared
+namespace Blazor.Pages
 {
     #line hidden
     using System;
@@ -75,7 +75,22 @@ using Blazor.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Register.razor"
+using Blazor.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Register.razor"
+using Model;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/register")]
+    public partial class Register : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -83,20 +98,50 @@ using Blazor.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Shared\NavMenu.razor"
+#line 40 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Register.razor"
        
-    private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    private string username;
+    private string password;
+    private string email;
+    private string errorMessage;
+    
+    private Account newAccount = new Account();
+    
+    
+    public async Task HandleValidRegister()
     {
-        collapseNavMenu = !collapseNavMenu;
+        errorMessage = "";
+        try
+        {
+            Console.WriteLine("Trying register");
+            await AccountService.Register(newAccount);
+            username = "";
+            password = "";
+            email = "";
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Register failed");
+            errorMessage = e.Message;
+        }
+    }
+    
+    public async Task HandleInvalidRegister()
+    {
+        Console.WriteLine("Invalid");
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAccountService AccountService { get; set; }
     }
 }
 #pragma warning restore 1591

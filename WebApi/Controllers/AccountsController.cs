@@ -19,9 +19,6 @@ namespace WebApi.Controllers
         {
             this.accountService = accountService;
         }
-        
-     
-        
 
         [HttpGet]
         public async Task<ActionResult<IList<Account>>> getAccounts([FromQuery] string username, [FromQuery] string password)
@@ -58,6 +55,21 @@ namespace WebApi.Controllers
             catch (Exception e)
             {
 
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
+        
+        [HttpPost]
+        public async Task<ActionResult<Account>> Register([FromBody] Account account) {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try {
+                Account added = await accountService.AddAccountAsync(account);
+                return Created($"/{added.username}",added); // return newly added to-do, to get the auto generated id
+            } catch (Exception e) {
                 Console.WriteLine(e);
                 return StatusCode(500, e.Message);
             }

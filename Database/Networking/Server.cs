@@ -47,6 +47,17 @@ namespace Server
                         Console.WriteLine(content);
                         break;
                     }
+                    case "Register":{
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
+                        byte[] accountFromClient = new byte[1024];
+                        int accountRead = stream.Read(accountFromClient, 0, accountFromClient.Length);
+                        string accountString = Encoding.ASCII.GetString(accountFromClient, 0, accountRead);
+                        Account account = JsonSerializer.Deserialize<Account>(accountString);
+                        Account addedAccount = (Account)await dbService.Register(account);
+                        content = JsonSerializer.Serialize(addedAccount);
+                        break;
+                    }
                     /*case "ValidateUser":{
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
                         stream.Write(data1ToClient, 0, data1ToClient.Length);

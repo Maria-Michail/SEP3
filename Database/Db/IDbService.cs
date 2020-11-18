@@ -5,8 +5,9 @@ using Database.Model;
 namespace Db{
     public interface IDbService{
         Task<List<Account>> GetAccountsAcyns();
+        
+        Task<Account> Register(Account account);
 
-        Task saveAccountAsync(Account account);
 
         Task removeAccountAsync(Account account);
 

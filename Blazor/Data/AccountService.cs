@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Model;
@@ -41,6 +42,15 @@ namespace Blazor.Data
             string message = await stringAsync;
             List<Account> result = JsonSerializer.Deserialize<List<Account>>(message);
             return result;
+        }
+        
+        public async Task Register(Account newAccount)
+        {
+            string account = JsonSerializer.Serialize(newAccount);
+            HttpContent content = new StringContent(account,
+                Encoding.UTF8,
+                "application/json");
+            await client.PostAsync(uri+"/Accounts", content);
         }
     }
 }

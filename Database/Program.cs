@@ -6,6 +6,7 @@ using Database.Model;
 using System.Threading.Tasks;
 using Db;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Server
 {
@@ -13,7 +14,14 @@ namespace Server
     {
         async static Task Main(string[] args)
         {
-            DbService tmp = new DbService();
+            using (DatabaseContext dataContext = new DatabaseContext())
+            {
+                if (!dataContext.accounts.Any())
+                {
+                    Seed(dataContext);
+                }
+            }
+            IDbService tmp = new DbService();
             Server server = new Server(tmp);
             /*
             FirstSetup setup = new FirstSetup();
@@ -23,5 +31,30 @@ namespace Server
             */
             server.start();
         }
+        
+        private static void Seed(DatabaseContext databaseContext)
+        {
+            Account[] acs = {
+                new Account{
+                    username = "Jannik",
+                    password = "12345",
+                    email = "Jannik@viauc.dk",
+                },
+                new Account{
+                    username = "Dumi",
+                    password = "yup",
+                    email = "Dumi@viauc.dk",
+                }
+            };
+            foreach (var account in acs)
+            {
+                databaseContext.accounts.Add(account);
+            }
+
+            databaseContext.SaveChanges();
+        }
+        
     }
+    
+    
 }
