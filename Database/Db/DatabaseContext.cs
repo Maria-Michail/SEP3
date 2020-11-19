@@ -5,7 +5,6 @@ using Model;
 namespace Db{
     public class DatabaseContext : DbContext{
         public DbSet<Account> Accounts{get;set;}
-        public DbSet<SuperMarket> SuperMarkets { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         
         public DbSet<Ingredient> ExistingIngredients { get; set; } 

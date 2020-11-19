@@ -45,13 +45,6 @@ namespace Database.Networking{
                 String rcv = System.Text.Encoding.ASCII.GetString(rcvBytes);
 
                 switch (rcv) {
-                    case "GetIngredients":
-                    {
-                        IList<Ingredient> ingredients = await dbService.getIngredientsAsync();
-                        content = JsonSerializer.Serialize(ingredients);
-                        break;
-                    }
-                    
                 }
                 // Sending
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
