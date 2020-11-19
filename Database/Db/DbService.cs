@@ -24,10 +24,11 @@ namespace Db
             await ctx.SaveChangesAsync();
         }
 
-        public async Task saveAccountAsync(Account account)
+        public async Task<Account> Register(Account account)
         {
            await ctx.accounts.AddAsync(account);
            await ctx.SaveChangesAsync();
+           return account;
         }
 
         public async Task updateAccountAsync(Account account)
@@ -35,12 +36,14 @@ namespace Db
             ctx.accounts.Update(account);
             await ctx.SaveChangesAsync();
         }
+
         
-        public async Task<Account> ValidateUser(string username, string password)
+        
+        /*public async Task<Account> ValidateUser(string username, string password)
         {
             Account account = ctx.accounts.FirstOrDefault(u => u.username.Equals(username) && u.password.Equals(password));
             Console.Write(account.username);
             return account;
-        }
+        }*/
     }
 }

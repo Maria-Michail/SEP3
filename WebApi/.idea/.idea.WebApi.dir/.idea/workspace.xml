@@ -23,45 +23,111 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4a6768d-17ef-4bcb-915d-e28d74b3e778" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Blazor.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Blazor.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Blazor.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Blazor.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/App.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Login.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewUsers.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewUsers.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Authorization/CustomAuthenticationStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Authorization/CustomAuthenticationStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Blazor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Data/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Data/AccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Data/IAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Data/IAccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Models/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Models/Account.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Shared/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/bin/Debug/netcoreapp3.1/Blazor.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorComponent.input.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorComponent.input.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/Blazor.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/MainLayout.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Database.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Db/DbService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Db/DbService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Db/IDbService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Db/IDbService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/FirstSetup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/FirstSetup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/MainDb.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/MainDb.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Migrations/20201114185240_InitialCreate.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Migrations/20201114185240_InitialCreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Migrations/DatabaseContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Migrations/DatabaseContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Model/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Model/Account.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Networking/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Networking/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/accounts.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/obj/Database.csproj.EntityFrameworkCore.targets" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Database.csproj.EntityFrameworkCore.targets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AccountsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AccountsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ValidateController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Impl/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Impl/AccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Impl/IAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Impl/IAccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Models/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Models/Account.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Networking/SocketsToDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Networking/SocketsToDatabase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Humanizer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Data.Sqlite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.DotNet.PlatformAbstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Sqlite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/SQLitePCLRaw.batteries_v2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/SQLitePCLRaw.core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/SQLitePCLRaw.nativelibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/SQLitePCLRaw.provider.dynamic_cdecl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.Text.Encodings.Web.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/WebApi.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/WebApi.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/WebApi.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/WebApi.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/dotnet-ef.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/alpine-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-arm/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-arm64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-armel/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-mips64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-musl-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-x64/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/linux-x86/native/libe_sqlite3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/osx-x64/native/libe_sqlite3.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/win-arm/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/WebApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/WebApi.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/WebApi.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/WebApi.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApi">
@@ -125,13 +191,14 @@
       <option name="presentableId" value="Default" />
       <updated>1605603407799</updated>
       <workItem from="1605603426585" duration="112000" />
+      <workItem from="1605733881216" duration="35000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -143,8 +210,15 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="150" y="0" key="SettingsEditor" timestamp="1605733891668">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1605733891668" />
   </component>
 </project>

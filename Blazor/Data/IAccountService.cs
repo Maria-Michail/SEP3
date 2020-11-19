@@ -9,5 +9,7 @@ namespace Blazor.Data
         Task<Account> ValidateAccountAsync(string username, string password);
 
         Task<List<Account>> GetAccountsAsync();
+        
+        Task Register(Account newAccount);
     }
 }
