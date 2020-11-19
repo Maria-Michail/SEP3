@@ -10,8 +10,8 @@ namespace Database.Migrations
                 name: "accounts",
                 columns: table => new
                 {
-                    username = table.Column<string>(type: "TEXT", nullable: false),
-                    password = table.Column<string>(type: "TEXT", nullable: false),
+                    username = table.Column<string>(type: "TEXT", maxLength: 12, nullable: false),
+                    password = table.Column<string>(type: "TEXT", maxLength: 12, nullable: false),
                     email = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

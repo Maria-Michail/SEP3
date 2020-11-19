@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20201118195024_InitialCreate")]
+    [Migration("20201119081746_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,7 @@ namespace Database.Migrations
             modelBuilder.Entity("Database.Model.Account", b =>
                 {
                     b.Property<string>("username")
+                        .HasMaxLength(12)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("email")
@@ -28,6 +29,7 @@ namespace Database.Migrations
 
                     b.Property<string>("password")
                         .IsRequired()
+                        .HasMaxLength(12)
                         .HasColumnType("TEXT");
 
                     b.HasKey("username");

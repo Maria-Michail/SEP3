@@ -18,6 +18,7 @@ namespace Database.Migrations
             modelBuilder.Entity("Database.Model.Account", b =>
                 {
                     b.Property<string>("username")
+                        .HasMaxLength(12)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("email")
@@ -26,6 +27,7 @@ namespace Database.Migrations
 
                     b.Property<string>("password")
                         .IsRequired()
+                        .HasMaxLength(12)
                         .HasColumnType("TEXT");
 
                     b.HasKey("username");

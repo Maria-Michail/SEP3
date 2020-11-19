@@ -7,11 +7,16 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="MainDb.db" uuid="ddc505c0-0c92-4085-83c5-476bbe6040cc">
+    <data-source source="LOCAL" name="MainDb [2]" uuid="4f7a6134-8742-4a6d-8204-8fcfc1bf8951">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Database/MainDb.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

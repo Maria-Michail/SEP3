@@ -8,12 +8,12 @@ namespace Database.Model
 
         [Required]
         [Key]
-        [Range(1,12,ErrorMessage = "Username to long")]
+        [MaxLength(12)]
         [JsonPropertyName("username")]
         public string username{get; set;}
 
         [Required]
-        [Range(3,20, ErrorMessage = "Password must be between 4-20 characters")]
+        [MaxLength(12)]
         [JsonPropertyName("password")]
         public string password{get;set;}
 
