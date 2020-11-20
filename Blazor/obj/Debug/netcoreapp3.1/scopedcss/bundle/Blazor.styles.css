@@ -1,0 +1,13 @@
+/* _content/Blazor/Pages/Home.razor.rz.scp.css */
+body[b-6me2utdfn1], html[b-6me2utdfn1] {
+    height: 100%;
+    background-image: url("../wwwroot/Images/background-main.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+h1[b-6me2utdfn1]{
+    color: #3a0647;
+}

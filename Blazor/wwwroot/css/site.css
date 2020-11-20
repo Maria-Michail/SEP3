@@ -2,6 +2,12 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 100%;
+    background-image: url("../Images/background-main.jpg");
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 90%;
 }
 
 a, .btn-link {
@@ -31,9 +37,13 @@ app {
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
+        background-color: #151515;
         border-bottom: 1px solid #d6d5d5;
         justify-content: flex-end;
+    }
+    
+    .main .top-row {
+        color: #d2e4e5;
     }
 
         .main .top-row > a, .main .top-row .btn-link {
@@ -180,4 +190,5 @@ app {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
+    
 }

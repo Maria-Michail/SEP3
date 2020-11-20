@@ -98,16 +98,19 @@ using Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Register.razor"
+#line 77 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Register.razor"
        
 
     private string username;
     private string password;
     private string email;
+    private string street;
+    private string streetNumber;
+    private string city;
+    private int zipCode;
     private string errorMessage;
     
     private Account newAccount = new Account();
-    
     
     public async Task HandleValidRegister()
     {

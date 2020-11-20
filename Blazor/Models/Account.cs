@@ -21,5 +21,13 @@ namespace Model
         [JsonPropertyName("email")]
         public string email{get;set;}
 
+        [Required]
+        public Address address;
+
+        public Account()
+        {
+            address = new Address();
+        }
+
     }
 }
