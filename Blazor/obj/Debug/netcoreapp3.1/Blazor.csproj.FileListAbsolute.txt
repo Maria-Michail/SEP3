@@ -470,6 +470,7 @@ C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1
 C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.genruntimeconfig.cache
 C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Register.razor.g.cs
 C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
+<<<<<<< HEAD
 C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -562,3 +563,9 @@ C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\obj\Debug\netcoreapp3.1\staticweb
 C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.dll
 C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.pdb
 C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.genruntimeconfig.cache
+=======
+C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Home.razor.g.cs
+C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Home.razor.g.cs
+>>>>>>> 2a8b4e984a155dd35dea1d4d5028856f459809d0
+C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Home.razor.g.cs
+C:\Users\Janni\OneDrive\Skrivebord\SEP3\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Home.razor.g.cs
