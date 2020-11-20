@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Database\\Database.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Database\\Database.csproj",
         "packagesPath": "C:\\Users\\Janni\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Database\\obj\\",
-=======
-    "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Database\\Database.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Database\\Database.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Database\\Database.csproj",
-        "projectName": "Database",
-        "projectPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Database\\Database.csproj",
-        "packagesPath": "C:\\Users\\Janni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Database\\obj\\",
->>>>>>> 8510dd77c6fe3639f8fae0b78c8086a08093368c
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Janni\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -7,6 +7,7 @@ namespace Model
     public class Amount
     {
         [Required]
+        [Key]
         [Range(0.1, Double.MaxValue, ErrorMessage = "Number must be above 0.1")]
         [JsonPropertyName("number")]
         public double number { get; set; }

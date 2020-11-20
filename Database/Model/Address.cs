@@ -1,17 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Model
 {
     public class Address
     {
-        [Key]
+        [Key, Column(Order = 0)]
         [Required,MaxLength(128)]
         [JsonPropertyName("Street")]
         public string street { get; set; }
         
-        [Key]
+        [Key, Column(Order = 1)]
         [Required,MaxLength(128)]
         [JsonPropertyName("StreetNumber")]
         public string streetNumber { get; set; }

@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "WV4Bn/60fdBdolE536pjbwFpAvKPwQo5EVSXO/iH/lsZj2WW0ZakdMVjgT4AqgiT7TIf26stb9m8apKLxebVIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Database\\Database.csproj",
-=======
-  "dgSpecHash": "90QIsxhaD6RjkDQc4Ream2iCCsxClg7xIeZCghv9pXMH5U+Pm8z6P12AbIOzsEBYjGTqnMOkPUgDiW0I4yTWWA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Database\\Database.csproj",
->>>>>>> 8510dd77c6fe3639f8fae0b78c8086a08093368c
   "expectedPackageFiles": [
     "C:\\Users\\Janni\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Janni\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
