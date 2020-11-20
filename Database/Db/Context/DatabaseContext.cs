@@ -14,5 +14,11 @@ namespace Db{
             //DatebaseName
             optionsBuilder.UseSqlite(@"Data Source = C:\Users\Janni\OneDrive\Skrivebord\SEP3\Database\MainDb.db");
         }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Address>()
+                .HasKey(c => new { c.street, c.streetNumber });
+        }
     } 
 }

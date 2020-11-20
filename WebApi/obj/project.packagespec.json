@@ -1,10 +1,17 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
+<<<<<<< HEAD
     "projectUniqueName": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\WebApi\\WebApi.csproj",
     "projectName": "WebApi",
     "projectPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\WebApi\\WebApi.csproj",
     "outputPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\WebApi\\obj\\",
+=======
+    "projectUniqueName": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\WebApi\\WebApi.csproj",
+    "projectName": "WebApi",
+    "projectPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\WebApi\\WebApi.csproj",
+    "outputPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\WebApi\\obj\\",
+>>>>>>> 8510dd77c6fe3639f8fae0b78c8086a08093368c
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp3.1"

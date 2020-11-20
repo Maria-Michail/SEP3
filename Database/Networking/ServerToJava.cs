@@ -7,12 +7,21 @@ using System.Threading;
 using Database.Model;
 using System.Text.Json;
 using System.IO;
+using Db;
+using Model;
+using System.Text.Json;
 
 namespace Database.Networking{
     class ServerToJava{
 
         private string content;
-        public void start(){
+        private DbAccountService dbAccountService;
+
+        public ServerToJava(DbAccountService dbAccountService)
+        {
+            this.dbAccountService = dbAccountService;
+        }
+        public async void start(){
             Console.WriteLine("Starting server...");
 
             IPAddress ip = IPAddress.Parse("127.0.0.1");
@@ -35,9 +44,10 @@ namespace Database.Networking{
                 stream.Read(rcvBytes);
                 String rcv = System.Text.Encoding.ASCII.GetString(rcvBytes);
 
-
+                switch (rcv) {
+                }
                 // Sending
-                byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(File.ReadAllText("users.json"));
+                byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
                 stream.Write(toSendBytes);
 
                 client.Close();

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Blazor\\Blazor.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Blazor\\Blazor.csproj",
         "packagesPath": "C:\\Users\\Janni\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Blazor\\obj\\",
+=======
+    "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Blazor\\Blazor.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Blazor\\Blazor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Blazor\\Blazor.csproj",
+        "projectName": "Blazor",
+        "projectPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Blazor\\Blazor.csproj",
+        "packagesPath": "C:\\Users\\Janni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Blazor\\obj\\",
+>>>>>>> 8510dd77c6fe3639f8fae0b78c8086a08093368c
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Janni\\AppData\\Roaming\\NuGet\\NuGet.Config"
