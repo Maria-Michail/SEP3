@@ -56,8 +56,8 @@ class SocketsToDatabase {
         client.Close();
         return request;
     }
-    
-    
+
+
     /*public Object ValidateUser(string username, string password) {
         Console.WriteLine("Starting client..");
 

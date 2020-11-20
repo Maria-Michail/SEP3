@@ -21,8 +21,11 @@ namespace Server
                     Seed(dataContext);
                 }
             }
-            IDbService tmp = new DbService();
-            Server server = new Server(tmp);
+            IDbAccountService accountService = new DbAccountService();
+            IDbRecipeService recipeService = new DbRecipeService();
+            IDbAddressService addresService = new DbAddressService();
+            IDbShopIngrService shopIngrService = new DbShopIngreService();
+            Server server = new Server(accountService,recipeService,addresService,shopIngrService);
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();

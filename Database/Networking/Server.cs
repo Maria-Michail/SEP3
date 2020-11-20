@@ -9,15 +9,22 @@ using System.Text.Json;
 using System.IO;
 using Db;
 using System.Threading.Tasks;
+using Model;
 
 namespace Server
 {
     class Server{
 
-        private IDbService dbService;
+        private IDbAccountService accountService;
+        private IDbRecipeService recipeService;
+        private IDbAddressService addresService;
+        private IDbShopIngrService shopIngrService;
         private string content;
-        public Server(IDbService dbService){
-            this.dbService = dbService;
+        public Server(IDbAccountService accountService, IDbRecipeService recipeService, IDbAddressService addresService, IDbShopIngrService shopIngrService){
+            this.accountService = accountService;
+            this.recipeService = recipeService;
+            this.addresService = addresService;
+            this.shopIngrService = shopIngrService;
         }
         public async Task start(){
             Console.WriteLine("Starting server...");
@@ -41,23 +48,128 @@ namespace Server
                 Console.WriteLine(s);
 
                 switch(s){
-                    case "GetAccounts":{
-                        List<Account> accounts = await dbService.GetAccountsAcyns();
-                        content = JsonSerializer.Serialize(accounts);
+                    case "GetAccounts":
+                    {
+                        content = await getAccounts();
                         Console.WriteLine(content);
                         break;
                     }
-                    case "Register":{
-                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] accountFromClient = new byte[1024];
-                        int accountRead = stream.Read(accountFromClient, 0, accountFromClient.Length);
-                        string accountString = Encoding.ASCII.GetString(accountFromClient, 0, accountRead);
-                        Account account = JsonSerializer.Deserialize<Account>(accountString);
-                        Account addedAccount = (Account)await dbService.Register(account);
+                    case "Register":
+                    {
+                        Account addedAccount = (Account)await accountService.Register((Account)getClientsObject(stream));
                         content = JsonSerializer.Serialize(addedAccount);
                         break;
                     }
+                    case "removeAccount":
+                    {
+                        Account temp = (Account)getClientsObject(stream);
+                        await accountService.removeAccountAsync(temp);
+                        content = "Account " + temp.username + " removed";
+                        break;
+                    }
+                    case "updateAccount":
+                    {
+                        Account temp = (Account)getClientsObject(stream);
+                        await accountService.updateAccountAsync(temp);
+                        content = "Account " + temp.username + " updated";
+                        break;
+                    }
+                    case "getRecipies":
+                    {
+                        content = await getRecipies();
+                        break;
+                    }
+                    case "getRecipe":
+                    {
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
+                        byte[] objectFromClient = new byte[1024];
+                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
+                        string recipeName = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+                        Recipe temp = await recipeService.getRecipeAsync(recipeName);
+                        content = JsonSerializer.Serialize(temp);
+                        break;
+                    }
+                    case "addRecipe":
+                    {
+                        Recipe temp = (Recipe) getClientsObject(stream);
+                        await recipeService.addRecipeAsync(temp);
+                        content = "Recipe " + temp.name + " added";
+                        break;
+                    }
+                    case "removeRecipe":
+                    {
+                        Recipe temp = (Recipe) getClientsObject(stream);
+                        await recipeService.removeRecipeAsync(temp.name);
+                        content = "Recipe" + temp.name + " removed";
+                        break;
+                    }
+                    case "updateRecipe":
+                    {
+                        Recipe temp = (Recipe) getClientsObject(stream);
+                        await recipeService.updateRecipeAsync(temp);
+                        content = "Recipe " + temp.name + " updated";
+                        break;
+                    }
+                    case "saveAddress":
+                    {
+                        Address temp = (Address) getClientsObject(stream);
+                        await addresService.saveAddressAsync(temp);
+                        content = "Address " + temp.ToString() + " added";
+                        break;
+                    }
+                    case "removeAddress":
+                    {
+                        Address temp = (Address) getClientsObject(stream);
+                        await addresService.removeAddressAsync(temp);
+                        content = "Address " + temp.ToString() + " removed";
+                        break;
+                    }
+                    case "updateAddress":
+                    {
+                        Address temp = (Address) getClientsObject(stream);
+                        await addresService.updateAddressAsync(temp);
+                        content = "Address " + temp.ToString() + " updated";
+                        break;
+                    }
+                    case "getShopIngredients":
+                    {
+                        content = await getShopIngredients();
+                        break;
+                    }
+                    case "getShopIngredient":
+                    {
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
+                        byte[] objectFromClient = new byte[1024];
+                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
+                        int shopIngrId = int.Parse(Encoding.ASCII.GetString(objectFromClient, 0, objectRead));
+                        ShopIngredient temp = await shopIngrService.getShopIngredientAsync(shopIngrId);
+                        content = JsonSerializer.Serialize(temp);
+                        break;
+                    }
+                    case "saveShopIngredient":
+                    {
+                        ShopIngredient temp = (ShopIngredient) getClientsObject(stream);
+                        await shopIngrService.addShopIngredientAsync(temp);
+                        content = "ShopIngredient " + temp.name + " added";
+                        break;
+                    }
+                    case "updateShopIngredient":
+                    {
+                        ShopIngredient temp = (ShopIngredient) getClientsObject(stream);
+                        await shopIngrService.updateShopIngredientAsync(temp);
+                        content = "ShopIngredient " + temp.name + " updated";
+                        break;
+                    }
+                    case "removeShopIngredient":
+                    {
+                        ShopIngredient temp = (ShopIngredient) getClientsObject(stream);
+                        await shopIngrService.removeShopIngredientAsync(temp);
+                        content = "ShopIngredient " + temp.name + " removed";
+                        break;
+                    }
+
                     /*case "ValidateUser":{
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
                         stream.Write(data1ToClient, 0, data1ToClient.Length);
@@ -85,5 +197,33 @@ namespace Server
             }
         }
 
+        private Object getClientsObject(NetworkStream stream)
+        {
+            byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+            stream.Write(data1ToClient, 0, data1ToClient.Length);
+            byte[] objectFromClient = new byte[1024];
+            int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
+            string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+            Object objectToReturn = JsonSerializer.Deserialize<Object>(objectString);
+            return objectToReturn;
+        }
+
+        private async Task<string> getAccounts()
+        {
+            List<Account> accounts = await accountService.GetAccountsAcyns();
+            return JsonSerializer.Serialize(accounts);
+        }
+        
+        private async Task<string> getRecipies()
+        {
+            List<Recipe> recipes = await recipeService.getRecipiesAsync();
+            return JsonSerializer.Serialize(recipes);
+        }
+
+        private async Task<string> getShopIngredients()
+        {
+            List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
+            return JsonSerializer.Serialize(shopIngredients);
+        }
     }
 }
