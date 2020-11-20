@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Blazor.Shared
+namespace Blazor.Pages
 {
     #line hidden
     using System;
@@ -76,39 +76,34 @@ using Blazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Shared\MainLayout.razor"
-using LoginComponent;
+#line 2 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Home.razor"
+using Blazor.Data;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class MainLayout : LayoutComponentBase
+#nullable restore
+#line 3 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Home.razor"
+using Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Home.razor"
+using System.Security.Policy;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/home")]
+    public partial class Home : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 21 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Shared\MainLayout.razor"
-       
-
-    [CascadingParameter] protected Task<AuthenticationState> AuthStat { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-        var user = (await AuthStat).User;
-        if(!user.Identity.IsAuthenticated)
-        {
-            NavigationManager.NavigateTo($"/home");
-            // NavigationManager.NavigateTo($"/Login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}");
-        }
-    }
-
-#line default
-#line hidden
-#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }

@@ -5,17 +5,20 @@
 @inject NavigationManager NavigationManager
 
 
+<h2 style="text-align: center; text-decoration-color: #0c5460; font-family: 'Palatino Linotype', Palatino, serif">Make an Account</h2>
+
 <EditForm Model="@newAccount" OnValidSubmit="@HandleValidRegister" OnInvalidSubmit="@HandleInvalidRegister">
-    <div class="row">
-        <div class="col-12">
-            <DataAnnotationsValidator/>
-            <ValidationSummary/>
-            <ul class="orderPageList" data-role="listview">
+    <div class="bg-light p-2 m-2">
+    <div class="row ">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="col-6">
+            <ul class="orderPageList" data-role="listview" style="list-style-type: none">
                 <li>
                     <div class="form-group">
                         Username:<br/>
                         <InputText @bind-Value="newAccount.username"/>
-                        </div>
+                    </div>
                 </li>
                 <li>
                     <div class="form-group">
@@ -29,11 +32,45 @@
                         <InputText @bind-Value="newAccount.email"/>
                     </div>
                 </li>
+
             </ul>
-            <p class="actions">
-                <button class="btn btn-danger order-button" type="submit">Register</button>
-            </p>
         </div>
+        <div class="col-6">
+            <ul class="orderPageList" data-role="listview" style="list-style-type: none">
+
+                <li>
+                    <div class="form-group">
+                        Street:<br/>
+                        <InputText @bind-Value="newAccount.address.street"/>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        House Number:<br/>
+                        <InputText @bind-Value="newAccount.address.streetNumber"/>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        City:<br/>
+                        <InputText @bind-Value="newAccount.address.city"/>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        Zip Code:<br/>
+                        <InputNumber @bind-Value="newAccount.address.zipCode"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="row d-flex justify-content-center">
+        <p class="actions ">
+            <button class="btn btn-primary order-button" type="submit">Register</button>
+        </p>
+    </div>
     </div>
 </EditForm>
 
@@ -42,10 +79,13 @@
     private string username;
     private string password;
     private string email;
+    private string street;
+    private string streetNumber;
+    private string city;
+    private int zipCode;
     private string errorMessage;
     
     private Account newAccount = new Account();
-    
     
     public async Task HandleValidRegister()
     {
