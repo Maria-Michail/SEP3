@@ -24,9 +24,13 @@ namespace Model
         [Required]
         public Address address;
 
+        [Required] 
+        public BankInfo bankInfo;
+
         public Account()
         {
             address = new Address();
+            bankInfo = new BankInfo();
         }
 
     }

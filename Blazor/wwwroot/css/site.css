@@ -1,4 +1,5 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -8,6 +9,7 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0% 90%;
+    font-family: 'Poppins', sans-serif;
 }
 
 a, .btn-link {
@@ -192,3 +194,44 @@ app {
     }
     
 }
+
+
+/* Custom styles */
+
+input:focus{
+    outline: none;
+}
+
+.regInput{
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    margin: 10px 0;
+}
+
+.regForm{
+    background-color:rgba(0, 0, 0, 0.15);
+    padding: 10px;
+}
+
+.loginInput{
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.title{
+    text-align: center;
+}
+
+/* Hiding arrows within number input*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.table, td, th{
+    border: 1.5px solid black;
+}
+
