@@ -15,11 +15,11 @@ namespace Database.Networking{
     class ServerToJava{
 
         private string content;
-        private DbAccountService dbAccountService;
+        private DbAccountService accountService;
 
-        public ServerToJava(DbAccountService dbAccountService)
+        public ServerToJava(DbAccountService accountService)
         {
-            this.dbAccountService = dbAccountService;
+            this.accountService = accountService;
         }
         public async void start(){
             Console.WriteLine("Starting server...");
@@ -45,6 +45,12 @@ namespace Database.Networking{
                 String rcv = System.Text.Encoding.ASCII.GetString(rcvBytes);
 
                 switch (rcv) {
+                    case "getAccounts":
+                    {
+                        List<Account> accounts = await accountService.GetAccountsAcyns();
+                        content = JsonSerializer.Serialize(accounts);
+                        break;
+                    }
                 }
                 // Sending
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);

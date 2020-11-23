@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "ID2dzPKDlz0wgtW+NGoKUUO9JuiFzPpDxJveJSJ9ytpWLVp4V+H6iLmXqRkAtM00Wm93zaFVD8P3mTqGWFSv3A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3\\Blazor\\Blazor.csproj",
-=======
-  "dgSpecHash": "R5ADWe22L8wM9pww8MMxktXD+LfjTF3/BbM/jK4SIi2un9zcXBTIUlj0Cb4LyDmRxUdwbm/jNCWwhTFgIisGZg==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Janni\\OneDrive\\Skrivebord\\SEP3Code\\Blazor\\Blazor.csproj",
->>>>>>> 8510dd77c6fe3639f8fae0b78c8086a08093368c
   "expectedPackageFiles": [
     "C:\\Users\\Janni\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Janni\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
