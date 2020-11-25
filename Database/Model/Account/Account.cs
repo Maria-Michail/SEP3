@@ -20,5 +20,18 @@ namespace Database.Model
         [Required]
         [JsonPropertyName("email")]
         public string email{get;set;}
+
+        [Required]
+        public Address address;
+
+        [Required] 
+        public BankInfo bankInfo;
+
+        public Account()
+        {
+            address = new Address();
+            bankInfo = new BankInfo();
+        }
+
     }
 }

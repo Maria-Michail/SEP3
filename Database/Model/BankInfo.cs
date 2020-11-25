@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Text.Json.Serialization;
 
-namespace Model
+namespace Database.Model
 {
     public class BankInfo
     {

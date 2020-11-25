@@ -82,18 +82,7 @@
                             <InputText class="regInput" @bind-Value="newAccount.bankInfo.cardNumber"/>
                         </div>
                     </li>
-                    <li>
-                        <div class="form-group">
-                            CVV:<br/>
-                            <InputNumber class="regInput" @bind-Value="newAccount.bankInfo.cvv"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-group">
-                            Expiration date:<br/>
-                            <InputDate class="regInput" type="date" placeholder="dd-mm-yyyy" min="23-11-2020" @bind-Value="newAccount.bankInfo.expirationDate" @bind-Value:format="dd-MM-yyyy"/>
-                        </div>
-                    </li>
+                   
                 </ul>
             </div>
 
@@ -116,8 +105,7 @@
     private string city;
     private int zipCode;
     private string cardNumber;
-    private int cvv;
-    private DateTime expirationDate;
+   
     private string errorMessage;
 
     private Account newAccount = new Account();
@@ -128,9 +116,6 @@
         try
         {
             Console.WriteLine("Trying register");
-            Console.WriteLine(newAccount.bankInfo.expirationDate);
-            Console.WriteLine(newAccount.username);
-            Console.WriteLine(newAccount.address.street);
             await AccountService.Register(newAccount);
             username = "";
             password = "";
