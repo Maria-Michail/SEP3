@@ -95,3 +95,5 @@ C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1
 C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.dll
 C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.pdb
 C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Blazor.genruntimeconfig.cache
+C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Payment.razor.g.cs
+C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Payment.razor.g.cs
