@@ -1,0 +1,153 @@
+﻿@page "/payment"
+@using Blazor.Data
+@using Model
+@using System.Numerics
+@using Blazor.Authorization
+@inject IAccountService AccountService
+@inject NavigationManager NavigationManager
+
+
+
+
+<div class="row">
+    <EditForm class="regForm col-7 bg-white" Model="@bankInfo" OnValidSubmit="@HandleValidPayment" OnInvalidSubmit="@HandleInvalidPayment">
+        <div class="p-2 m-2">
+            <h2 class="title" xmlns="http://www.w3.org/1999/html">Payment</h2>
+            <div class="p-2 m-2">
+                <div class="row ">
+                    <DataAnnotationsValidator/>
+                    <ValidationSummary/>
+
+                    <!--Bank information section -->
+                    <div class="col-11 bg-white">
+                        <ul class="orderPageList" data-role="listview" style="list-style-type: none">
+                            <li>
+                                <div class="form-group">
+                                    Card holder:<br/>
+                                    <InputText class="regInput" style="width:375px" @bind-Value="bankInfo.cardHolder"/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-group">
+                                    Card Number:<br/>
+                                    <InputText class="regInput" style="width:375px" @bind-Value="bankInfo.cardNumber"/>
+                                </div>
+                            </li>
+                            <div class="row">
+                                <div class="col-6">
+                                    <li>
+                                        <div class="form-group">
+                                            Expiry Date:<br/>
+                                            <InputDate class="regInput" style="width:170px" @bind-Value="expiryDate"/>
+                                        </div>
+                                    </li>
+                                </div>
+                                <div class="col-6">
+                                    <li>
+                                        <div class="form-group">
+                                            CVV:<br/>
+                                            <InputNumber class="regInput" style="width:170px" @bind-Value="cvv"/>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-center">
+                                <p class="actions ">
+                                    <button class="btn btn-primary order-button" type="submit">Pay Now</button>
+                                </p>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-1 bg-white">
+                            
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </EditForm>
+    
+
+<div class="col-5 bg-light">
+    <div class="p-2 m-3">
+        <h3 class="text-center text-secondary">Order</h3>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-8">
+                    <img src="../Images/arrabiata.jpg" class="card-img-top" alt="arrabiata" style="height: 100px; width: 100px">
+                </div>
+                <div class="col-4">
+                    <p>$ 400</p>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 100px">
+                    <div class="col-8">
+                        <p class="text-secondary">Shipping</p>
+                    </div>
+                        <div class="col-4">
+                            <p class="text-secondary">Free</p>
+                        </div>
+                </div>
+                        <hr/>
+                <div class="row">
+                            <div class="col-8">
+                                <p class="text-secondary">TOTAL</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="text-secondary">$400</p>
+                            </div>
+                </div>
+        </div>
+        <div class="col-2">
+            
+        </div>
+    </div>
+    
+            
+</div>
+</div>
+
+@code {
+
+
+    private DateTime expiryDate;
+    private int cvv;
+
+    private string errorMessage;
+
+    private BankInfo bankInfo = new BankInfo();
+
+    protected override async Task OnInitializedAsync()
+    {
+        //bankInfo = CustomAuthenticationStateProvider.getUser().bankInfo;
+    }
+    
+    public async Task HandleValidPayment()
+    {
+        errorMessage = "";
+        try
+        {
+            Console.WriteLine("Trying paying");
+            //await AccountService.Payment();
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Payment failed");
+            errorMessage = e.Message;
+        }
+    }
+
+    public async Task HandleInvalidPayment()
+    {
+        Console.WriteLine("Invalid");
+    }
+
+    
+
+}

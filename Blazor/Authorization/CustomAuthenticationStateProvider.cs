@@ -13,7 +13,12 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
     private readonly IJSRuntime jsRuntime;
     private readonly IAccountService userService;
 
-    private Account cachedUser;
+    private static Account cachedUser;
+
+    public static Account getUser()
+    {
+        return cachedUser;
+    }
 
     public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IAccountService userService) {
         this.jsRuntime = jsRuntime;
