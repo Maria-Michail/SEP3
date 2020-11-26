@@ -93,3 +93,5 @@
 /Users/wojtek/RiderProjects/SEP3/Blazor/obj/Debug/netcoreapp3.1/Blazor.genruntimeconfig.cache
 /Users/wojtek/RiderProjects/SEP3/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewRecipes.razor.g.cs
 /Users/wojtek/RiderProjects/SEP3/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/ViewRecipes.razor.g.cs
+/Users/wojtek/RiderProjects/SEP3/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/RecipeView.razor.g.cs
+/Users/wojtek/RiderProjects/SEP3/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/RecipeView.razor.g.cs

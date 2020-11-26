@@ -6,93 +6,72 @@
 @inject NavigationManager NavigationManager
 
 
-<h2 class="title" xmlns="http://www.w3.org/1999/html">Make an Account</h2>
-
-<EditForm class="regForm" Model="@newAccount" OnValidSubmit="@HandleValidRegister" OnInvalidSubmit="@HandleInvalidRegister">
-    <div class="p-2 m-2">
-        <div class="row ">
+<EditForm Model="@newAccount" OnValidSubmit="@HandleValidRegister" OnInvalidSubmit="@HandleInvalidRegister">
+    
+        
             <DataAnnotationsValidator/>
             <ValidationSummary/>
 
             <!--User information section -->
-            <div class="col-4">
-                <ul class="orderPageList" data-role="listview" style="list-style-type: none">
-                    <li class="m-5">
-                        <p>Username:</p>
-                        <InputText class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" @bind-Value="newAccount.username"/>
-                    </li>
-                    <li class="m-5">
-                        <p>Password:</p>
-                        <InputText class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon1" @bind-Value="newAccount.password"/>
-                    </li>
-                    <li class="m-5">
-                        <p>Email:</p>
-                        <InputText class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" @bind-Value="newAccount.email"/>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </li>
-
-                </ul>
+            <h3 class="sectionHeader">Account information</h3>
+            
+            <div class="form-group mx-5">
+                <label>Username:</label>
+                <InputText class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" @bind-Value="newAccount.username"/>
             </div>
+            <div class="form-group mx-5">
+                <label>Password:</label>
+                <InputText class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon1" @bind-Value="newAccount.password"/>
+                <small id="emailHelp" class="form-text text-muted">Your password should contain both small and capital letters and at least two digits.</small>
+            </div>
+            <div class="form-group mx-5">
+                <label>Email:</label>
+                <InputText class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" @bind-Value="newAccount.email"/>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
 
             <!--Delivery information section -->
-            <div class="col-4">
-                <ul class="orderPageList" data-role="listview" style="list-style-type: none">
 
-                    <li>
-                        <div class="form-group">
-                            Street:<br/>
-                            <InputText class="regInput" @bind-Value="newAccount.address.street"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-group">
-                            House Number:<br/>
-                            <InputText class="regInput" @bind-Value="newAccount.address.streetNumber"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-group">
-                            City:<br/>
-                            <InputText class="regInput" @bind-Value="newAccount.address.city"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-group">
-                            Zip Code:<br/>
-                            <InputNumber class="regInput" @bind-Value="newAccount.address.zipCode"/>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <h3 class="sectionHeader">Address information</h3>
+
+                <div class="form-group mx-5">
+                    <label>Street:</label>
+                    <InputText class="form-control" placeholder="Street" aria-label="street" aria-describedby="basic-addon1" @bind-Value="newAccount.address.street"/>
+                </div>
+                <div class="form-group mx-5">
+                    <label>Street number:</label>
+                    <InputText class="form-control" placeholder="Street number" aria-label="Street number" aria-describedby="basic-addon1" @bind-Value="newAccount.address.streetNumber"/>
+                </div>
+                <div class="form-group mx-5">
+                    <label>City:</label>
+                    <InputText class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" @bind-Value="newAccount.address.city"/>
+                </div>
+                <div class="form-group mx-5">
+                    <label>Zip code:</label>
+                    <InputNumber class="form-control" placeholder="Zip code" aria-label="Zip code" aria-describedby="basic-addon1" @bind-Value="newAccount.address.zipCode"/>
+                </div>
 
 
             <!--Bank information section -->
-            <div class="col-4">
-                <ul class="orderPageList" data-role="listview" style="list-style-type: none">
+            <h3 class="sectionHeader">Payment information</h3>
+            <div class="form-group mx-5">
+                    <p>Card Holder:</p>
+                    <InputText class="form-control" placeholder="Card holder" aria-label="Card holder" aria-describedby="basic-addon1" @bind-Value="newAccount.bankInfo.cardHolder"/>
+                </div>
+                <div class="form-group mx-5">
+                    <p>Card Number:</p>
+                    <InputText class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="newAccount.bankInfo.cardNumber"/>
+                </div>
 
-                    <li>
-                        <div class="form-group">
-                            Card holder:<br/>
-                            <InputText class="regInput" @bind-Value="newAccount.bankInfo.cardHolder"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-group">
-                            Card Number:<br/>
-                            <InputText class="regInput" @bind-Value="newAccount.bankInfo.cardNumber"/>
-                        </div>
-                    </li>
-                   
-                </ul>
-            </div>
 
-        </div>
-        <div class="row d-flex justify-content-center">
+
+            
             <p class="actions ">
-                <button class="btn btn-primary order-button" type="submit">Register</button>
+                <button class="btn btn-primary registerBtn" type="submit">Register</button>
             </p>
-        </div>
-    </div>
+       
+    
 </EditForm>
 
 @code {
@@ -105,7 +84,7 @@
     private string city;
     private int zipCode;
     private string cardNumber;
-   
+
     private string errorMessage;
 
     private Account newAccount = new Account();

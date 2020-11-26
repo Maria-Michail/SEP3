@@ -11,8 +11,7 @@ html, body {
     /*background-size: cover;*/
     /*background-position: 0% 90%;*/
     /* font-family: 'Poppins', sans-serif;*/
-    background: rgb(57,57,57);
-    background: linear-gradient(0deg, rgba(57,57,57,1) 0%, rgba(231,231,231,1) 100%);
+    background: white;
 }
 
 a, .btn-link {
@@ -211,11 +210,29 @@ input:focus{
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     margin: 10px 0;
 }
-/*Top of the register page*/
+/*Register.razor*/
 .regForm{
     background-color:rgba(0, 0, 0, 0.15);
     padding: 10px;
 }
+
+.form-group{
+    max-width: 1000px;
+}
+
+.sectionHeader{
+    text-decoration: underline;
+    margin: 1em;
+}
+
+.registerBtn{
+    //margin: 2em;
+    margin-left: auto;
+}
+
+
+
+
 
 a:link{
     text-decoration: none;
@@ -244,5 +261,10 @@ input::-webkit-inner-spin-button {
 
 .card{
     margin: 3em 0 3em 0;
+}
+
+.instruction, .ingredients{
+    box-sizing: border-box;
+    
 }
 
