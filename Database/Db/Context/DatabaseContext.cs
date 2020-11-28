@@ -12,7 +12,7 @@ namespace Db{
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
-            optionsBuilder.UseSqlite(@"Data Source = /Users/wojtek/RiderProjects/SEP3/Database/MainDb.db");
+            optionsBuilder.UseSqlite(@"Data Source = C:\Users\jtyta\RiderProjects\SEP3v5\Database\MainDb.db");
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
