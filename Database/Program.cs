@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Db;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Server
 {
@@ -35,19 +36,38 @@ namespace Server
             server.start();
         }
         
-        private static void Seed(DatabaseContext databaseContext)
+        private static async Task Seed(DatabaseContext databaseContext)
         {
+            Address[] addresses = {
+                new Address{
+                    street = "Solvgade 1, 3tv",
+                    city = "Horsens",
+                    zipCode = 8700,
+                },
+            };
+            foreach (var address in addresses)
+            {
+                databaseContext.addresses.Add(address);
+            }
+            
+            BankInfo[] bankInfos = {
+                new BankInfo{
+                    cardNumber = 123412341234,
+                    cardHolder = "Pawel Skrzypkowski"
+                },
+            };
+            foreach (var bankInfo in bankInfos)
+            {
+                databaseContext.bankInfos.Add(bankInfo);
+            }
+
+            
             Account[] acs = {
                 new Account{
                     username = "Jannik",
                     password = "12345",
                     email = "Jannik@viauc.dk",
                 },
-                new Account{
-                    username = "Dumi",
-                    password = "yup",
-                    email = "Dumi@viauc.dk",
-                }
             };
             foreach (var account in acs)
             {
@@ -55,6 +75,37 @@ namespace Server
             }
 
             databaseContext.SaveChanges();
+            
+            Account steve = await databaseContext.accounts.FirstAsync(s => s.username.Equals("Jannik") );
+            Address tek = await databaseContext.addresses.FirstAsync(c => c.street.Equals("Solvgade 1, 3tv"));
+            AccountAddress sc = new AccountAddress()
+            {
+                address = tek,
+                account = steve
+            };
+            
+            steve.AccountAddresses = new List<AccountAddress>();
+            steve.AccountAddresses.Add(sc);
+            databaseContext.Update(steve);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+            
+            Account steve2 = await databaseContext.accounts.FirstAsync(s => s.username.Equals("Jannik") );
+            BankInfo bankInfo2 = await databaseContext.bankInfos.FirstAsync(c => c.cardNumber == 1234123412341234);
+            AccountBankInfo sc2 = new AccountBankInfo()
+            {
+               account = steve2,
+               bankInfo = bankInfo2
+            };
+            
+            steve.AccountBankInfos = new List<AccountBankInfo>();
+            steve.AccountBankInfos.Add(sc2);
+            databaseContext.Update(steve2);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+            
         }
         
     }

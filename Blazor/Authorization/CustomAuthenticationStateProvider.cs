@@ -4,9 +4,10 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Blazor.Data;
+using Database.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
-using Model;
+
 
 namespace Blazor.Authorization {
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
