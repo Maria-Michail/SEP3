@@ -36,13 +36,39 @@ namespace Database.Migrations
                     b.ToTable("accounts");
                 });
 
-            modelBuilder.Entity("Model.Address", b =>
+            modelBuilder.Entity("Database.Model.AccountAddress", b =>
                 {
-                    b.Property<string>("street")
-                        .HasMaxLength(128)
+                    b.Property<string>("username")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("streetNumber")
+                    b.Property<string>("street")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("username", "street");
+
+                    b.HasIndex("street");
+
+                    b.ToTable("AccountAddresses");
+                });
+
+            modelBuilder.Entity("Database.Model.AccountBankInfo", b =>
+                {
+                    b.Property<string>("username")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("cardNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("username", "cardNumber");
+
+                    b.HasIndex("cardNumber");
+
+                    b.ToTable("AccountBankInfos");
+                });
+
+            modelBuilder.Entity("Database.Model.Address", b =>
+                {
+                    b.Property<string>("street")
                         .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
@@ -54,9 +80,24 @@ namespace Database.Migrations
                     b.Property<int>("zipCode")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("street", "streetNumber");
+                    b.HasKey("street");
 
                     b.ToTable("addresses");
+                });
+
+            modelBuilder.Entity("Database.Model.BankInfo", b =>
+                {
+                    b.Property<long>("cardNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("cardHolder")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("cardNumber");
+
+                    b.ToTable("bankInfos");
                 });
 
             modelBuilder.Entity("Model.Amount", b =>
@@ -152,6 +193,44 @@ namespace Database.Migrations
                     b.ToTable("shopIngredients");
                 });
 
+            modelBuilder.Entity("Database.Model.AccountAddress", b =>
+                {
+                    b.HasOne("Database.Model.Address", "address")
+                        .WithMany("AccountAddresses")
+                        .HasForeignKey("street")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Database.Model.Account", "account")
+                        .WithMany("AccountAddresses")
+                        .HasForeignKey("username")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("account");
+
+                    b.Navigation("address");
+                });
+
+            modelBuilder.Entity("Database.Model.AccountBankInfo", b =>
+                {
+                    b.HasOne("Database.Model.BankInfo", "bankInfo")
+                        .WithMany("AccountBankInfos")
+                        .HasForeignKey("cardNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Database.Model.Account", "account")
+                        .WithMany("AccountBankInfos")
+                        .HasForeignKey("username")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("account");
+
+                    b.Navigation("bankInfo");
+                });
+
             modelBuilder.Entity("Model.Ingredient", b =>
                 {
                     b.HasOne("Model.Amount", "Amount")
@@ -172,6 +251,23 @@ namespace Database.Migrations
                         .HasForeignKey("category");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Database.Model.Account", b =>
+                {
+                    b.Navigation("AccountAddresses");
+
+                    b.Navigation("AccountBankInfos");
+                });
+
+            modelBuilder.Entity("Database.Model.Address", b =>
+                {
+                    b.Navigation("AccountAddresses");
+                });
+
+            modelBuilder.Entity("Database.Model.BankInfo", b =>
+                {
+                    b.Navigation("AccountBankInfos");
                 });
 
             modelBuilder.Entity("Model.Recipe", b =>

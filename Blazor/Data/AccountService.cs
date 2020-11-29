@@ -6,7 +6,8 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Model;
+using Database.Model;
+
 
 namespace Blazor.Data
 {

@@ -1,25 +1,27 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Text.Json.Serialization;
 
-namespace Model
+namespace Database.Model
 {
     public class BankInfo
     {
         [Required]
         [Key]
-        [MaxLength(16)]
-        [MinLength(16)]
+        [Range(0000000000000000, 9999999999999999)]
         [JsonPropertyName("CardNumber")]
-        public string cardNumber { set; get; }
-        
+        public long cardNumber { set; get; }
+
         [Required]
         [JsonPropertyName("CardHolder")]
         public string cardHolder { set; get; }
         
-       
+        public IList<AccountBankInfo> AccountBankInfos { get; set; }
+
 
         public override string ToString()
         {

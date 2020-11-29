@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Model
+namespace Database.Model
 {
     public class Account {
 
@@ -20,5 +21,23 @@ namespace Model
         [Required]
         [JsonPropertyName("email")]
         public string email{get;set;}
+
+        [Required]
+        public Address address;
+
+        [Required] 
+        public BankInfo bankInfo;
+        
+        public IList<AccountAddress> AccountAddresses { get; set; }
+        
+        public IList<AccountBankInfo> AccountBankInfos { get; set; }
+        
+
+        public Account()
+        {
+            address = new Address();
+            bankInfo = new BankInfo();
+        }
+
     }
 }

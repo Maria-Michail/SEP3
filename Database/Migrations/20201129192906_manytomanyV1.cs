@@ -2,7 +2,7 @@
 
 namespace Database.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class manytomanyV1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,13 +24,12 @@ namespace Database.Migrations
                 columns: table => new
                 {
                     street = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    streetNumber = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     city = table.Column<string>(type: "TEXT", maxLength: 45, nullable: false),
                     zipCode = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addresses", x => new { x.street, x.streetNumber });
+                    table.PrimaryKey("PK_addresses", x => x.street);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,6 +42,19 @@ namespace Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Amount", x => x.number);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "bankInfos",
+                columns: table => new
+                {
+                    cardNumber = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    cardHolder = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_bankInfos", x => x.cardNumber);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,6 +80,54 @@ namespace Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_shopIngredients", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AccountAddresses",
+                columns: table => new
+                {
+                    username = table.Column<string>(type: "TEXT", nullable: false),
+                    street = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountAddresses", x => new { x.username, x.street });
+                    table.ForeignKey(
+                        name: "FK_AccountAddresses_accounts_username",
+                        column: x => x.username,
+                        principalTable: "accounts",
+                        principalColumn: "username",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AccountAddresses_addresses_street",
+                        column: x => x.street,
+                        principalTable: "addresses",
+                        principalColumn: "street",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AccountBankInfos",
+                columns: table => new
+                {
+                    username = table.Column<string>(type: "TEXT", nullable: false),
+                    cardNumber = table.Column<long>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountBankInfos", x => new { x.username, x.cardNumber });
+                    table.ForeignKey(
+                        name: "FK_AccountBankInfos_accounts_username",
+                        column: x => x.username,
+                        principalTable: "accounts",
+                        principalColumn: "username",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AccountBankInfos_bankInfos_cardNumber",
+                        column: x => x.cardNumber,
+                        principalTable: "bankInfos",
+                        principalColumn: "cardNumber",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,6 +178,16 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AccountAddresses_street",
+                table: "AccountAddresses",
+                column: "street");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccountBankInfos_cardNumber",
+                table: "AccountBankInfos",
+                column: "cardNumber");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ingredients_Amountnumber",
                 table: "ingredients",
                 column: "Amountnumber");
@@ -136,16 +206,25 @@ namespace Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "accounts");
+                name: "AccountAddresses");
 
             migrationBuilder.DropTable(
-                name: "addresses");
+                name: "AccountBankInfos");
 
             migrationBuilder.DropTable(
                 name: "ingredients");
 
             migrationBuilder.DropTable(
                 name: "shopIngredients");
+
+            migrationBuilder.DropTable(
+                name: "addresses");
+
+            migrationBuilder.DropTable(
+                name: "accounts");
+
+            migrationBuilder.DropTable(
+                name: "bankInfos");
 
             migrationBuilder.DropTable(
                 name: "Amount");
