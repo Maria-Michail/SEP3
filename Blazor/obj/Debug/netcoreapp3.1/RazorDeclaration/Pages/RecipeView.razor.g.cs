@@ -75,7 +75,29 @@ using Blazor.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+using Blazor.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+using Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+using System.ComponentModel.DataAnnotations;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView/{Name:int}")]
     public partial class RecipeView : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -83,6 +105,36 @@ using Blazor.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 70 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+       
+    [Parameter]
+    public string Name { get; set; }
+
+    public Recipe Recipe { get; set; }
+
+
+
+    protected override async Task OnInitializedAsync() {
+        if (!(Name == null || Name.Equals(""))) {
+            Recipe = RecipeService.Recipes.First(p => p.name.Equals(Name));
+        }
+    }
+
+    private void HandleInvalidSubmit() {
+        Console.WriteLine("Invalid");
+    }
+
+    private void HandleValidSubmit() {
+        NavigationManager.NavigateTo("/ordersuccess");
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecipeService RecipeService { get; set; }
     }
 }
 #pragma warning restore 1591
