@@ -26,9 +26,9 @@ namespace Data.Impl
             return accounts;
         }
 
-        public async Task<Account> AddAccountAsync(Account account)
+        public async Task<Account> AddAccountAsync(Register register)
         {
-            Account addedAccount = (Account)so.AddAccount(account);
+            Account addedAccount = (Account)so.AddAccount(register);
             return addedAccount;
         }
 

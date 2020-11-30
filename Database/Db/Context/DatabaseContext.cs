@@ -18,11 +18,9 @@ namespace Db{
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
-<<<<<<< HEAD
+
             optionsBuilder.UseSqlite(@"Data Source = C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db");
-=======
-            optionsBuilder.UseSqlite(@"Data Source = C:\Users\jtyta\RiderProjects\SEP3v5\Database\MainDb.db");
->>>>>>> 696ed47a47ce71278c22d6d5d967402dcbd1e5a1
+
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)

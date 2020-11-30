@@ -22,22 +22,14 @@ namespace Database.Model
         [JsonPropertyName("email")]
         public string email{get;set;}
 
-        [Required]
-        public Address address;
-
-        [Required] 
-        public BankInfo bankInfo;
         
+        [JsonIgnore]
         public IList<AccountAddress> AccountAddresses { get; set; }
-        
+        [JsonIgnore]
         public IList<AccountBankInfo> AccountBankInfos { get; set; }
         
 
-        public Account()
-        {
-            address = new Address();
-            bankInfo = new BankInfo();
-        }
+      
 
     }
 }

@@ -37,15 +37,15 @@
 
                 <div class="form-group mx-5">
                     <label>Street:</label>
-                    <InputText class="form-control" placeholder="Street" aria-label="street" aria-describedby="basic-addon1" @bind-Value="newAccount.address.street"/>
+                    <InputText class="form-control" placeholder="Street" aria-label="street" aria-describedby="basic-addon1" @bind-Value="newAddress.street"/>
                 </div>
             <div class="form-group mx-5">
                     <label>City:</label>
-                    <InputText class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" @bind-Value="newAccount.address.city"/>
+                    <InputText class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" @bind-Value="newAddress.city"/>
                 </div>
                 <div class="form-group mx-5">
                     <label>Zip code:</label>
-                    <InputNumber class="form-control" placeholder="Zip code" aria-label="Zip code" aria-describedby="basic-addon1" @bind-Value="newAccount.address.zipCode"/>
+                    <InputNumber class="form-control" placeholder="Zip code" aria-label="Zip code" aria-describedby="basic-addon1" @bind-Value="newAddress.zipCode"/>
                 </div>
 
 
@@ -53,11 +53,11 @@
             <h3 class="sectionHeader">Payment information</h3>
             <div class="form-group mx-5">
                     <p>Card Holder:</p>
-                    <InputText class="form-control" placeholder="Card holder" aria-label="Card holder" aria-describedby="basic-addon1" @bind-Value="newAccount.bankInfo.cardHolder"/>
+                    <InputText class="form-control" placeholder="Card holder" aria-label="Card holder" aria-describedby="basic-addon1" @bind-Value="newBankInfo.cardHolder"/>
                 </div>
                 <div class="form-group mx-5">
                     <p>Card Number:</p>
-                    <InputNumber class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="newAccount.bankInfo.cardNumber"/>
+                    <InputNumber class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="newBankInfo.cardNumber"/>
                 </div>
 
 
@@ -84,6 +84,8 @@
     private string errorMessage;
 
     private Account newAccount = new Account();
+    private Address newAddress = new Address();
+    private BankInfo newBankInfo = new BankInfo();
 
     public async Task HandleValidRegister()
     {
@@ -91,7 +93,7 @@
         try
         {
             Console.WriteLine("Trying register");
-            await AccountService.Register(newAccount);
+            await AccountService.Register(newAccount, newAddress, newBankInfo);
             username = "";
             password = "";
             email = "";

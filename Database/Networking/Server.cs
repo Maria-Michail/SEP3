@@ -19,12 +19,14 @@ namespace Server
         private IDbRecipeService recipeService;
         private IDbAddressService addresService;
         private IDbShopIngrService shopIngrService;
+        private IDbBankInfoService bankInfoService;
         private string content;
-        public Server(IDbAccountService accountService, IDbRecipeService recipeService, IDbAddressService addresService, IDbShopIngrService shopIngrService){
+        public Server(IDbAccountService accountService, IDbRecipeService recipeService, IDbAddressService addresService, IDbShopIngrService shopIngrService, IDbBankInfoService bankInfoService){
             this.accountService = accountService;
             this.recipeService = recipeService;
             this.addresService = addresService;
             this.shopIngrService = shopIngrService;
+            this.bankInfoService = bankInfoService;
         }
         public async Task start(){
             Console.WriteLine("Starting server...");
@@ -56,8 +58,38 @@ namespace Server
                     }
                     case "Register":
                     {
-                        Account addedAccount = (Account)await accountService.Register((Account)getClientsObject(stream));
-                        content = JsonSerializer.Serialize(addedAccount);
+                        Console.WriteLine(1);
+                        Register addAccount = (Register)getClientsObject(stream);
+                        Console.WriteLine(2);
+                        Account newAccount = addAccount.account;
+                        Address newaddress = addAccount.address;
+                        BankInfo newbankInfo = addAccount.bankInfo;
+                        await accountService.addAccountAsync(newAccount);
+                        Console.WriteLine(3);
+                        await addresService.saveAddressAsync(newaddress);
+                        await bankInfoService.addBankInfoAsync(newbankInfo);
+                        
+                        AccountAddress sc = new AccountAddress()
+                        {
+                            address = newaddress,
+                            account = newAccount
+                        };
+            
+                        newAccount.AccountAddresses = new List<AccountAddress>();
+                        newAccount.AccountAddresses.Add(sc);
+                        await accountService.updateAccountAsync(newAccount);
+                        
+                        AccountBankInfo sc2 = new AccountBankInfo()
+                        {
+                            account = newAccount,
+                            bankInfo = newbankInfo
+                        };
+            
+                        newAccount.AccountBankInfos = new List<AccountBankInfo>();
+                        newAccount.AccountBankInfos.Add(sc2);
+                        await accountService.updateAccountAsync(newAccount);
+                        
+                        content = JsonSerializer.Serialize(addAccount);
                         break;
                     }
                     case "removeAccount":

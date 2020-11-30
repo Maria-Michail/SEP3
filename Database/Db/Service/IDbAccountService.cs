@@ -7,7 +7,7 @@ namespace Db{
     public interface IDbAccountService{
         Task<List<Account>> GetAccountsAcyns();
         
-        Task<Account> Register(Account account);
+        Task<Account> addAccountAsync(Account account);
 
 
         Task removeAccountAsync(Account account);

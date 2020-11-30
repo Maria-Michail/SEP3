@@ -30,7 +30,7 @@ class SocketsToDatabase {
         return request;
     }
     
-    public Object AddAccount(Account account) {
+    public Object AddAccount(Register register) {
         Console.WriteLine("Starting client..");
 
         TcpClient client = new TcpClient("127.0.0.1", 2920);
@@ -43,7 +43,7 @@ class SocketsToDatabase {
         byte[] messageReceived = new byte[1024];
         int messageRead = stream.Read(messageReceived, 0, messageReceived.Length);
         
-        string accountSerialize = JsonSerializer.Serialize(account);
+        string accountSerialize = JsonSerializer.Serialize(register);
         byte[] accountToServer = Encoding.ASCII.GetBytes(accountSerialize);
         stream.Write(accountToServer, 0, accountToServer.Length);
 

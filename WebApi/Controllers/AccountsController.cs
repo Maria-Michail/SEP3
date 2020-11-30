@@ -62,16 +62,16 @@ namespace WebApi.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult<Account>> Register([FromBody] Account account) {
+        public async Task<ActionResult<Account>> Register([FromBody] Register register) {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             try {
-                Account added = await accountService.AddAccountAsync(account);
+                Account added = await accountService.AddAccountAsync(register);
                 return Created($"/{added.username}",added); // return newly added to-do, to get the auto generated id
             } catch (Exception e) {
-                Console.WriteLine(e);
+                Console.WriteLine(e); 
                 return StatusCode(500, e.Message);
             }
         }

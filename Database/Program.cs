@@ -26,7 +26,8 @@ namespace Server
             IDbRecipeService recipeService = new DbRecipeService();
             IDbAddressService addresService = new DbAddressService();
             IDbShopIngrService shopIngrService = new DbShopIngreService();
-            Server server = new Server(accountService,recipeService,addresService,shopIngrService);
+            IDbBankInfoService bankInfoService = new DbBankInfoService();
+            Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();

@@ -19,7 +19,7 @@ namespace Database.Model
         [Required]
         [JsonPropertyName("CardHolder")]
         public string cardHolder { set; get; }
-        
+        [JsonIgnore]
         public IList<AccountBankInfo> AccountBankInfos { get; set; }
 
 

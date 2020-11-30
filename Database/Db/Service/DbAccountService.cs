@@ -27,7 +27,7 @@ namespace Db
             await ctx.SaveChangesAsync();
         }
 
-        public async Task<Account> Register(Account account)
+        public async Task<Account> addAccountAsync(Account account)
         {
            await ctx.accounts.AddAsync(account);
            await ctx.SaveChangesAsync();
