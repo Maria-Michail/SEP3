@@ -1,7 +1,7 @@
 ﻿@page "/register"
 @using Blazor.Data
-@using Model
 @using System.Numerics
+@using Database.Model
 @inject IAccountService AccountService
 @inject NavigationManager NavigationManager
 
@@ -39,11 +39,7 @@
                     <label>Street:</label>
                     <InputText class="form-control" placeholder="Street" aria-label="street" aria-describedby="basic-addon1" @bind-Value="newAccount.address.street"/>
                 </div>
-                <div class="form-group mx-5">
-                    <label>Street number:</label>
-                    <InputText class="form-control" placeholder="Street number" aria-label="Street number" aria-describedby="basic-addon1" @bind-Value="newAccount.address.streetNumber"/>
-                </div>
-                <div class="form-group mx-5">
+            <div class="form-group mx-5">
                     <label>City:</label>
                     <InputText class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" @bind-Value="newAccount.address.city"/>
                 </div>
@@ -61,7 +57,7 @@
                 </div>
                 <div class="form-group mx-5">
                     <p>Card Number:</p>
-                    <InputText class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="newAccount.bankInfo.cardNumber"/>
+                    <InputNumber class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="newAccount.bankInfo.cardNumber"/>
                 </div>
 
 
@@ -83,7 +79,7 @@
     private string streetNumber;
     private string city;
     private int zipCode;
-    private string cardNumber;
+    private long cardNumber;
 
     private string errorMessage;
 

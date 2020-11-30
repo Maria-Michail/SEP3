@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
-using Model;
+using Database.Model;
+
 
 
 namespace WebApi.Networking {

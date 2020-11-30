@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Model;
+using Database.Model;
+
 
 namespace Blazor.Data
 {

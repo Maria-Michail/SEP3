@@ -1,8 +1,9 @@
 ﻿@page "/payment"
 @using Blazor.Data
-@using Model
+
 @using System.Numerics
 @using Blazor.Authorization
+@using Database.Model
 @inject IAccountService AccountService
 @inject NavigationManager NavigationManager
 
@@ -30,7 +31,7 @@
                             <li>
                                 <div class="form-group">
                                     Card Number:<br/>
-                                    <InputText class="regInput" style="width:375px" @bind-Value="bankInfo.cardNumber"/>
+                                    <InputNumber class="regInput" style="width:375px" @bind-Value="bankInfo.cardNumber"/>
                                 </div>
                             </li>
                             <div class="row">
