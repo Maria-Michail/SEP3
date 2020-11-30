@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MainDb" uuid="4e06c85e-423e-4848-bdbc-7ce1851447b5">
+    <data-source source="LOCAL" name="MainDb.db" uuid="89eab8c3-1b36-40c8-b77c-4e6a67f0c100">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="MainDb [2]" uuid="4f7a6134-8742-4a6d-8204-8fcfc1bf8951">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="MainDb [3]" uuid="4055e0db-3d0c-421b-a65a-1a6de4059b32">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Database/MainDb.db</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
-        </library>
-      </libraries>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/MainDb.db</jdbc-url>
     </data-source>
   </component>
 </project>
