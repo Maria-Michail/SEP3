@@ -28,6 +28,7 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddScoped<IAccountService, AccountService>(); 
+            services.AddScoped<IRecipeService, RecipeService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

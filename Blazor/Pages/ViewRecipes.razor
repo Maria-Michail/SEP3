@@ -1,4 +1,8 @@
 @page "/viewRecipes"
+@using Model
+@using Blazor.Data
+@inject IRecipeService RecipeService
+@inject NavigationManager NavigationManager
 <h2 class="title">ViewRecipes</h2>
 
 <div class="row">
@@ -93,5 +97,17 @@
     
 </div>
 @code {
+  public IList<Recipe> Recipes { get; set; }
+  
+
+  protected override async Task OnInitializedAsync()
+  {
+    Recipes = await RecipeService.GetRecipesAsync();
+    Console.WriteLine(Recipes);
     
+  }
+
+  private void NavigateToComponent(Recipe p) {
+    NavigationManager.NavigateTo("order/" + p.name);
+  }
 }
