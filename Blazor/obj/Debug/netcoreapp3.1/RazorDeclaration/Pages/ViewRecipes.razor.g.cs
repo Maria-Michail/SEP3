@@ -75,6 +75,20 @@ using Blazor.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+using Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+using Blazor.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/viewRecipes")]
     public partial class ViewRecipes : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -83,6 +97,25 @@ using Blazor.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 23 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+       
+    public IList<Recipe> Recipes { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+      Recipes = await RecipeService.GetRecipesAsync();
+    }
+
+    private void NavigateToComponent(Recipe p) {
+      NavigationManager.NavigateTo("recipeView/" + p.name);
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecipeService RecipeService { get; set; }
     }
 }
 #pragma warning restore 1591

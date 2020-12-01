@@ -1,5 +1,10 @@
 @page "/recipeView"
-@page "/recipeView/{Name:alpha}"
+@page "/recipeView/{Name:int}"
+@using Blazor.Data
+@using Model
+@using System.ComponentModel.DataAnnotations
+@inject IRecipeService RecipeService
+@inject NavigationManager NavigationManager
 
 <div class="jumbotron">
     <div class="row">
@@ -63,5 +68,25 @@
 </div>
 
 @code {
+    [Parameter]
+    public string Name { get; set; }
+
+    public Recipe Recipe { get; set; }
+
+
+
+    protected override async Task OnInitializedAsync() {
+        if (!(Name == null || Name.Equals(""))) {
+            Recipe = RecipeService.Recipes.First(p => p.name.Equals(Name));
+        }
+    }
+
+    private void HandleInvalidSubmit() {
+        Console.WriteLine("Invalid");
+    }
+
+    private void HandleValidSubmit() {
+        NavigationManager.NavigateTo("/ordersuccess");
+    }
 
 }

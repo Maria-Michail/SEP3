@@ -2,7 +2,7 @@
 
 namespace Database.Migrations
 {
-    public partial class manytomany : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

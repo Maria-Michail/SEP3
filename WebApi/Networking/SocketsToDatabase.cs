@@ -44,6 +44,7 @@ class SocketsToDatabase {
         int messageRead = stream.Read(messageReceived, 0, messageReceived.Length);
         
         string accountSerialize = JsonSerializer.Serialize(register);
+        Console.WriteLine(accountSerialize);
         byte[] accountToServer = Encoding.ASCII.GetBytes(accountSerialize);
         stream.Write(accountToServer, 0, accountToServer.Length);
 
