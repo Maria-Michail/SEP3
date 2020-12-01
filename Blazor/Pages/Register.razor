@@ -94,10 +94,6 @@
         {
             Console.WriteLine("Trying register");
             await AccountService.Register(newAccount, newAddress, newBankInfo);
-            username = "";
-            password = "";
-            email = "";
-            NavigationManager.NavigateTo("/");
         }
         catch (Exception e)
         {

@@ -29,9 +29,16 @@ namespace Db
 
         public async Task<Account> addAccountAsync(Account account)
         {
-           await ctx.accounts.AddAsync(account);
-           await ctx.SaveChangesAsync();
-           return account;
+            foreach (var accountExists in ctx.accounts)
+            {
+                if (accountExists.username.Equals(account.username))
+                {
+                    return account;
+                }
+            }
+            await ctx.accounts.AddAsync(account);
+            await ctx.SaveChangesAsync();
+            return account;
         }
 
         public async Task updateAccountAsync(Account account)
@@ -52,7 +59,6 @@ namespace Db
             account1.AccountAddresses = new List<AccountAddress>();
             account1.AccountAddresses.Add(sc);
             ctx.Update(account1);
-            Console.WriteLine(7);
             await ctx.SaveChangesAsync();
         }
         

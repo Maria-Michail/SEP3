@@ -29,6 +29,46 @@ class SocketsToDatabase {
         client.Close();
         return request;
     }
+    public Object getAddresses() {
+        Console.WriteLine("Starting client..");
+
+        TcpClient client = new TcpClient("127.0.0.1", 2920);
+
+        NetworkStream stream = client.GetStream();
+
+        byte[] dataToServer = Encoding.ASCII.GetBytes("GetAddresses");
+        stream.Write(dataToServer, 0, dataToServer.Length);
+
+        byte[] dataFromServer = new byte[1024];
+        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
+        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
+        IList<Address> request = JsonSerializer.Deserialize<List<Address>>(response);
+        Console.WriteLine(request);
+        
+        stream.Close();
+        client.Close();
+        return request;
+    }
+    public Object getBankInfos() {
+        Console.WriteLine("Starting client..");
+
+        TcpClient client = new TcpClient("127.0.0.1", 2920);
+
+        NetworkStream stream = client.GetStream();
+
+        byte[] dataToServer = Encoding.ASCII.GetBytes("GetBankInfos");
+        stream.Write(dataToServer, 0, dataToServer.Length);
+
+        byte[] dataFromServer = new byte[1024];
+        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
+        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
+        IList<BankInfo> request = JsonSerializer.Deserialize<List<BankInfo>>(response);
+        Console.WriteLine(request);
+        
+        stream.Close();
+        client.Close();
+        return request;
+    }
     
     public Object AddAccount(Register register) {
         Console.WriteLine("Starting client..");

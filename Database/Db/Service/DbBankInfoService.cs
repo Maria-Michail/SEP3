@@ -24,6 +24,13 @@ namespace Db
 
         public async Task<BankInfo> addBankInfoAsync(BankInfo bankInfo)
         {
+            foreach (var bankInfoExists in ctx.bankInfos)
+            {
+                if (bankInfoExists.cardNumber==bankInfo.cardNumber)
+                {
+                    return bankInfo;
+                }
+            }
             await ctx.bankInfos.AddAsync(bankInfo);
             await ctx.SaveChangesAsync();
             return bankInfo;
