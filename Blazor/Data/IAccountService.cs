@@ -11,6 +11,6 @@ namespace Blazor.Data
 
         Task<List<Account>> GetAccountsAsync();
         
-        Task Register(Account newAccount, Address newAddress, BankInfo newBankInfo);
+        Task Register(RegisterAccount registerAccount);
     }
 }

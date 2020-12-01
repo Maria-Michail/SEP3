@@ -6,7 +6,7 @@
 @inject NavigationManager NavigationManager
 
 
-<EditForm Model="@newAccount" OnValidSubmit="@HandleValidRegister" OnInvalidSubmit="@HandleInvalidRegister">
+<EditForm Model="@registerAccount" OnValidSubmit="@HandleValidRegister" OnInvalidSubmit="@HandleInvalidRegister">
     
         
             <DataAnnotationsValidator/>
@@ -17,16 +17,17 @@
             
             <div class="form-group mx-5">
                 <label>Username:</label>
-                <InputText class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" @bind-Value="newAccount.username"/>
+                <InputText class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" @bind-Value="registerAccount.account.username"/>
+                <small id="emailHelp" class="form-text text-muted">Username less than 13 characters.</small>
             </div>
             <div class="form-group mx-5">
                 <label>Password:</label>
-                <InputText class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon1" @bind-Value="newAccount.password"/>
-                <small id="emailHelp" class="form-text text-muted">Your password should contain both small and capital letters and at least two digits.</small>
+                <InputText class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon1" @bind-Value="registerAccount.account.password"/>
+                <small id="emailHelp" class="form-text text-muted">Password less than 13 characters.</small>
             </div>
             <div class="form-group mx-5">
                 <label>Email:</label>
-                <InputText class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" @bind-Value="newAccount.email"/>
+                <InputText class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" @bind-Value="registerAccount.account.email"/>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
 
@@ -37,15 +38,16 @@
 
                 <div class="form-group mx-5">
                     <label>Street:</label>
-                    <InputText class="form-control" placeholder="Street" aria-label="street" aria-describedby="basic-addon1" @bind-Value="newAddress.street"/>
+                    <InputText class="form-control" placeholder="Street" aria-label="street" aria-describedby="basic-addon1" @bind-Value="registerAccount.address.street"/>
                 </div>
             <div class="form-group mx-5">
                     <label>City:</label>
-                    <InputText class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" @bind-Value="newAddress.city"/>
+                    <InputText class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" @bind-Value="registerAccount.address.city"/>
                 </div>
                 <div class="form-group mx-5">
                     <label>Zip code:</label>
-                    <InputNumber class="form-control" placeholder="Zip code" aria-label="Zip code" aria-describedby="basic-addon1" @bind-Value="newAddress.zipCode"/>
+                    <InputNumber class="form-control" placeholder="Zip code" aria-label="Zip code" aria-describedby="basic-addon1" @bind-Value="registerAccount.address.zipCode"/>
+                    <small id="emailHelp" class="form-text text-muted">Zip Code must be 4 numbers.</small>
                 </div>
 
 
@@ -53,11 +55,12 @@
             <h3 class="sectionHeader">Payment information</h3>
             <div class="form-group mx-5">
                     <p>Card Holder:</p>
-                    <InputText class="form-control" placeholder="Card holder" aria-label="Card holder" aria-describedby="basic-addon1" @bind-Value="newBankInfo.cardHolder"/>
+                    <InputText class="form-control" placeholder="Card holder" aria-label="Card holder" aria-describedby="basic-addon1" @bind-Value="registerAccount.bankInfo.cardHolder"/>
                 </div>
                 <div class="form-group mx-5">
                     <p>Card Number:</p>
-                    <InputNumber class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="newBankInfo.cardNumber"/>
+                    <InputNumber class="form-control" placeholder="Card number" aria-label="Card number" aria-describedby="basic-addon1" @bind-Value="registerAccount.bankInfo.cardNumber"/>
+                    <small id="emailHelp" class="form-text text-muted">Card number must be 16 numbers.</small>
                 </div>
 
 
@@ -82,10 +85,9 @@
     private long cardNumber;
 
     private string errorMessage;
+    
 
-    private Account newAccount = new Account();
-    private Address newAddress = new Address();
-    private BankInfo newBankInfo = new BankInfo();
+    private RegisterAccount registerAccount = new RegisterAccount();
 
     public async Task HandleValidRegister()
     {
@@ -93,11 +95,7 @@
         try
         {
             Console.WriteLine("Trying register");
-            await AccountService.Register(newAccount, newAddress, newBankInfo);
-            username = "";
-            password = "";
-            email = "";
-            NavigationManager.NavigateTo("/");
+            await AccountService.Register(registerAccount);
         }
         catch (Exception e)
         {

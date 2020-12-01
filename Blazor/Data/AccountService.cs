@@ -45,13 +45,10 @@ namespace Blazor.Data
             return result;
         }
         
-        public async Task Register(Account newAccount, Address newAddress, BankInfo newBankInfo)
+        public async Task Register(RegisterAccount registerAccount)
         {
-            Register register = new Register();
-            register.account = newAccount;
-            register.address = newAddress;
-            register.bankInfo = newBankInfo;
-            string account = JsonSerializer.Serialize(register);
+            
+            string account = JsonSerializer.Serialize(registerAccount);
             HttpContent content = new StringContent(account,
                 Encoding.UTF8,
                 "application/json");

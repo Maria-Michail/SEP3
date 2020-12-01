@@ -12,8 +12,6 @@ namespace Database.Model
         [Required,MaxLength(128)]
         [JsonPropertyName("Street")]
         public string street { get; set; }
-        
-        
 
 
         [Required,MaxLength(45)]

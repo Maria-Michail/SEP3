@@ -10,5 +10,7 @@ namespace Database.Model
         public Address address { get; set; }
         [JsonPropertyName("bankInfo")]
         public BankInfo bankInfo { get; set; }
+
+        
     }
 }
