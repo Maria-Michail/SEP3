@@ -54,7 +54,7 @@ namespace Server
             
             BankInfo[] bankInfos = {
                 new BankInfo{
-                    cardNumber = 123412341234,
+                    cardNumber = 1234123412341234,
                     cardHolder = "Pawel Skrzypkowski"
                 },
             };

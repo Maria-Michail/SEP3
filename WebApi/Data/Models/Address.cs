@@ -25,7 +25,7 @@ namespace Database.Model
         [JsonPropertyName("ZipCode")]
         public int zipCode { get; set; }
         
-        
+        [JsonIgnore]
         public IList<AccountAddress> AccountAddresses { get; set; }
 
         public override string ToString()

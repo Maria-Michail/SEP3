@@ -58,38 +58,24 @@ namespace Server
                     }
                     case "Register":
                     {
-                        Console.WriteLine(1);
-                        Register addAccount = (Register)getClientsObject(stream);
-                        Console.WriteLine(2);
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
+                        byte[] objectFromClient = new byte[1024];
+                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
+                        string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+                        Register addAccount= JsonSerializer.Deserialize<Register>(objectString);
                         Account newAccount = addAccount.account;
                         Address newaddress = addAccount.address;
                         BankInfo newbankInfo = addAccount.bankInfo;
                         await accountService.addAccountAsync(newAccount);
-                        Console.WriteLine(3);
                         await addresService.saveAddressAsync(newaddress);
                         await bankInfoService.addBankInfoAsync(newbankInfo);
+                        Console.WriteLine(1);
+                        await accountService.LinkAddress(newAccount, newaddress);
+                        Console.WriteLine(2);
+                        await accountService.LinkBankInfo(newAccount, newbankInfo);
                         
-                        AccountAddress sc = new AccountAddress()
-                        {
-                            address = newaddress,
-                            account = newAccount
-                        };
-            
-                        newAccount.AccountAddresses = new List<AccountAddress>();
-                        newAccount.AccountAddresses.Add(sc);
-                        await accountService.updateAccountAsync(newAccount);
-                        
-                        AccountBankInfo sc2 = new AccountBankInfo()
-                        {
-                            account = newAccount,
-                            bankInfo = newbankInfo
-                        };
-            
-                        newAccount.AccountBankInfos = new List<AccountBankInfo>();
-                        newAccount.AccountBankInfos.Add(sc2);
-                        await accountService.updateAccountAsync(newAccount);
-                        
-                        content = JsonSerializer.Serialize(addAccount);
+                        content = JsonSerializer.Serialize(newAccount);
                         break;
                     }
                     case "removeAccount":
