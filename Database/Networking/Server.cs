@@ -74,7 +74,7 @@ namespace Server
                         content = "Account " + temp.username + " updated";
                         break;
                     }
-                    case "getRecipies":
+                    case "getRecipes":
                     {
                         content = await getRecipies();
                         break;

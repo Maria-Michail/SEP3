@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20201129192906_manytomanyV1")]
-    partial class manytomanyV1
+    [Migration("20201130123809_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,7 +125,7 @@ namespace Database.Migrations
 
                     b.HasKey("category");
 
-                    b.ToTable("Category");
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Model.Ingredient", b =>

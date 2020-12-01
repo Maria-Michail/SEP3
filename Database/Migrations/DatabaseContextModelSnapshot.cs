@@ -123,7 +123,7 @@ namespace Database.Migrations
 
                     b.HasKey("category");
 
-                    b.ToTable("Category");
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Model.Ingredient", b =>

@@ -2,7 +2,7 @@
 
 namespace Database.Migrations
 {
-    public partial class manytomanyV1 : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,14 +58,14 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "categories",
                 columns: table => new
                 {
                     category = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.category);
+                    table.PrimaryKey("PK_categories", x => x.category);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,9 +143,9 @@ namespace Database.Migrations
                 {
                     table.PrimaryKey("PK_recipes", x => x.name);
                     table.ForeignKey(
-                        name: "FK_recipes_Category_category",
+                        name: "FK_recipes_categories_category",
                         column: x => x.category,
-                        principalTable: "Category",
+                        principalTable: "categories",
                         principalColumn: "category",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -233,7 +233,7 @@ namespace Database.Migrations
                 name: "recipes");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "categories");
         }
     }
 }
