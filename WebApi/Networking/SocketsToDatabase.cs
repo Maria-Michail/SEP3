@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using Database.Model;
-
+using Model;
 
 
 namespace WebApi.Networking {
@@ -57,6 +57,28 @@ class SocketsToDatabase {
         client.Close();
         return request;
     }
+    
+    public Object getRecipes() {
+        Console.WriteLine("Starting client..");
+
+        TcpClient client = new TcpClient("127.0.0.1", 2920);
+
+        NetworkStream stream = client.GetStream();
+
+        byte[] dataToServer = Encoding.ASCII.GetBytes("GetRecipes");
+        stream.Write(dataToServer, 0, dataToServer.Length);
+
+        byte[] dataFromServer = new byte[1024];
+        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
+        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
+        IList<Recipe> request = JsonSerializer.Deserialize<List<Recipe>>(response);
+        Console.WriteLine(request);
+        
+        stream.Close();
+        client.Close();
+        return request;
+    }
+    
 
 
     /*public Object ValidateUser(string username, string password) {

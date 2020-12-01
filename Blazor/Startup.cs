@@ -30,6 +30,7 @@ namespace Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IRecipeService, RecipeService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
         }
