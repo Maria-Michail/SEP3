@@ -56,6 +56,7 @@ namespace Blazor.Data
                 Encoding.UTF8,
                 "application/json");
             await client.PostAsync(uri+"/Accounts", content);
+                
         }
     }
 }

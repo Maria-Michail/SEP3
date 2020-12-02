@@ -9,9 +9,9 @@
     @foreach (var recipe in Recipes) {
         <div class="col-sm-3">
             <div class="card" style="width: 18rem;">
-              <img src="../Images/@recipe.imageName" class="card-img-top" alt="@recipe.name"> 
+              <img src="../Images/@recipe.imageName" class="card-img-top" alt="@recipe.recipeName"> 
                 <div class="card-body">
-                    <h5 class="card-title">@recipe.name</h5>
+                    <h5 class="card-title">@recipe.recipeName</h5>
                     <p class="card-text">@recipe.instructions</p>
                     <button class="btn btn-primary" @onclick="@(() => NavigateToComponent(recipe))">Check the recipe now!</button>
                 </div>
@@ -28,11 +28,11 @@
     protected override async Task OnInitializedAsync()
     {
       Recipes = await RecipeService.GetRecipesAsync();
-        Console.WriteLine(Recipes[0].name +"--> ViewRecipes.razor");
+        Console.WriteLine(Recipes[0].recipeName +"--> ViewRecipes.razor");
     }
 
     private void NavigateToComponent(Recipe p) {
-      NavigationManager.NavigateTo("recipeView/" + p.Id);
+      NavigationManager.NavigateTo("recipeView/" + p.recipeId);
     }
 
 }

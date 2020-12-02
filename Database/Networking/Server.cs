@@ -58,6 +58,18 @@ namespace Server
                         Console.WriteLine(content);
                         break;
                     }
+                    case "GetAddresses":
+                    {
+                        content = await getAddresses();
+                        Console.WriteLine(content);
+                        break;
+                    }
+                    case "GetBankInfos":
+                    {
+                        content = await getBankInfos();
+                        Console.WriteLine(content);
+                        break;
+                    }
                     case "Register":
                     {
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
@@ -72,9 +84,7 @@ namespace Server
                         await accountService.addAccountAsync(newAccount);
                         await addresService.saveAddressAsync(newaddress);
                         await bankInfoService.addBankInfoAsync(newbankInfo);
-                        Console.WriteLine(1);
                         await accountService.LinkAddress(newAccount, newaddress);
-                        Console.WriteLine(2);
                         await accountService.LinkBankInfo(newAccount, newbankInfo);
                         
                         content = JsonSerializer.Serialize(newAccount);
@@ -247,7 +257,16 @@ namespace Server
             List<Account> accounts = await accountService.GetAccountsAcyns();
             return JsonSerializer.Serialize(accounts);
         }
-        
+        private async Task<string> getAddresses()
+        {
+            List<Address> addresses = await addresService.GetAddressesAcyns();
+            return JsonSerializer.Serialize(addresses);
+        }
+        private async Task<string> getBankInfos()
+        {
+            List<BankInfo> bankInfos = await bankInfoService.GetBankInfosAcyns();
+            return JsonSerializer.Serialize(bankInfos);
+        }
         private async Task<string> getRecipies()
         {
             List<Recipe> recipes = await recipeService.getRecipiesAsync();
