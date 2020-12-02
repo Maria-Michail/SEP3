@@ -9,7 +9,7 @@ namespace Model
     {    
         [Key]
         [Required]
-        [JsonPropertyName("-IdRecipe")]
+        [JsonPropertyName("IdRecipe")]
         public int recipeId { get; set; }
         
         [Required]
