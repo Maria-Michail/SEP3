@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Db;
@@ -19,13 +20,13 @@ namespace Db
 
         public async Task<Recipe> getRecipeAsync(string recipeName)
         {
-            Recipe temp = await ctx.recipes.FirstOrDefaultAsync(r => r.name.Equals(recipeName));
+            Recipe temp = await ctx.recipes.FirstOrDefaultAsync(r => r.recipeName.Equals(recipeName));
             return temp;
         }
 
         public async Task removeRecipeAsync(string recipeName)
         {
-            ctx.recipes.Remove(await ctx.recipes.FirstAsync(r => r.name.Equals(recipeName)));
+            ctx.recipes.Remove(await ctx.recipes.FirstAsync(r => r.recipeName.Equals(recipeName)));
             await ctx.SaveChangesAsync();
         }
 

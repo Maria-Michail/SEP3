@@ -20,13 +20,15 @@ namespace Server
         private IDbAddressService addresService;
         private IDbShopIngrService shopIngrService;
         private IDbBankInfoService bankInfoService;
+        private IDbIngredientService ingredientService;
         private string content;
-        public Server(IDbAccountService accountService, IDbRecipeService recipeService, IDbAddressService addresService, IDbShopIngrService shopIngrService, IDbBankInfoService bankInfoService){
+        public Server(IDbAccountService accountService, IDbRecipeService recipeService, IDbAddressService addresService, IDbShopIngrService shopIngrService, IDbBankInfoService bankInfoService, IDbIngredientService ingredientService){
             this.accountService = accountService;
             this.recipeService = recipeService;
             this.addresService = addresService;
             this.shopIngrService = shopIngrService;
             this.bankInfoService = bankInfoService;
+            this.ingredientService = ingredientService;
         }
         public async Task start(){
             Console.WriteLine("Starting server...");
@@ -92,16 +94,17 @@ namespace Server
                         content = "Account " + temp.username + " updated";
                         break;
                     }
-                    case "getRecipes":
+                    case "GetRecipes":
                     {
                         content = await getRecipies();
+                        Console.WriteLine(content + "-->Database/Networking/Server.cs");
                         break;
                     }
                     case "getRecipe":
                     {
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
                         stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] objectFromClient = new byte[1024];
+                        byte[] objectFromClient = new byte[20480];
                         int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
                         string recipeName = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
                         Recipe temp = await recipeService.getRecipeAsync(recipeName);
@@ -112,21 +115,21 @@ namespace Server
                     {
                         Recipe temp = (Recipe) getClientsObject(stream);
                         await recipeService.addRecipeAsync(temp);
-                        content = "Recipe " + temp.name + " added";
+                        content = "Recipe " + temp.recipeName + " added";
                         break;
                     }
                     case "removeRecipe":
                     {
                         Recipe temp = (Recipe) getClientsObject(stream);
-                        await recipeService.removeRecipeAsync(temp.name);
-                        content = "Recipe" + temp.name + " removed";
+                        await recipeService.removeRecipeAsync(temp.recipeName);
+                        content = "Recipe" + temp.recipeName + " removed";
                         break;
                     }
                     case "updateRecipe":
                     {
                         Recipe temp = (Recipe) getClientsObject(stream);
                         await recipeService.updateRecipeAsync(temp);
-                        content = "Recipe " + temp.name + " updated";
+                        content = "Recipe " + temp.recipeName + " updated";
                         break;
                     }
                     case "saveAddress":
@@ -187,6 +190,19 @@ namespace Server
                         content = "ShopIngredient " + temp.name + " removed";
                         break;
                     }
+                    
+                    case "GetIngredients":
+                    {
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
+                        byte[] objectFromClient = new byte[1024];
+                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
+                        string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+                        int recipeint = JsonSerializer.Deserialize<int>(objectString);
+
+                        content = await getIngredientsForRecipe(recipeint);
+                        break;
+                    }
 
                     /*case "ValidateUser":{
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
@@ -235,6 +251,11 @@ namespace Server
         private async Task<string> getRecipies()
         {
             List<Recipe> recipes = await recipeService.getRecipiesAsync();
+            return JsonSerializer.Serialize(recipes);
+        }
+        private async Task<string> getIngredientsForRecipe(int receipeint)
+        {
+            List<Ingredient> recipes = await ingredientService.getIngredientsOfRecipeAsync(receipeint);
             return JsonSerializer.Serialize(recipes);
         }
 

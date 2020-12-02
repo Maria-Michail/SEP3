@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Model;
@@ -17,7 +18,7 @@ namespace Db
 
         public async Task<Ingredient> getIngredientAsync(string name)
         {
-            Ingredient temp = await ctx.ingredients.FirstOrDefaultAsync(i => i.name.Equals(name));
+            Ingredient temp = await ctx.ingredients.FirstOrDefaultAsync(i => i.ingredientName.Equals(name));
             return temp;
         }
 
@@ -37,6 +38,16 @@ namespace Db
         {
             ctx.ingredients.Remove(ingredient);
             await ctx.SaveChangesAsync();
+        }
+
+        public async Task<List<Ingredient>> getIngredientsOfRecipeAsync(int recipeId)
+        {
+            List<Ingredient> ingredients = await ctx.recipes
+                .Where(s => s.recipeId == recipeId)
+                .SelectMany(i => i.IngredientRecipes)
+                .Select(d => d.ingredient)
+                .ToListAsync();
+            return ingredients;
         }
     }
 }
