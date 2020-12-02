@@ -24,6 +24,7 @@ namespace Data.Impl
         public async Task<IList<Recipe>> getRecipesAsync()
         {
             recipes = (IList<Recipe>) so.getRecipes();
+            Console.WriteLine(recipes.ToString() + "--> WebApi/Data/Impl/RecipeService.cs");
             return recipes;
         }
     }

@@ -37,13 +37,15 @@ namespace WebApi.Controllers
                 {
                     try
                     {
-                        IList<Recipe> accounts = await recipeService.getRecipesAsync();
-                        var recipe = accounts.FirstOrDefault(r =>
+                        IList<Recipe> recipes = await recipeService.getRecipesAsync();
+                        var recipe = recipes.FirstOrDefault(r =>
                             r.name.Equals(name));
                         
                         Console.WriteLine("console is sending " + recipe.name);
                         IList<Recipe> recipesToSend = new List<Recipe>();
+                        Console.WriteLine(recipe + "--> WebApi/Controllers/RecipeController.cs --1");
                         recipesToSend.Add(recipe);
+                        Console.WriteLine(recipesToSend + "--> WebApi/Controllers/RecipeController.cs --2");
                         return Ok(recipesToSend);
                     }
                     catch (Exception e)

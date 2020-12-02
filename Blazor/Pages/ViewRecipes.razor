@@ -9,7 +9,7 @@
     @foreach (var recipe in Recipes) {
         <div class="col-sm-3">
             <div class="card" style="width: 18rem;">
-                <img src="../Images/@recipe.name" class="card-img-top" alt="arrabiata">
+              <img src="../Images/@recipe.imageName" class="card-img-top" alt="@recipe.name"> 
                 <div class="card-body">
                     <h5 class="card-title">@recipe.name</h5>
                     <p class="card-text">@recipe.instructions</p>
@@ -21,30 +21,18 @@
 </div>
 
 @code {
-<<<<<<< HEAD
-  public IList<Recipe> Recipes { get; set; }
-  
 
-  protected override async Task OnInitializedAsync()
-  {
-    Recipes = await RecipeService.GetRecipesAsync();
-    Console.WriteLine(Recipes);
-    
-  }
-
-  private void NavigateToComponent(Recipe p) {
-    NavigationManager.NavigateTo("order/" + p.name);
-  }
-=======
+ 
     public IList<Recipe> Recipes { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
       Recipes = await RecipeService.GetRecipesAsync();
+        Console.WriteLine(Recipes[0].name +"--> ViewRecipes.razor");
     }
 
     private void NavigateToComponent(Recipe p) {
-      NavigationManager.NavigateTo("recipeView/" + p.name);
+      NavigationManager.NavigateTo("recipeView/" + p.Id);
     }
->>>>>>> 6a52e9e35887e1b725388569f8bc930779bf2f3f
+
 }

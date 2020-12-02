@@ -69,10 +69,40 @@ class SocketsToDatabase {
         byte[] dataToServer = Encoding.ASCII.GetBytes("GetRecipes");
         stream.Write(dataToServer, 0, dataToServer.Length);
 
+        byte[] dataFromServer = new byte[20480];
+        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
+        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
+        Console.WriteLine(response);
+        IList<Recipe> request = JsonSerializer.Deserialize<List<Recipe>>(response);
+        Console.WriteLine(request.ToString() + "--> WebApi/Networking/SocketsToDatabase.cs");
+        
+        stream.Close();
+        client.Close();
+        return request;
+    }
+    
+    public Object getIngredients(int id) {
+        Console.WriteLine("Starting client..");
+
+        TcpClient client = new TcpClient("127.0.0.1", 2920);
+
+        NetworkStream stream = client.GetStream();
+
+        byte[] dataToServer = Encoding.ASCII.GetBytes("GetIngredients");
+        stream.Write(dataToServer, 0, dataToServer.Length);
+        
+        byte[] messageReceived = new byte[1024];
+        int messageRead = stream.Read(messageReceived, 0, messageReceived.Length);
+        
+        string accountSerialize = JsonSerializer.Serialize(id);
+        Console.WriteLine(accountSerialize);
+        byte[] accountToServer = Encoding.ASCII.GetBytes(accountSerialize);
+        stream.Write(accountToServer, 0, accountToServer.Length);
+
         byte[] dataFromServer = new byte[1024];
         int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
-        IList<Recipe> request = JsonSerializer.Deserialize<List<Recipe>>(response);
+        Ingredient request = JsonSerializer.Deserialize<Ingredient>(response);
         Console.WriteLine(request);
         
         stream.Close();
@@ -80,6 +110,7 @@ class SocketsToDatabase {
         return request;
     }
     
+   
 
 
     /*public Object ValidateUser(string username, string password) {
