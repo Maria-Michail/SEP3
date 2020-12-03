@@ -27,6 +27,7 @@ namespace Blazor.Data
             Console.WriteLine(message +"--> RecipeService --1");
             List<Recipe> result = JsonSerializer.Deserialize<List<Recipe>>(message);
             Console.WriteLine(result.ToString() +"--> RecipeService --2");
+            Recipes = result;
             return result;
         }
     }

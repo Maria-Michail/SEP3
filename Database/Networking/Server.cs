@@ -275,6 +275,7 @@ namespace Server
         private async Task<string> getIngredientsForRecipe(int receipeint)
         {
             List<Ingredient> recipes = await ingredientService.getIngredientsOfRecipeAsync(receipeint);
+            Console.WriteLine(recipes[0].ingredientName);
             return JsonSerializer.Serialize(recipes);
         }
 

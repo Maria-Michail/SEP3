@@ -143,7 +143,8 @@ class SocketsToDatabase {
         byte[] dataFromServer = new byte[1024];
         int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
-        Ingredient request = JsonSerializer.Deserialize<Ingredient>(response);
+        IList<Ingredient> request = JsonSerializer.Deserialize<List<Ingredient>>(response);
+        Console.WriteLine(request[0].ingredientName);
         Console.WriteLine(request);
         
         stream.Close();

@@ -20,11 +20,10 @@ namespace WebApi.Controllers
             this.ingredientsService = ingredientsService;
         }
         
-        [HttpGet]
+        /*[HttpGet]
         public async Task<ActionResult<IList<Ingredient>>> getIngredientAsync([FromQuery] int? id)
         {
-            
-                    try
+            try
                     {
                         IList<Ingredient> ingredients = await ingredientsService.GetIngredientsAsync((int)id);
                         Console.WriteLine(ingredients + "--> WebApi/ingredientController");
@@ -35,6 +34,33 @@ namespace WebApi.Controllers
                         Console.WriteLine("Wrong name of the recipe");
                         return BadRequest(e.Message);
                     }
+        }*/
+        
+        [HttpPost]
+        public async Task<ActionResult<Ingredient>> AddIngredient([FromBody] int id) {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try {
+                IList<Ingredient> ingredients = await ingredientsService.GetIngredientsAsync(id);
+                return Ok(ingredients); 
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
+        
+        [HttpGet]
+        public async Task<ActionResult<IList<Ingredient>>> GetIngredients() {
+            try
+            {
+                IList<Ingredient> ingredients = await ingredientsService.GetAllIngredientsAsync();
+                return Ok(ingredients);
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }

@@ -201,6 +201,40 @@ namespace Server
             // ctx.Set<StudentCourse>().Add(sc); This is an alternative
             await databaseContext.SaveChangesAsync();
             
+            
+            //connecting second recipe
+            Recipe steve5 = await databaseContext.recipes.FirstAsync(s => s.recipeId == 2 );
+            Ingredient tek5 = await databaseContext.ingredients.FirstAsync(c => c.ingredientId == 1);
+            
+            IngredientRecipe sc5 = new IngredientRecipe()
+            {
+                ingredient = tek5,
+                recipe = steve5
+            };
+            
+            steve5.IngredientRecipes = new List<IngredientRecipe>();
+            steve5.IngredientRecipes.Add(sc5);
+            databaseContext.Update(steve5);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+            
+            Recipe steve6 = await databaseContext.recipes.FirstAsync(s => s.recipeId == 2 );
+            Category bankInfo6 = await databaseContext.categories.FirstAsync(c => c.categoryName.Equals("Italian"));
+            
+            RecipeCategory sc6 = new RecipeCategory()
+            {
+                recipe = steve6,
+                category = bankInfo6
+            };
+            
+            steve6.RecipeCategories = new List<RecipeCategory>();
+            steve6.RecipeCategories.Add(sc6);
+            databaseContext.Update(steve6);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+            
         }
         
     }

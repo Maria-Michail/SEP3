@@ -97,7 +97,7 @@ using System.ComponentModel.DataAnnotations;
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView/{Name:int}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView/{Id:int}")]
     public partial class RecipeView : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -106,10 +106,10 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+#line 84 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
        
     [Parameter]
-    public string Name { get; set; }
+    public int Id { get; set; }
 
     public Recipe Recipe { get; set; }
     public IList<Ingredient> ingredients { get; set; } 
@@ -117,8 +117,14 @@ using System.ComponentModel.DataAnnotations;
 
 
     protected override async Task OnInitializedAsync() {
-        if (!(Name == null || Name.Equals(""))) {
-            Recipe = RecipeService.Recipes.First(p => p.recipeName.Equals(Name));
+        if (Id != 0) {
+            Recipe = RecipeService.Recipes.FirstOrDefault(p => p.recipeId == Id);
+            Console.WriteLine(1);
+            await IngredientsService.AddIngredientsAsync(Id);
+            Console.WriteLine(2);
+            await IngredientsService.GetIngredientsAsync();
+            Console.WriteLine(3);
+            ingredients = IngredientsService.Ingredients;
         }
     }
 
@@ -135,6 +141,7 @@ using System.ComponentModel.DataAnnotations;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IIngredientsService IngredientsService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRecipeService RecipeService { get; set; }
     }
 }

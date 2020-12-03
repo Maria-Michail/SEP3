@@ -12,6 +12,7 @@ namespace Blazor.Data
     {
         SocketsToDatabase so;
         private IList<Ingredient> ingredients;
+        private int recipeId;
 
         public IngredientService()
         {
@@ -21,10 +22,16 @@ namespace Blazor.Data
 
         public async Task<IList<Ingredient>> GetIngredientsAsync(int id)
         {
-            ingredients = (List<Ingredient>) so.getIngredients(id);
+            recipeId = id;
+            ingredients =  (List<Ingredient>) so.getIngredients(id);
             return ingredients;
         }
 
-
+        public async Task<IList<Ingredient>> GetAllIngredientsAsync()
+        {
+            //recipeId is 0 even though it was assigned to one in httppost
+            ingredients = (List<Ingredient>) so.getIngredients(recipeId);
+            return ingredients;
+        }
     }
 }

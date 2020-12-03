@@ -39,9 +39,9 @@ namespace WebApi.Controllers
                     {
                         IList<Recipe> recipes = await recipeService.getRecipesAsync();
                         var recipe = recipes.FirstOrDefault(r =>
-                            r.name.Equals(name));
+                            r.recipeName.Equals(name));
                         
-                        Console.WriteLine("console is sending " + recipe.name);
+                        Console.WriteLine("console is sending " + recipe.recipeName);
                         IList<Recipe> recipesToSend = new List<Recipe>();
                         Console.WriteLine(recipe + "--> WebApi/Controllers/RecipeController.cs --1");
                         recipesToSend.Add(recipe);

@@ -1,65 +1,89 @@
 @page "/recipeView"
-@page "/recipeView/{Name:int}"
+@page "/recipeView/{Id:int}"
 @using Blazor.Data
 @using Model
 @using System.ComponentModel.DataAnnotations
 @inject IRecipeService RecipeService
+@inject IIngredientsService IngredientsService
 @inject NavigationManager NavigationManager
 
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-4">
-            <img src="../Images/@Recipe.imageName" class="" alt="...">
-        </div>
-        <div class="col-8">
-            <h1 class="display-4">@Recipe.recipeName</h1>
-            <p class="lead">@Recipe.description</p>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col">
-                    <ul>
-                        <li class="my-3">Preparation time: @Recipe.cookingTime</li>
-                       
-                    </ul>
-                </div>
-                <div class="col">
-                    <a class="btn btn-primary btn-lg mt-5" href="#" role="button">Order necessary ingredients to your home!</a>
-                </div>
+
+@if (Recipe == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (ingredients == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!ingredients.Any())
+{
+    <p>
+        <em>No ingredient exist. Please add some.</em>
+    </p>
+}
+else
+{
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-4">
+                <img src="../Images/@Recipe.imageName" class="" alt="...">
             </div>
-
-
+            <div class="col-8">
+                <h1 class="display-4">@Recipe.recipeName</h1>
+                <p class="lead">@Recipe.description</p>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col">
+                        <ul>
+                            <li class="my-3">Preparation time: @Recipe.cookingTime</li>
+                           
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-primary btn-lg mt-5" href="#" role="button">Order necessary ingredients to your home!</a>
+                    </div>
+                </div>
+    
+    
+            </div>
         </div>
     </div>
-</div>
-
-
-<div class="row">
-    <div class="col">
-        <div class="jumbotron instruction">
-            <h2 class="mb-5">Preparation guide</h2>
-            <ol>
-                <li>@Recipe.instructions</li>
-            </ol>
+    
+    
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron instruction">
+                <h2 class="mb-5">Preparation guide</h2>
+                <ol>
+                    <li>@Recipe.instructions</li>
+                </ol>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="jumbotron ingredients">
+                <h2 class="mb-5">Needed ingredients</h2>
+                <ul>
+                    @foreach(Ingredient ingredient in ingredients)
+                    {
+                        <li class="my-3">@ingredient.number +" "+ @ingredient.unitType +" "+ @ingredient.ingredientName </li>
+                    }
+    
+                </ul>
+            </div>
         </div>
     </div>
+}
 
-    <div class="col">
-        <div class="jumbotron ingredients">
-            <h2 class="mb-5">Needed ingredients</h2>
-            <ul>
-                @foreach(Ingredient ingredient in ingredients)
-                {
-                    <li class="my-3">@ingredient.number +" "+ @ingredient.unitType +" "+ @ingredient.ingredientName </li>
-                }
-
-            </ul>
-        </div>
-    </div>
-</div>
 
 @code {
     [Parameter]
-    public string Name { get; set; }
+    public int Id { get; set; }
 
     public Recipe Recipe { get; set; }
     public IList<Ingredient> ingredients { get; set; } 
@@ -67,8 +91,14 @@
 
 
     protected override async Task OnInitializedAsync() {
-        if (!(Name == null || Name.Equals(""))) {
-            Recipe = RecipeService.Recipes.First(p => p.recipeName.Equals(Name));
+        if (Id != 0) {
+            Recipe = RecipeService.Recipes.FirstOrDefault(p => p.recipeId == Id);
+            Console.WriteLine(1);
+            await IngredientsService.AddIngredientsAsync(Id);
+            Console.WriteLine(2);
+            await IngredientsService.GetIngredientsAsync();
+            Console.WriteLine(3);
+            ingredients = IngredientsService.Ingredients;
         }
     }
 

@@ -98,7 +98,7 @@ using Blazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+#line 42 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
        
 
  
@@ -108,6 +108,7 @@ using Blazor.Data;
     {
       Recipes = await RecipeService.GetRecipesAsync();
         Console.WriteLine(Recipes[0].recipeName +"--> ViewRecipes.razor");
+        base.OnInitialized();
     }
 
     private void NavigateToComponent(Recipe p) {

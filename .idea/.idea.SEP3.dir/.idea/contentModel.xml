@@ -193,10 +193,11 @@
             <e p="Address.cs" t="Include" />
             <e p="BankInfo.cs" t="Include" />
             <e p="Recipe" t="Include">
-              <e p="Amount.cs" t="Include" />
               <e p="Category.cs" t="Include" />
               <e p="Ingredient.cs" t="Include" />
+              <e p="IngredientRecipe.cs" t="Include" />
               <e p="Recipe.cs" t="Include" />
+              <e p="RecipeCategory.cs" t="Include" />
             </e>
             <e p="Register.cs" t="Include" />
           </e>
