@@ -15,13 +15,19 @@ namespace Db
             return temp;
         }
 
-        public async Task addShopAsync(Shop shop)
+        public async Task<Shop> addShopAsync(Shop shop)
         {
-            if (!ctx.shops.Contains(shop))
+            foreach (var shopExists in ctx.shops)
             {
-                await ctx.shops.AddAsync(shop);
-                await ctx.SaveChangesAsync();
+                if (shopExists.shopId == shop.shopId)
+                {
+                    return shop;
+                }
             }
+
+            await ctx.shops.AddAsync(shop);
+            await ctx.SaveChangesAsync();
+            return shop;
         }
 
         public async Task updateShopAsync(Shop shop)
@@ -37,6 +43,20 @@ namespace Db
                 ctx.shops.Remove(toDelete);
                 ctx.SaveChangesAsync();
             }
+        }
+
+        public async Task linkShopVareAsync(Shop shop, ShopIngredient shopIngredient)
+        {
+            Shop shop1 = await ctx.shops.FirstAsync(s => s.shopId == shop.shopId);
+            ShopIngredient shopIngredient1 = await ctx.shopIngredients.FirstAsync(s => s.id == shopIngredient.id);
+            ShopVare sv2 = new ShopVare()
+            {
+                shop = shop1,
+                shopIngredient = shopIngredient1
+            };
+            shop1.shopVares.Add(sv2);
+            ctx.Update(shop1);
+            await ctx.SaveChangesAsync();
         }
     }
 }

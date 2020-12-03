@@ -19,13 +19,15 @@ namespace Database.Networking{
         private IDbRecipeService recipeService;
         private IDbIngredientService ingredientService;
         private IDbShopService shopService;
+        private IDbShopIngrService shopIngrService;
 
-        public ServerToJava(IDbAccountService accountService, IDbRecipeService recipeService, IDbIngredientService ingredientService, IDbShopService shopService)
+        public ServerToJava(IDbAccountService accountService, IDbRecipeService recipeService, IDbIngredientService ingredientService, IDbShopService shopService, IDbShopIngrService shopIngrService)
         {
             this.accountService = accountService;
             this.recipeService = recipeService;
             this.ingredientService = ingredientService;
             this.shopService = shopService;
+            this.shopIngrService = shopIngrService;
         }
         public async void start(){
             Console.WriteLine("Starting server...");
@@ -62,7 +64,6 @@ namespace Database.Networking{
                 }
                 else if (rcv.Contains("getIngredients"))
                 {
-                    Console.WriteLine("Trying to fetch Ingredients");
                     List<Ingredient> ingredients = await ingredientService.getIngredientsAsync();
                     content = JsonSerializer.Serialize(ingredients);
                 }
@@ -71,10 +72,33 @@ namespace Database.Networking{
                     List<Shop> shops = await shopService.getShopsAsync();
                     content = JsonSerializer.Serialize(shops);
                 }
+                else if (rcv.Contains("getShopIngredients"))
+                {
+                    List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
+                    content = JsonSerializer.Serialize(shopIngredients);
+                }
                 else if (rcv.Contains("addShop"))
                 {
                     Shop fromClient = (Shop)getClientsObject(stream, "Shop");
-                    await shopService.addShopAsync(fromClient);
+                    Console.WriteLine(fromClient.shopName);
+                    //await shopService.addShopAsync(fromClient);
+                    Shop temp = new Shop();
+                    Console.WriteLine("Fail1");    
+                    temp.vares = new List<ShopIngredient>();
+                    Console.WriteLine("Fail2");
+                    temp.shopName = "Fakta";
+                    Console.WriteLine("Fail3");
+                    temp.shopAddress.city = "Horsens";
+                    Console.WriteLine("Fail4");
+                    temp.shopAddress.street = "Langmarksvej 105";
+                    Console.WriteLine("Fail5");
+                    temp.shopAddress.zipCode = 8700;
+                    Console.WriteLine("Fail6");
+                    temp.vares = new List<ShopIngredient>();
+                    Console.WriteLine("Fail7");
+                    temp.shopVares = new List<ShopVare>();
+                    Console.WriteLine("Fail8");
+                    Console.WriteLine(JsonSerializer.Serialize(temp));
                     content = fromClient.shopName + " added";
                 }
                 else if (rcv.Contains("removeShop"))
@@ -130,11 +154,14 @@ namespace Database.Networking{
             {
                 case "Shop":
                 {
+                    Console.WriteLine(objectString);
                     Shop objectToReturn = JsonSerializer.Deserialize<Shop>(objectString);
+                    Console.WriteLine(objectToReturn.ToString());
                     return objectToReturn;
                 }
                 case "Recipe":
                 {
+                    Console.WriteLine(objectString);
                     Recipe objectToReturn = JsonSerializer.Deserialize<Recipe>(objectString);
                     return objectToReturn;
                 }

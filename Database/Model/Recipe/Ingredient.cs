@@ -23,13 +23,14 @@ namespace Model
         
 
         [Required,MaxLength(128)]
+        [JsonPropertyName("amountUnitType")]
         public string unitType { get; set; }
 
         public IList<IngredientRecipe> IngredientRecipes;
 
         public override string ToString()
         {
-            return "Ingredient: " + ingredientName;
+            return "Ingredient: " + ingredientName + " (" + number + unitType + ")";
         }
     }
 }

@@ -110,6 +110,26 @@ namespace Db{
                 .HasOne(ingredientRecipe => ingredientRecipe.recipe)
                 .WithMany(recipe => recipe.IngredientRecipes)
                 .HasForeignKey(recipeCategory => recipeCategory.recipeId);
+            
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ShopVare>()
+                .HasKey(sc =>
+                    new
+                    {
+                        sc.shopId,
+                        sc.shopIngredientId
+                    }
+                );
+            
+            modelBuilder.Entity<ShopVare>()
+                .HasOne(shopVare => shopVare.shopIngredient)
+                .WithMany(shopIngredient => shopIngredient.ShopVares)
+                .HasForeignKey(shopVare => shopVare.shopIngredientId);
+
+            modelBuilder.Entity<ShopVare>()
+                .HasOne(shopVare => shopVare.shop)
+                .WithMany(shop => shop.shopVares)
+                .HasForeignKey(shopVare => shopVare.shopId);
         }
     } 
 }

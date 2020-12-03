@@ -32,7 +32,7 @@ namespace Server
             IDbIngredientService ingredientService = new DbIngredientService();
             IDbShopService shopService = new DbShopService();
             //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
-            ServerToJava toJava = new ServerToJava(accountService,recipeService,ingredientService,shopService);
+            ServerToJava toJava = new ServerToJava(accountService,recipeService,ingredientService,shopService,shopIngrService);
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();

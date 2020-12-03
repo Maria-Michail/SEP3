@@ -208,14 +208,19 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Model.Shop", b =>
                 {
-                    b.Property<string>("shopName")
-                        .HasMaxLength(25)
-                        .HasColumnType("TEXT");
+                    b.Property<int>("shopId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("shopAddressstreet")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("shopName");
+                    b.Property<string>("shopName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("shopId");
 
                     b.HasIndex("shopAddressstreet");
 
@@ -239,8 +244,8 @@ namespace Database.Migrations
                     b.Property<double>("price")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("shopName")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("shopId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("unitType")
                         .IsRequired()
@@ -249,9 +254,24 @@ namespace Database.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("shopName");
+                    b.HasIndex("shopId");
 
                     b.ToTable("shopIngredients");
+                });
+
+            modelBuilder.Entity("Model.ShopVare", b =>
+                {
+                    b.Property<int>("shopId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("shopIngredientId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("shopId", "shopIngredientId");
+
+                    b.HasIndex("shopIngredientId");
+
+                    b.ToTable("ShopVare");
                 });
 
             modelBuilder.Entity("Database.Model.AccountAddress", b =>
@@ -359,7 +379,26 @@ namespace Database.Migrations
                 {
                     b.HasOne("Model.Shop", null)
                         .WithMany("vares")
-                        .HasForeignKey("shopName");
+                        .HasForeignKey("shopId");
+                });
+
+            modelBuilder.Entity("Model.ShopVare", b =>
+                {
+                    b.HasOne("Model.Shop", "shop")
+                        .WithMany("shopVares")
+                        .HasForeignKey("shopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Model.ShopIngredient", "shopIngredient")
+                        .WithMany("ShopVares")
+                        .HasForeignKey("shopIngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("shop");
+
+                    b.Navigation("shopIngredient");
                 });
 
             modelBuilder.Entity("Database.Model.Account", b =>
@@ -400,7 +439,14 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Model.Shop", b =>
                 {
+                    b.Navigation("shopVares");
+
                     b.Navigation("vares");
+                });
+
+            modelBuilder.Entity("Model.ShopIngredient", b =>
+                {
+                    b.Navigation("ShopVares");
                 });
 #pragma warning restore 612, 618
         }

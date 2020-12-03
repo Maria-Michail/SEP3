@@ -7,8 +7,9 @@ namespace Db
     public interface IDbShopService
     {
         Task<List<Shop>> getShopsAsync();
-        Task addShopAsync(Shop shop);
+        Task<Shop> addShopAsync(Shop shop);
         Task updateShopAsync(Shop shop);
         Task removeShopAsync(string shopName);
+        Task linkShopVareAsync(Shop shop, ShopIngredient shopIngredient);
     }
 }
