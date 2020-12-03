@@ -11,22 +11,23 @@ namespace Db{
         public DbSet<Recipe> recipes { get; set; }
         public DbSet<ShopIngredient> shopIngredients { get; set; }
         public DbSet<Address> addresses { get; set; }
-        
         public DbSet<BankInfo> bankInfos { get; set; }
-        
         public DbSet<Category> categories { get; set; }
-
+        public DbSet<Shop> shops { get; set; }
         public DbSet<AccountAddress> AccountAddresses { get; set; }
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
+        public DbSet<RecipeCategory> RecipeCategories { get; set; }
+        public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
-            optionsBuilder.UseSqlite(@"Data Source = C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db");
+            optionsBuilder.UseSqlite(@"Data Source = C:\Users\Janni\OneDrive\Skrivebord\SEP3Code\Database\MainDb.db");
 
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Account and address many-to-many
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<AccountAddress>()
                 .HasKey(sc =>
@@ -48,7 +49,7 @@ namespace Db{
                 .HasForeignKey(accountAddress => accountAddress.username);
 
 
-            
+            //account and bankinfo many-to-many
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<AccountBankInfo>()
                 .HasKey(sc =>
@@ -67,10 +68,48 @@ namespace Db{
                 .HasOne(accountBankInfo => accountBankInfo.account)
                 .WithMany(account => account.AccountBankInfos)
                 .HasForeignKey(accountBankInfo => accountBankInfo.username);
-
             
-           // modelBuilder.Entity<Address>()
-               //  .HasKey(c => new { c.street, c.streetNumber });
+            
+            //Recipe and Category many-to-many
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<RecipeCategory>()
+                .HasKey(sc =>
+                    new
+                    {
+                        sc.categoryName,
+                        sc.recipeId
+                    }
+                );
+            modelBuilder.Entity<RecipeCategory>()
+                .HasOne(recipeCategory => recipeCategory.category)
+                .WithMany(category =>category.RecipeCategories)
+                .HasForeignKey(recipeCategory => recipeCategory.categoryName);
+
+            modelBuilder.Entity<RecipeCategory>()
+                .HasOne(recipeCategory => recipeCategory.recipe)
+                .WithMany(recipe => recipe.RecipeCategories)
+                .HasForeignKey(recipeCategory => recipeCategory.recipeId);
+            
+            
+            //Recipe and Ingredient many-to-many
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IngredientRecipe>()
+                .HasKey(sc =>
+                    new
+                    {
+                        sc.ingredientId,
+                        sc.recipeId
+                    }
+                );
+            modelBuilder.Entity<IngredientRecipe>()
+                .HasOne(ingredientRecipe => ingredientRecipe.ingredient)
+                .WithMany(ingredient => ingredient.IngredientRecipes)
+                .HasForeignKey(recipeCategory => recipeCategory.ingredientId);
+
+            modelBuilder.Entity<IngredientRecipe>()
+                .HasOne(ingredientRecipe => ingredientRecipe.recipe)
+                .WithMany(recipe => recipe.IngredientRecipes)
+                .HasForeignKey(recipeCategory => recipeCategory.recipeId);
         }
     } 
 }

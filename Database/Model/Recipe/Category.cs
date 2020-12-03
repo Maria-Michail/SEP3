@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Model
@@ -7,8 +8,10 @@ namespace Model
     {
         [Key]
         [Required]
-        [JsonPropertyName("Category")]
         [MaxLength(64)]
-        public string category { get; set; }
+        [JsonPropertyName("Category")]
+        public string categoryName { get; set; }
+        
+        public IList<RecipeCategory> RecipeCategories;
     }
 }

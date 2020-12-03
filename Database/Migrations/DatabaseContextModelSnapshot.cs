@@ -100,28 +100,13 @@ namespace Database.Migrations
                     b.ToTable("bankInfos");
                 });
 
-            modelBuilder.Entity("Model.Amount", b =>
-                {
-                    b.Property<double>("number")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("unitType")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("number");
-
-                    b.ToTable("Amount");
-                });
-
             modelBuilder.Entity("Model.Category", b =>
                 {
-                    b.Property<string>("category")
+                    b.Property<string>("categoryName")
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("category");
+                    b.HasKey("categoryName");
 
                     b.ToTable("categories");
                 });
@@ -132,46 +117,109 @@ namespace Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<double?>("Amountnumber")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Recipename")
+                    b.Property<string>("ingredientName")
+                        .IsRequired()
+                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("name")
+                    b.Property<double>("number")
+                        .HasColumnType("REAL");
+
+                    b.Property<int?>("recipeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("unitType")
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ingredientId");
 
-                    b.HasIndex("Amountnumber");
-
-                    b.HasIndex("Recipename");
+                    b.HasIndex("recipeId");
 
                     b.ToTable("ingredients");
                 });
 
+            modelBuilder.Entity("Model.IngredientRecipe", b =>
+                {
+                    b.Property<int>("ingredientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("recipeId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ingredientId", "recipeId");
+
+                    b.HasIndex("recipeId");
+
+                    b.ToTable("IngredientRecipes");
+                });
+
             modelBuilder.Entity("Model.Recipe", b =>
                 {
-                    b.Property<string>("name")
+                    b.Property<int>("recipeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("categoryName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("cookingTime")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("imageName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("instructions")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("recipeName")
+                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("category")
-                        .HasColumnType("TEXT");
+                    b.HasKey("recipeId");
 
-                    b.Property<double>("cookingTime")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("instructions")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("name");
-
-                    b.HasIndex("category");
+                    b.HasIndex("categoryName");
 
                     b.ToTable("recipes");
+                });
+
+            modelBuilder.Entity("Model.RecipeCategory", b =>
+                {
+                    b.Property<string>("categoryName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("recipeId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("categoryName", "recipeId");
+
+                    b.HasIndex("recipeId");
+
+                    b.ToTable("RecipeCategories");
+                });
+
+            modelBuilder.Entity("Model.Shop", b =>
+                {
+                    b.Property<string>("shopName")
+                        .HasMaxLength(25)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("shopAddressstreet")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("shopName");
+
+                    b.HasIndex("shopAddressstreet");
+
+                    b.ToTable("shops");
                 });
 
             modelBuilder.Entity("Model.ShopIngredient", b =>
@@ -179,6 +227,9 @@ namespace Database.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("amount")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -188,7 +239,17 @@ namespace Database.Migrations
                     b.Property<double>("price")
                         .HasColumnType("REAL");
 
+                    b.Property<string>("shopName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("unitType")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("TEXT");
+
                     b.HasKey("id");
+
+                    b.HasIndex("shopName");
 
                     b.ToTable("shopIngredients");
                 });
@@ -233,24 +294,72 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Model.Ingredient", b =>
                 {
-                    b.HasOne("Model.Amount", "Amount")
-                        .WithMany()
-                        .HasForeignKey("Amountnumber");
-
                     b.HasOne("Model.Recipe", null)
                         .WithMany("ingredients")
-                        .HasForeignKey("Recipename");
+                        .HasForeignKey("recipeId");
+                });
 
-                    b.Navigation("Amount");
+            modelBuilder.Entity("Model.IngredientRecipe", b =>
+                {
+                    b.HasOne("Model.Ingredient", "ingredient")
+                        .WithMany("IngredientRecipes")
+                        .HasForeignKey("ingredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Model.Recipe", "recipe")
+                        .WithMany("IngredientRecipes")
+                        .HasForeignKey("recipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ingredient");
+
+                    b.Navigation("recipe");
                 });
 
             modelBuilder.Entity("Model.Recipe", b =>
                 {
                     b.HasOne("Model.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("category");
+                        .HasForeignKey("categoryName");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Model.RecipeCategory", b =>
+                {
+                    b.HasOne("Model.Category", "category")
+                        .WithMany("RecipeCategories")
+                        .HasForeignKey("categoryName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Model.Recipe", "recipe")
+                        .WithMany("RecipeCategories")
+                        .HasForeignKey("recipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("category");
+
+                    b.Navigation("recipe");
+                });
+
+            modelBuilder.Entity("Model.Shop", b =>
+                {
+                    b.HasOne("Database.Model.Address", "shopAddress")
+                        .WithMany()
+                        .HasForeignKey("shopAddressstreet");
+
+                    b.Navigation("shopAddress");
+                });
+
+            modelBuilder.Entity("Model.ShopIngredient", b =>
+                {
+                    b.HasOne("Model.Shop", null)
+                        .WithMany("vares")
+                        .HasForeignKey("shopName");
                 });
 
             modelBuilder.Entity("Database.Model.Account", b =>
@@ -270,9 +379,28 @@ namespace Database.Migrations
                     b.Navigation("AccountBankInfos");
                 });
 
+            modelBuilder.Entity("Model.Category", b =>
+                {
+                    b.Navigation("RecipeCategories");
+                });
+
+            modelBuilder.Entity("Model.Ingredient", b =>
+                {
+                    b.Navigation("IngredientRecipes");
+                });
+
             modelBuilder.Entity("Model.Recipe", b =>
                 {
+                    b.Navigation("IngredientRecipes");
+
                     b.Navigation("ingredients");
+
+                    b.Navigation("RecipeCategories");
+                });
+
+            modelBuilder.Entity("Model.Shop", b =>
+                {
+                    b.Navigation("vares");
                 });
 #pragma warning restore 612, 618
         }

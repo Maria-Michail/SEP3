@@ -122,21 +122,21 @@ namespace Server
                     {
                         Recipe temp = (Recipe) getClientsObject(stream);
                         await recipeService.addRecipeAsync(temp);
-                        content = "Recipe " + temp.name + " added";
+                        content = "Recipe " + temp.recipeName + " added";
                         break;
                     }
                     case "removeRecipe":
                     {
                         Recipe temp = (Recipe) getClientsObject(stream);
-                        await recipeService.removeRecipeAsync(temp.name);
-                        content = "Recipe" + temp.name + " removed";
+                        await recipeService.removeRecipeAsync(temp.recipeName);
+                        content = "Recipe" + temp.recipeName + " removed";
                         break;
                     }
                     case "updateRecipe":
                     {
                         Recipe temp = (Recipe) getClientsObject(stream);
                         await recipeService.updateRecipeAsync(temp);
-                        content = "Recipe " + temp.name + " updated";
+                        content = "Recipe " + temp.recipeName + " updated";
                         break;
                     }
                     case "saveAddress":

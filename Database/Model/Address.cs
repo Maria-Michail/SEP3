@@ -13,9 +13,6 @@ namespace Database.Model
         [JsonPropertyName("Street")]
         public string street { get; set; }
         
-        
-
-
         [Required,MaxLength(45)]
         [JsonPropertyName("City")]
         public string city { get; set; }
