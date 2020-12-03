@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace Db
                     return shop;
                 }
             }
-
+            Console.WriteLine("Trying to add");
             await ctx.shops.AddAsync(shop);
             await ctx.SaveChangesAsync();
             return shop;

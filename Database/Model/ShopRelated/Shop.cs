@@ -26,7 +26,7 @@ namespace Model
 
         public override string ToString()
         {
-            return shopName + " (" + shopAddress.street + ")";
+            return shopName + " (" + shopAddress.street + "/" + shopAddress.zipCode + "/" + shopAddress.city +")" + "[" + shopId + "]";
         }
     }
 }

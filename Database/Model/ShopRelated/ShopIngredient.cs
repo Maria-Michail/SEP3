@@ -24,9 +24,11 @@ namespace Model
         
         [Required]
         [Range(0.1,Double.MaxValue,ErrorMessage = "input must be above 0.1")]
+        [JsonPropertyName("Amount")]
         public double amount { get; set; }
         
         [Required,MaxLength(40)]
+        [JsonPropertyName("UnitType")]
         public string unitType { get; set; }
         
         public IList<ShopVare> ShopVares { get; set; }

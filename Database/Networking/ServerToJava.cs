@@ -80,25 +80,8 @@ namespace Database.Networking{
                 else if (rcv.Contains("addShop"))
                 {
                     Shop fromClient = (Shop)getClientsObject(stream, "Shop");
-                    Console.WriteLine(fromClient.shopName);
-                    //await shopService.addShopAsync(fromClient);
-                    Shop temp = new Shop();
-                    Console.WriteLine("Fail1");    
-                    temp.vares = new List<ShopIngredient>();
-                    Console.WriteLine("Fail2");
-                    temp.shopName = "Fakta";
-                    Console.WriteLine("Fail3");
-                    temp.shopAddress.city = "Horsens";
-                    Console.WriteLine("Fail4");
-                    temp.shopAddress.street = "Langmarksvej 105";
-                    Console.WriteLine("Fail5");
-                    temp.shopAddress.zipCode = 8700;
-                    Console.WriteLine("Fail6");
-                    temp.vares = new List<ShopIngredient>();
-                    Console.WriteLine("Fail7");
-                    temp.shopVares = new List<ShopVare>();
-                    Console.WriteLine("Fail8");
-                    Console.WriteLine(JsonSerializer.Serialize(temp));
+                    Console.WriteLine(fromClient.ToString());
+                    await shopService.addShopAsync(fromClient);
                     content = fromClient.shopName + " added";
                 }
                 else if (rcv.Contains("removeShop"))
@@ -133,7 +116,15 @@ namespace Database.Networking{
                 }
                 else if (rcv.Contains("addRecipe"))
                 {
-                    
+                    Recipe fromClient = (Recipe) getClientsObject(stream, "Recipe");
+                    await recipeService.addRecipeAsync(fromClient);
+                    content = fromClient.recipeName + " added";
+                }
+                else if (rcv.Contains("addShopIngredient"))
+                {
+                    ShopIngredient fromClient = (ShopIngredient) getClientsObject(stream, "ShopIngredient");
+                    await shopIngrService.addShopIngredientAsync(fromClient);
+                    content = fromClient.name + " added";
                 }
                 // Sending
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
@@ -154,20 +145,23 @@ namespace Database.Networking{
             {
                 case "Shop":
                 {
-                    Console.WriteLine(objectString);
                     Shop objectToReturn = JsonSerializer.Deserialize<Shop>(objectString);
                     Console.WriteLine(objectToReturn.ToString());
                     return objectToReturn;
                 }
                 case "Recipe":
                 {
-                    Console.WriteLine(objectString);
                     Recipe objectToReturn = JsonSerializer.Deserialize<Recipe>(objectString);
                     return objectToReturn;
                 }
                 case "Ingredient":
                 {
                     Ingredient objectToReturn = JsonSerializer.Deserialize<Ingredient>(objectString);
+                    return objectToReturn;
+                }
+                case "ShopIngredient":
+                {
+                    ShopIngredient objectToReturn = JsonSerializer.Deserialize<ShopIngredient>(objectString);
                     return objectToReturn;
                 }
             }
