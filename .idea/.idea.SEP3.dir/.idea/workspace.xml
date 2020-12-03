@@ -25,10 +25,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09d006a0-a613-48ab-90f4-276f00be1968" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/Pages/Payment.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Pages/Payment.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/Pages/ViewRecipes.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Pages/ViewRecipes.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.deps.json" afterDir="false" />
@@ -51,7 +48,6 @@
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.pdb" afterDir="false" />
@@ -85,9 +81,6 @@
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/wwwroot/css/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/Db/Context/DatabaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Db/Context/DatabaseContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
@@ -107,9 +100,6 @@
       <change beforePath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
@@ -120,7 +110,6 @@
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.RazorTargetAssemblyInfo.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.RazorTargetAssemblyInfo.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
@@ -128,8 +117,6 @@
       <change beforePath="$PROJECT_DIR$/WebApi/obj/WebApi.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/WebApi.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,11 +127,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Database/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Database/Db/Context/DatabaseContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Database/Networking/Server.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Database/Model/Account/Account.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Database/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Database/Db/Service/DbAccountService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Database/Db/Context/DatabaseContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Database/Model/Account/Account.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -195,11 +182,11 @@
         <option value="$PROJECT_DIR$/Blazor/Pages/RecipeView.razor" />
         <option value="$PROJECT_DIR$/WebApi/Controllers/RecipeController.cs" />
         <option value="$PROJECT_DIR$/Blazor/Data/IngredientService.cs" />
-        <option value="$PROJECT_DIR$/Database/Db/Context/DatabaseContext.cs" />
         <option value="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" />
         <option value="$PROJECT_DIR$/Blazor/Pages/Payment.razor" />
         <option value="$PROJECT_DIR$/Blazor/Pages/ViewRecipes.razor" />
         <option value="$PROJECT_DIR$/Blazor/wwwroot/css/site.css" />
+        <option value="$PROJECT_DIR$/Database/Db/Context/DatabaseContext.cs" />
       </list>
     </option>
   </component>
@@ -215,7 +202,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Blazor">
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebApi">
     <configuration name="Database" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -345,40 +332,40 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="423" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1606817659264" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1606997540064">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1607000371710">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.bottom/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992004" />
     <state width="1678" height="237" key="GridCell.Tab.0.bottom/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059477" />
     <state width="1678" height="237" key="GridCell.Tab.0.bottom/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390326" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606993011380" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607000371710" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606997537399" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1606997540064" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1606997540063">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1607000371710">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.center/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992002" />
     <state width="1678" height="237" key="GridCell.Tab.0.center/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059477" />
     <state width="1678" height="237" key="GridCell.Tab.0.center/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390325" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606993011379" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1607000371710" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606997537398" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1606997540063" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1606997540063">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1607000371710">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.left/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992001" />
     <state width="1678" height="237" key="GridCell.Tab.0.left/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059476" />
     <state width="1678" height="237" key="GridCell.Tab.0.left/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390325" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606993011379" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1607000371709" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606997537398" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1606997540063" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1606997540064">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1607000371710">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.right/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992003" />
     <state width="1678" height="237" key="GridCell.Tab.0.right/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059477" />
     <state width="1678" height="237" key="GridCell.Tab.0.right/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390325" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606993011379" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1607000371710" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606997537399" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1606997540064" />
     <state x="388" y="152" key="RiderGenerateDialog" timestamp="1606904209122">

@@ -125,6 +125,12 @@ namespace Server
                     number = 3,
                     unitType = "cloves"
                 },
+                new Ingredient(){
+                    ingredientId = 2,
+                    ingredientName = "Pasta",
+                    number = 0.5,
+                    unitType = "kg"
+                }
                 
                 
             };
@@ -215,6 +221,23 @@ namespace Server
             steve5.IngredientRecipes = new List<IngredientRecipe>();
             steve5.IngredientRecipes.Add(sc5);
             databaseContext.Update(steve5);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+            
+            //adding second ingredient
+            Recipe steve7 = await databaseContext.recipes.FirstAsync(s => s.recipeId == 2 );
+            Ingredient tek7 = await databaseContext.ingredients.FirstAsync(c => c.ingredientId == 2);
+            
+            IngredientRecipe sc7 = new IngredientRecipe()
+            {
+                ingredient = tek7,
+                recipe = steve7
+            };
+            
+            steve7.IngredientRecipes = new List<IngredientRecipe>();
+            steve7.IngredientRecipes.Add(sc7);
+            databaseContext.Update(steve7);
             
             // ctx.Set<StudentCourse>().Add(sc); This is an alternative
             await databaseContext.SaveChangesAsync();
