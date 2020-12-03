@@ -45,8 +45,7 @@ namespace Database.Networking{
                 String rcv = System.Text.Encoding.ASCII.GetString(rcvBytes);
 
                 switch (rcv) {
-                }
-                // Sending
+                    // Sending
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
                 stream.Write(toSendBytes);
 
