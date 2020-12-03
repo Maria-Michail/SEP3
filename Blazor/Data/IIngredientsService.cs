@@ -7,8 +7,8 @@ namespace Blazor.Data
     public interface IIngredientsService
     {
         public IList<Ingredient> Ingredients { get; }
-        //Task<List<Ingredient>> GetIngredientsAsync(int id);
-        Task<IList<Ingredient>> GetIngredientsAsync();
-        Task AddIngredientsAsync(int id);
+        Task<List<Ingredient>> GetIngredientsAsync(int id);
+        //Task<IList<Ingredient>> GetIngredientsAsync();
+        //Task AddIngredientsAsync(int id);
     }
 }

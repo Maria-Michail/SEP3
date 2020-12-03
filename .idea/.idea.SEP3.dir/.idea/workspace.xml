@@ -25,80 +25,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09d006a0-a613-48ab-90f4-276f00be1968" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/IngredientRecipe.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/RecipeCategory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/dataSources/e97366e5-c1c1-4c23-b92a-95c3ca1fbf62.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP3.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/Data/IIngredientsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Data/IIngredientsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/Data/IngredientService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Data/IngredientService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/Data/RecipeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Data/RecipeService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/Pages/RecipeView.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Pages/RecipeView.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/Pages/ViewRecipes.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Pages/ViewRecipes.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.runtimeconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/bin/Debug/netcoreapp3.1/Blazor.runtimeconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorCoreGenerate.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorTargetAssemblyInfo.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorTargetAssemblyInfo.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorTargetAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.RazorTargetAssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.TagHelpers.output.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.TagHelpers.output.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Blazor.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/App.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Error.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Error.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Home.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Home.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Login.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Payment.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Payment.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/RecipeView.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/RecipeView.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Register.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/Register.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/ViewRecipes.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/ViewRecipes.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/ViewUsers.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/ViewUsers.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/_Host.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Pages/_Host.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Shared/MainLayout.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/Razor/_Imports.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Blazor.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/RecipeView.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/RecipeView.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewRecipes.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewRecipes.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/MainDb.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/MainDb.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Networking/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Networking/Server.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Database/bin/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Database/obj/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/IngredientController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/IngredientController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Controllers/RecipeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/RecipeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Data/Impl/IIngredientsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Impl/IIngredientsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Data/Impl/IRecipeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Impl/IRecipeService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Data/Impl/IngredientService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Impl/IngredientService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Amount.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Ingredient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Ingredient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Recipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Models/Recipe/Recipe.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Networking/SocketsToDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Networking/SocketsToDatabase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Data/Impl/RecipeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Data/Impl/RecipeService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.runtimeconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/bin/Debug/netcoreapp3.1/WebApi.runtimeconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.RazorTargetAssemblyInfo.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.RazorTargetAssemblyInfo.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/obj/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,10 +83,8 @@
         <option value="$PROJECT_DIR$/Blazor/Shared/NavMenu.razor" />
         <option value="$PROJECT_DIR$/WebApi/Data/Models/Recipe.cs" />
         <option value="$PROJECT_DIR$/WebApi/Controllers/AccountsController.cs" />
-        <option value="$PROJECT_DIR$/WebApi/Data/Impl/IRecipeService.cs" />
         <option value="$PROJECT_DIR$/Database/Migrations/20201201100005_Wojtek.cs" />
         <option value="$PROJECT_DIR$/Blazor/Data/IRecipeService.cs" />
-        <option value="$PROJECT_DIR$/WebApi/Data/Impl/RecipeService.cs" />
         <option value="$PROJECT_DIR$/Database/Db/Service/DbIngredientService.cs" />
         <option value="$PROJECT_DIR$/Database/Db/Service/IDbIngredientService.cs" />
         <option value="$PROJECT_DIR$/Database/Db/Service/DbRecipeService.cs" />
@@ -159,17 +108,19 @@
         <option value="$PROJECT_DIR$/Database/Db/Service/IDbAddressService.cs" />
         <option value="$PROJECT_DIR$/Database/Db/Service/DbAddressService.cs" />
         <option value="$PROJECT_DIR$/Database/Program.cs" />
-        <option value="$PROJECT_DIR$/WebApi/Controllers/RecipeController.cs" />
         <option value="$PROJECT_DIR$/Blazor/Pages/ViewRecipes.razor" />
         <option value="$PROJECT_DIR$/Blazor/Data/RecipeService.cs" />
-        <option value="$PROJECT_DIR$/Blazor/Data/IIngredientsService.cs" />
         <option value="$PROJECT_DIR$/Database/Networking/Server.cs" />
         <option value="$PROJECT_DIR$/WebApi/Networking/SocketsToDatabase.cs" />
-        <option value="$PROJECT_DIR$/Blazor/Data/IngredientService.cs" />
         <option value="$PROJECT_DIR$/WebApi/Data/Impl/IIngredientsService.cs" />
-        <option value="$PROJECT_DIR$/Blazor/Pages/RecipeView.razor" />
         <option value="$PROJECT_DIR$/WebApi/Controllers/IngredientController.cs" />
+        <option value="$PROJECT_DIR$/WebApi/Data/Impl/IRecipeService.cs" />
         <option value="$PROJECT_DIR$/WebApi/Data/Impl/IngredientService.cs" />
+        <option value="$PROJECT_DIR$/WebApi/Data/Impl/RecipeService.cs" />
+        <option value="$PROJECT_DIR$/Blazor/Data/IIngredientsService.cs" />
+        <option value="$PROJECT_DIR$/Blazor/Pages/RecipeView.razor" />
+        <option value="$PROJECT_DIR$/WebApi/Controllers/RecipeController.cs" />
+        <option value="$PROJECT_DIR$/Blazor/Data/IngredientService.cs" />
       </list>
     </option>
   </component>
@@ -184,7 +135,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Database">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Blazor">
     <configuration name="Database" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -282,7 +233,8 @@
       <workItem from="1606900607731" duration="6262000" />
       <workItem from="1606926035862" duration="150000" />
       <workItem from="1606926265902" duration="994000" />
-      <workItem from="1606945012646" duration="9756000" />
+      <workItem from="1606945012646" duration="10175000" />
+      <workItem from="1606986529063" duration="5732000" />
     </task>
     <servers />
   </component>
@@ -312,40 +264,40 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="423" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1606817659264" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1606957042588">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1606993011380">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.bottom/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992004" />
     <state width="1678" height="237" key="GridCell.Tab.0.bottom/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059477" />
     <state width="1678" height="237" key="GridCell.Tab.0.bottom/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390326" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606957042588" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606993011380" />
     <state width="1398" height="237" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606826974896" />
     <state width="1398" height="237" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1606826978536" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1606957042587">
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1606993011379">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.center/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992002" />
     <state width="1678" height="237" key="GridCell.Tab.0.center/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059477" />
     <state width="1678" height="237" key="GridCell.Tab.0.center/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390325" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606957042587" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606993011379" />
     <state width="1398" height="237" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606826974895" />
     <state width="1398" height="237" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1606826978535" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1606957042587">
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1606993011379">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.left/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992001" />
     <state width="1678" height="237" key="GridCell.Tab.0.left/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059476" />
     <state width="1678" height="237" key="GridCell.Tab.0.left/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390325" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606957042587" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606993011379" />
     <state width="1398" height="237" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606826974895" />
     <state width="1398" height="237" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1606826978534" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1606957042588">
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1606993011379">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="3398" height="296" key="GridCell.Tab.0.right/-1440.295.1440.900/0.0.3440.1440@0.0.3440.1440" timestamp="1606137992003" />
     <state width="1678" height="237" key="GridCell.Tab.0.right/-1440.320.1440.875/0.25.3440.1415@-1440.320.1440.875" timestamp="1606859059477" />
     <state width="1678" height="237" key="GridCell.Tab.0.right/-1440.320.1440.875/0.25.3440.1415@0.25.3440.1415" timestamp="1606856390325" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606957042588" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606993011379" />
     <state width="1398" height="237" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606826974896" />
     <state width="1398" height="237" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1606826978535" />
     <state x="388" y="152" key="RiderGenerateDialog" timestamp="1606904209122">

@@ -8,5 +8,6 @@ namespace Data.Impl
     public interface IRecipeService
     {
         Task<IList<Recipe>> getRecipesAsync();
+        Task<IList<Ingredient>> GetIngredientsAsync(int id);
     }
 }

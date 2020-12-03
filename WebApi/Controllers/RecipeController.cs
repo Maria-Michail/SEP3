@@ -20,33 +20,24 @@ namespace WebApi.Controllers
         {
             this.recipeService = recipeService;
         }
-        
+
+
+        [HttpGet("ing/{recipeId:int}")] //int value for route
+        public async Task<ActionResult<IList<Ingredient>>> GetById(int recipeId) {
+            Console.WriteLine("hhhhh");
+            IList<Ingredient> ingredients = await recipeService.GetIngredientsAsync(recipeId);
+            return Ok(ingredients); 
+        }
+
         
         [HttpGet]
-        public async Task<ActionResult<IList<Recipe>>> getRecipesAsync([FromQuery] string name)
+        public async Task<ActionResult<IList<Recipe>>> getRecipesAsync()
         {
-            try
-            {
-                if (name == null)
-                {
-                    Console.WriteLine("The recipe with this name does not exist");
-                    IList<Recipe> recipes = await recipeService.getRecipesAsync();
-                    return Ok(recipes);
-                }
-                else
-                {
                     try
                     {
+                        Console.WriteLine("The recipe with this name does not exist");
                         IList<Recipe> recipes = await recipeService.getRecipesAsync();
-                        var recipe = recipes.FirstOrDefault(r =>
-                            r.recipeName.Equals(name));
-                        
-                        Console.WriteLine("console is sending " + recipe.recipeName);
-                        IList<Recipe> recipesToSend = new List<Recipe>();
-                        Console.WriteLine(recipe + "--> WebApi/Controllers/RecipeController.cs --1");
-                        recipesToSend.Add(recipe);
-                        Console.WriteLine(recipesToSend + "--> WebApi/Controllers/RecipeController.cs --2");
-                        return Ok(recipesToSend);
+                        return Ok(recipes);
                     }
                     catch (Exception e)
                     {
@@ -54,14 +45,5 @@ namespace WebApi.Controllers
                         return BadRequest(e.Message);
                     }
                 }
-
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e);
-                return StatusCode(500, e.Message);
-            }
-        }
     }
 }

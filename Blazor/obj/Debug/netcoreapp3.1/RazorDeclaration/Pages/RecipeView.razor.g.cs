@@ -120,10 +120,7 @@ using System.ComponentModel.DataAnnotations;
         if (Id != 0) {
             Recipe = RecipeService.Recipes.FirstOrDefault(p => p.recipeId == Id);
             Console.WriteLine(1);
-            await IngredientsService.AddIngredientsAsync(Id);
-            Console.WriteLine(2);
-            await IngredientsService.GetIngredientsAsync();
-            Console.WriteLine(3);
+            await IngredientsService.GetIngredientsAsync(Id);
             ingredients = IngredientsService.Ingredients;
         }
     }

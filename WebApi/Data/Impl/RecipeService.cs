@@ -14,10 +14,12 @@ namespace Data.Impl
         
         SocketsToDatabase so;
         private IList<Recipe> recipes;
+        private IList<Ingredient> ingredients;
 
         public RecipeService(){
             so = new SocketsToDatabase();
             recipes = new List<Recipe>();
+            ingredients = new List<Ingredient>();
         }
         
         
@@ -26,6 +28,12 @@ namespace Data.Impl
             recipes = (IList<Recipe>) so.getRecipes();
             Console.WriteLine(recipes.ToString() + "--> WebApi/Data/Impl/RecipeService.cs");
             return recipes;
+        }
+        
+        public async Task<IList<Ingredient>> GetIngredientsAsync(int id)
+        {
+            ingredients =  (List<Ingredient>) so.getIngredients(id);
+            return ingredients;
         }
     }
 }
