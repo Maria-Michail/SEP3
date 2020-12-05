@@ -2,7 +2,7 @@
 
 namespace Database.Migrations
 {
-    public partial class recipemany2many : Migration
+    public partial class ShopMany2Many : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,20 +57,6 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "shopIngredients",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    price = table.Column<double>(type: "REAL", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_shopIngredients", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AccountAddresses",
                 columns: table => new
                 {
@@ -92,6 +78,26 @@ namespace Database.Migrations
                         principalTable: "addresses",
                         principalColumn: "street",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Shop",
+                columns: table => new
+                {
+                    shopId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    shopName = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false),
+                    shopAddressstreet = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Shop", x => x.shopId);
+                    table.ForeignKey(
+                        name: "FK_Shop_addresses_shopAddressstreet",
+                        column: x => x.shopAddressstreet,
+                        principalTable: "addresses",
+                        principalColumn: "street",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,6 +149,29 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "shopIngredients",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
+                    price = table.Column<double>(type: "REAL", nullable: false),
+                    amount = table.Column<double>(type: "REAL", nullable: false),
+                    unitType = table.Column<string>(type: "TEXT", maxLength: 40, nullable: false),
+                    shopId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_shopIngredients", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_shopIngredients_Shop_shopId",
+                        column: x => x.shopId,
+                        principalTable: "Shop",
+                        principalColumn: "shopId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ingredients",
                 columns: table => new
                 {
@@ -185,6 +214,30 @@ namespace Database.Migrations
                         column: x => x.recipeId,
                         principalTable: "recipes",
                         principalColumn: "recipeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShopVares",
+                columns: table => new
+                {
+                    shopId = table.Column<int>(type: "INTEGER", nullable: false),
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShopVares", x => new { x.shopId, x.id });
+                    table.ForeignKey(
+                        name: "FK_ShopVares_Shop_shopId",
+                        column: x => x.shopId,
+                        principalTable: "Shop",
+                        principalColumn: "shopId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ShopVares_shopIngredients_id",
+                        column: x => x.id,
+                        principalTable: "shopIngredients",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -241,6 +294,21 @@ namespace Database.Migrations
                 name: "IX_recipes_categoryName",
                 table: "recipes",
                 column: "categoryName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Shop_shopAddressstreet",
+                table: "Shop",
+                column: "shopAddressstreet");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_shopIngredients_shopId",
+                table: "shopIngredients",
+                column: "shopId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShopVares_id",
+                table: "ShopVares",
+                column: "id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -258,10 +326,7 @@ namespace Database.Migrations
                 name: "RecipeCategories");
 
             migrationBuilder.DropTable(
-                name: "shopIngredients");
-
-            migrationBuilder.DropTable(
-                name: "addresses");
+                name: "ShopVares");
 
             migrationBuilder.DropTable(
                 name: "accounts");
@@ -273,10 +338,19 @@ namespace Database.Migrations
                 name: "ingredients");
 
             migrationBuilder.DropTable(
+                name: "shopIngredients");
+
+            migrationBuilder.DropTable(
                 name: "recipes");
 
             migrationBuilder.DropTable(
+                name: "Shop");
+
+            migrationBuilder.DropTable(
                 name: "categories");
+
+            migrationBuilder.DropTable(
+                name: "addresses");
         }
     }
 }

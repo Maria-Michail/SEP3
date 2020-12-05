@@ -17,6 +17,7 @@ namespace Db{
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
+        public DbSet<ShopVare> ShopVares { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
@@ -103,12 +104,32 @@ namespace Db{
             modelBuilder.Entity<IngredientRecipe>()
                 .HasOne(ingredientRecipe => ingredientRecipe.ingredient)
                 .WithMany(ingredient => ingredient.IngredientRecipes)
-                .HasForeignKey(recipeCategory => recipeCategory.ingredientId);
+                .HasForeignKey(ingredientRecipe => ingredientRecipe.ingredientId);
 
             modelBuilder.Entity<IngredientRecipe>()
                 .HasOne(ingredientRecipe => ingredientRecipe.recipe)
                 .WithMany(recipe => recipe.IngredientRecipes)
-                .HasForeignKey(recipeCategory => recipeCategory.recipeId);
+                .HasForeignKey(ingredientRecipe => ingredientRecipe.recipeId);
+            
+            //Shop and ShopIngredient many-to-many
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ShopVare>()
+                .HasKey(sc =>
+                    new
+                    {
+                        sc.shopId,
+                        sc.id
+                    }
+                );
+            modelBuilder.Entity<ShopVare>()
+                .HasOne(shopVare => shopVare.shop)
+                .WithMany(shop => shop.shopVares)
+                .HasForeignKey(shopVare => shopVare.shopId);
+
+            modelBuilder.Entity<ShopVare>()
+                .HasOne(shopVare => shopVare.shopIngredient)
+                .WithMany(shopIngredient => shopIngredient.shopVares)
+                .HasForeignKey(shopVare => shopVare.id);
         }
     } 
 }
