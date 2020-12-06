@@ -24,7 +24,19 @@ namespace Db
 
         public async Task addIngredientAsync(Ingredient ingredient)
         {
-            ctx.ingredients.Add(ingredient);
+            bool boolIngrExists = false;
+            foreach (var ingredientExist in ctx.ingredients)
+            {
+                if (ingredientExist.ingredientId == ingredient.ingredientId)
+                {
+                    boolIngrExists = true;
+                }
+            }
+
+            if (!boolIngrExists)
+            {
+                ctx.ingredients.Add(ingredient);
+            }
             await ctx.SaveChangesAsync();
         }
 

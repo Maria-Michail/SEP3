@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Database.Model;
 using Model;
 
 namespace Blazor.Data
@@ -8,7 +9,6 @@ namespace Blazor.Data
     {
         public IList<Ingredient> Ingredients { get; }
         Task<List<Ingredient>> GetIngredientsAsync(int id);
-        //Task<IList<Ingredient>> GetIngredientsAsync();
-        //Task AddIngredientsAsync(int id);
+        Task<List<OrderedShopIngredients>> GetShopIngredientsAsync();
     }
 }

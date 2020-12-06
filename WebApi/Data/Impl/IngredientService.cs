@@ -20,17 +20,13 @@ namespace Blazor.Data
             ingredients = new List<Ingredient>();
         }
 
-        public async Task<IList<Ingredient>> GetIngredientsAsync(int id)
+        
+
+        public async Task<IList<Ingredient>> GetIngredientsAsync()
         {
-            ingredients =  (List<Ingredient>) so.getIngredients(id);
+            ingredients =  (List<Ingredient>) so.getAllIngredients();
             return ingredients;
         }
 
-        public async Task<IList<Ingredient>> GetAllIngredientsAsync()
-        {
-            //recipeId is 0 even though it was assigned to one in httppost
-            ingredients = (List<Ingredient>) so.getIngredients(1);
-            return ingredients;
-        }
     }
 }

@@ -11,5 +11,7 @@ namespace Db
         Task removeRecipeAsync(string recipeName);
         Task addRecipeAsync(Recipe recipe);
         Task updateRecipeAsync(Recipe recipe);
+        Task LinkIngredient(Recipe recipe, Ingredient ingredient);
+        Task LinkCategory(Recipe recipe, Category category);
     }
 }

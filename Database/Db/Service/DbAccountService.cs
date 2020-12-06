@@ -56,7 +56,10 @@ namespace Db
                 address = address1,
                 account = account1
             };
-            account1.AccountAddresses = new List<AccountAddress>();
+            if (account1.AccountAddresses == null)
+            {
+                account1.AccountAddresses = new List<AccountAddress>();
+            }
             account1.AccountAddresses.Add(sc);
             ctx.Update(account1);
             await ctx.SaveChangesAsync();
@@ -71,7 +74,10 @@ namespace Db
                 account = account1,
                 bankInfo = bankInfo1
             };
-            account1.AccountBankInfos = new List<AccountBankInfo>();
+            if (account1.AccountBankInfos == null)
+            {
+                account1.AccountBankInfos = new List<AccountBankInfo>();
+            }
             account1.AccountBankInfos.Add(sc2);
             ctx.Update(account1);
             await ctx.SaveChangesAsync();

@@ -15,11 +15,13 @@ namespace Db{
         public DbSet<BankInfo> bankInfos { get; set; }
         
         public DbSet<Category> categories { get; set; }
+        public DbSet<Shop> shops { get; set; }
 
         public DbSet<AccountAddress> AccountAddresses { get; set; }
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
+        public DbSet<ShopVare> ShopVares { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
@@ -112,6 +114,25 @@ namespace Db{
                 .HasOne(ingredientRecipe => ingredientRecipe.recipe)
                 .WithMany(recipe => recipe.IngredientRecipes)
                 .HasForeignKey(recipeCategory => recipeCategory.recipeId);
+            
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ShopVare>()
+                .HasKey(sc =>
+                    new
+                    {
+                        sc.shopId,
+                        sc.id
+                    }
+                );
+            modelBuilder.Entity<ShopVare>()
+                .HasOne(shopVare => shopVare.shop)
+                .WithMany(shop => shop.shopVares)
+                .HasForeignKey(shopVare => shopVare.shopId);
+
+            modelBuilder.Entity<ShopVare>()
+                .HasOne(shopVare => shopVare.shopIngredient)
+                .WithMany(shopIngredient => shopIngredient.shopVares)
+                .HasForeignKey(shopVare => shopVare.id);
         }
     } 
 }

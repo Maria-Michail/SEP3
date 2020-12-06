@@ -90,6 +90,12 @@ namespace Server
                         content = JsonSerializer.Serialize(newAccount);
                         break;
                     }
+                    case "GetAllIngredients":
+                    {
+                        content = await getAllIngredients();
+                        Console.WriteLine(content);
+                        break;
+                    }
                     case "removeAccount":
                     {
                         Account temp = (Account)getClientsObject(stream);
@@ -163,7 +169,7 @@ namespace Server
                         content = "Address " + temp.ToString() + " updated";
                         break;
                     }
-                    case "getShopIngredients":
+                    case "GetShopIngredients":
                     {
                         content = await getShopIngredients();
                         break;
@@ -275,7 +281,11 @@ namespace Server
         private async Task<string> getIngredientsForRecipe(int receipeint)
         {
             List<Ingredient> recipes = await ingredientService.getIngredientsOfRecipeAsync(receipeint);
-            Console.WriteLine(recipes[0].ingredientName);
+            return JsonSerializer.Serialize(recipes);
+        }
+        private async Task<string> getAllIngredients()
+        {
+            List<Ingredient> recipes = await ingredientService.getIngredientsAsync();
             return JsonSerializer.Serialize(recipes);
         }
 

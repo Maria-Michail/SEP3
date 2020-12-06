@@ -1,0 +1,60 @@
+﻿@page "/ingredientsList"
+@using Blazor.Data
+@using Model
+@using System.ComponentModel.DataAnnotations
+@using Database.Model
+@inject IIngredientsService IngredientsService
+@inject NavigationManager NavigationManager
+
+<h3>IngredientsList</h3>
+
+@if (shopIngredients == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!shopIngredients.Any())
+{
+    <p>
+        <em>No ingredient exist. Please add some.</em>
+    </p>
+}
+else
+{
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron ingredients">
+                <h2 class="mb-5">Needed ingredients</h2>
+                <ul>
+                    @foreach(OrderedShopIngredients ingredient in shopIngredients)
+                    {
+                        <li class="my-3">@ingredient.amount @ingredient.ingredient.unitType of @ingredient.ingredient.name Price: @ingredient.totalPrice </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" @onclick="@(() => GoToPayment())">Buy</button>
+}
+
+@code {
+    public IList<OrderedShopIngredients> shopIngredients { get; set; } 
+    
+    protected override async Task OnInitializedAsync()
+    {
+        shopIngredients = await IngredientsService.GetShopIngredientsAsync();
+    }
+
+    public async Task GoToPayment()
+    {
+        try
+        {
+            NavigationManager.NavigateTo("/payment");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("failed");
+        }
+    }
+}

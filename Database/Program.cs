@@ -139,6 +139,40 @@ namespace Server
                 databaseContext.ingredients.Add(ing);
             }
             
+            databaseContext.SaveChanges();
+            
+            Shop[] shops = {
+                new Shop{
+                    shopId = 1,
+                    shopName = "Lidl",
+                    shopAddress = addresses[0]
+                },
+            };
+            foreach (var shop in shops)
+            {
+                databaseContext.shops.Add(shop);
+            }
+            
+            ShopIngredient[] shopIngredients = {
+                new ShopIngredient(){
+                    id = 1,
+                    name = "Garlic",
+                    price = 3,
+                    amount = 3,
+                    unitType = "cloves"
+                },
+                new ShopIngredient(){
+                    id = 2,
+                    name = "Pasta",
+                    price = 2,
+                    amount = 0.2,
+                    unitType = "kg"
+                },
+            };
+            foreach (var shoping in shopIngredients)
+            {
+                databaseContext.shopIngredients.Add(shoping);
+            }
             
             
             databaseContext.SaveChanges();
@@ -234,8 +268,11 @@ namespace Server
                 ingredient = tek7,
                 recipe = steve7
             };
-            
-            steve7.IngredientRecipes = new List<IngredientRecipe>();
+
+            if (steve7.IngredientRecipes == null)
+            {
+                steve7.IngredientRecipes = new List<IngredientRecipe>();
+            }
             steve7.IngredientRecipes.Add(sc7);
             databaseContext.Update(steve7);
             
@@ -258,6 +295,47 @@ namespace Server
             // ctx.Set<StudentCourse>().Add(sc); This is an alternative
             await databaseContext.SaveChangesAsync();
             
+            //shops
+            
+            
+            //adding shopingredients
+            Shop shop1 = await databaseContext.shops.FirstAsync(s => s.shopId == 1);
+            ShopIngredient shopIngredient1 = await databaseContext.shopIngredients.FirstAsync(c => c.id == 1);
+            
+            ShopVare ss1 = new ShopVare()
+            {
+                shop = shop1,
+                shopIngredient = shopIngredient1
+            };
+
+            if (shop1.shopVares == null)
+            {
+                shop1.shopVares = new List<ShopVare>();
+            }
+            shop1.shopVares.Add(ss1);
+            databaseContext.Update(shop1);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+            
+            Shop shop2 = await databaseContext.shops.FirstAsync(s => s.shopId == 1);
+            ShopIngredient shopIngredient2 = await databaseContext.shopIngredients.FirstAsync(c => c.id == 2);
+            
+            ShopVare ss2 = new ShopVare()
+            {
+                shop = shop2,
+                shopIngredient = shopIngredient2
+            };
+
+            if (shop2.shopVares == null)
+            {
+                shop2.shopVares = new List<ShopVare>();
+            }
+            shop2.shopVares.Add(ss2);
+            databaseContext.Update(shop2);
+            
+            // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
         }
         
     }

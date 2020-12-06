@@ -32,14 +32,54 @@ namespace Db
 
         public async Task addRecipeAsync(Recipe recipe)
         {
-            await ctx.recipes.AddAsync(recipe);
-            foreach (var ingr in recipe.ingredients)
+            bool boolRecipeExists = false;
+            foreach (var recipeExists in ctx.recipes)
             {
-                if (!ctx.ingredients.Contains(ingr))
+                if (recipeExists.recipeId == recipe.recipeId)
                 {
-                    ctx.ingredients.Add(ingr);
+                    boolRecipeExists = true;
                 }
             }
+
+            if (!boolRecipeExists)
+            {
+                ctx.recipes.Add(recipe);
+            }
+            await ctx.SaveChangesAsync();
+        }
+        public async Task LinkIngredient(Recipe recipe, Ingredient ingredient)
+        {
+            Recipe recipe1 = await ctx.recipes.FirstAsync(s => s.recipeId == recipe.recipeId );
+            Ingredient ing1 = await ctx.ingredients.FirstAsync(c => c.ingredientId == ingredient.ingredientId);
+            IngredientRecipe sc = new IngredientRecipe()
+            {
+                recipe = recipe1,
+                ingredient = ing1
+            };
+            if (recipe1.IngredientRecipes == null)
+            {
+                recipe1.IngredientRecipes = new List<IngredientRecipe>();
+            }
+            recipe1.IngredientRecipes.Add(sc);
+            ctx.Update(recipe1);
+            await ctx.SaveChangesAsync();
+        }
+        
+        public async Task LinkCategory(Recipe recipe, Category category)
+        {
+            Recipe recipe1 = await ctx.recipes.FirstAsync(s => s.recipeId == recipe.recipeId );
+            Category cat1 = await ctx.categories.FirstAsync(c => c.categoryName.Equals(category.categoryName));
+            RecipeCategory sc = new RecipeCategory()
+            {
+                recipe = recipe1,
+                category = cat1
+            };
+            if (recipe1.RecipeCategories == null)
+            {
+                recipe1.RecipeCategories = new List<RecipeCategory>();
+            }
+            recipe1.RecipeCategories.Add(sc);
+            ctx.Update(recipe1);
             await ctx.SaveChangesAsync();
         }
 

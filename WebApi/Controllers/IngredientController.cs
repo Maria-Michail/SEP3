@@ -20,38 +20,25 @@ namespace WebApi.Controllers
             this.ingredientsService = ingredientsService;
         }
         
-        /*[HttpGet]
-        public async Task<ActionResult<IList<Ingredient>>> getIngredientAsync([FromQuery] int? id)
+        [HttpGet]
+        public async Task<ActionResult<IList<Ingredient>>> getIngredientAsync()
         {
             try
-                    {
-                        IList<Ingredient> ingredients = await ingredientsService.GetIngredientsAsync((int)id);
-                        Console.WriteLine(ingredients + "--> WebApi/ingredientController");
-                        return Ok(ingredients);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Wrong name of the recipe");
-                        return BadRequest(e.Message);
-                    }
-        }*/
-        
-        [HttpPost]
-        public async Task<ActionResult<Ingredient>> AddIngredient([FromBody] int id) {
-            if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                IList<Ingredient> ingredients = await ingredientsService.GetIngredientsAsync();
+                Console.WriteLine(ingredients + "--> WebApi/ingredientController");
+                return Ok(ingredients);
             }
-            try {
-                IList<Ingredient> ingredients = await ingredientsService.GetIngredientsAsync(id);
-                return Ok(ingredients); 
-            } catch (Exception e) {
-                Console.WriteLine(e);
-                return StatusCode(500, e.Message);
+            catch (Exception e)
+            {
+                Console.WriteLine("Wrong name of the recipe");
+                return BadRequest(e.Message);
             }
         }
         
-        [HttpGet]
+        
+        
+        /*[HttpGet]
         public async Task<ActionResult<IList<Ingredient>>> GetIngredients() {
             try
             {
@@ -61,6 +48,6 @@ namespace WebApi.Controllers
                 Console.WriteLine(e);
                 return StatusCode(500, e.Message);
             }
-        }
+        }*/
     }
 }

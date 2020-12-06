@@ -206,11 +206,35 @@ namespace Database.Migrations
                     b.ToTable("RecipeCategories");
                 });
 
+            modelBuilder.Entity("Model.Shop", b =>
+                {
+                    b.Property<int>("shopId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("shopAddressstreet")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("shopName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("shopId");
+
+                    b.HasIndex("shopAddressstreet");
+
+                    b.ToTable("shops");
+                });
+
             modelBuilder.Entity("Model.ShopIngredient", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("amount")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -220,9 +244,34 @@ namespace Database.Migrations
                     b.Property<double>("price")
                         .HasColumnType("REAL");
 
+                    b.Property<int?>("shopId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("unitType")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("TEXT");
+
                     b.HasKey("id");
 
+                    b.HasIndex("shopId");
+
                     b.ToTable("shopIngredients");
+                });
+
+            modelBuilder.Entity("Model.ShopVare", b =>
+                {
+                    b.Property<int>("shopId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("shopId", "id");
+
+                    b.HasIndex("id");
+
+                    b.ToTable("ShopVares");
                 });
 
             modelBuilder.Entity("Database.Model.AccountAddress", b =>
@@ -317,6 +366,41 @@ namespace Database.Migrations
                     b.Navigation("recipe");
                 });
 
+            modelBuilder.Entity("Model.Shop", b =>
+                {
+                    b.HasOne("Database.Model.Address", "shopAddress")
+                        .WithMany()
+                        .HasForeignKey("shopAddressstreet");
+
+                    b.Navigation("shopAddress");
+                });
+
+            modelBuilder.Entity("Model.ShopIngredient", b =>
+                {
+                    b.HasOne("Model.Shop", null)
+                        .WithMany("vares")
+                        .HasForeignKey("shopId");
+                });
+
+            modelBuilder.Entity("Model.ShopVare", b =>
+                {
+                    b.HasOne("Model.ShopIngredient", "shopIngredient")
+                        .WithMany("shopVares")
+                        .HasForeignKey("id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Model.Shop", "shop")
+                        .WithMany("shopVares")
+                        .HasForeignKey("shopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("shop");
+
+                    b.Navigation("shopIngredient");
+                });
+
             modelBuilder.Entity("Database.Model.Account", b =>
                 {
                     b.Navigation("AccountAddresses");
@@ -351,6 +435,18 @@ namespace Database.Migrations
                     b.Navigation("ingredients");
 
                     b.Navigation("RecipeCategories");
+                });
+
+            modelBuilder.Entity("Model.Shop", b =>
+                {
+                    b.Navigation("shopVares");
+
+                    b.Navigation("vares");
+                });
+
+            modelBuilder.Entity("Model.ShopIngredient", b =>
+                {
+                    b.Navigation("shopVares");
                 });
 #pragma warning restore 612, 618
         }

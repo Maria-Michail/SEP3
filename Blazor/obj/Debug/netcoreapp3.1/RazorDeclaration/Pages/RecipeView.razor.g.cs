@@ -106,7 +106,7 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 84 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+#line 85 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
        
     [Parameter]
     public int Id { get; set; }
@@ -119,18 +119,21 @@ using System.ComponentModel.DataAnnotations;
     protected override async Task OnInitializedAsync() {
         if (Id != 0) {
             Recipe = RecipeService.Recipes.FirstOrDefault(p => p.recipeId == Id);
-            Console.WriteLine(1);
             await IngredientsService.GetIngredientsAsync(Id);
             ingredients = IngredientsService.Ingredients;
         }
     }
 
-    private void HandleInvalidSubmit() {
-        Console.WriteLine("Invalid");
-    }
-
-    private void HandleValidSubmit() {
-        NavigationManager.NavigateTo("/ordersuccess");
+    public async Task ChooseRecipe()
+    {
+        try
+        {
+            NavigationManager.NavigateTo("/ingredientsList");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("failed");
+        }
     }
 
 

@@ -9,5 +9,7 @@ namespace Data.Impl
     {
         Task<IList<Recipe>> getRecipesAsync();
         Task<IList<Ingredient>> GetIngredientsAsync(int id);
+        Task<IList<OrderedShopIngredients>> GetShopIngredientsAsync(int id);
+        Task SetIngredientsAsync(IList<Ingredient> ingredients);
     }
 }
