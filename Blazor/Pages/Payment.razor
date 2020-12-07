@@ -5,7 +5,8 @@
 @using Blazor.Authorization
 @using Database.Model
 @using Model
-@inject IOrderService OrderService
+
+@inject IRecipeService RecipeService
 @inject NavigationManager NavigationManager
 
 
@@ -82,7 +83,7 @@
             <div class="row">
                 <div class="col-8">
                     <h1 class="display-4">@Recipe.recipeName</h1>
-                    <img src="../Images/@Recipe.imageName" class="card-img-top" alt="arrabiata" style="height: 100px; width: 100px">
+                    
                 </div>
                 <div class="col-4">
                     <p>$ 400</p>
@@ -137,6 +138,7 @@
     protected override async Task OnInitializedAsync()
     {
         //bankInfo = CustomAuthenticationStateProvider.getUser().bankInfo;
+        Recipe = RecipeService.recipe;
     }
     
     public async Task HandleValidPayment()
@@ -145,7 +147,7 @@
         try
         {
             Console.WriteLine("Trying paying");
-            await OrderService.storeOrder(Recipe.recipeId, currentUser.username, now, newShopIngredients, orderId, orderPrice);
+            //await OrderService.storeOrder(Recipe.recipeId, currentUser.username, now, newShopIngredients, orderId, orderPrice);
             NavigationManager.NavigateTo("/");
         }
         catch (Exception e)

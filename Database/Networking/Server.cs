@@ -90,7 +90,7 @@ namespace Server
                         content = JsonSerializer.Serialize(newAccount);
                         break;
                     }
-                    case "Order":
+                    /*case "Order":
                     {
                         byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
                         stream.Write(data1ToClient, 0, data1ToClient.Length);
@@ -102,6 +102,7 @@ namespace Server
                         content = JsonSerializer.Serialize(addOrder);
                         break;
                     }
+                    */
                     case "GetAllIngredients":
                     {
                         content = await getAllIngredients();

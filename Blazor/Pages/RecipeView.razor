@@ -94,6 +94,7 @@ else
     protected override async Task OnInitializedAsync() {
         if (Id != 0) {
             Recipe = RecipeService.Recipes.FirstOrDefault(p => p.recipeId == Id);
+            RecipeService.recipe = Recipe;
             await IngredientsService.GetIngredientsAsync(Id);
             ingredients = IngredientsService.Ingredients;
         }

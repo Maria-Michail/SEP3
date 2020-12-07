@@ -19,7 +19,8 @@ namespace Blazor.Data
             client = new HttpClient();
         }
         public IList<Recipe> Recipes { get; private set; }
-        
+        public Recipe recipe { get; set; }
+
         public async Task<List<Recipe>> GetRecipesAsync()
         {
             Task<string> stringAsync = client.GetStringAsync(uri+"/Recipe");
