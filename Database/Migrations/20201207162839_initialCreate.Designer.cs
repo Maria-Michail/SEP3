@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20201203131528_initialCreate")]
+    [Migration("20201207162839_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -166,8 +166,8 @@ namespace Database.Migrations
                     b.Property<string>("categoryName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("cookingTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("cookingTime")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -273,7 +273,7 @@ namespace Database.Migrations
 
                     b.HasIndex("shopIngredientId");
 
-                    b.ToTable("ShopVare");
+                    b.ToTable("shopvares");
                 });
 
             modelBuilder.Entity("Database.Model.AccountAddress", b =>

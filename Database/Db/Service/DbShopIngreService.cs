@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,22 @@ namespace Db
 
         public async Task removeShopIngredientAsync(ShopIngredient ingredient)
         {
+            Console.WriteLine("Inside remove");
+            if (ctx.shopvares.FirstOrDefaultAsync(s => s.shopIngredientId == ingredient.id) != null)
+            {
+                Console.WriteLine("ShopVares to remove");
+                List<ShopVare> shopVares = await ctx.shopvares.Where(s => s.shopIngredientId == ingredient.id).ToListAsync();
+                foreach (var shopVare in shopVares)
+                {
+                    Shop temp = await ctx.shops.FirstOrDefaultAsync(s=> s.shopId == shopVare.shopId);
+                    Console.WriteLine(temp);
+                    temp.vares.Remove(ingredient);
+                    temp.shopVares.Remove(shopVare);
+                    ctx.shops.Update(temp);
+                    ingredient.ShopVares.Remove(shopVare);
+                    ctx.shopvares.Remove(shopVare);
+                }
+            }
             ctx.shopIngredients.Remove(ingredient);
             await ctx.SaveChangesAsync();
         }

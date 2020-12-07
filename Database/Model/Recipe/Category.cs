@@ -9,7 +9,6 @@ namespace Model
         [Key]
         [Required]
         [MaxLength(64)]
-        [JsonPropertyName("Category")]
         public string categoryName { get; set; }
         
         public IList<RecipeCategory> RecipeCategories;

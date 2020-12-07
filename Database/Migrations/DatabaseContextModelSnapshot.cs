@@ -164,8 +164,8 @@ namespace Database.Migrations
                     b.Property<string>("categoryName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("cookingTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("cookingTime")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -271,7 +271,7 @@ namespace Database.Migrations
 
                     b.HasIndex("shopIngredientId");
 
-                    b.ToTable("ShopVare");
+                    b.ToTable("shopvares");
                 });
 
             modelBuilder.Entity("Database.Model.AccountAddress", b =>

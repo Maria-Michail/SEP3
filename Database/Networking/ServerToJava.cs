@@ -20,6 +20,7 @@ namespace Database.Networking{
         private IDbIngredientService ingredientService;
         private IDbShopService shopService;
         private IDbShopIngrService shopIngrService;
+        private Shop shopToLink = new Shop();
 
         public ServerToJava(IDbAccountService accountService, IDbRecipeService recipeService, IDbIngredientService ingredientService, IDbShopService shopService, IDbShopIngrService shopIngrService)
         {
@@ -44,88 +45,134 @@ namespace Database.Networking{
                 Console.WriteLine("Client connected");
                 NetworkStream stream = client.GetStream();
 
-                // Receiving
-                //byte[] rcvLen = new byte[1024];
-                //int i = stream.Read(rcvLen);
-                //Console.Write(1);
                 byte[] rcvBytes = new byte[1024];
                 stream.Read(rcvBytes);
                 String rcv = System.Text.Encoding.ASCII.GetString(rcvBytes);
+                
+                //Get methods
+                if (rcv.Contains("get"))
+                {
+                    if (rcv.Contains("Accounts"))
+                    {
+                        Console.WriteLine("Inside: Get Accounts");
+                        List<Account> accounts = await accountService.GetAccountsAcyns();
+                        content = JsonSerializer.Serialize(accounts);
+                    }else if (rcv.Contains("ShopIngredients"))
+                    {
+                        Console.WriteLine("Inside: Get ShopIngredients");
+                        List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
+                        content = JsonSerializer.Serialize(shopIngredients);
 
-                if (rcv.Contains("getAccounts"))
+                    }else if (rcv.Contains("Shops"))
+                    {
+                        Console.WriteLine("Inside: Get Shops");
+                        List<Shop> shops = await shopService.getShopsAsync();
+                        content = JsonSerializer.Serialize(shops);
+                    }else if (rcv.Contains("Ingredients"))
+                    {
+                        Console.WriteLine("Inside: Get Ingredients");
+                        List<Ingredient> ingredients = await ingredientService.getIngredientsAsync();
+                        content = JsonSerializer.Serialize(ingredients);
+                    }else if (rcv.Contains("Recipes"))
+                    {
+                        Console.WriteLine("Inside: Get Recipes");
+                        List<Recipe> recipes = await recipeService.getRecipiesAsync();
+                        content = JsonSerializer.Serialize(recipes);
+                    }
+                 //Add methods    
+                }else if (rcv.Contains("add"))
                 {
-                    List<Account> accounts = await accountService.GetAccountsAcyns();
-                    content = JsonSerializer.Serialize(accounts);
-                }
-                else if (rcv.Contains("getRecipes"))
+                    string subString = rcv.Substring(3);
+                    if (rcv.Contains("ShopIngredient"))
+                    {
+                        Console.WriteLine("Inside: Add ShopIngredient");
+                        ShopIngredient fromClient = (ShopIngredient) getClientsObject(stream, "ShopIngredient");
+                        await shopIngrService.addShopIngredientAsync(fromClient);
+                        content = fromClient.name + " added";
+                    }else if (rcv.Contains("Ingredient"))
+                    {
+                        Console.WriteLine("Inside: Add Ingredient");
+                        Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
+                        await ingredientService.addIngredientAsync(fromClient);
+                        content = fromClient.ingredientName + " added";
+                    }else if (rcv.Contains("Shop"))
+                    {
+                        Console.WriteLine("Inside: Add Shop");
+                        Shop fromClient = (Shop)getClientsObject(stream, "Shop");
+                        await shopService.addShopAsync(fromClient);
+                        content = fromClient.shopName + " added";
+                    }else if (rcv.Contains("Recipe"))
+                    {
+                        Console.WriteLine("Inside: Add Shop");
+                        Recipe fromClient = (Recipe) getClientsObject(stream, "Recipe");
+                        await recipeService.addRecipeAsync(fromClient);
+                        content = fromClient.recipeName + " added";
+                    }
+                 //Remove methods   
+                }else if (rcv.Contains("remove"))
                 {
-                    List<Recipe> recipes = await recipeService.getRecipiesAsync();
-                    content = JsonSerializer.Serialize(recipes);
-                }
-                else if (rcv.Contains("getIngredients"))
+                    if (rcv.Contains("ShopIngredient"))
+                    {
+                        Console.WriteLine("Inside: Remove ShopIngredient");
+                        ShopIngredient fromClient = (ShopIngredient) getClientsObject(stream, "ShopIngredient");
+                        Console.WriteLine(fromClient);
+                        await shopIngrService.removeShopIngredientAsync(fromClient);
+                        content = fromClient.name + " removed";
+ 
+                    }
+                    else if (rcv.Contains("Ingredient"))
+                    {
+                        Console.WriteLine("Inside: Remove ingredient");
+                        Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
+                        await ingredientService.removeIngredientAsync(fromClient);
+                        content = fromClient.ingredientName + " removed";
+                    }
+                    else if (rcv.Contains("Shop"))
+                    {
+                        Console.WriteLine("Inside: Remove Shop");
+                        Shop fromClient = (Shop) getClientsObject(stream, "Shop");
+                        await shopService.removeShopAsync(fromClient.shopName);
+                        content = fromClient.shopName + " removed";
+                    }
+                  //Update methods  
+                }else if (rcv.Contains("update"))
                 {
-                    List<Ingredient> ingredients = await ingredientService.getIngredientsAsync();
-                    content = JsonSerializer.Serialize(ingredients);
-                }
-                else if (rcv.Contains("getShops"))
+                    if (rcv.Contains("Shop"))
+                    {
+                        Console.WriteLine("Inside: update Shop");
+                        Shop fromClient = (Shop) getClientsObject(stream, "Shop");
+                        await shopService.updateShopAsync(fromClient);
+                        content = fromClient.shopName + " updated";
+                    }else if (rcv.Contains("Ingredient"))
+                    {
+                        Console.WriteLine("Inside: update Ingredient");
+                        Shop fromClient = (Shop) getClientsObject(stream, "Shop");
+                        await shopService.updateShopAsync(fromClient);
+                        content = fromClient.shopName + " updated";
+                    }
+                }else if (rcv.Contains("link"))
                 {
-                    List<Shop> shops = await shopService.getShopsAsync();
-                    content = JsonSerializer.Serialize(shops);
+                    Console.WriteLine("Inside: Link");
+                    if (rcv.Contains("ShopIngredientToShop1"))
+                    {
+                        shopToLink = (Shop) getClientsObject(stream, "Shop");
+                        content = "received";
+                    }else if (rcv.Contains("ShopIngredientToShop2"))
+                    {
+                        ShopIngredient shopIngredientToLink =(ShopIngredient) getClientsObject(stream, "ShopIngredient");
+                        if (shopToLink != null && shopIngredientToLink != null)
+                        {
+                            await shopService.linkShopVareAsync(shopToLink.shopId, shopIngredientToLink.id);
+                            content = "linked";
+                        }
+                        else
+                        {
+                            content = "null error";
+                        }
+                    }
                 }
-                else if (rcv.Contains("getShopIngredients"))
-                {
-                    List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
-                    content = JsonSerializer.Serialize(shopIngredients);
-                }
-                else if (rcv.Contains("addShop"))
-                {
-                    Shop fromClient = (Shop)getClientsObject(stream, "Shop");
-                    Console.WriteLine(fromClient.ToString());
-                    await shopService.addShopAsync(fromClient);
-                    content = fromClient.shopName + " added";
-                }
-                else if (rcv.Contains("removeShop"))
-                {
-                    Shop fromClient = (Shop) getClientsObject(stream, "Shop");
-                    await shopService.removeShopAsync(fromClient.shopName);
-                    content = fromClient.shopName + " removed";
-                }
-                else if (rcv.Contains("updateShop"))
-                {
-                    Shop fromClient = (Shop) getClientsObject(stream, "Shop");
-                    await shopService.updateShopAsync(fromClient);
-                    content = fromClient.shopName + " updated";
-                }
-                else if (rcv.Contains("addIngredient"))
-                {
-                    Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
-                    await ingredientService.addIngredientAsync(fromClient);
-                    content = fromClient.ingredientName + " added";
-                }
-                else if (rcv.Contains("removeIngredient"))
-                {
-                    Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
-                    await ingredientService.removeIngredientAsync(fromClient);
-                    content = fromClient.ingredientName + " removed";
-                }
-                else if (rcv.Contains("updateIngredient"))
-                {
-                    Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
-                    await ingredientService.updateIngredientAsync(fromClient);
-                    content = fromClient.ingredientName + " updated";
-                }
-                else if (rcv.Contains("addRecipe"))
-                {
-                    Recipe fromClient = (Recipe) getClientsObject(stream, "Recipe");
-                    await recipeService.addRecipeAsync(fromClient);
-                    content = fromClient.recipeName + " added";
-                }
-                else if (rcv.Contains("addShopIngredient"))
-                {
-                    ShopIngredient fromClient = (ShopIngredient) getClientsObject(stream, "ShopIngredient");
-                    await shopIngrService.addShopIngredientAsync(fromClient);
-                    content = fromClient.name + " added";
-                }
+                
+                Console.WriteLine("End of If: " + content);
                 // Sending
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
                 stream.Write(toSendBytes);

@@ -18,6 +18,7 @@ namespace Db{
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
+        public DbSet<ShopVare> shopvares { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
@@ -121,6 +122,7 @@ namespace Db{
                     }
                 );
             
+            //Shop and ShopIngredient many-to-many
             modelBuilder.Entity<ShopVare>()
                 .HasOne(shopVare => shopVare.shopIngredient)
                 .WithMany(shopIngredient => shopIngredient.ShopVares)

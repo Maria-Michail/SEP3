@@ -31,17 +31,88 @@ namespace Server
             IDbBankInfoService bankInfoService = new DbBankInfoService();
             IDbIngredientService ingredientService = new DbIngredientService();
             IDbShopService shopService = new DbShopService();
-            //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
-            ServerToJava toJava = new ServerToJava(accountService,recipeService,ingredientService,shopService,shopIngrService);
+
+            /*
+            List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
+            List<Shop> shops = await shopService.getShopsAsync();
+
+            ShopIngredient shopIngredient = new ShopIngredient();
+            Shop shop = new Shop();
+            if (shopIngredients.Count < 1)
+            {
+                Amount amount = new Amount();
+                amount.number = 1;
+                amount.unitType = "kg";
+                shopIngredient.id = shopIngredients.Count + 1;
+                shopIngredient.name = "Danish Potatoes";
+                shopIngredient.price = 20;
+                shopIngredient.ShopVares = new List<ShopVare>();
+                shopIngredient.unitType = "DKK";
+                await shopIngrService.addShopIngredientAsync(shopIngredient);
+            }
+
+            if (shops.Count < 1)
+            {
+                Address address = new Address();
+                address.city = "Horsens";
+                address.street = "Kollegievænget 3";
+                address.zipCode = 8700;
+                address.AccountAddresses = new List<AccountAddress>();
+                shop.shopAddress = address;
+                shop.shopId = shops.Count + 1;
+                shop.shopName = "Rema";
+                shop.shopVares = new List<ShopVare>();
+                shop.vares = new List<ShopIngredient>();
+                await shopService.addShopAsync(shop);
+            }
+
+            if (shops.Count == 1 && shopIngredients.Count == 1)
+            {
+                await shopService.linkShopVareAsync(shops[0].shopId, shopIngredients[0].id);
+            }*/
+
+            
+            List<Recipe> recipes = await recipeService.getRecipiesAsync();
+            Ingredient ingredient1 = new Ingredient();
+            Ingredient ingredient2 = new Ingredient();
+            Recipe recipe = new Recipe();
+            ingredient1.number = 2;
+            ingredient1.unitType = "slice";
+            ingredient1.ingredientId = 1;
+            ingredient1.ingredientName = "Toast";
+            ingredient2.number = 1;
+            ingredient2.unitType = "medium";
+            ingredient2.ingredientId = 2;
+            ingredient2.ingredientName = "Eggs";
+            List<Ingredient> ingredients = new List<Ingredient>();
+            ingredients.Add(ingredient1);
+            ingredients.Add(ingredient2);
+            
+            recipe.description = "French toast easy enough";
+            recipe.instructions = "Just do it";
+            recipe.IngredientRecipes = new List<IngredientRecipe>();
+            recipe.Category = new Category()
+            {
+                categoryName = "Very Easy"
+            };
+            recipe.recipeId = 1;
+            recipe.recipeName = "French Toast";
+            recipe.imageName = "no Clue yet here";
+            recipe.ingredients = ingredients;
+            await recipeService.addRecipeAsync(recipe);
+
+
+                //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
+            //ServerToJava toJava = new ServerToJava(accountService,recipeService,ingredientService,shopService,shopIngrService);
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();
             await tmp.saveAccountAsync(accounts[0]);
             await tmp.saveAccountAsync(accounts[1]);
             */
-            toJava.start();
+            //toJava.start();
         }
-        
+
         private static async Task Seed(DatabaseContext databaseContext)
         {
             Address[] addresses = {
