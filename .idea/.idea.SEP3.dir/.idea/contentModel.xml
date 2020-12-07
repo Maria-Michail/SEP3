@@ -31,6 +31,8 @@
           <e p="AccountBankInfo.cs" t="Include" />
           <e p="Address.cs" t="Include" />
           <e p="BankInfo.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="OrderedShopIngredients.cs" t="Include" />
           <e p="Recipe" t="Include">
             <e p="Category.cs" t="Include" />
             <e p="Ingredient.cs" t="Include" />
@@ -39,6 +41,7 @@
             <e p="RecipeCategory.cs" t="Include" />
           </e>
           <e p="Register.cs" t="Include" />
+          <e p="ShopRelated" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
