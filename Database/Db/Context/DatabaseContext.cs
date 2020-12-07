@@ -3,6 +3,7 @@ using Database.Model;
 using Model;
 using SQLitePCL;
 using System.Linq.Expressions;
+using Database.Model.ShopRelated;
 
 namespace Db{
     public class DatabaseContext : DbContext{
@@ -16,16 +17,19 @@ namespace Db{
         
         public DbSet<Category> categories { get; set; }
         public DbSet<Shop> shops { get; set; }
-
+        public DbSet<Order> orders { get; set; }
+        public DbSet<OrderedShopIngredients> orderedShopIngredients { get; set; }
+        
         public DbSet<AccountAddress> AccountAddresses { get; set; }
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
         public DbSet<ShopVare> ShopVares { get; set; }
+        public DbSet<OSIngredients> OsIngredientses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
-            optionsBuilder.UseSqlite(@"Data Source = /Users/wojtek/RiderProjects/SEP3/Database/MainDb.db");
+            optionsBuilder.UseSqlite(@"Data Source = C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db");
 
         }
         
@@ -133,6 +137,26 @@ namespace Db{
                 .HasOne(shopVare => shopVare.shopIngredient)
                 .WithMany(shopIngredient => shopIngredient.shopVares)
                 .HasForeignKey(shopVare => shopVare.id);
+            
+            //OS many to many NOT DONE
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<OSIngredients>()
+                .HasKey(sc =>
+                    new
+                    {
+                        sc.osId,
+                        sc.id
+                    }
+                );
+            modelBuilder.Entity<OSIngredients>()
+                .HasOne(oSIngredients => oSIngredients.shopIngredient)
+                .WithMany(shopIngredient => shopIngredient.OsIngredientses)
+                .HasForeignKey(osIngredients => osIngredients.id);
+
+            modelBuilder.Entity<OSIngredients>()
+                .HasOne(oSIngredients => oSIngredients.orderedShopIngredients)
+                .WithMany(orderedShopIngredients => orderedShopIngredients.OsIngredientses)
+                .HasForeignKey(osIngredients => osIngredients.id);
         }
     } 
 }

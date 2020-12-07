@@ -12,7 +12,7 @@ namespace Data.Impl
     public class RecipeService : IRecipeService
     {
         
-        SocketsToDatabase so;
+        ISocketsToDatabase so;
         private IList<Recipe> recipes;
         private IList<Ingredient> ingredients;
 
@@ -96,11 +96,13 @@ namespace Data.Impl
                     temporaryIngPrice = temporaryIngPrice + priceIncrease;
                 }
                 OrderedShopIngredients newOrd = new OrderedShopIngredients();
-                newOrd.amount = temporaryIngAmount;
-                newOrd.amount = Math.Round(newOrd.amount, 2);
+                double totalAmount = temporaryIngAmount;
+                totalAmount = Math.Round(totalAmount, 2);
+                newOrd.amount = (int)Math.Round(totalAmount/amountIncrease);
                 newOrd.totalPrice = temporaryIngPrice;
                 newOrd.totalPrice = Math.Round(newOrd.totalPrice, 2);
-                newOrd.ingredient = temporaryIngredient;
+                newOrd.ShopIngredient = temporaryIngredient;
+                newOrd.osId = 0;
                 orderedShopIngredientses.Add(newOrd);
                 temporaryIngredient = null;
             }

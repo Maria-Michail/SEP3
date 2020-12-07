@@ -5,8 +5,9 @@
 @using Blazor.Authorization
 @using Database.Model
 @using Model
-
+@inject IOrderService OrderService
 @inject IRecipeService RecipeService
+@inject IIngredientsService IngredientsService
 @inject NavigationManager NavigationManager
 
 
@@ -121,11 +122,10 @@
 
     private DateTime expiryDate;
     private int cvv;
-    private DateTime now = DateTime.Now;
     
     //Change those two
-    private int orderId = 1;
-    private double orderPrice = 230.50;
+    private int orderId = 0;
+    private double orderPrice = 0;
 
     private string errorMessage;
 
@@ -139,6 +139,13 @@
     {
         //bankInfo = CustomAuthenticationStateProvider.getUser().bankInfo;
         Recipe = RecipeService.recipe;
+        currentUser = CustomAuthenticationStateProvider.getUser();
+        newShopIngredients = IngredientsService.OrderedShopIngredients;
+        foreach (var order in newShopIngredients)
+        {
+            orderPrice = orderPrice + order.totalPrice;
+        }
+        
     }
     
     public async Task HandleValidPayment()
@@ -146,8 +153,14 @@
         errorMessage = "";
         try
         {
+            newOrder.orderId = orderId;
+            newOrder.dateTime = DateTime.Now;
+            newOrder.orderPrice = orderPrice;
+            newOrder.recipeId = Recipe.recipeId;
+            newOrder.userName = currentUser.username;
+            newOrder.OrderedShopIngredients = newShopIngredients;
             Console.WriteLine("Trying paying");
-            //await OrderService.storeOrder(Recipe.recipeId, currentUser.username, now, newShopIngredients, orderId, orderPrice);
+            await OrderService.storeOrder(newOrder);
             NavigationManager.NavigateTo("/");
         }
         catch (Exception e)

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
@@ -54,6 +55,22 @@ namespace Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_categories", x => x.categoryName);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "orders",
+                columns: table => new
+                {
+                    orderId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    orderPrice = table.Column<double>(type: "REAL", nullable: false),
+                    recipeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    userName = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orders", x => x.orderId);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,6 +235,34 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "orderedShopIngredients",
+                columns: table => new
+                {
+                    osId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    totalPrice = table.Column<double>(type: "REAL", nullable: false),
+                    amount = table.Column<int>(type: "INTEGER", nullable: false),
+                    ingredientid = table.Column<int>(type: "INTEGER", nullable: true),
+                    orderId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orderedShopIngredients", x => x.osId);
+                    table.ForeignKey(
+                        name: "FK_orderedShopIngredients_orders_orderId",
+                        column: x => x.orderId,
+                        principalTable: "orders",
+                        principalColumn: "orderId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_orderedShopIngredients_shopIngredients_ingredientid",
+                        column: x => x.ingredientid,
+                        principalTable: "shopIngredients",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ShopVares",
                 columns: table => new
                 {
@@ -265,6 +310,30 @@ namespace Database.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "OsIngredientses",
+                columns: table => new
+                {
+                    osId = table.Column<int>(type: "INTEGER", nullable: false),
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OsIngredientses", x => new { x.osId, x.id });
+                    table.ForeignKey(
+                        name: "FK_OsIngredientses_orderedShopIngredients_id",
+                        column: x => x.id,
+                        principalTable: "orderedShopIngredients",
+                        principalColumn: "osId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OsIngredientses_shopIngredients_id",
+                        column: x => x.id,
+                        principalTable: "shopIngredients",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AccountAddresses_street",
                 table: "AccountAddresses",
@@ -284,6 +353,21 @@ namespace Database.Migrations
                 name: "IX_ingredients_recipeId",
                 table: "ingredients",
                 column: "recipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orderedShopIngredients_ingredientid",
+                table: "orderedShopIngredients",
+                column: "ingredientid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orderedShopIngredients_orderId",
+                table: "orderedShopIngredients",
+                column: "orderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OsIngredientses_id",
+                table: "OsIngredientses",
+                column: "id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RecipeCategories_recipeId",
@@ -323,6 +407,9 @@ namespace Database.Migrations
                 name: "IngredientRecipes");
 
             migrationBuilder.DropTable(
+                name: "OsIngredientses");
+
+            migrationBuilder.DropTable(
                 name: "RecipeCategories");
 
             migrationBuilder.DropTable(
@@ -338,16 +425,22 @@ namespace Database.Migrations
                 name: "ingredients");
 
             migrationBuilder.DropTable(
-                name: "shopIngredients");
+                name: "orderedShopIngredients");
 
             migrationBuilder.DropTable(
                 name: "recipes");
 
             migrationBuilder.DropTable(
-                name: "shops");
+                name: "orders");
+
+            migrationBuilder.DropTable(
+                name: "shopIngredients");
 
             migrationBuilder.DropTable(
                 name: "categories");
+
+            migrationBuilder.DropTable(
+                name: "shops");
 
             migrationBuilder.DropTable(
                 name: "addresses");

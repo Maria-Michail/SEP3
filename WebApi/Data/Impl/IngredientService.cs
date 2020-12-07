@@ -10,7 +10,7 @@ namespace Blazor.Data
 {
     public class IngredientService : IIngredientsService
     {
-        SocketsToDatabase so;
+        ISocketsToDatabase so;
         private IList<Ingredient> ingredients;
         private int recipeId;
 

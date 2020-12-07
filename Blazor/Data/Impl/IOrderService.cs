@@ -1,12 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Database.Model;
 using Model;
 
-namespace WebApi.Data.Impl
+namespace Blazor.Data
 {
     public interface IOrderService
     {
-        Task<Order> AddOrderAsync(Order order);
+        Task storeOrder(Order newOrder);
     }
 }

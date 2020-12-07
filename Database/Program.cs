@@ -29,7 +29,9 @@ namespace Server
             IDbShopIngrService shopIngrService = new DbShopIngreService();
             IDbBankInfoService bankInfoService = new DbBankInfoService();
             IDbIngredientService ingredientService = new DbIngredientService();
-            Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService, ingredientService);
+            IDbOrderedShopIngreService orderedShopIngreService = new DbOrderedShopIngreService();
+            IDbOrderService orderService = new DbOrderService();
+            Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService, ingredientService, orderedShopIngreService, orderService);
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();

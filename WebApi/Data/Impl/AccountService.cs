@@ -12,7 +12,7 @@ namespace Data.Impl
 {
     public class AccountService : IAccountService
     {
-        SocketsToDatabase so;
+        ISocketsToDatabase so;
         private IList<Account> accounts;
         private IList<Address> addresses;
         private IList<BankInfo> bankInfos;

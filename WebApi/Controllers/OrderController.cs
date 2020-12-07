@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Data.Impl;
 using Database.Model;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 using WebApi.Data.Impl;
 
 namespace WebApi.Controllers
@@ -27,6 +28,7 @@ namespace WebApi.Controllers
                 return BadRequest(ModelState);
             }
             try {
+                Console.WriteLine("WebApi recieved" + order.userName + order.dateTime);
                 Order added = await orderService.AddOrderAsync(order);
                 return Created($"/{added.orderId}",added); 
             } catch (Exception e) {

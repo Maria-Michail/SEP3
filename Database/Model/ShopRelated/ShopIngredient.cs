@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Database.Model.ShopRelated;
 
 namespace Model
 {
@@ -33,6 +34,7 @@ namespace Model
         public string unitType { get; set; }
 
         public IList<ShopVare> shopVares { get; set; }
+        public IList<OSIngredients> OsIngredientses { get; set; }
 
         public override string ToString()
         {

@@ -8,7 +8,7 @@ using Model;
 
 
 namespace WebApi.Networking {
-class SocketsToDatabase {
+class SocketsToDatabase : ISocketsToDatabase{
     public Object getAccounts() {
         Console.WriteLine("Starting client..");
 
