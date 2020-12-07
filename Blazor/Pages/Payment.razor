@@ -4,7 +4,8 @@
 @using System.Numerics
 @using Blazor.Authorization
 @using Database.Model
-@inject IAccountService AccountService
+@using Model
+@inject IOrderService OrderService
 @inject NavigationManager NavigationManager
 
 
@@ -80,7 +81,8 @@
         <div class="col-8">
             <div class="row">
                 <div class="col-8">
-                    <img src="../Images/arrabiata.jpg" class="card-img-top" alt="arrabiata" style="height: 100px; width: 100px">
+                    <h1 class="display-4">@Recipe.recipeName</h1>
+                    <img src="../Images/@Recipe.imageName" class="card-img-top" alt="arrabiata" style="height: 100px; width: 100px">
                 </div>
                 <div class="col-4">
                     <p>$ 400</p>
@@ -118,10 +120,19 @@
 
     private DateTime expiryDate;
     private int cvv;
+    private DateTime now = DateTime.Now;
+    
+    //Change those two
+    private int orderId = 1;
+    private double orderPrice = 230.50;
 
     private string errorMessage;
 
     private BankInfo bankInfo = new BankInfo();
+    private Order newOrder = new Order();
+    public Recipe Recipe;
+    public Account currentUser;
+    private IList<OrderedShopIngredients> newShopIngredients = new List<OrderedShopIngredients>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -134,7 +145,7 @@
         try
         {
             Console.WriteLine("Trying paying");
-            //await AccountService.Payment();
+            await OrderService.storeOrder(Recipe.recipeId, currentUser.username, now, newShopIngredients, orderId, orderPrice);
             NavigationManager.NavigateTo("/");
         }
         catch (Exception e)

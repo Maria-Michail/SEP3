@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="ImagesTemp" />
+    <Folder Include="Models\ShopRelated" />
   </ItemGroup>
 
 </Project>

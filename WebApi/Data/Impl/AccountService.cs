@@ -79,6 +79,7 @@ namespace Data.Impl
             Account addedAccount = (Account)so.AddAccount(register);
             return addedAccount;
         }
+        
 
         /*public async Task<Account> ValidateUser(string username, string password)
         {

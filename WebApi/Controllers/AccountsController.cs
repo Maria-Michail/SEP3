@@ -69,7 +69,7 @@ namespace WebApi.Controllers
             }
             try {
                 Account added = await accountService.AddAccountAsync(register);
-                return Created($"/{added.username}",added); // return newly added to-do, to get the auto generated id
+                return Created($"/{added.username}",added); 
             } catch (Exception e) {
                 Console.WriteLine(e); 
                 return StatusCode(500, e.Message);

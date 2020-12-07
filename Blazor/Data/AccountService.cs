@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Database.Model;
+using Model;
 
 
 namespace Blazor.Data
@@ -58,5 +59,26 @@ namespace Blazor.Data
             await client.PostAsync(uri+"/Accounts", content);
                 
         }
+
+        public async Task storeOrder(int recipeId, string userName, DateTime orderDateTime, IList<OrderedShopIngredients> newShopIngredients, int orderId,
+            double orderPrice)
+        {
+            Order newOrder = new Order();
+            newOrder.recipeId = recipeId;
+            newOrder.userName = userName;
+            newOrder.dateTime = orderDateTime;
+            newOrder.orderedShopIngredientses = newShopIngredients;
+            //int max = orders.Max(order => order.orderId);
+            //newOrder.orderId = (++max);
+            newOrder.orderId = 0;
+            newOrder.orderPrice = orderPrice;
+            
+            string order = JsonSerializer.Serialize(newOrder);
+            HttpContent content = new StringContent(order,
+                Encoding.UTF8,
+                "application/json");
+            await client.PostAsync(uri+"/Orders", content);
+        }
+        
     }
 }

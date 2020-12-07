@@ -90,6 +90,18 @@ namespace Server
                         content = JsonSerializer.Serialize(newAccount);
                         break;
                     }
+                    case "Order":
+                    {
+                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
+                        stream.Write(data1ToClient, 0, data1ToClient.Length);
+                        byte[] objectFromClient = new byte[1024];
+                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
+                        string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+                        Order addOrder= JsonSerializer.Deserialize<Order>(objectString);
+
+                        content = JsonSerializer.Serialize(addOrder);
+                        break;
+                    }
                     case "GetAllIngredients":
                     {
                         content = await getAllIngredients();

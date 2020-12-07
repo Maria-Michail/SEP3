@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Database.Model;
+using Model;
 
 
 namespace Blazor.Data
@@ -12,5 +14,8 @@ namespace Blazor.Data
         Task<List<Account>> GetAccountsAsync();
         
         Task Register(Account newAccount, Address newAddress, BankInfo newBankInfo);
+
+        
+            
     }
 }
