@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Database.Model;
+using Database.Model.Order;
 using Database.Model.ShopRelated;
 using Microsoft.EntityFrameworkCore;
 using Model;
@@ -11,40 +12,37 @@ namespace Db
     public class DbOrderedShopIngreService:IDbOrderedShopIngreService
     {
         DatabaseContext ctx = new DatabaseContext();
-        public async Task<List<OrderedShopIngredients>> getOrderedShopIngredientsAsync()
+        public async Task<List<OrderedIngredient>> getOrderedShopIngredientsAsync()
         {
-            List<OrderedShopIngredients> temp = await ctx.orderedShopIngredients.ToListAsync();
+            List<OrderedIngredient> temp = await ctx.OrderedIngredients.ToListAsync();
             return temp;
         }
 
-        public async Task<OrderedShopIngredients> getOrderedShopIngredientAsync(int id)
+        public async Task<OrderedIngredient> getOrderedShopIngredientAsync(int id)
         {
-            OrderedShopIngredients temp = await ctx.orderedShopIngredients.FirstOrDefaultAsync(s => s.osId == id);
+            OrderedIngredient temp = await ctx.OrderedIngredients.FirstOrDefaultAsync(s => s.osId == id);
             return temp;
         }
 
-        public async Task addOrderedShopIngredientAsync(OrderedShopIngredients ingredient)
+        public async Task addOrderedShopIngredientAsync(OrderedIngredient ingredient)
         {
-            List<OrderedShopIngredients> temp = await ctx.orderedShopIngredients.ToListAsync();
-            int id = temp.Count;
-            ingredient.osId = id;
-            ctx.orderedShopIngredients.Add(ingredient);
+            ctx.OrderedIngredients.Add(ingredient);
             await ctx.SaveChangesAsync();
         }
-        public async Task addOrderedShopIngredientsAsync(IList<OrderedShopIngredients> ingredients)
+        public async Task addOrderedShopIngredientsAsync(IList<OrderedIngredient> ingredients)
         {
             Console.WriteLine(2);
             foreach (var ing in ingredients)
             {
                 Console.WriteLine("inside");
-                await ctx.orderedShopIngredients.AddAsync(ing);
+                await ctx.OrderedIngredients.AddAsync(ing);
                 await ctx.SaveChangesAsync();
-                await LinkShop(ing);
+                //await LinkShop(ing);
             }
             await ctx.SaveChangesAsync();
         }
         
-        public async Task LinkShop(OrderedShopIngredients ord)
+        /*public async Task LinkShop(OrderedIngredient ord)
         {
             //OrderedShopIngredients ord = await ctx.orderedShopIngredients.FirstAsync(s => s.osId == orderedShopIngredient.osId );
             Console.WriteLine(ord.ShopIngredient.name);
@@ -64,17 +62,17 @@ namespace Db
             shop.OsIngredientses.Add(sc2);
             ctx.Update(shop);
             await ctx.SaveChangesAsync();
-        }
+        }*/
 
-        public async Task updateOrderedShopIngredientAsync(OrderedShopIngredients ingredient)
+        public async Task updateOrderedShopIngredientAsync(OrderedIngredient ingredient)
         {
-            ctx.orderedShopIngredients.Update(ingredient);
+            ctx.OrderedIngredients.Update(ingredient);
             await ctx.SaveChangesAsync();
         }
 
-        public async Task removeOrderedShopIngredientAsync(OrderedShopIngredients ingredient)
+        public async Task removeOrderedShopIngredientAsync(OrderedIngredient ingredient)
         {
-            ctx.orderedShopIngredients.Remove(ingredient);
+            ctx.OrderedIngredients.Remove(ingredient);
             await ctx.SaveChangesAsync();
         }
     }

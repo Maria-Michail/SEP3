@@ -8,7 +8,7 @@ namespace Db{
         Task<List<Account>> GetAccountsAcyns();
         
         Task<Account> addAccountAsync(Account account);
-
+        Task<Account> GetAccountAcyns(string username);
 
         Task removeAccountAsync(Account account);
 

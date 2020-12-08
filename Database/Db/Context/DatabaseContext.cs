@@ -3,6 +3,7 @@ using Database.Model;
 using Model;
 using SQLitePCL;
 using System.Linq.Expressions;
+using Database.Model.Order;
 using Database.Model.ShopRelated;
 
 namespace Db{
@@ -17,15 +18,17 @@ namespace Db{
         
         public DbSet<Category> categories { get; set; }
         public DbSet<Shop> shops { get; set; }
-        public DbSet<Order> orders { get; set; }
-        public DbSet<OrderedShopIngredients> orderedShopIngredients { get; set; }
+        public DbSet<OrderTable> orders { get; set; }
+        public DbSet<OrderedIngredient> OrderedIngredients { get; set; }
+        //public DbSet<Order> orders { get; set; }
+        //public DbSet<OrderedShopIngredients> orderedShopIngredients { get; set; }
         
         public DbSet<AccountAddress> AccountAddresses { get; set; }
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
         public DbSet<ShopVare> ShopVares { get; set; }
-        public DbSet<OSIngredients> OsIngredientses { get; set; }
+        //public DbSet<OSIngredients> OsIngredientses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
@@ -139,7 +142,7 @@ namespace Db{
                 .HasForeignKey(shopVare => shopVare.id);
             
             //OS many to many NOT DONE
-            base.OnModelCreating(modelBuilder);
+            /*base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<OSIngredients>()
                 .HasKey(sc =>
                     new
@@ -156,7 +159,7 @@ namespace Db{
             modelBuilder.Entity<OSIngredients>()
                 .HasOne(oSIngredients => oSIngredients.orderedShopIngredients)
                 .WithMany(orderedShopIngredients => orderedShopIngredients.OsIngredientses)
-                .HasForeignKey(osIngredients => osIngredients.id);
+                .HasForeignKey(osIngredients => osIngredients.id);*/
         }
     } 
 }

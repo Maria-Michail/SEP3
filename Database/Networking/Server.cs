@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.IO;
 using Db;
 using System.Threading.Tasks;
+using Database.Model.Order;
 using Model;
 
 namespace Server
@@ -42,6 +43,7 @@ namespace Server
             listener.Start();
 
             Console.WriteLine("Server started...");
+            
 
             while (true)
             {
@@ -316,12 +318,29 @@ namespace Server
             return JsonSerializer.Serialize(shopIngredients);
         }
 
-        private async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
+        public async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
         {
-            Console.WriteLine("done");
-            await orderService.addOrderAsync(order);
-            Console.WriteLine(orderedShopIngredients[0].ShopIngredient.name);
-            await orderedShopIngService.addOrderedShopIngredientsAsync(orderedShopIngredients);
+            OrderTable orderTable = new OrderTable();
+            orderTable.dateTime = order.dateTime;
+            orderTable.orderPrice = order.orderPrice;
+            Account user = await accountService.GetAccountAcyns(order.userName);
+            Console.WriteLine(user.username);
+            orderTable.Account = user;
+            Console.WriteLine(orderTable.ToString());
+            
+            IList<OrderedIngredient> orderedIngredients = new List<OrderedIngredient>();
+            foreach (var orderedShop in orderedShopIngredients)
+            {
+                OrderedIngredient orderedIngredient = new OrderedIngredient();
+                orderedIngredient.totalPrice = orderedShop.totalPrice;
+                orderedIngredient.amount = orderedShop.amount;
+                orderedIngredient.ShopIngredient = orderedShop.ShopIngredient;
+                orderedIngredient.OrderTable = orderTable;
+                orderedIngredients.Add(orderedIngredient);
+            }
+            await orderService.addOrderAsync(orderTable);
+            await orderedShopIngService.addOrderedShopIngredientsAsync(orderedIngredients);
+            
         }
     }
 }

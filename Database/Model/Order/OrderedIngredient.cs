@@ -1,19 +1,17 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-using Database.Model.ShopRelated;
 using Model;
 
-namespace Database.Model
+namespace Database.Model.Order
 {
-    public class OrderedShopIngredients
+    public class OrderedIngredient
     {
         [Key]
         [Required]
         [NotNull]
         public int osId { get; set; }
-        
         [Required]
         [JsonPropertyName("TotalPrice")]
         public double totalPrice { get; set; }
@@ -25,7 +23,9 @@ namespace Database.Model
         [Required]
         [JsonPropertyName("ShopIngredient")]
         public ShopIngredient ShopIngredient { get; set; }
-
-
+        
+        [Required]
+        [JsonPropertyName("OrderTable")]
+        public OrderTable OrderTable { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Database.Model;
+using Database.Model.Order;
 using Microsoft.EntityFrameworkCore;
 using Model;
 
@@ -10,23 +11,21 @@ namespace Db
     public class DbOrderService:IDbOrderService
     {
         DatabaseContext ctx = new DatabaseContext();
-        public async Task<List<Order>> getOrdersAsync()
+        public async Task<List<OrderTable>> getOrdersAsync()
         {
-            List<Order> temp = await ctx.orders.ToListAsync();
+            List<OrderTable> temp = await ctx.orders.ToListAsync();
             return temp;
         }
 
-        public async Task<Order> getOrderAsync(int id)
+        public async Task<OrderTable> getOrderAsync(int id)
         {
-            Order temp = await ctx.orders.FirstOrDefaultAsync(s => s.orderId == id);
+            OrderTable temp = await ctx.orders.FirstOrDefaultAsync(s => s.orderId == id);
             return temp;
         }
 
-        public async Task addOrderAsync(Order order)
+        public async Task addOrderAsync(OrderTable order)
         {
-            Console.WriteLine("here");
             await ctx.orders.AddAsync(order);
-            Console.WriteLine("hereh");
             await ctx.SaveChangesAsync();
         }
         
@@ -48,13 +47,13 @@ namespace Db
             await ctx.SaveChangesAsync();
         }*/
 
-        public async Task updateOrderAsync(Order order)
+        public async Task updateOrderAsync(OrderTable order)
         {
             ctx.orders.Update(order);
             await ctx.SaveChangesAsync();
         }
 
-        public async Task removeOrderAsync(Order order)
+        public async Task removeOrderAsync(OrderTable order)
         {
             ctx.orders.Remove(order);
             await ctx.SaveChangesAsync();

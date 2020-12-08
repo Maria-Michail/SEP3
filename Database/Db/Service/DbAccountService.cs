@@ -20,6 +20,12 @@ namespace Db
             List<Account> accounts = await ctx.accounts.ToListAsync();   
             return accounts;
         }
+        
+        public async Task<Account> GetAccountAcyns(string username)
+        {
+            Account account = await ctx.accounts.FirstOrDefaultAsync(i => i.username.Equals(username));   
+            return account;
+        }
 
         public async Task removeAccountAsync(Account account)
         {

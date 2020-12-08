@@ -23,6 +23,11 @@ namespace Db
             Recipe temp = await ctx.recipes.FirstOrDefaultAsync(r => r.recipeName.Equals(recipeName));
             return temp;
         }
+        public async Task<Recipe> getRecipeByIdAsync(int recipeid)
+        {
+            Recipe temp = await ctx.recipes.FirstOrDefaultAsync(r => r.recipeId == recipeid);
+            return temp;
+        }
 
         public async Task removeRecipeAsync(string recipeName)
         {

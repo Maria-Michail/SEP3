@@ -339,6 +339,8 @@ namespace Server
             // ctx.Set<StudentCourse>().Add(sc); This is an alternative
             await databaseContext.SaveChangesAsync();
         }
+
+        
         
     }
     
