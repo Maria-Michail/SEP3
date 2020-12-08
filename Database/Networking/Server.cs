@@ -318,10 +318,8 @@ namespace Server
 
         private async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
         {
-            Console.WriteLine("done");
             await orderService.addOrderAsync(order);
-            Console.WriteLine(orderedShopIngredients[0].ShopIngredient.name);
-            await orderedShopIngService.addOrderedShopIngredientsAsync(orderedShopIngredients);
+            await orderedShopIngService.addOrderedShopIngredientsAsync(orderedShopIngredients, order);
         }
     }
 }

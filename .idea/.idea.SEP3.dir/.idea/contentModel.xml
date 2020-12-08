@@ -153,8 +153,8 @@
         </e>
         <e p="MainDb.db" t="Include" />
         <e p="Migrations" t="Include">
-          <e p="20201207194621_Wojtek.cs" t="Include" />
-          <e p="20201207194621_Wojtek.Designer.cs" t="Include" />
+          <e p="20201208120347_Wojtek.cs" t="Include" />
+          <e p="20201208120347_Wojtek.Designer.cs" t="Include" />
           <e p="DatabaseContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Model" t="Include">

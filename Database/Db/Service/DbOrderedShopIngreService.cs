@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Database.Model;
 using Database.Model.ShopRelated;
@@ -31,20 +32,24 @@ namespace Db
             ctx.orderedShopIngredients.Add(ingredient);
             await ctx.SaveChangesAsync();
         }
-        public async Task addOrderedShopIngredientsAsync(IList<OrderedShopIngredients> ingredients)
+        public async Task addOrderedShopIngredientsAsync(IList<OrderedShopIngredients> ingredients, Order order)
         {
-            Console.WriteLine(2);
             foreach (var ing in ingredients)
             {
-                Console.WriteLine("inside");
+                Console.WriteLine("here1");
+                ing.ShopIngredient = ctx.shopIngredients.FirstOrDefault(c => c.id == ing.ShopIngredient.id);
+                Console.WriteLine("here2");
+                ing.Order = ctx.orders.FirstOrDefault(o => o.orderId == order.orderId);
+                Console.WriteLine("here3");
                 await ctx.orderedShopIngredients.AddAsync(ing);
                 await ctx.SaveChangesAsync();
-                await LinkShop(ing);
+                Console.WriteLine("here");
+                //await LinkShop(ing);
             }
             await ctx.SaveChangesAsync();
         }
         
-        public async Task LinkShop(OrderedShopIngredients ord)
+        /*public async Task LinkShop(OrderedShopIngredients ord)
         {
             //OrderedShopIngredients ord = await ctx.orderedShopIngredients.FirstAsync(s => s.osId == orderedShopIngredient.osId );
             Console.WriteLine(ord.ShopIngredient.name);
@@ -64,7 +69,7 @@ namespace Db
             shop.OsIngredientses.Add(sc2);
             ctx.Update(shop);
             await ctx.SaveChangesAsync();
-        }
+        }*/
 
         public async Task updateOrderedShopIngredientAsync(OrderedShopIngredients ingredient)
         {

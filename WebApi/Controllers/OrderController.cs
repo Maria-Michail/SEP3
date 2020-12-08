@@ -28,7 +28,7 @@ namespace WebApi.Controllers
                 return BadRequest(ModelState);
             }
             try {
-                Console.WriteLine("WebApi recieved" + order.userName + order.dateTime);
+                Console.WriteLine("WebApi recieved" + order.username + order.dateTime);
                 Order added = await orderService.AddOrderAsync(order);
                 return Created($"/{added.orderId}",added); 
             } catch (Exception e) {

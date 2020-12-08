@@ -25,7 +25,7 @@ namespace Db{
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
         public DbSet<ShopVare> ShopVares { get; set; }
-        public DbSet<OSIngredients> OsIngredientses { get; set; }
+        //public DbSet<OSIngredients> OsIngredientses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             //DatebaseName
 
@@ -139,7 +139,7 @@ namespace Db{
                 .HasForeignKey(shopVare => shopVare.id);
             
             //OS many to many NOT DONE
-            base.OnModelCreating(modelBuilder);
+            /*base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<OSIngredients>()
                 .HasKey(sc =>
                     new
@@ -156,7 +156,7 @@ namespace Db{
             modelBuilder.Entity<OSIngredients>()
                 .HasOne(oSIngredients => oSIngredients.orderedShopIngredients)
                 .WithMany(orderedShopIngredients => orderedShopIngredients.OsIngredientses)
-                .HasForeignKey(osIngredients => osIngredients.id);
+                .HasForeignKey(osIngredients => osIngredients.id);*/
         }
     } 
 }

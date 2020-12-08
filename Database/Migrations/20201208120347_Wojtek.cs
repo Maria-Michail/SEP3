@@ -58,22 +58,6 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "orders",
-                columns: table => new
-                {
-                    orderId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    orderPrice = table.Column<double>(type: "REAL", nullable: false),
-                    recipeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    userName = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_orders", x => x.orderId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AccountAddresses",
                 columns: table => new
                 {
@@ -211,6 +195,35 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "orders",
+                columns: table => new
+                {
+                    orderId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    orderPrice = table.Column<double>(type: "REAL", nullable: false),
+                    recipeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    username = table.Column<string>(type: "TEXT", nullable: false),
+                    Accountusername = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orders", x => x.orderId);
+                    table.ForeignKey(
+                        name: "FK_orders_accounts_Accountusername",
+                        column: x => x.Accountusername,
+                        principalTable: "accounts",
+                        principalColumn: "username",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_orders_recipes_recipeId",
+                        column: x => x.recipeId,
+                        principalTable: "recipes",
+                        principalColumn: "recipeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RecipeCategories",
                 columns: table => new
                 {
@@ -232,34 +245,6 @@ namespace Database.Migrations
                         principalTable: "recipes",
                         principalColumn: "recipeId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "orderedShopIngredients",
-                columns: table => new
-                {
-                    osId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    totalPrice = table.Column<double>(type: "REAL", nullable: false),
-                    amount = table.Column<int>(type: "INTEGER", nullable: false),
-                    ingredientid = table.Column<int>(type: "INTEGER", nullable: true),
-                    orderId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_orderedShopIngredients", x => x.osId);
-                    table.ForeignKey(
-                        name: "FK_orderedShopIngredients_orders_orderId",
-                        column: x => x.orderId,
-                        principalTable: "orders",
-                        principalColumn: "orderId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_orderedShopIngredients_shopIngredients_ingredientid",
-                        column: x => x.ingredientid,
-                        principalTable: "shopIngredients",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -311,27 +296,31 @@ namespace Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OsIngredientses",
+                name: "orderedShopIngredients",
                 columns: table => new
                 {
-                    osId = table.Column<int>(type: "INTEGER", nullable: false),
-                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                    osId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    totalPrice = table.Column<double>(type: "REAL", nullable: false),
+                    amount = table.Column<int>(type: "INTEGER", nullable: false),
+                    ShopIngredientid = table.Column<int>(type: "INTEGER", nullable: true),
+                    orderId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OsIngredientses", x => new { x.osId, x.id });
+                    table.PrimaryKey("PK_orderedShopIngredients", x => x.osId);
                     table.ForeignKey(
-                        name: "FK_OsIngredientses_orderedShopIngredients_id",
-                        column: x => x.id,
-                        principalTable: "orderedShopIngredients",
-                        principalColumn: "osId",
+                        name: "FK_orderedShopIngredients_orders_orderId",
+                        column: x => x.orderId,
+                        principalTable: "orders",
+                        principalColumn: "orderId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OsIngredientses_shopIngredients_id",
-                        column: x => x.id,
+                        name: "FK_orderedShopIngredients_shopIngredients_ShopIngredientid",
+                        column: x => x.ShopIngredientid,
                         principalTable: "shopIngredients",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -355,19 +344,24 @@ namespace Database.Migrations
                 column: "recipeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orderedShopIngredients_ingredientid",
-                table: "orderedShopIngredients",
-                column: "ingredientid");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_orderedShopIngredients_orderId",
                 table: "orderedShopIngredients",
                 column: "orderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OsIngredientses_id",
-                table: "OsIngredientses",
-                column: "id");
+                name: "IX_orderedShopIngredients_ShopIngredientid",
+                table: "orderedShopIngredients",
+                column: "ShopIngredientid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orders_Accountusername",
+                table: "orders",
+                column: "Accountusername");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orders_recipeId",
+                table: "orders",
+                column: "recipeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RecipeCategories_recipeId",
@@ -407,7 +401,7 @@ namespace Database.Migrations
                 name: "IngredientRecipes");
 
             migrationBuilder.DropTable(
-                name: "OsIngredientses");
+                name: "orderedShopIngredients");
 
             migrationBuilder.DropTable(
                 name: "RecipeCategories");
@@ -416,19 +410,10 @@ namespace Database.Migrations
                 name: "ShopVares");
 
             migrationBuilder.DropTable(
-                name: "accounts");
-
-            migrationBuilder.DropTable(
                 name: "bankInfos");
 
             migrationBuilder.DropTable(
                 name: "ingredients");
-
-            migrationBuilder.DropTable(
-                name: "orderedShopIngredients");
-
-            migrationBuilder.DropTable(
-                name: "recipes");
 
             migrationBuilder.DropTable(
                 name: "orders");
@@ -437,10 +422,16 @@ namespace Database.Migrations
                 name: "shopIngredients");
 
             migrationBuilder.DropTable(
-                name: "categories");
+                name: "accounts");
+
+            migrationBuilder.DropTable(
+                name: "recipes");
 
             migrationBuilder.DropTable(
                 name: "shops");
+
+            migrationBuilder.DropTable(
+                name: "categories");
 
             migrationBuilder.DropTable(
                 name: "addresses");

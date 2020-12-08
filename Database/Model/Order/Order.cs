@@ -33,10 +33,18 @@ namespace Model
         [NotNull]
         public int recipeId { get; set; } 
         
-        [ForeignKey("userName")]
+        [ForeignKey("username")]
         [Required]
         [NotNull]
-        public string userName { get; set; }
+        public string username { get; set; }
+        
+        [Required]
+        [JsonPropertyName("Recipe")]
+        public Recipe Recipe { get; set; }
+        
+        [Required]
+        [JsonPropertyName("Account")]
+        public Account Account { get; set; }
         
         [JsonPropertyName("OrderedShopIngredients")]
         public IList<OrderedShopIngredients> OrderedShopIngredients { get; set; }

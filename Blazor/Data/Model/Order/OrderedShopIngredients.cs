@@ -26,7 +26,8 @@ namespace Database.Model
         [JsonPropertyName("ShopIngredient")]
         public ShopIngredient ShopIngredient { get; set; }
 
-        public IList<OSIngredients> OsIngredientses { get; set; }
-
+        /*[Required]
+        [JsonPropertyName("Order")]
+        public Order Order { get; set; }*/
     }
 }

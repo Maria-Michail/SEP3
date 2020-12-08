@@ -81,6 +81,18 @@ namespace Server
                 databaseContext.accounts.Add(account);
             }
             
+            Category[] categories = {
+                new Category(){
+                    categoryName = "Italian",
+                },
+                
+                
+            };
+            foreach (var cat in categories)
+            {
+                databaseContext.categories.Add(cat);
+            }
+            
             
             Recipe[] recipes = {
                 new Recipe(){
@@ -108,17 +120,7 @@ namespace Server
                 databaseContext.recipes.Add(rec);
             }
 
-            Category[] categories = {
-                new Category(){
-                    categoryName = "Italian",
-                },
-                
-                
-            };
-            foreach (var cat in categories)
-            {
-                databaseContext.categories.Add(cat);
-            }
+            
             
             Ingredient[] ingredients = {
                 new Ingredient(){
@@ -337,6 +339,16 @@ namespace Server
             databaseContext.Update(shop2);
             
             // ctx.Set<StudentCourse>().Add(sc); This is an alternative
+            await databaseContext.SaveChangesAsync();
+
+            //update categories in recipes
+            Recipe recipeUp1 = recipes[0];
+            Recipe recipeUp2 = recipes[1];
+            List<Category> categoriesUp = await databaseContext.categories.ToListAsync();
+            recipeUp1.Category = categoriesUp[0];
+            recipeUp2.Category = categoriesUp[0];
+            databaseContext.recipes.Update(recipeUp1);
+            databaseContext.recipes.Update(recipeUp2);
             await databaseContext.SaveChangesAsync();
         }
         

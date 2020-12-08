@@ -65,7 +65,7 @@ namespace Blazor.Data
         {
             Order newOrder = new Order();
             newOrder.recipeId = recipeId;
-            newOrder.userName = userName;
+            newOrder.username = userName;
             newOrder.dateTime = orderDateTime;
             newOrder.OrderedShopIngredients = newShopIngredients;
             //int max = orders.Max(order => order.orderId);

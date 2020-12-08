@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20201207194621_Wojtek")]
+    [Migration("20201208120347_Wojtek")]
     partial class Wojtek
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,13 +108,13 @@ namespace Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ShopIngredientid")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("amount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ingredientid")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("orderId")
+                    b.Property<int>("orderId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("totalPrice")
@@ -122,26 +122,11 @@ namespace Database.Migrations
 
                     b.HasKey("osId");
 
-                    b.HasIndex("ingredientid");
+                    b.HasIndex("ShopIngredientid");
 
                     b.HasIndex("orderId");
 
                     b.ToTable("orderedShopIngredients");
-                });
-
-            modelBuilder.Entity("Database.Model.ShopRelated.OSIngredients", b =>
-                {
-                    b.Property<int>("osId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("id")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("osId", "id");
-
-                    b.HasIndex("id");
-
-                    b.ToTable("OsIngredientses");
                 });
 
             modelBuilder.Entity("Model.Category", b =>
@@ -205,6 +190,9 @@ namespace Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Accountusername")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("dateTime")
                         .HasColumnType("TEXT");
 
@@ -214,11 +202,15 @@ namespace Database.Migrations
                     b.Property<int>("recipeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("userName")
+                    b.Property<string>("username")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("orderId");
+
+                    b.HasIndex("Accountusername");
+
+                    b.HasIndex("recipeId");
 
                     b.ToTable("orders");
                 });
@@ -382,34 +374,19 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Model.OrderedShopIngredients", b =>
                 {
-                    b.HasOne("Model.ShopIngredient", "ingredient")
+                    b.HasOne("Model.ShopIngredient", "ShopIngredient")
                         .WithMany()
-                        .HasForeignKey("ingredientid");
+                        .HasForeignKey("ShopIngredientid");
 
-                    b.HasOne("Model.Order", null)
-                        .WithMany("orderedShopIngredientses")
-                        .HasForeignKey("orderId");
-
-                    b.Navigation("ingredient");
-                });
-
-            modelBuilder.Entity("Database.Model.ShopRelated.OSIngredients", b =>
-                {
-                    b.HasOne("Model.ShopIngredient", "shopIngredient")
-                        .WithMany("OsIngredientses")
-                        .HasForeignKey("id")
+                    b.HasOne("Model.Order", "Order")
+                        .WithMany("OrderedShopIngredients")
+                        .HasForeignKey("orderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Database.Model.OrderedShopIngredients", "orderedShopIngredients")
-                        .WithMany("OsIngredientses")
-                        .HasForeignKey("id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Order");
 
-                    b.Navigation("orderedShopIngredients");
-
-                    b.Navigation("shopIngredient");
+                    b.Navigation("ShopIngredient");
                 });
 
             modelBuilder.Entity("Model.Ingredient", b =>
@@ -436,6 +413,23 @@ namespace Database.Migrations
                     b.Navigation("ingredient");
 
                     b.Navigation("recipe");
+                });
+
+            modelBuilder.Entity("Model.Order", b =>
+                {
+                    b.HasOne("Database.Model.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("Accountusername");
+
+                    b.HasOne("Model.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("recipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("Model.Recipe", b =>
@@ -518,11 +512,6 @@ namespace Database.Migrations
                     b.Navigation("AccountBankInfos");
                 });
 
-            modelBuilder.Entity("Database.Model.OrderedShopIngredients", b =>
-                {
-                    b.Navigation("OsIngredientses");
-                });
-
             modelBuilder.Entity("Model.Category", b =>
                 {
                     b.Navigation("RecipeCategories");
@@ -535,7 +524,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Model.Order", b =>
                 {
-                    b.Navigation("orderedShopIngredientses");
+                    b.Navigation("OrderedShopIngredients");
                 });
 
             modelBuilder.Entity("Model.Recipe", b =>
@@ -556,8 +545,6 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Model.ShopIngredient", b =>
                 {
-                    b.Navigation("OsIngredientses");
-
                     b.Navigation("shopVares");
                 });
 #pragma warning restore 612, 618
