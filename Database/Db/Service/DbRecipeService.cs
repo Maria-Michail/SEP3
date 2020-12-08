@@ -82,8 +82,8 @@ namespace Db
             else
             {
                 temp1.IngredientRecipes = new List<IngredientRecipe>();
+                temp1.IngredientRecipes.Add(ir3);
             }
-            temp1.IngredientRecipes.Add(ir3);
             temp1.ingredients.Add(temp2);
             ctx.Update(temp1);
             await ctx.SaveChangesAsync();

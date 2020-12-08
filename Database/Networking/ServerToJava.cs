@@ -15,21 +15,12 @@ namespace Database.Networking{
     class ServerToJava{
 
         private string content;
-        private IDbAccountService accountService;
-        private IDbRecipeService recipeService;
-        private IDbIngredientService ingredientService;
-        private IDbShopService shopService;
-        private IDbShopIngrService shopIngrService;
         private Shop shopToLink = new Shop();
 
-        public ServerToJava(IDbAccountService accountService, IDbRecipeService recipeService, IDbIngredientService ingredientService, IDbShopService shopService, IDbShopIngrService shopIngrService)
+        public ServerToJava()
         {
-            this.accountService = accountService;
-            this.recipeService = recipeService;
-            this.ingredientService = ingredientService;
-            this.shopService = shopService;
-            this.shopIngrService = shopIngrService;
         }
+        
         public async void start(){
             Console.WriteLine("Starting server...");
 
@@ -38,6 +29,7 @@ namespace Database.Networking{
             TcpListener listener = new TcpListener(ip, 2920);
             listener.Start();
 
+            ReaderWriterDb readerWriterDb = ReaderWriterDb.getInstance();
             Console.WriteLine("Server started...");
             while (true)
             {
@@ -54,30 +46,20 @@ namespace Database.Networking{
                 {
                     if (rcv.Contains("Accounts"))
                     {
-                        Console.WriteLine("Inside: Get Accounts");
-                        List<Account> accounts = await accountService.GetAccountsAcyns();
-                        content = JsonSerializer.Serialize(accounts);
+                        content = await readerWriterDb.getAccountsAsync();
                     }else if (rcv.Contains("ShopIngredients"))
                     {
-                        Console.WriteLine("Inside: Get ShopIngredients");
-                        List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
-                        content = JsonSerializer.Serialize(shopIngredients);
+                        content = await readerWriterDb.getShopIngredientsAsync();
 
                     }else if (rcv.Contains("Shops"))
                     {
-                        Console.WriteLine("Inside: Get Shops");
-                        List<Shop> shops = await shopService.getShopsAsync();
-                        content = JsonSerializer.Serialize(shops);
+                        content = await readerWriterDb.getShopsAsync();
                     }else if (rcv.Contains("Ingredients"))
                     {
-                        Console.WriteLine("Inside: Get Ingredients");
-                        List<Ingredient> ingredients = await ingredientService.getIngredientsAsync();
-                        content = JsonSerializer.Serialize(ingredients);
+                        content = await readerWriterDb.getIngredientsAsync();
                     }else if (rcv.Contains("Recipes"))
                     {
-                        Console.WriteLine("Inside: Get Recipes");
-                        List<Recipe> recipes = await recipeService.getRecipiesAsync();
-                        content = JsonSerializer.Serialize(recipes);
+                        content = await readerWriterDb.getRecipesAsync();
                     }
                  //Add methods    
                 }else if (rcv.Contains("add"))
@@ -85,74 +67,46 @@ namespace Database.Networking{
                     string subString = rcv.Substring(3);
                     if (rcv.Contains("ShopIngredient"))
                     {
-                        Console.WriteLine("Inside: Add ShopIngredient");
-                        ShopIngredient fromClient = (ShopIngredient) getClientsObject(stream, "ShopIngredient");
-                        await shopIngrService.addShopIngredientAsync(fromClient);
-                        content = fromClient.name + " added";
+                        content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "ShopIngredient"), "shopIngredient");
                     }else if (rcv.Contains("Ingredient"))
                     {
-                        Console.WriteLine("Inside: Add Ingredient");
-                        Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
-                        await ingredientService.addIngredientAsync(fromClient);
-                        content = fromClient.ingredientName + " added";
+                        content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Ingredient"), "ingredient");
                     }else if (rcv.Contains("Shop"))
                     {
-                        Console.WriteLine("Inside: Add Shop");
-                        Shop fromClient = (Shop)getClientsObject(stream, "Shop");
-                        await shopService.addShopAsync(fromClient);
-                        content = fromClient.shopName + " added";
+                        content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Shop"), "shop");
                     }else if (rcv.Contains("Recipe"))
                     {
-                        Console.WriteLine("Inside: Add Shop");
-                        Recipe fromClient = (Recipe) getClientsObject(stream, "Recipe");
-                        await recipeService.addRecipeAsync(fromClient);
-                        content = fromClient.recipeName + " added";
+                        content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Recipe"),
+                            "recipe");
                     }
                  //Remove methods   
                 }else if (rcv.Contains("remove"))
                 {
                     if (rcv.Contains("ShopIngredient"))
                     {
-                        Console.WriteLine("Inside: Remove ShopIngredient");
-                        ShopIngredient fromClient = (ShopIngredient) getClientsObject(stream, "ShopIngredient");
-                        Console.WriteLine(fromClient);
-                        await shopIngrService.removeShopIngredientAsync(fromClient);
-                        content = fromClient.name + " removed";
+                        content = await readerWriterDb.removeObjectAsync(getClientsObject(stream, "ShopIngredient"),"shopIngredient");
  
                     }
                     else if (rcv.Contains("Ingredient"))
                     {
-                        Console.WriteLine("Inside: Remove ingredient");
-                        Ingredient fromClient = (Ingredient) getClientsObject(stream, "Ingredient");
-                        await ingredientService.removeIngredientAsync(fromClient);
-                        content = fromClient.ingredientName + " removed";
+                        content = await readerWriterDb.removeObjectAsync(getClientsObject(stream, "Ingredient"), "ingredient");
                     }
                     else if (rcv.Contains("Shop"))
                     {
-                        Console.WriteLine("Inside: Remove Shop");
-                        Shop fromClient = (Shop) getClientsObject(stream, "Shop");
-                        await shopService.removeShopAsync(fromClient.shopName);
-                        content = fromClient.shopName + " removed";
+                        content = await readerWriterDb.removeObjectAsync(getClientsObject(stream, "Shop"),"shop");
                     }
                   //Update methods  
                 }else if (rcv.Contains("update"))
                 {
                     if (rcv.Contains("Shop"))
                     {
-                        Console.WriteLine("Inside: update Shop");
-                        Shop fromClient = (Shop) getClientsObject(stream, "Shop");
-                        await shopService.updateShopAsync(fromClient);
-                        content = fromClient.shopName + " updated";
+                        content = await readerWriterDb.updateObjectAsync(getClientsObject(stream, "Shop"),"shop");
                     }else if (rcv.Contains("Ingredient"))
                     {
-                        Console.WriteLine("Inside: update Ingredient");
-                        Shop fromClient = (Shop) getClientsObject(stream, "Shop");
-                        await shopService.updateShopAsync(fromClient);
-                        content = fromClient.shopName + " updated";
+                        content = await readerWriterDb.updateObjectAsync(getClientsObject(stream, "Ingredient"),"ingredient");
                     }
                 }else if (rcv.Contains("link"))
                 {
-                    Console.WriteLine("Inside: Link");
                     if (rcv.Contains("ShopIngredientToShop1"))
                     {
                         shopToLink = (Shop) getClientsObject(stream, "Shop");
@@ -162,8 +116,7 @@ namespace Database.Networking{
                         ShopIngredient shopIngredientToLink =(ShopIngredient) getClientsObject(stream, "ShopIngredient");
                         if (shopToLink != null && shopIngredientToLink != null)
                         {
-                            await shopService.linkShopVareAsync(shopToLink.shopId, shopIngredientToLink.id);
-                            content = "linked";
+                            content = await readerWriterDb.linkObjectsAsync(shopIngredientToLink,shopToLink,"ShopIngredientToShop");
                         }
                         else
                         {
@@ -171,8 +124,6 @@ namespace Database.Networking{
                         }
                     }
                 }
-                
-                Console.WriteLine("End of If: " + content);
                 // Sending
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
                 stream.Write(toSendBytes);
@@ -193,7 +144,6 @@ namespace Database.Networking{
                 case "Shop":
                 {
                     Shop objectToReturn = JsonSerializer.Deserialize<Shop>(objectString);
-                    Console.WriteLine(objectToReturn.ToString());
                     return objectToReturn;
                 }
                 case "Recipe":

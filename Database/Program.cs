@@ -103,7 +103,7 @@ namespace Server
 
 
                 //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
-            //ServerToJava toJava = new ServerToJava(accountService,recipeService,ingredientService,shopService,shopIngrService);
+            //ServerToJava toJava = new ServerToJava();
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();

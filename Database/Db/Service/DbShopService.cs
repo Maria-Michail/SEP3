@@ -25,7 +25,6 @@ namespace Db
                     return shop;
                 }
             }
-            Console.WriteLine("Trying to add");
             await ctx.shops.AddAsync(shop);
             await ctx.SaveChangesAsync();
             return shop;
