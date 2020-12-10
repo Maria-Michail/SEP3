@@ -43,7 +43,9 @@ namespace Data.Impl
         public async Task<IList<OrderedShopIngredients>> GetShopIngredientsAsync(int id)
         {
             IList<ShopIngredient> allShopIngredients =  (List<ShopIngredient>) so.getShopIngredients();
+            Console.WriteLine(allShopIngredients[0].name);
             ingredients = (List<Ingredient>) so.getIngredients(id);
+            Console.WriteLine(ingredients[0].ingredientName);
             IList<OrderedShopIngredients> orderedShopIngredientses = new List<OrderedShopIngredients>();
             ShopIngredient temporaryIngredient = null;
             foreach (var ingredient in ingredients)
@@ -101,11 +103,12 @@ namespace Data.Impl
                 newOrd.amount = (int)Math.Round(totalAmount/amountIncrease);
                 newOrd.totalPrice = temporaryIngPrice;
                 newOrd.totalPrice = Math.Round(newOrd.totalPrice, 2);
-                newOrd.ShopIngredient = temporaryIngredient;
+                newOrd.shopIngredient = temporaryIngredient;
                 newOrd.osId = 0;
                 orderedShopIngredientses.Add(newOrd);
                 temporaryIngredient = null;
             }
+            Console.WriteLine(orderedShopIngredientses[0].shopIngredient.name);
             return orderedShopIngredientses;
         }
     }

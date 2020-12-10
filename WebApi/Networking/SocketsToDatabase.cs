@@ -190,7 +190,7 @@ class SocketsToDatabase : ISocketsToDatabase{
         return request;
     }
     
-    public Object AddOrder(Order order) {
+    public void AddOrder(Order order) {
         Console.WriteLine("Starting client..");
 
         TcpClient client = new TcpClient("127.0.0.1", 2920);
@@ -211,12 +211,11 @@ class SocketsToDatabase : ISocketsToDatabase{
         byte[] dataFromServer = new byte[1024];
         int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
-        Order request = JsonSerializer.Deserialize<Order>(response);
+        String request = JsonSerializer.Deserialize<String>(response);
         Console.WriteLine(request);
         
         stream.Close();
         client.Close();
-        return request;
     }
 
 

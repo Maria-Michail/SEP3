@@ -11,34 +11,27 @@ namespace Model
         [Key]
         [Required]
         [Range(0,int.MaxValue,ErrorMessage = "Id must be over 0")]
-        [JsonPropertyName("ShopIngrId")]
         public int id { get; set; }
         
         [Required,MaxLength(128)]
-        [JsonPropertyName("Name")]
         public string name { get; set; }
         
         [Required]
         [Range(0.1,Double.MaxValue,ErrorMessage = "input must be above 0.1")]
-        [JsonPropertyName("Price")]
         public double price { get; set; }
         
         [Required]
-        [Range(0.1, Double.MaxValue, ErrorMessage = "Number must be above 0.1")]
-        [JsonPropertyName("Amount")]
+        [Range(0.1,Double.MaxValue,ErrorMessage = "input must be above 0.1")]
         public double amount { get; set; }
         
-
         [Required,MaxLength(40)]
-        [JsonPropertyName("UnitType")]
         public string unitType { get; set; }
-
-        public IList<ShopVare> shopVares { get; set; }
-        //public IList<OSIngredients> OsIngredientses { get; set; }
+        
+        public IList<ShopVare> ShopVares { get; set; }
 
         public override string ToString()
         {
-            return price + "DKK" + " " + name;
+            return price + "DKK" + " " + name + "[" + id + "]";
         }
     }
 }

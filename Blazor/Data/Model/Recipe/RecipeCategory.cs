@@ -2,9 +2,9 @@ namespace Model
 {
     public class RecipeCategory
     {
-        public int recipeId;
-        public Recipe recipe;
-        public string categoryName;
-        public Category category;
+        public int recipeId { get; set; }
+        public Recipe recipe { get; set; }
+        public string categoryName { get; set; }
+        public Category category { get; set; }
     }
 }

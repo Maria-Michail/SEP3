@@ -136,7 +136,7 @@ namespace Server
                         IList<OrderedShopIngredients> newOrderedShopIngredients =
                             addOrder.OrderedShopIngredients;
                         await addNewOrder(addOrder, newOrderedShopIngredients);
-                        content = JsonSerializer.Serialize(addOrder);
+                        content = JsonSerializer.Serialize("Added order");
                         break;
                     }
                     
@@ -313,6 +313,7 @@ namespace Server
         private async Task<string> getShopIngredients()
         {
             List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
+            Console.WriteLine(shopIngredients[0].name);
             return JsonSerializer.Serialize(shopIngredients);
         }
 

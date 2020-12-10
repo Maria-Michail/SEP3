@@ -13,11 +13,9 @@ namespace Database.Model
         [Required]
         [Key]
         [Range(0000000000000000, 9999999999999999)]
-        [JsonPropertyName("CardNumber")]
         public long cardNumber { set; get; }
 
         [Required]
-        [JsonPropertyName("CardHolder")]
         public string cardHolder { set; get; }
         [JsonIgnore]
         public IList<AccountBankInfo> AccountBankInfos { get; set; }

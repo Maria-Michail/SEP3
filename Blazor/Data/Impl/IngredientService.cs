@@ -39,7 +39,9 @@ namespace Blazor.Data
         public async Task<List<OrderedShopIngredients>> GetShopIngredientsAsync()
         {
             string userAsJson = await client.GetStringAsync($"https://localhost:5001/Recipe/shoping/{recipeId}");
+            Console.WriteLine(userAsJson);
             List<OrderedShopIngredients> resultAccount = JsonSerializer.Deserialize<List<OrderedShopIngredients>>(userAsJson);
+            
             OrderedShopIngredients = resultAccount;
             return resultAccount;
         }

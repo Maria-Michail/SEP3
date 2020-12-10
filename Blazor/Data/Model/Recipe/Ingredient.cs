@@ -26,7 +26,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Ingredient: " + ingredientName;
+            return "Ingredient: " + ingredientName + " (" + number + unitType + ")";
         }
     }
 }

@@ -4,9 +4,9 @@ namespace Database.Model.ShopRelated
 {
     public class OSIngredients
     {
-        public int id { get; set; }
+        public int id;
         public ShopIngredient shopIngredient;
-        public int osId { get; set; }
+        public int osId;
         public OrderedShopIngredients orderedShopIngredients;
     }
 }

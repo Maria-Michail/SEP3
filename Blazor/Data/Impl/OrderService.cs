@@ -28,6 +28,7 @@ namespace Blazor.Data
             HttpContent content = new StringContent(order,
                 Encoding.UTF8,
                 "application/json");
+            Console.WriteLine("sp");
             await client.PostAsync(uri+"/Order", content);
         }
     }

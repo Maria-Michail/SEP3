@@ -30,7 +30,9 @@ namespace WebApi.Controllers
         
         [HttpGet("shoping/{recipeId:int}")] //int value for route
         public async Task<ActionResult<IList<OrderedShopIngredients>>> GetShopIngredients(int recipeId) {
+            Console.WriteLine(4);
             IList<OrderedShopIngredients> shopIngredients = await recipeService.GetShopIngredientsAsync(recipeId);
+            Console.WriteLine(shopIngredients[0].shopIngredient.name);
             return Ok(shopIngredients); 
         }
 

@@ -21,10 +21,10 @@ namespace Database.Model
         public int amount { get; set; }
         
         [Required]
-        public ShopIngredient ShopIngredient { get; set; }
+        public ShopIngredient shopIngredient { get; set; }
         
         [Required]
-        public Order Order { get; set; }
+        public Order order { get; set; }
 
         //public IList<OSIngredients> OsIngredientses { get; set; }
 

@@ -7,6 +7,6 @@ namespace WebApi.Data.Impl
 {
     public interface IOrderService
     {
-        Task<Order> AddOrderAsync(Order order);
+        Task AddOrderAsync(Order order);
     }
 }

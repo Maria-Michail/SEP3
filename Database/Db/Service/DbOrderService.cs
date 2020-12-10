@@ -26,8 +26,8 @@ namespace Db
         public async Task addOrderAsync(Order order)
         {
             order.OrderedShopIngredients = new List<OrderedShopIngredients>();
-            order.Recipe = ctx.recipes.FirstOrDefault(r => r.recipeId == order.recipeId);
-            order.Account = ctx.accounts.FirstOrDefault(a => a.username.Equals(order.username));
+            order.recipe = ctx.recipes.FirstOrDefault(r => r.recipeId == order.recipeId);
+            order.account = ctx.accounts.FirstOrDefault(a => a.username.Equals(order.username));
             await ctx.orders.AddAsync(order);
             await ctx.SaveChangesAsync();
         }

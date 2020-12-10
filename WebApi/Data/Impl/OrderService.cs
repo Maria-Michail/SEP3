@@ -16,10 +16,9 @@ namespace WebApi.Data.Impl
         }
 
 
-        public async Task<Order> AddOrderAsync(Order order)
+        public async Task AddOrderAsync(Order order)
         {
-            Order addedOrder = (Order)so.AddOrder(order);
-            return addedOrder;
+            so.AddOrder(order);
         }
 
        
