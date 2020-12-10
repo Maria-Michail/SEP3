@@ -153,8 +153,6 @@
           </e>
         </e>
         <e p="MainDb.db" t="Include" />
-        <e p="MainDb.db-shm" t="Include" />
-        <e p="MainDb.db-wal" t="Include" />
         <e p="Migrations" t="Include">
           <e p="20201210163142_initialCreate.cs" t="Include" />
           <e p="20201210163142_initialCreate.Designer.cs" t="Include" />
