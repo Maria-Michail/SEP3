@@ -17,19 +17,17 @@ namespace Model
         
         [Required]
         public string description { get; set; }
-        
+
         [Required]
         public string instructions { get; set; }
-        
+
         [Required]
-        [Range(1,300,ErrorMessage = "Cooking time must be in min")]
-        public double cookingTime { get; set; }
+        public int cookingTime { get; set; }
         
         [Required]
         public IList<Ingredient> ingredients { get; set; }
         
         [Required]
-        [JsonPropertyName("Imagename")]
         public string imageName { get; set; }
         
         public Category Category { get; set; }

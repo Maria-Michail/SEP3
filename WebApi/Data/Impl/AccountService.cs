@@ -12,7 +12,7 @@ namespace Data.Impl
 {
     public class AccountService : IAccountService
     {
-        SocketsToDatabase so;
+        ISocketsToDatabase so;
         private IList<Account> accounts;
         private IList<Address> addresses;
         private IList<BankInfo> bankInfos;
@@ -79,6 +79,7 @@ namespace Data.Impl
             Account addedAccount = (Account)so.AddAccount(register);
             return addedAccount;
         }
+        
 
         /*public async Task<Account> ValidateUser(string username, string password)
         {

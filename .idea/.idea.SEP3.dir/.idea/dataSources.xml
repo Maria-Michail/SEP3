@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MainDb" uuid="82a8cbf3-3393-41f2-97ef-82d97641eec0">
+    <data-source source="LOCAL" name="MainDb [2]" uuid="a18088d1-c9e9-4ae1-93a8-84d506fbbae2">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Database/MainDb.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database\MainDb.db</jdbc-url>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>

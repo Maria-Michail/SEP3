@@ -1,4 +1,5 @@
-﻿namespace Model
+
+namespace Model
 {
     public class IngredientRecipe
     {

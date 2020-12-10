@@ -4,7 +4,10 @@
 @using System.Numerics
 @using Blazor.Authorization
 @using Database.Model
-@inject IAccountService AccountService
+@using Model
+@inject IOrderService OrderService
+@inject IRecipeService RecipeService
+@inject IIngredientsService IngredientsService
 @inject NavigationManager NavigationManager
 
 
@@ -25,13 +28,13 @@
                             <li>
                                 <div class="form-group">
                                     Card holder:<br/>
-                                    <InputText class="regInput" style="width:375px" @bind-Value="bankInfo.cardHolder"/>
+                                    <InputText class="regInput" style="width:90%" @bind-Value="bankInfo.cardHolder"/>
                                 </div>
                             </li>
                             <li>
                                 <div class="form-group">
                                     Card Number:<br/>
-                                    <InputNumber class="regInput" style="width:375px" @bind-Value="bankInfo.cardNumber"/>
+                                    <InputNumber class="regInput" style="width:90%" @bind-Value="bankInfo.cardNumber"/>
                                 </div>
                             </li>
                             <div class="row">
@@ -39,7 +42,7 @@
                                     <li>
                                         <div class="form-group">
                                             Expiry Date:<br/>
-                                            <InputDate class="regInput" style="width:170px" @bind-Value="expiryDate"/>
+                                            <InputDate class="regInput" style="width:80%" @bind-Value="expiryDate"/>
                                         </div>
                                     </li>
                                 </div>
@@ -47,7 +50,7 @@
                                     <li>
                                         <div class="form-group">
                                             CVV:<br/>
-                                            <InputNumber class="regInput" style="width:170px" @bind-Value="cvv"/>
+                                            <InputNumber class="regInput" style="width:80%" @bind-Value="cvv"/>
                                         </div>
                                     </li>
                                 </div>
@@ -80,7 +83,8 @@
         <div class="col-8">
             <div class="row">
                 <div class="col-8">
-                    <img src="../Images/arrabiata.jpg" class="card-img-top" alt="arrabiata" style="height: 100px; width: 100px">
+                    <h1 class="display-4">@Recipe.recipeName</h1>
+                    
                 </div>
                 <div class="col-4">
                     <p>$ 400</p>
@@ -118,14 +122,30 @@
 
     private DateTime expiryDate;
     private int cvv;
+    
+    //Change those two
+    private int orderId = 0;
+    private double orderPrice = 0;
 
     private string errorMessage;
 
     private BankInfo bankInfo = new BankInfo();
+    private Order newOrder = new Order();
+    public Recipe Recipe;
+    public Account currentUser;
+    private IList<OrderedShopIngredients> newShopIngredients = new List<OrderedShopIngredients>();
 
     protected override async Task OnInitializedAsync()
     {
         //bankInfo = CustomAuthenticationStateProvider.getUser().bankInfo;
+        Recipe = RecipeService.recipe;
+        currentUser = CustomAuthenticationStateProvider.getUser();
+        newShopIngredients = IngredientsService.OrderedShopIngredients;
+        foreach (var order in newShopIngredients)
+        {
+            orderPrice = orderPrice + order.totalPrice;
+        }
+        
     }
     
     public async Task HandleValidPayment()
@@ -133,8 +153,14 @@
         errorMessage = "";
         try
         {
+            newOrder.orderId = orderId;
+            newOrder.dateTime = DateTime.Now;
+            newOrder.orderPrice = orderPrice;
+            newOrder.recipeId = Recipe.recipeId;
+            newOrder.username = currentUser.username;
+            newOrder.OrderedShopIngredients = newShopIngredients;
             Console.WriteLine("Trying paying");
-            //await AccountService.Payment();
+            await OrderService.storeOrder(newOrder);
             NavigationManager.NavigateTo("/");
         }
         catch (Exception e)

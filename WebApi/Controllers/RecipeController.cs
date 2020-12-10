@@ -20,45 +20,46 @@ namespace WebApi.Controllers
         {
             this.recipeService = recipeService;
         }
+
+
+        [HttpGet("ing/{recipeId:int}")] //int value for route
+        public async Task<ActionResult<IList<Ingredient>>> GetIngredients(int recipeId) {
+            IList<Ingredient> ingredients = await recipeService.GetIngredientsAsync(recipeId);
+            return Ok(ingredients); 
+        }
         
+        [HttpGet("shoping/{recipeId:int}")] //int value for route
+        public async Task<ActionResult<IList<OrderedShopIngredients>>> GetShopIngredients(int recipeId) {
+            IList<OrderedShopIngredients> shopIngredients = await recipeService.GetShopIngredientsAsync(recipeId);
+            return Ok(shopIngredients); 
+        }
+
         
         [HttpGet]
-        public async Task<ActionResult<IList<Recipe>>> getRecipesAsync([FromQuery] string name)
+        public async Task<ActionResult<IList<Recipe>>> getRecipesAsync()
         {
             try
             {
-                if (name == null)
-                {
-                    Console.WriteLine("The recipe with this name does not exist");
-                    IList<Recipe> recipes = await recipeService.getRecipesAsync();
-                    return Ok(recipes);
-                }
-                else
-                {
-                    try
-                    {
-                        IList<Recipe> accounts = await recipeService.getRecipesAsync();
-                        var recipe = accounts.FirstOrDefault(r =>
-                            r.name.Equals(name));
-                        
-                        Console.WriteLine("console is sending " + recipe.name);
-                        IList<Recipe> recipesToSend = new List<Recipe>();
-                        recipesToSend.Add(recipe);
-                        return Ok(recipesToSend);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Wrong name of the recipe");
-                        return BadRequest(e.Message);
-                    }
-                }
-
+                Console.WriteLine("The recipe with this name does not exist");
+                IList<Recipe> recipes = await recipeService.getRecipesAsync();
+                return Ok(recipes);
             }
             catch (Exception e)
             {
-
+                Console.WriteLine("Wrong name of the recipe");
+                return BadRequest(e.Message);
+            }
+        }
+        
+        [HttpPost]
+        public async Task AddIngredient([FromBody] IList<Ingredient> ingredients) {
+            try {
+                Console.WriteLine("getting ing");
+                await recipeService.SetIngredientsAsync(ingredients);
+                
+            } catch (Exception e) {
                 Console.WriteLine(e);
-                return StatusCode(500, e.Message);
+                
             }
         }
     }

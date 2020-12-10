@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
-    <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Database" t="IncludeRecursive">
-      <e p="accounts.json" t="Include" />
+    <e p="C:\Users\Janni\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Janni\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Janni\AppData\Roaming\JetBrains\Rider2020.2\consoles\Db" t="IncludeRecursive" />
+    <e p="C:\Users\Janni\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Janni\OneDrive\Skrivebord\SEP3Code\Database" t="IncludeRecursive">
       <e p="bin" t="ExcludeRecursive" />
       <e p="Database.csproj" t="IncludeRecursive" />
       <e p="Db" t="Include">
-        <e p="DatabaseContext.cs" t="Include" />
-        <e p="DbService.cs" t="Include" />
-        <e p="IDbService.cs" t="Include" />
+        <e p="Context" t="Include">
+          <e p="DatabaseContext.cs" t="Include" />
+        </e>
+        <e p="ReaderWriterDb.cs" t="Include" />
+        <e p="Service" t="Include">
+          <e p="DbAccountService.cs" t="Include" />
+          <e p="DbAddressService.cs" t="Include" />
+          <e p="DbBankInfoService.cs" t="Include" />
+          <e p="DbCategoryService.cs" t="Include" />
+          <e p="DbIngredientService.cs" t="Include" />
+          <e p="DbOrderedShopIngreService.cs" t="Include" />
+          <e p="DbOrderService.cs" t="Include" />
+          <e p="DbRecipeService.cs" t="Include" />
+          <e p="DbShopIngreService.cs" t="Include" />
+          <e p="DbShopService.cs" t="Include" />
+          <e p="IDbAccountService.cs" t="Include" />
+          <e p="IDbAddressService.cs" t="Include" />
+          <e p="IDbBankInfoService.cs" t="Include" />
+          <e p="IDbCategoryService.cs" t="Include" />
+          <e p="IDbIngredientService.cs" t="Include" />
+          <e p="IDbOrderedShopIngreService.cs" t="Include" />
+          <e p="IDbOrderService.cs" t="Include" />
+          <e p="IDbRecipeService.cs" t="Include" />
+          <e p="IDbShopIngrService.cs" t="Include" />
+          <e p="IDbShopService.cs" t="Include" />
+        </e>
       </e>
-      <e p="FirstSetup.cs" t="Include" />
       <e p="MainDb.db" t="Include" />
+      <e p="MainDb.db-shm" t="Include" />
+      <e p="MainDb.db-wal" t="Include" />
       <e p="Migrations" t="Include">
-        <e p="20201114185240_InitialCreate.cs" t="Include" />
-        <e p="20201114185240_InitialCreate.Designer.cs" t="Include" />
+        <e p="20201209090315_initialCreate.cs" t="Include" />
+        <e p="20201209090315_initialCreate.Designer.cs" t="Include" />
         <e p="DatabaseContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Model" t="Include">
-        <e p="Account.cs" t="Include" />
+        <e p="Account" t="Include">
+          <e p="Account.cs" t="Include" />
+          <e p="AccountAddress.cs" t="Include" />
+          <e p="AccountBankInfo.cs" t="Include" />
+          <e p="Address.cs" t="Include" />
+          <e p="BankInfo.cs" t="Include" />
+          <e p="Register.cs" t="Include" />
+        </e>
+        <e p="Delivery.cs" t="Include" />
+        <e p="Order" t="Include">
+          <e p="Order.cs" t="Include" />
+          <e p="OrderedShopIngredients.cs" t="Include" />
+          <e p="OSIngredients.cs" t="Include" />
+        </e>
+        <e p="Recipe" t="Include">
+          <e p="Category.cs" t="Include" />
+          <e p="Ingredient.cs" t="Include" />
+          <e p="IngredientRecipe.cs" t="Include" />
+          <e p="Recipe.cs" t="Include" />
+          <e p="RecipeCategory.cs" t="Include" />
+        </e>
+        <e p="ShopRelated" t="Include">
+          <e p="Shop.cs" t="Include" />
+          <e p="ShopIngredient.cs" t="Include" />
+          <e p="ShopVare.cs" t="Include" />
+        </e>
       </e>
       <e p="Networking" t="Include">
         <e p="Server.cs" t="Include" />

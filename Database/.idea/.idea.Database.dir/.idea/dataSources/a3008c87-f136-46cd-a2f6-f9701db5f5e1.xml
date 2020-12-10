@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MainDb">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.19">
+    <root id="1">
+      <ServerVersion>3.31.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="AccountAddresses"/>
+    <table id="7" parent="2" name="AccountBankInfos"/>
+    <table id="8" parent="2" name="IngredientRecipes"/>
+    <table id="9" parent="2" name="RecipeCategories"/>
+    <table id="10" parent="2" name="__EFMigrationsHistory"/>
+    <table id="11" parent="2" name="accounts"/>
+    <table id="12" parent="2" name="addresses"/>
+    <table id="13" parent="2" name="bankInfos"/>
+    <table id="14" parent="2" name="categories"/>
+    <table id="15" parent="2" name="ingredients"/>
+    <table id="16" parent="2" name="orderedShopIngredients"/>
+    <table id="17" parent="2" name="orders"/>
+    <table id="18" parent="2" name="recipes"/>
+    <table id="19" parent="2" name="shopIngredients"/>
+    <table id="20" parent="2" name="shops"/>
+    <table id="21" parent="2" name="shopvares"/>
+    <table id="22" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="23" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="24" parent="6" name="username">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="6" name="street">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="6" name="sqlite_autoindex_AccountAddresses_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username
+street</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="27" parent="6" name="IX_AccountAddresses_street">
+      <ColNames>street</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="28" parent="6" name="PK_AccountAddresses">
+      <ColNames>username
+street</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_AccountAddresses_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="29" parent="6" name="FK_AccountAddresses_accounts_username">
+      <ColNames>username</ColNames>
+      <RefTableName>accounts</RefTableName>
+      <RefKeyName>PK_accounts</RefKeyName>
+      <RefColNames>username</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="30" parent="6" name="FK_AccountAddresses_addresses_street">
+      <ColNames>street</ColNames>
+      <RefTableName>addresses</RefTableName>
+      <RefKeyName>PK_addresses</RefKeyName>
+      <RefColNames>street</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="31" parent="7" name="username">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="7" name="cardNumber">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="33" parent="7" name="sqlite_autoindex_AccountBankInfos_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username
+cardNumber</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="34" parent="7" name="IX_AccountBankInfos_cardNumber">
+      <ColNames>cardNumber</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="35" parent="7" name="PK_AccountBankInfos">
+      <ColNames>username
+cardNumber</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_AccountBankInfos_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="36" parent="7" name="FK_AccountBankInfos_accounts_username">
+      <ColNames>username</ColNames>
+      <RefTableName>accounts</RefTableName>
+      <RefKeyName>PK_accounts</RefKeyName>
+      <RefColNames>username</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="37" parent="7" name="FK_AccountBankInfos_bankInfos_cardNumber">
+      <ColNames>cardNumber</ColNames>
+      <RefTableName>bankInfos</RefTableName>
+      <RefKeyName>PK_bankInfos</RefKeyName>
+      <RefColNames>cardNumber</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="38" parent="8" name="recipeId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="8" name="ingredientId">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="40" parent="8" name="sqlite_autoindex_IngredientRecipes_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ingredientId
+recipeId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="41" parent="8" name="IX_IngredientRecipes_recipeId">
+      <ColNames>recipeId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="42" parent="8" name="PK_IngredientRecipes">
+      <ColNames>ingredientId
+recipeId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_IngredientRecipes_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="43" parent="8" name="FK_IngredientRecipes_recipes_recipeId">
+      <ColNames>recipeId</ColNames>
+      <RefTableName>recipes</RefTableName>
+      <RefKeyName>PK_recipes</RefKeyName>
+      <RefColNames>recipeId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="44" parent="8" name="FK_IngredientRecipes_ingredients_ingredientId">
+      <ColNames>ingredientId</ColNames>
+      <RefTableName>ingredients</RefTableName>
+      <RefKeyName>PK_ingredients</RefKeyName>
+      <RefColNames>ingredientId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="45" parent="9" name="recipeId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="9" name="categoryName">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="47" parent="9" name="sqlite_autoindex_RecipeCategories_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>categoryName
+recipeId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="48" parent="9" name="IX_RecipeCategories_recipeId">
+      <ColNames>recipeId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="49" parent="9" name="PK_RecipeCategories">
+      <ColNames>categoryName
+recipeId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_RecipeCategories_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="50" parent="9" name="FK_RecipeCategories_recipes_recipeId">
+      <ColNames>recipeId</ColNames>
+      <RefTableName>recipes</RefTableName>
+      <RefKeyName>PK_recipes</RefKeyName>
+      <RefColNames>recipeId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="51" parent="9" name="FK_RecipeCategories_categories_categoryName">
+      <ColNames>categoryName</ColNames>
+      <RefTableName>categories</RefTableName>
+      <RefKeyName>PK_categories</RefKeyName>
+      <RefColNames>categoryName</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="52" parent="10" name="MigrationId">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="10" name="ProductVersion">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="54" parent="10" name="sqlite_autoindex___EFMigrationsHistory_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MigrationId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="55" parent="10" name="PK___EFMigrationsHistory">
+      <ColNames>MigrationId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex___EFMigrationsHistory_1</UnderlyingIndexName>
+    </key>
+    <column id="56" parent="11" name="username">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="11" name="password">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="11" name="email">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="59" parent="11" name="sqlite_autoindex_accounts_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="11" name="PK_accounts">
+      <ColNames>username</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_accounts_1</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="12" name="street">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="12" name="city">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="12" name="zipCode">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="64" parent="12" name="sqlite_autoindex_addresses_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>street</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="65" parent="12" name="PK_addresses">
+      <ColNames>street</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_addresses_1</UnderlyingIndexName>
+    </key>
+    <column id="66" parent="13" name="cardNumber">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="67" parent="13" name="cardHolder">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="68" parent="13" name="PK_bankInfos">
+      <ColNames>cardNumber</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="69" parent="14" name="categoryName">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="70" parent="14" name="sqlite_autoindex_categories_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>categoryName</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="71" parent="14" name="PK_categories">
+      <ColNames>categoryName</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_categories_1</UnderlyingIndexName>
+    </key>
+    <column id="72" parent="15" name="ingredientId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="73" parent="15" name="ingredientName">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="15" name="number">
+      <Position>3</Position>
+      <DataType>REAL|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="15" name="unitType">
+      <Position>4</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="15" name="recipeId">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <index id="77" parent="15" name="IX_ingredients_recipeId">
+      <ColNames>recipeId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="78" parent="15" name="PK_ingredients">
+      <ColNames>ingredientId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="79" parent="15" name="FK_ingredients_recipes_recipeId">
+      <ColNames>recipeId</ColNames>
+      <RefTableName>recipes</RefTableName>
+      <RefKeyName>PK_recipes</RefKeyName>
+      <RefColNames>recipeId</RefColNames>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="80" parent="16" name="osId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="81" parent="16" name="totalPrice">
+      <Position>2</Position>
+      <DataType>REAL|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="16" name="amount">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="16" name="ShopIngredientid">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="84" parent="16" name="orderId">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="85" parent="16" name="IX_orderedShopIngredients_ShopIngredientid">
+      <ColNames>ShopIngredientid</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="86" parent="16" name="IX_orderedShopIngredients_orderId">
+      <ColNames>orderId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="87" parent="16" name="PK_orderedShopIngredients">
+      <ColNames>osId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="88" parent="16" name="FK_orderedShopIngredients_shopIngredients_ShopIngredientid">
+      <ColNames>ShopIngredientid</ColNames>
+      <RefTableName>shopIngredients</RefTableName>
+      <RefKeyName>PK_shopIngredients</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="89" parent="16" name="FK_orderedShopIngredients_orders_orderId">
+      <ColNames>orderId</ColNames>
+      <RefTableName>orders</RefTableName>
+      <RefKeyName>PK_orders</RefKeyName>
+      <RefColNames>orderId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="90" parent="17" name="orderId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="91" parent="17" name="dateTime">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="17" name="orderPrice">
+      <Position>3</Position>
+      <DataType>REAL|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="17" name="recipeId">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="17" name="username">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="17" name="Accountusername">
+      <Position>6</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <index id="96" parent="17" name="IX_orders_recipeId">
+      <ColNames>recipeId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="97" parent="17" name="IX_orders_Accountusername">
+      <ColNames>Accountusername</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="98" parent="17" name="PK_orders">
+      <ColNames>orderId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="99" parent="17" name="FK_orders_recipes_recipeId">
+      <ColNames>recipeId</ColNames>
+      <RefTableName>recipes</RefTableName>
+      <RefKeyName>PK_recipes</RefKeyName>
+      <RefColNames>recipeId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="100" parent="17" name="FK_orders_accounts_Accountusername">
+      <ColNames>Accountusername</ColNames>
+      <RefTableName>accounts</RefTableName>
+      <RefKeyName>PK_accounts</RefKeyName>
+      <RefColNames>username</RefColNames>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="101" parent="18" name="recipeId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="102" parent="18" name="recipeName">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="18" name="description">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="104" parent="18" name="instructions">
+      <Position>4</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="18" name="cookingTime">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="18" name="imageName">
+      <Position>6</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="18" name="categoryName">
+      <Position>7</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <index id="108" parent="18" name="IX_recipes_categoryName">
+      <ColNames>categoryName</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="109" parent="18" name="PK_recipes">
+      <ColNames>recipeId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="110" parent="18" name="FK_recipes_categories_categoryName">
+      <ColNames>categoryName</ColNames>
+      <RefTableName>categories</RefTableName>
+      <RefKeyName>PK_categories</RefKeyName>
+      <RefColNames>categoryName</RefColNames>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="111" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="112" parent="19" name="name">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="113" parent="19" name="price">
+      <Position>3</Position>
+      <DataType>REAL|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="114" parent="19" name="amount">
+      <Position>4</Position>
+      <DataType>REAL|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="115" parent="19" name="unitType">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="19" name="shopId">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <index id="117" parent="19" name="IX_shopIngredients_shopId">
+      <ColNames>shopId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="118" parent="19" name="PK_shopIngredients">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="119" parent="19" name="FK_shopIngredients_shops_shopId">
+      <ColNames>shopId</ColNames>
+      <RefTableName>shops</RefTableName>
+      <RefKeyName>PK_shops</RefKeyName>
+      <RefColNames>shopId</RefColNames>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="120" parent="20" name="shopId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="121" parent="20" name="shopName">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="20" name="shopAddressstreet">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <index id="123" parent="20" name="IX_shops_shopAddressstreet">
+      <ColNames>shopAddressstreet</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="124" parent="20" name="PK_shops">
+      <ColNames>shopId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="125" parent="20" name="FK_shops_addresses_shopAddressstreet">
+      <ColNames>shopAddressstreet</ColNames>
+      <RefTableName>addresses</RefTableName>
+      <RefKeyName>PK_addresses</RefKeyName>
+      <RefColNames>street</RefColNames>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="126" parent="21" name="shopId">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="21" name="shopIngredientId">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="128" parent="21" name="sqlite_autoindex_shopvares_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>shopId
+shopIngredientId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="129" parent="21" name="IX_shopvares_shopIngredientId">
+      <ColNames>shopIngredientId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="130" parent="21" name="PK_shopvares">
+      <ColNames>shopId
+shopIngredientId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_shopvares_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="131" parent="21" name="FK_shopvares_shops_shopId">
+      <ColNames>shopId</ColNames>
+      <RefTableName>shops</RefTableName>
+      <RefKeyName>PK_shops</RefKeyName>
+      <RefColNames>shopId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="132" parent="21" name="FK_shopvares_shopIngredients_shopIngredientId">
+      <ColNames>shopIngredientId</ColNames>
+      <RefTableName>shopIngredients</RefTableName>
+      <RefKeyName>PK_shopIngredients</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="133" parent="22" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="134" parent="22" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="135" parent="22" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="136" parent="22" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="137" parent="22" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="138" parent="23" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="139" parent="23" name="seq">
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>

@@ -100,6 +100,33 @@ namespace Database.Migrations
                     b.ToTable("bankInfos");
                 });
 
+            modelBuilder.Entity("Database.Model.OrderedShopIngredients", b =>
+                {
+                    b.Property<int>("osId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ShopIngredientid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("amount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("totalPrice")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("osId");
+
+                    b.HasIndex("ShopIngredientid");
+
+                    b.HasIndex("orderId");
+
+                    b.ToTable("orderedShopIngredients");
+                });
+
             modelBuilder.Entity("Model.Category", b =>
                 {
                     b.Property<string>("categoryName")
@@ -155,6 +182,37 @@ namespace Database.Migrations
                     b.ToTable("IngredientRecipes");
                 });
 
+            modelBuilder.Entity("Model.Order", b =>
+                {
+                    b.Property<int>("orderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Accountusername")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("dateTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("orderPrice")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("recipeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("orderId");
+
+                    b.HasIndex("Accountusername");
+
+                    b.HasIndex("recipeId");
+
+                    b.ToTable("orders");
+                });
+
             modelBuilder.Entity("Model.Recipe", b =>
                 {
                     b.Property<int>("recipeId")
@@ -164,8 +222,8 @@ namespace Database.Migrations
                     b.Property<string>("categoryName")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("cookingTime")
-                        .HasColumnType("REAL");
+                    b.Property<int>("cookingTime")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -312,6 +370,23 @@ namespace Database.Migrations
                     b.Navigation("bankInfo");
                 });
 
+            modelBuilder.Entity("Database.Model.OrderedShopIngredients", b =>
+                {
+                    b.HasOne("Model.ShopIngredient", "ShopIngredient")
+                        .WithMany()
+                        .HasForeignKey("ShopIngredientid");
+
+                    b.HasOne("Model.Order", "Order")
+                        .WithMany("OrderedShopIngredients")
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("ShopIngredient");
+                });
+
             modelBuilder.Entity("Model.Ingredient", b =>
                 {
                     b.HasOne("Model.Recipe", null)
@@ -336,6 +411,23 @@ namespace Database.Migrations
                     b.Navigation("ingredient");
 
                     b.Navigation("recipe");
+                });
+
+            modelBuilder.Entity("Model.Order", b =>
+                {
+                    b.HasOne("Database.Model.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("Accountusername");
+
+                    b.HasOne("Model.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("recipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("Model.Recipe", b =>
@@ -426,6 +518,11 @@ namespace Database.Migrations
             modelBuilder.Entity("Model.Ingredient", b =>
                 {
                     b.Navigation("IngredientRecipes");
+                });
+
+            modelBuilder.Entity("Model.Order", b =>
+                {
+                    b.Navigation("OrderedShopIngredients");
                 });
 
             modelBuilder.Entity("Model.Recipe", b =>

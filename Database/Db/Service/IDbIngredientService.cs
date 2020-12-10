@@ -11,5 +11,6 @@ namespace Db
         Task addIngredientAsync(Ingredient ingredient);
         Task updateIngredientAsync(Ingredient ingredient);
         Task removeIngredientAsync(Ingredient ingredient);
+        Task<List<Ingredient>> getIngredientsOfRecipeAsync(int recipeId);
     }
 }

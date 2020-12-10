@@ -24,7 +24,37 @@ namespace Db
 
         public async Task addShopIngredientAsync(ShopIngredient ingredient)
         {
-            ctx.shopIngredients.Add(ingredient);
+            bool boolShopIngExists = false;
+            foreach (var shopIngExists in ctx.shopIngredients)
+            {
+                if (shopIngExists.id == ingredient.id)
+                {
+                    boolShopIngExists = true;
+                }
+            }
+
+            if (!boolShopIngExists)
+            {
+                ctx.shopIngredients.Add(ingredient);
+            }
+            await ctx.SaveChangesAsync();
+        }
+        
+        public async Task LinkShop(ShopIngredient shopIngredient, Shop shop)
+        {
+            ShopIngredient shoping1 = await ctx.shopIngredients.FirstAsync(s => s.id == shopIngredient.id );
+            Shop shop1 = await ctx.shops.FirstAsync(c => c.shopId == shop.shopId);
+            ShopVare sc2 = new ShopVare()
+            {
+                shop = shop1,
+                shopIngredient = shoping1
+            };
+            if (shop1.shopVares == null)
+            {
+                shop1.shopVares = new List<ShopVare>();
+            }
+            shop1.shopVares.Add(sc2);
+            ctx.Update(shop1);
             await ctx.SaveChangesAsync();
         }
 

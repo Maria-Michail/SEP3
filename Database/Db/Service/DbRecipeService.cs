@@ -53,7 +53,6 @@ namespace Db
             IList<Ingredient> ingredients = recipe.ingredients;
             recipe.ingredients = new List<Ingredient>();
             await ctx.recipes.AddAsync(recipe);
-            await ctx.SaveChangesAsync();
             foreach (var ingredient in ingredients)
             {
                 linkIngredientAsync(recipe.recipeName, ingredient.ingredientId);

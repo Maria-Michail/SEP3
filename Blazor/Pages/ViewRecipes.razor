@@ -3,33 +3,62 @@
 @using Blazor.Data
 @inject IRecipeService RecipeService
 @inject NavigationManager NavigationManager
+
+
 <h2 class="title">ViewRecipes</h2>
 
-<div class="row">
-    @foreach (var recipe in Recipes) {
-        <div class="col-sm-3">
-            <div class="card" style="width: 18rem;">
-                <img src="../Images/@recipe.name" class="card-img-top" alt="arrabiata">
-                <div class="card-body">
-                    <h5 class="card-title">@recipe.name</h5>
-                    <p class="card-text">@recipe.instructions</p>
-                    <button class="btn btn-primary" @onclick="@(() => NavigateToComponent(recipe))">Check the recipe now!</button>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+@if (Recipes == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!Recipes.Any())
+{
+    <p>
+        <em>No recipes exist. Please add some.</em>
+    </p>
+}
+else
+{
+    <div class="row">
+        @foreach (var recipe in Recipes)
+                {
+                    <div class="col-12">
+                        <div class="card" style="width: 100%;">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../Images/@recipe.imageName" class="card-img-top" alt="@recipe.recipeName">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="text-decoration: underline">@recipe.recipeName</h5>
+                                        <p class="card-text">@recipe.instructions</p>
+                                        <button class="btn btn-primary" @onclick="@(() => NavigateToComponent(recipe))">Check the recipe now!</button>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+                        </div>
+                    </div>
+                }
+    </div>
+}
+
+
 
 @code {
-
     public IList<Recipe> Recipes { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
       Recipes = await RecipeService.GetRecipesAsync();
+        Console.WriteLine(Recipes[0].recipeName +"--> ViewRecipes.razor");
+        base.OnInitialized();
     }
 
     private void NavigateToComponent(Recipe p) {
-      NavigationManager.NavigateTo("recipeView/" + p.name);
+      NavigationManager.NavigateTo("recipeView/" + p.recipeId);
     }
 }

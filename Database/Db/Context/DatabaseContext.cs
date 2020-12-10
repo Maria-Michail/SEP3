@@ -3,6 +3,7 @@ using Database.Model;
 using Model;
 using SQLitePCL;
 using System.Linq.Expressions;
+using Database.Model.ShopRelated;
 
 namespace Db{
     public class DatabaseContext : DbContext{
@@ -14,18 +15,20 @@ namespace Db{
         public DbSet<BankInfo> bankInfos { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Shop> shops { get; set; }
+        public DbSet<Order> orders { get; set; }
+        public DbSet<OrderedShopIngredients> orderedShopIngredients { get; set; }
         public DbSet<AccountAddress> AccountAddresses { get; set; }
         public DbSet<AccountBankInfo> AccountBankInfos { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public DbSet<IngredientRecipe> IngredientRecipes { get; set; }
         public DbSet<ShopVare> shopvares { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
             //DatebaseName
-
             optionsBuilder.UseSqlite(@"Data Source = C:\Users\Janni\OneDrive\Skrivebord\SEP3Code\Database\MainDb.db");
-
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Account and address many-to-many
@@ -91,7 +94,6 @@ namespace Db{
                 .WithMany(recipe => recipe.RecipeCategories)
                 .HasForeignKey(recipeCategory => recipeCategory.recipeId);
             
-            
             //Recipe and Ingredient many-to-many
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<IngredientRecipe>()
@@ -112,6 +114,7 @@ namespace Db{
                 .WithMany(recipe => recipe.IngredientRecipes)
                 .HasForeignKey(recipeCategory => recipeCategory.recipeId);
             
+            //Shop and ShopIngredient many-to-many
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ShopVare>()
                 .HasKey(sc =>
@@ -122,7 +125,6 @@ namespace Db{
                     }
                 );
             
-            //Shop and ShopIngredient many-to-many
             modelBuilder.Entity<ShopVare>()
                 .HasOne(shopVare => shopVare.shopIngredient)
                 .WithMany(shopIngredient => shopIngredient.ShopVares)
