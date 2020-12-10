@@ -14,18 +14,15 @@ namespace Model
         [Key]
         [Required]
         [NotNull]
-        [JsonPropertyName("orderId")]
         public int orderId { get; set; }
         
         [Required]
         [NotNull]
-        [JsonPropertyName("dateTime")]
         public DateTime dateTime { get; set; }
         
         [Required]
         [NotNull]
         [Range(0.1, Double.MaxValue, ErrorMessage = "number must be above 0.1")]
-        [JsonPropertyName("orderPrice")]
         public double orderPrice { get; set; }
         
         [ForeignKey("recipeId")]
@@ -46,7 +43,6 @@ namespace Model
         [JsonPropertyName("Account")]
         public Account Account { get; set; }*/
         
-        [JsonPropertyName("OrderedShopIngredients")]
         public IList<OrderedShopIngredients> OrderedShopIngredients { get; set; }
     }
 }

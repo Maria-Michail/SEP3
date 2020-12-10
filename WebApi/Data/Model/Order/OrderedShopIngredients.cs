@@ -15,15 +15,12 @@ namespace Database.Model
         public int osId { get; set; }
         
         [Required]
-        [JsonPropertyName("TotalPrice")]
         public double totalPrice { get; set; }
         
         [Required]
-        [JsonPropertyName("Amount")]
         public int amount { get; set; }
         
         [Required]
-        [JsonPropertyName("ShopIngredient")]
         public ShopIngredient ShopIngredient { get; set; }
         
         /*[Required]
