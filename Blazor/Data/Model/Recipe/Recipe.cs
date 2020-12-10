@@ -9,12 +9,10 @@ namespace Model
     {    
         [Key]
         [Required]
-        [JsonPropertyName("IdRecipe")]
         public int recipeId { get; set; }
         
         [Required]
         [MaxLength(25)]
-        [JsonPropertyName("RecipeName")]
         public string recipeName { get; set; }
         
         [Required]

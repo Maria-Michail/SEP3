@@ -7,6 +7,7 @@
     <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
     <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3" t="IncludeFlat">
       <e p="Blazor" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="_Imports.razor" t="Include" />
         <e p="App.razor" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
@@ -122,6 +123,7 @@
         </e>
       </e>
       <e p="Database" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Database.csproj" t="IncludeRecursive" />
         <e p="db" t="Include">
@@ -152,6 +154,8 @@
           </e>
         </e>
         <e p="MainDb.db" t="Include" />
+        <e p="MainDb.db-shm" t="Include" />
+        <e p="MainDb.db-wal" t="Include" />
         <e p="Migrations" t="Include">
           <e p="20201208120347_Wojtek.cs" t="Include" />
           <e p="20201208120347_Wojtek.Designer.cs" t="Include" />
@@ -200,6 +204,7 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApi" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
