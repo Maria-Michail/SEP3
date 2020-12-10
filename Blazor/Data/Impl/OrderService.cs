@@ -21,15 +21,20 @@ namespace Blazor.Data
 
         public async Task storeOrder(Order newOrder)
         {
-            //int max = orders.Max(order => order.orderId);
-            //newOrder.orderId = (++max);
-            string order = JsonSerializer.Serialize(newOrder);
-            Console.WriteLine(order);
-            HttpContent content = new StringContent(order,
-                Encoding.UTF8,
-                "application/json");
-            Console.WriteLine("sp");
-            await client.PostAsync(uri+"/Order", content);
+            if (newOrder.OrderedShopIngredients == null || newOrder.OrderedShopIngredients.Count == 0)
+            {
+                Console.WriteLine("no order");
+            }
+            else
+            {
+                string order = JsonSerializer.Serialize(newOrder);
+                Console.WriteLine(order);
+                HttpContent content = new StringContent(order,
+                    Encoding.UTF8,
+                    "application/json");
+                Console.WriteLine("sp");
+                await client.PostAsync(uri+"/Order", content);
+            }
         }
     }
 }

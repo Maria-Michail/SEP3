@@ -137,14 +137,23 @@ using Model;
     public Recipe Recipe;
     public Account currentUser;
     private IList<OrderedShopIngredients> newShopIngredients = new List<OrderedShopIngredients>();
-
+    private IList<OrderedShopIngredients> newShopIngredientsWithoutUnchecked = new List<OrderedShopIngredients>();
     protected override async Task OnInitializedAsync()
     {
         //bankInfo = CustomAuthenticationStateProvider.getUser().bankInfo;
         Recipe = RecipeService.recipe;
         currentUser = CustomAuthenticationStateProvider.getUser();
         newShopIngredients = IngredientsService.OrderedShopIngredients;
-        foreach (var order in newShopIngredients)
+        //filter to get only the checked ingredients
+        for (int i=0; i<newShopIngredients.Count ;i++)
+        {
+            if (newShopIngredients[i].uncheck == true)
+            {
+                newShopIngredientsWithoutUnchecked.Add(newShopIngredients[i]);
+            }
+        }
+        //end of filtering
+        foreach (var order in newShopIngredientsWithoutUnchecked)
         {
             orderPrice = orderPrice + order.totalPrice;
         }
@@ -161,7 +170,7 @@ using Model;
             newOrder.orderPrice = orderPrice;
             newOrder.recipeId = Recipe.recipeId;
             newOrder.username = currentUser.username;
-            newOrder.OrderedShopIngredients = newShopIngredients;
+            newOrder.OrderedShopIngredients = newShopIngredientsWithoutUnchecked;
             Console.WriteLine("Trying paying");
             await OrderService.storeOrder(newOrder);
             NavigationManager.NavigateTo("/");

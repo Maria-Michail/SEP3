@@ -112,7 +112,7 @@ using Database.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\IngredientsList.razor"
+#line 42 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\IngredientsList.razor"
        
     public IList<OrderedShopIngredients> shopIngredients { get; set; } 
     
@@ -131,6 +131,10 @@ using Database.Model;
         {
             Console.WriteLine("failed");
         }
+    }
+    private void Uncheck(ChangeEventArgs evt, OrderedShopIngredients shopIngredient ){
+        shopIngredient.uncheck=(bool)evt.Value;
+        IngredientsService.UpdateOrderedShopIngredients(shopIngredient);
     }
 
 #line default

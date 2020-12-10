@@ -22,7 +22,9 @@ namespace Database.Model
         
         [Required]
         public ShopIngredient shopIngredient { get; set; }
-        
+
+        public bool uncheck { get; set; } = true;
+
         /*[Required]
         public Order order { get; set; }*/
 
