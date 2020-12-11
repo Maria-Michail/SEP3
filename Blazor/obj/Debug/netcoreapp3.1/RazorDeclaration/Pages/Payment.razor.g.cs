@@ -110,6 +110,13 @@ using Model;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Payment.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/payment")]
     public partial class Payment : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -119,7 +126,7 @@ using Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 120 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Payment.razor"
+#line 121 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\Payment.razor"
        
 
 

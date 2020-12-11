@@ -89,6 +89,13 @@ using Blazor.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/viewRecipes")]
     public partial class ViewRecipes : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,7 +105,7 @@ using Blazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+#line 52 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
        
     public IList<Recipe> Recipes { get; set; }
 

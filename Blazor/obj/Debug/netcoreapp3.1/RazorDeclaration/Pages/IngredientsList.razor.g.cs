@@ -103,6 +103,13 @@ using Database.Model;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\IngredientsList.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/ingredientsList")]
     public partial class IngredientsList : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,7 +119,7 @@ using Database.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\IngredientsList.razor"
+#line 43 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\IngredientsList.razor"
        
     public IList<OrderedShopIngredients> shopIngredients { get; set; } 
     

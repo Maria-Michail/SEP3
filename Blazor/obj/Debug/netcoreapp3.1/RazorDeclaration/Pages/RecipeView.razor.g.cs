@@ -96,6 +96,13 @@ using System.ComponentModel.DataAnnotations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 9 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView")]
     [Microsoft.AspNetCore.Components.RouteAttribute("/recipeView/{Id:int}")]
     public partial class RecipeView : Microsoft.AspNetCore.Components.ComponentBase
@@ -106,7 +113,7 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 85 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
+#line 86 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\RecipeView.razor"
        
     [Parameter]
     public int Id { get; set; }

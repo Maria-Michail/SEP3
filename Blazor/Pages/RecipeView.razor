@@ -6,6 +6,7 @@
 @inject IRecipeService RecipeService
 @inject IIngredientsService IngredientsService
 @inject NavigationManager NavigationManager
+@attribute [Authorize]
 
 
 @if (Recipe == null)
