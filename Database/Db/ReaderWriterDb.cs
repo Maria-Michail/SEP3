@@ -20,6 +20,10 @@ namespace Db
         private IDbAccountService AccountService = new DbAccountService();
         private IDbShopService ShopService = new DbShopService();
         private IDbShopIngrService ShopIngrService = new DbShopIngreService();
+        private IDbAddressService AddressService = new DbAddressService();
+        private IDbBankInfoService BankInfoService = new DbBankInfoService();
+        private IDbOrderService OrderService = new DbOrderService();
+        private IDbOrderedShopIngreService OrderedShopIngreService = new DbOrderedShopIngreService();
 
         private ReaderWriterDb()
         {
@@ -192,6 +196,41 @@ namespace Db
         {
             List<Account> accounts = await AccountService.GetAccountsAcyns();
             return JsonSerializer.Serialize(accounts);
+        }
+        
+        public async Task<string> getAddresses()
+        {
+            List<Address> addresses = await AddressService.GetAddressesAcyns();
+            return JsonSerializer.Serialize(addresses);
+        }
+        public async Task<string> getBankInfos()
+        {
+            List<BankInfo> bankInfos = await BankInfoService.GetBankInfosAcyns();
+            return JsonSerializer.Serialize(bankInfos);
+        }
+        public async Task<string> getIngredientsForRecipe(int receipeint)
+        {
+            List<Ingredient> recipes = await IngredientService.getIngredientsOfRecipeAsync(receipeint);
+            return JsonSerializer.Serialize(recipes);
+        }
+        
+        public async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
+        {
+            await OrderService.addOrderAsync(order);
+            await OrderedShopIngreService.addOrderedShopIngredientsAsync(orderedShopIngredients, order);
+        }
+
+        public async Task<Account> Register(Register addAccount)
+        {
+            Account newAccount = addAccount.account;
+            Address newaddress = addAccount.address;
+            BankInfo newbankInfo = addAccount.bankInfo;
+            await AccountService.addAccountAsync(newAccount);
+            await AddressService.saveAddressAsync(newaddress);
+            await BankInfoService.addBankInfoAsync(newbankInfo);
+            await AccountService.LinkAddress(newAccount, newaddress);
+            await AccountService.LinkBankInfo(newAccount, newbankInfo);
+            return newAccount;
         }
     }
 }

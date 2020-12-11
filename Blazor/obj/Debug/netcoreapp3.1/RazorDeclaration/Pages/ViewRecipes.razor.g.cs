@@ -89,6 +89,13 @@ using Blazor.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/viewRecipes")]
     public partial class ViewRecipes : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -109,7 +116,6 @@ using Blazor.Data;
         try
         {
             filterByCat = changeEventArgs.Value.ToString();
-            Console.WriteLine(filterByCat + " <---8");
         } catch(Exception e){}
         if (!String.IsNullOrEmpty(filterByCat))
         {    
@@ -117,7 +123,6 @@ using Blazor.Data;
         }
         else
         {
-            Console.WriteLine("now");
             RecipesToShow = Recipes;
         }
     }
