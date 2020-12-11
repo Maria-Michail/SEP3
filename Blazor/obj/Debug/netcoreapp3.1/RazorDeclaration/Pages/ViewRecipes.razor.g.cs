@@ -89,13 +89,6 @@ using Blazor.Data;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 6 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
-           [Authorize]
-
-#line default
-#line hidden
-#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/viewRecipes")]
     public partial class ViewRecipes : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,14 +98,35 @@ using Blazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 52 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
+#line 54 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor\Pages\ViewRecipes.razor"
        
     public IList<Recipe> Recipes { get; set; }
+    public IList<Recipe> RecipesToShow;
+    
+    
+    private void FilterByCategory(ChangeEventArgs changeEventArgs){
+        string? filterByCat = null;
+        try
+        {
+            filterByCat = changeEventArgs.Value.ToString();
+            Console.WriteLine(filterByCat + " <---8");
+        } catch(Exception e){}
+        if (!String.IsNullOrEmpty(filterByCat))
+        {    
+            RecipesToShow = Recipes.Where(r => r.category.categoryName.Equals(filterByCat)).ToList();
+        }
+        else
+        {
+            Console.WriteLine("now");
+            RecipesToShow = Recipes;
+        }
+    }
 
+    
     protected override async Task OnInitializedAsync()
     {
-      Recipes = await RecipeService.GetRecipesAsync();
-        Console.WriteLine(Recipes[0].recipeName +"--> ViewRecipes.razor");
+        Recipes = await RecipeService.GetRecipesAsync();
+        RecipesToShow = Recipes;
         base.OnInitialized();
     }
 

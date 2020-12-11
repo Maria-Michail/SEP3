@@ -133,6 +133,9 @@ namespace Server
                 new Category(){
                     categoryName = "Italian",
                 },
+                new Category(){
+                    categoryName = "Greek",
+                },
             };
 
             foreach (var cat in categories)
@@ -334,7 +337,7 @@ namespace Server
             await databaseContext.SaveChangesAsync();
             
             Recipe steve6 = await databaseContext.recipes.FirstAsync(s => s.recipeId == 2 );
-            Category bankInfo6 = await databaseContext.categories.FirstAsync(c => c.categoryName.Equals("Italian"));
+            Category bankInfo6 = await databaseContext.categories.FirstAsync(c => c.categoryName.Equals("Greek"));
             
             RecipeCategory sc6 = new RecipeCategory()
             {
@@ -395,8 +398,8 @@ namespace Server
             Recipe recipeUp1 = recipes[0];
             Recipe recipeUp2 = recipes[1];
             List<Category> categoriesUp = await databaseContext.categories.ToListAsync();
-            recipeUp1.Category = categoriesUp[0];
-            recipeUp2.Category = categoriesUp[0];
+            recipeUp1.category = categoriesUp[0];
+            recipeUp2.category = categoriesUp[1];
             databaseContext.recipes.Update(recipeUp1);
             databaseContext.recipes.Update(recipeUp2);
             await databaseContext.SaveChangesAsync();
