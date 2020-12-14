@@ -40,20 +40,20 @@ app {
     flex: 1;
 }
 
-    .main .top-row {
-        background-color: #151515;
-        border-bottom: 1px solid #d6d5d5;
-        justify-content: flex-end;
-    }
-    
-    .main .top-row {
-        color: #d2e4e5;
-    }
+.main .top-row {
+    background-color: #151515;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+}
 
-        .main .top-row > a, .main .top-row .btn-link {
-            white-space: nowrap;
-            margin-left: 1.5rem;
-        }
+.main .top-row {
+    color: #d2e4e5;
+}
+
+.main .top-row > a, .main .top-row .btn-link {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+}
 
 .main .top-row a:first-child {
     overflow: hidden;
@@ -64,52 +64,52 @@ app {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
-    .sidebar .top-row {
-        background-color: rgba(0,0,0,0.4);
-    }
+.sidebar .top-row {
+    background-color: rgba(0,0,0,0.4);
+}
 
-    .sidebar .navbar-brand {
-        font-size: 1.1rem;
-    }
+.sidebar .navbar-brand {
+    font-size: 1.1rem;
+}
 
-    .sidebar .oi {
-        width: 2rem;
-        font-size: 1.1rem;
-        vertical-align: text-top;
-        top: -2px;
-    }
+.sidebar .oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
 
-    .sidebar .nav-item {
-        font-size: 0.9rem;
-        padding-bottom: 0.5rem;
-    }
+.sidebar .nav-item {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
 
-        .sidebar .nav-item:first-of-type {
-            padding-top: 1rem;
-        }
+.sidebar .nav-item:first-of-type {
+    padding-top: 1rem;
+}
 
-        .sidebar .nav-item:last-of-type {
-            padding-bottom: 1rem;
-        }
+.sidebar .nav-item:last-of-type {
+    padding-bottom: 1rem;
+}
 
-        .sidebar .nav-item a {
-            color: #d7d7d7;
-            border-radius: 4px;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            line-height: 3rem;
-        }
+.sidebar .nav-item a {
+    color: #d7d7d7;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+}
 
-            .sidebar .nav-item a.active {
-                background-color: rgba(255,255,255,0.25);
-                color: white;
-            }
+.sidebar .nav-item a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
 
-            .sidebar .nav-item a:hover {
-                background-color: rgba(255,255,255,0.1);
-                color: white;
-            }
+.sidebar .nav-item a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
 
 .content {
     padding-top: 1.1rem;
@@ -194,7 +194,7 @@ app {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
-    
+
 }
 
 
@@ -226,10 +226,19 @@ input:focus{
 }
 
 .registerBtn{
-    //margin: 2em;
+//margin: 2em;
     margin-left: auto;
 }
 
+.loginStripe{
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+}
+.login{
+    margin: 0.6em 1em 0 0;
+}
 
 
 
@@ -254,13 +263,13 @@ input::-webkit-inner-spin-button {
 }
 
 .card-img-top{
-    //width: auto;
-    //height: auto;
+//width: auto;
+//height: auto;
     max-height: 250px;
     max-width: 250px;
     object-fit: contain;
     margin: 2em 0 2em 1em;
- }
+}
 
 .card{
     margin: 3em 0 3em 0;
@@ -268,6 +277,54 @@ input::-webkit-inner-spin-button {
 
 .instruction, .ingredients{
     box-sizing: border-box;
-    
+
 }
 
+.recipeViewImg{
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+}
+
+.paymentInputSmall
+{
+    width: 80%;
+    max-width: 200px;
+}
+
+
+/* Carousel styling */
+/* Carousel*/
+
+.carousel,
+.carousel-item,
+.carousel-item.active {
+    height: 100%;
+}
+.carousel-inner {
+    height: 100%;
+}
+.carousel-item:nth-child(1) {
+    background-image: url("https://mdbootstrap.com/img/Photos/Others/images/76.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.carousel-item:nth-child(2) {
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/30.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.carousel-item:nth-child(3) {
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img%20(10).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+html,
+body,
+.view {
+    height: 85vh;
+}

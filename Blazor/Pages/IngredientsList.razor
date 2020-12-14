@@ -5,6 +5,7 @@
 @using Database.Model
 @inject IIngredientsService IngredientsService
 @inject NavigationManager NavigationManager
+@attribute [Authorize]
 
 <h3>IngredientsList</h3>
 
@@ -29,7 +30,8 @@ else
                 <ul>
                     @foreach(OrderedShopIngredients ingredient in shopIngredients)
                     {
-                        <li class="my-3">@ingredient.amount of @ingredient.ShopIngredient.amount @ingredient.ShopIngredient.unitType of @ingredient.ShopIngredient.name and the total price is: @ingredient.totalPrice DKK</li>
+                        <li class="my-3">@ingredient.amount of @ingredient.shopIngredient.amount @ingredient.shopIngredient.unitType of @ingredient.shopIngredient.name and the total price is: @ingredient.totalPrice DKK</li>
+                        <input type="checkbox" checked=@ingredient.uncheck @onchange="@((arg)=> Uncheck(arg, ingredient))"/>                                                                                                                                                                                       
                     }
                 </ul>
             </div>
@@ -56,5 +58,9 @@ else
         {
             Console.WriteLine("failed");
         }
+    }
+    private void Uncheck(ChangeEventArgs evt, OrderedShopIngredients shopIngredient ){
+        shopIngredient.uncheck=(bool)evt.Value;
+        IngredientsService.UpdateOrderedShopIngredients(shopIngredient);
     }
 }

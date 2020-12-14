@@ -483,7 +483,7 @@ namespace Database.Migrations
                         .IsRequired();
 
                     b.HasOne("Model.ShopIngredient", "shopIngredient")
-                        .WithMany("shopVares")
+                        .WithMany("ShopVares")
                         .HasForeignKey("shopIngredientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -543,7 +543,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Model.ShopIngredient", b =>
                 {
-                    b.Navigation("shopVares");
+                    b.Navigation("ShopVares");
                 });
 #pragma warning restore 612, 618
         }

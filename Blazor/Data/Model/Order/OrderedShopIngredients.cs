@@ -15,19 +15,18 @@ namespace Database.Model
         public int osId { get; set; }
         
         [Required]
-        [JsonPropertyName("TotalPrice")]
         public double totalPrice { get; set; }
         
         [Required]
-        [JsonPropertyName("Amount")]
         public int amount { get; set; }
         
         [Required]
-        [JsonPropertyName("ShopIngredient")]
-        public ShopIngredient ShopIngredient { get; set; }
+        public ShopIngredient shopIngredient { get; set; }
+
+        public bool uncheck { get; set; } = true;
 
         /*[Required]
-        [JsonPropertyName("Order")]
-        public Order Order { get; set; }*/
+        public Order order { get; set; }*/
+
     }
 }

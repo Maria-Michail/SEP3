@@ -30,15 +30,9 @@ namespace Model
         [Required]
         public string imageName { get; set; }
         
-        public Category Category { get; set; }
+        public Category category { get; set; }
         
         public IList<RecipeCategory> RecipeCategories;
         public IList<IngredientRecipe> IngredientRecipes;
-
-        public override string ToString()
-        {
-            return recipeName + " (time: " + cookingTime + ") + [Nr Ingredients: " + ingredients.Count +
-                   "] Category: " + Category;
-        }
     }
 }

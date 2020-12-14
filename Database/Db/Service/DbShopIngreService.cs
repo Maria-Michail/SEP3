@@ -66,8 +66,10 @@ namespace Db
 
         public async Task removeShopIngredientAsync(ShopIngredient ingredient)
         {
+            Console.WriteLine("Inside remove");
             if (ctx.shopvares.FirstOrDefaultAsync(s => s.shopIngredientId == ingredient.id) != null)
             {
+                Console.WriteLine("ShopVares to remove");
                 List<ShopVare> shopVares = await ctx.shopvares.Where(s => s.shopIngredientId == ingredient.id).ToListAsync();
                 foreach (var shopVare in shopVares)
                 {
@@ -76,7 +78,7 @@ namespace Db
                     temp.vares.Remove(ingredient);
                     temp.shopVares.Remove(shopVare);
                     ctx.shops.Update(temp);
-                    ingredient.shopVares.Remove(shopVare);
+                    ingredient.ShopVares.Remove(shopVare);
                     ctx.shopvares.Remove(shopVare);
                 }
             }

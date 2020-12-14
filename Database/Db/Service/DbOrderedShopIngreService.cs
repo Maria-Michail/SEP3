@@ -37,9 +37,9 @@ namespace Db
             foreach (var ing in ingredients)
             {
                 Console.WriteLine("here1");
-                ing.ShopIngredient = ctx.shopIngredients.FirstOrDefault(c => c.id == ing.ShopIngredient.id);
+                ing.shopIngredient = ctx.shopIngredients.FirstOrDefault(c => c.id == ing.shopIngredient.id);
                 Console.WriteLine("here2");
-                ing.Order = ctx.orders.FirstOrDefault(o => o.orderId == order.orderId);
+                ing.order = ctx.orders.FirstOrDefault(o => o.orderId == order.orderId);
                 Console.WriteLine("here3");
                 await ctx.orderedShopIngredients.AddAsync(ing);
                 await ctx.SaveChangesAsync();

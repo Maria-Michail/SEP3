@@ -14,7 +14,7 @@ namespace Db
         
         public async Task<List<Recipe>> getRecipiesAsync()
         {
-            List<Recipe> recipes = await ctx.recipes.Include(r => r.Category).ToListAsync();
+            List<Recipe> recipes = await ctx.recipes.Include(r => r.category).ToListAsync();
             return recipes;
         }
 
@@ -22,12 +22,6 @@ namespace Db
         {
             Recipe temp = await ctx.recipes.FirstOrDefaultAsync(r => r.recipeName.Equals(recipeName));
             return temp;
-        }
-
-        public async Task<List<Category>> getCatoriesAsync()
-        {
-            List<Category> categories = await ctx.categories.ToListAsync();
-            return categories;
         }
 
         public async Task removeRecipeAsync(string recipeName)
@@ -49,12 +43,12 @@ namespace Db
                 }
             }
 
-            if (!ctx.categories.Contains(recipe.Category))
+            if (!ctx.categories.Contains(recipe.category))
             {
-                ctx.categories.Add(recipe.Category);
+                ctx.categories.Add(recipe.category);
             }
 
-            String categoryName = recipe.Category.categoryName;
+            String categoryName = recipe.category.categoryName;
             linkCategoryAsync(recipe.recipeName, categoryName);
             IList<Ingredient> ingredients = recipe.ingredients;
             recipe.ingredients = new List<Ingredient>();
@@ -105,9 +99,15 @@ namespace Db
             };
             temp1.RecipeCategories = new List<RecipeCategory>();
             temp1.RecipeCategories.Add(rc3);
-            temp1.Category = temp2;
+            temp1.category = temp2;
             ctx.Update(temp1);
             await ctx.SaveChangesAsync();
+        }
+
+        public async Task<List<Category>> getCategoriesAsync()
+        {
+            List<Category> temp = await ctx.categories.ToListAsync();
+            return temp;
         }
     }
 }

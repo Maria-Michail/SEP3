@@ -127,7 +127,7 @@ namespace Db{
             
             modelBuilder.Entity<ShopVare>()
                 .HasOne(shopVare => shopVare.shopIngredient)
-                .WithMany(shopIngredient => shopIngredient.shopVares)
+                .WithMany(shopIngredient => shopIngredient.ShopVares)
                 .HasForeignKey(shopVare => shopVare.shopIngredientId);
 
             modelBuilder.Entity<ShopVare>()

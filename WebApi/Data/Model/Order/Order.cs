@@ -25,23 +25,19 @@ namespace Model
         [Range(0.1, Double.MaxValue, ErrorMessage = "number must be above 0.1")]
         public double orderPrice { get; set; }
         
-        [ForeignKey("recipeId")]
         [Required]
         [NotNull]
         public int recipeId { get; set; } 
         
-        [ForeignKey("username")]
         [Required]
         [NotNull]
         public string username { get; set; }
         
         /*[Required]
-        [JsonPropertyName("Recipe")]
-        public Recipe Recipe { get; set; }
+        public Recipe recipe { get; set; }
         
         [Required]
-        [JsonPropertyName("Account")]
-        public Account Account { get; set; }*/
+        public Account account { get; set; }*/
         
         public IList<OrderedShopIngredients> OrderedShopIngredients { get; set; }
     }

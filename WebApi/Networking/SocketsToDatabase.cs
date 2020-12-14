@@ -190,7 +190,7 @@ class SocketsToDatabase : ISocketsToDatabase{
         return request;
     }
     
-    public Object AddOrder(Order order) {
+    public void AddOrder(Order order) {
         Console.WriteLine("Starting client..");
 
         TcpClient client = new TcpClient("127.0.0.1", 2920);
@@ -211,8 +211,52 @@ class SocketsToDatabase : ISocketsToDatabase{
         byte[] dataFromServer = new byte[1024];
         int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
-        Order request = JsonSerializer.Deserialize<Order>(response);
+        String request = JsonSerializer.Deserialize<String>(response);
         Console.WriteLine(request);
+        
+        stream.Close();
+        client.Close();
+    }
+
+    public object getAllOrders()
+    {
+        Console.WriteLine("Starting client..");
+
+        TcpClient client = new TcpClient("127.0.0.1", 2920);
+
+        NetworkStream stream = client.GetStream();
+
+        byte[] dataToServer = Encoding.ASCII.GetBytes("GetAllOrders");
+        stream.Write(dataToServer, 0, dataToServer.Length);
+
+        byte[] dataFromServer = new byte[1024];
+        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
+        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
+        IList<Order> request = JsonSerializer.Deserialize<List<Order>>(response);
+        Console.WriteLine(request.ToString() + "--> WebApi/Networking/SocketsToDatabase.cs -->getAllOrders");
+        Console.WriteLine(request);
+        
+        stream.Close();
+        client.Close();
+        return request;
+    }
+
+    public object getOrders(string username)
+    {
+        Console.WriteLine("Starting client..");
+
+        TcpClient client = new TcpClient("127.0.0.1", 2920);
+
+        NetworkStream stream = client.GetStream();
+
+        byte[] dataToServer = Encoding.ASCII.GetBytes("GetOrders");
+        stream.Write(dataToServer, 0, dataToServer.Length);
+
+        byte[] dataFromServer = new byte[50000];
+        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
+        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
+        IList<Order> request = JsonSerializer.Deserialize<List<Order>>(response);
+        Console.WriteLine(request.ToString() + "--> WebApi/Networking/SocketsToDatabase.cs -->getOrders");
         
         stream.Close();
         client.Close();

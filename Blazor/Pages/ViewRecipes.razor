@@ -3,17 +3,20 @@
 @using Blazor.Data
 @inject IRecipeService RecipeService
 @inject NavigationManager NavigationManager
-
+@attribute [Authorize]
 
 <h2 class="title">ViewRecipes</h2>
+<p>
+    Filter by Category: <input type="text" @oninput="@((arg)=>FilterByCategory(arg))" style="width:150px"/>
+</p>
 
-@if (Recipes == null)
+@if (RecipesToShow == null)
 {
     <p>
         <em>Loading...</em>
     </p>
 }
-else if (!Recipes.Any())
+else if (!RecipesToShow.Any())
 {
     <p>
         <em>No recipes exist. Please add some.</em>
@@ -22,7 +25,7 @@ else if (!Recipes.Any())
 else
 {
     <div class="row">
-        @foreach (var recipe in Recipes)
+        @foreach (var recipe in RecipesToShow)
                 {
                     <div class="col-12">
                         <div class="card" style="width: 100%;">
@@ -50,11 +53,30 @@ else
 
 @code {
     public IList<Recipe> Recipes { get; set; }
+    public IList<Recipe> RecipesToShow;
+    
+    
+    private void FilterByCategory(ChangeEventArgs changeEventArgs){
+        string? filterByCat = null;
+        try
+        {
+            filterByCat = changeEventArgs.Value.ToString();
+        } catch(Exception e){}
+        if (!String.IsNullOrEmpty(filterByCat))
+        {    
+            RecipesToShow = Recipes.Where(r => r.category.categoryName.Equals(filterByCat)).ToList();
+        }
+        else
+        {
+            RecipesToShow = Recipes;
+        }
+    }
 
+    
     protected override async Task OnInitializedAsync()
     {
-      Recipes = await RecipeService.GetRecipesAsync();
-        Console.WriteLine(Recipes[0].recipeName +"--> ViewRecipes.razor");
+        Recipes = await RecipeService.GetRecipesAsync();
+        RecipesToShow = Recipes;
         base.OnInitialized();
     }
 

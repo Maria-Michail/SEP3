@@ -1,0 +1,65 @@
+@page "/orders"
+@using Blazor.Data
+@using Model
+@using Blazor.Authorization
+@inject IOrderService OrderService
+@inject NavigationManager NavigationManager
+
+
+
+@if (orders == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!orders.Any())
+{
+    <p>
+        <em>No orders items exist. Please make some.</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Order Id</th>
+            <th scope="col">Order price</th>
+            <th scope="col">Username</th>
+            <th scope="col">Date of order</th>
+            <th scope="col">Recipe Id</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var order in ordersToShow)
+        {
+            <tr>
+                <td>@order.orderId</td>
+                <td>@order.orderPrice DKK</td>
+                <td>@order.username</td>
+                <td>@order.dateTime</td>
+                <td>@order.recipeId</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private IList<Order> orders;
+    private IList<Order> ordersToShow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        orders = await OrderService.GetOrdersAsync();
+        ordersToShow = orders.Where(u => u.username.Equals(CustomAuthenticationStateProvider.getUser().username)).ToList();
+
+        base.OnInitialized();
+    }
+
+    
+
+}

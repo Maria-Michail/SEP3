@@ -9,5 +9,7 @@ namespace Blazor.Data
     public interface IOrderService
     {
         Task storeOrder(Order newOrder);
+        
+        Task<List<Order>> GetOrdersAsync();
     }
 }

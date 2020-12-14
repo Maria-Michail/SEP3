@@ -6,6 +6,7 @@
 @inject IRecipeService RecipeService
 @inject IIngredientsService IngredientsService
 @inject NavigationManager NavigationManager
+@attribute [Authorize]
 
 
 @if (Recipe == null)
@@ -31,20 +32,20 @@ else
     <div class="jumbotron">
         <div class="row">
             <div class="col-4">
-                <img src="../Images/@Recipe.imageName" class="" alt="...">
+                <img src="../Images/@Recipe.imageName" class="recipeViewImg" alt="...">
             </div>
             <div class="col-8">
                 <h1 class="display-4">@Recipe.recipeName</h1>
                 <p class="lead">@Recipe.description</p>
                 <hr class="my-4">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-lg-6 col-md-12">
                         <ul>
                             <li class="my-3">Preparation time: @Recipe.cookingTime</li>
                            
                         </ul>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-md-12">
                         <button class="btn btn-primary" @onclick="@(() => ChooseRecipe())">Order necessary ingredients to your home!</button>
                         <!--<a class="btn btn-primary btn-lg mt-5" href="#" role="button" @onclick="ChooseRecipe">Order necessary ingredients to your home!</a>-->
                     </div>
@@ -57,7 +58,7 @@ else
     
     
     <div class="row">
-        <div class="col">
+        <div class="col-lg-8 col-md-12">
             <div class="jumbotron instruction">
                 <h2 class="mb-5">Preparation guide</h2>
                 <ol>
@@ -66,7 +67,7 @@ else
             </div>
         </div>
     
-        <div class="col">
+        <div class="col-lg-4 col-md-12">
             <div class="jumbotron ingredients">
                 <h2 class="mb-5">Needed ingredients</h2>
                 <ul>

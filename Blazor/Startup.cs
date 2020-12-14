@@ -34,6 +34,11 @@ namespace Blazor
             services.AddScoped<IIngredientsService, IngredientService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            
+            services.AddAuthorization(options => {
+                options.AddPolicy("MustBeLogged",  a => 
+                    a.RequireAuthenticatedUser().RequireClaim("email", ".dk"));
+            });
 
         }
 

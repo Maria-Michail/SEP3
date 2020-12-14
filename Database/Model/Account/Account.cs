@@ -24,5 +24,8 @@ namespace Database.Model
         public IList<AccountAddress> AccountAddresses { get; set; }
         [JsonIgnore]
         public IList<AccountBankInfo> AccountBankInfos { get; set; }
+        
+        
+
     }
 }

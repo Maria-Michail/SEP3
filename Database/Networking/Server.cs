@@ -15,22 +15,10 @@ namespace Server
 {
     class Server{
 
-        private IDbAccountService accountService;
-        private IDbRecipeService recipeService;
-        private IDbAddressService addresService;
-        private IDbShopIngrService shopIngrService;
-        private IDbBankInfoService bankInfoService;
-        private IDbIngredientService ingredientService;
         private IDbOrderedShopIngreService orderedShopIngService;
         private IDbOrderService orderService;
         private string content;
-        public Server(IDbAccountService accountService, IDbRecipeService recipeService, IDbAddressService addresService, IDbShopIngrService shopIngrService, IDbBankInfoService bankInfoService, IDbIngredientService ingredientService, IDbOrderedShopIngreService orderedShopIngService, IDbOrderService orderService){
-            this.accountService = accountService;
-            this.recipeService = recipeService;
-            this.addresService = addresService;
-            this.shopIngrService = shopIngrService;
-            this.bankInfoService = bankInfoService;
-            this.ingredientService = ingredientService;
+        public Server(IDbOrderedShopIngreService orderedShopIngService, IDbOrderService orderService){
             this.orderedShopIngService = orderedShopIngService;
             this.orderService = orderService;
         }
@@ -41,6 +29,7 @@ namespace Server
             TcpListener listener = new TcpListener(ip, 2920);
             listener.Start();
 
+            ReaderWriterDb readerWriterDb = ReaderWriterDb.getInstance();
             Console.WriteLine("Server started...");
 
             while (true)
@@ -53,74 +42,51 @@ namespace Server
                 byte[] dataFromClient = new byte[1024];
                 int bytesRead = stream.Read(dataFromClient, 0, dataFromClient.Length);
                 string s = Encoding.ASCII.GetString(dataFromClient, 0, bytesRead);
-                Console.WriteLine(s);
 
                 switch(s){
                     case "GetAccounts":
                     {
-                        content = await getAccounts();
-                        Console.WriteLine(content);
+                        content = await readerWriterDb.getAccountsAsync();
                         break;
                     }
                     case "GetAddresses":
                     {
-                        content = await getAddresses();
-                        Console.WriteLine(content);
+                        content = await readerWriterDb.getAddresses();
                         break;
                     }
                     case "GetBankInfos":
                     {
-                        content = await getBankInfos();
-                        Console.WriteLine(content);
+                        content = await readerWriterDb.getBankInfos();
                         break;
                     }
                     case "Register":
                     {
-                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] objectFromClient = new byte[1024];
-                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
-                        string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+                        string objectString = getClientsObject(stream);
                         Register addAccount= JsonSerializer.Deserialize<Register>(objectString);
-                        Account newAccount = addAccount.account;
-                        Address newaddress = addAccount.address;
-                        BankInfo newbankInfo = addAccount.bankInfo;
-                        await accountService.addAccountAsync(newAccount);
-                        await addresService.saveAddressAsync(newaddress);
-                        await bankInfoService.addBankInfoAsync(newbankInfo);
-                        await accountService.LinkAddress(newAccount, newaddress);
-                        await accountService.LinkBankInfo(newAccount, newbankInfo);
-                        
+                        Account newAccount = await readerWriterDb.Register(addAccount);
                         content = JsonSerializer.Serialize(newAccount);
                         break;
                     }
                     case "GetRecipes":
                     {
-                        content = await getRecipies();
-                        Console.WriteLine(content + "-->Database/Networking/Server.cs");
+                        content = await readerWriterDb.getRecipesAsync();
                         break;
                     }
                     case "GetIngredients":
                     {
-                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] objectFromClient = new byte[1024];
-                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
-                        string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
+                        string objectString = getClientsObject(stream);
                         int recipeint = JsonSerializer.Deserialize<int>(objectString);
-
-                        content = await getIngredientsForRecipe(recipeint);
+                        content = await readerWriterDb.getIngredientsForRecipe(recipeint);
                         break;
                     }
                     case "GetAllIngredients":
                     {
-                        content = await getAllIngredients();
-                        Console.WriteLine(content);
+                        content = await readerWriterDb.getIngredientsAsync();
                         break;
                     }
                     case "GetShopIngredients":
                     {
-                        content = await getShopIngredients();
+                        content = await readerWriterDb.getShopIngredientsAsync();
                         break;
                     }
                     case "Order":
@@ -136,129 +102,16 @@ namespace Server
                         IList<OrderedShopIngredients> newOrderedShopIngredients =
                             addOrder.OrderedShopIngredients;
                         await addNewOrder(addOrder, newOrderedShopIngredients);
-                        content = JsonSerializer.Serialize(addOrder);
+                        content = JsonSerializer.Serialize("Added order");
                         break;
                     }
-                    
-                    /*case "removeAccount":
+                    case "GetOrders":
                     {
-                        Account temp = (Account)getClientsObject(stream);
-                        await accountService.removeAccountAsync(temp);
-                        content = "Account " + temp.username + " removed";
+                        content = await getOrders();
+                        Console.WriteLine(content + "-->Database/Networking/Server.cs");
                         break;
                     }
-                    case "updateAccount":
-                    {
-                        Account temp = (Account)getClientsObject(stream);
-                        await accountService.updateAccountAsync(temp);
-                        content = "Account " + temp.username + " updated";
-                        break;
-                    }
-                    
-                    case "getRecipe":
-                    {
-                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] objectFromClient = new byte[20480];
-                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
-                        string recipeName = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
-                        Recipe temp = await recipeService.getRecipeAsync(recipeName);
-                        content = JsonSerializer.Serialize(temp);
-                        break;
-                    }
-                    case "addRecipe":
-                    {
-                        Recipe temp = (Recipe) getClientsObject(stream);
-                        await recipeService.addRecipeAsync(temp);
-                        content = "Recipe " + temp.recipeName + " added";
-                        break;
-                    }
-                    case "removeRecipe":
-                    {
-                        Recipe temp = (Recipe) getClientsObject(stream);
-                        await recipeService.removeRecipeAsync(temp.recipeName);
-                        content = "Recipe" + temp.recipeName + " removed";
-                        break;
-                    }
-                    case "updateRecipe":
-                    {
-                        Recipe temp = (Recipe) getClientsObject(stream);
-                        await recipeService.updateRecipeAsync(temp);
-                        content = "Recipe " + temp.recipeName + " updated";
-                        break;
-                    }
-                    case "saveAddress":
-                    {
-                        Address temp = (Address) getClientsObject(stream);
-                        await addresService.saveAddressAsync(temp);
-                        content = "Address " + temp.ToString() + " added";
-                        break;
-                    }
-                    case "removeAddress":
-                    {
-                        Address temp = (Address) getClientsObject(stream);
-                        await addresService.removeAddressAsync(temp);
-                        content = "Address " + temp.ToString() + " removed";
-                        break;
-                    }
-                    case "updateAddress":
-                    {
-                        Address temp = (Address) getClientsObject(stream);
-                        await addresService.updateAddressAsync(temp);
-                        content = "Address " + temp.ToString() + " updated";
-                        break;
-                    }
-                    
-                    case "getShopIngredient":
-                    {
-                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] objectFromClient = new byte[1024];
-                        int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
-                        int shopIngrId = int.Parse(Encoding.ASCII.GetString(objectFromClient, 0, objectRead));
-                        ShopIngredient temp = await shopIngrService.getShopIngredientAsync(shopIngrId);
-                        content = JsonSerializer.Serialize(temp);
-                        break;
-                    }
-                    case "saveShopIngredient":
-                    {
-                        ShopIngredient temp = (ShopIngredient) getClientsObject(stream);
-                        await shopIngrService.addShopIngredientAsync(temp);
-                        content = "ShopIngredient " + temp.name + " added";
-                        break;
-                    }
-                    case "updateShopIngredient":
-                    {
-                        ShopIngredient temp = (ShopIngredient) getClientsObject(stream);
-                        await shopIngrService.updateShopIngredientAsync(temp);
-                        content = "ShopIngredient " + temp.name + " updated";
-                        break;
-                    }
-                    case "removeShopIngredient":
-                    {
-                        ShopIngredient temp = (ShopIngredient) getClientsObject(stream);
-                        await shopIngrService.removeShopIngredientAsync(temp);
-                        content = "ShopIngredient " + temp.name + " removed";
-                        break;
-                    }
-                    case "ValidateUser":{
-                        byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data1ToClient, 0, data1ToClient.Length);
-                        byte[] usernameFromClient = new byte[1024];
-                        int usernameRead = stream.Read(usernameFromClient, 0, usernameFromClient.Length);
-                        string username = Encoding.ASCII.GetString(usernameFromClient, 0, usernameRead);
-                        byte[] data2ToClient = Encoding.ASCII.GetBytes("Received");
-                        stream.Write(data2ToClient, 0, data2ToClient.Length);
-                        byte[] passwordFromClient = new byte[1024];
-                        int passwordRead = stream.Read(passwordFromClient, 0, passwordFromClient.Length);
-                        string password = Encoding.ASCII.GetString(passwordFromClient, 0, passwordRead);
-                        Account account = await dbService.ValidateUser(username, password);
-                        content = JsonSerializer.Serialize(account);
-                        Console.WriteLine(content);
-                        break;
-                    }*/
                 }
-                
                 // respond
                 byte[] dataToClient = Encoding.ASCII.GetBytes(content);
                 stream.Write(dataToClient, 0, dataToClient.Length);
@@ -268,58 +121,28 @@ namespace Server
             }
         }
 
-        private Object getClientsObject(NetworkStream stream)
+        private String getClientsObject(NetworkStream stream)
         {
             byte[] data1ToClient = Encoding.ASCII.GetBytes("Received");
             stream.Write(data1ToClient, 0, data1ToClient.Length);
             byte[] objectFromClient = new byte[1024];
             int objectRead = stream.Read(objectFromClient, 0, objectFromClient.Length);
             string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
-            Object objectToReturn = JsonSerializer.Deserialize<Object>(objectString);
-            return objectToReturn;
+            return objectString;
         }
-
-        private async Task<string> getAccounts()
-        {
-            List<Account> accounts = await accountService.GetAccountsAcyns();
-            return JsonSerializer.Serialize(accounts);
-        }
-        private async Task<string> getAddresses()
-        {
-            List<Address> addresses = await addresService.GetAddressesAcyns();
-            return JsonSerializer.Serialize(addresses);
-        }
-        private async Task<string> getBankInfos()
-        {
-            List<BankInfo> bankInfos = await bankInfoService.GetBankInfosAcyns();
-            return JsonSerializer.Serialize(bankInfos);
-        }
-        private async Task<string> getRecipies()
-        {
-            List<Recipe> recipes = await recipeService.getRecipiesAsync();
-            return JsonSerializer.Serialize(recipes);
-        }
-        private async Task<string> getIngredientsForRecipe(int receipeint)
-        {
-            List<Ingredient> recipes = await ingredientService.getIngredientsOfRecipeAsync(receipeint);
-            return JsonSerializer.Serialize(recipes);
-        }
-        private async Task<string> getAllIngredients()
-        {
-            List<Ingredient> recipes = await ingredientService.getIngredientsAsync();
-            return JsonSerializer.Serialize(recipes);
-        }
-
-        private async Task<string> getShopIngredients()
-        {
-            List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
-            return JsonSerializer.Serialize(shopIngredients);
-        }
-
+        
         private async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
         {
             await orderService.addOrderAsync(order);
             await orderedShopIngService.addOrderedShopIngredientsAsync(orderedShopIngredients, order);
         }
+        
+        private async Task<string> getOrders()
+        {
+            List<Order> orders = await orderService.getOrdersAsync();
+            return JsonSerializer.Serialize(orders);
+        }
+
+        
     }
 }

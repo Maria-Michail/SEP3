@@ -25,8 +25,19 @@ namespace Blazor.Data
         public IList<Ingredient> Ingredients { get; private set;}
         public IList<OrderedShopIngredients> OrderedShopIngredients { get; private set; }
         private int recipeId { get; set; }
-        
-        
+
+
+        public void UpdateOrderedShopIngredients(OrderedShopIngredients orderedShopIngredients)
+        {
+            for (int i=0; i<OrderedShopIngredients.Count ;i++)
+            {
+                if (OrderedShopIngredients[i].shopIngredient.id == orderedShopIngredients.shopIngredient.id)
+                {
+                    OrderedShopIngredients[i].uncheck = orderedShopIngredients.uncheck;
+                }
+            }
+        }
+
         public async Task<List<Ingredient>> GetIngredientsAsync(int id)
         {
             recipeId = id;
@@ -39,7 +50,9 @@ namespace Blazor.Data
         public async Task<List<OrderedShopIngredients>> GetShopIngredientsAsync()
         {
             string userAsJson = await client.GetStringAsync($"https://localhost:5001/Recipe/shoping/{recipeId}");
+            Console.WriteLine(userAsJson);
             List<OrderedShopIngredients> resultAccount = JsonSerializer.Deserialize<List<OrderedShopIngredients>>(userAsJson);
+            
             OrderedShopIngredients = resultAccount;
             return resultAccount;
         }

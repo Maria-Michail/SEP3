@@ -1,10 +1,11 @@
+
 namespace Model
 {
     public class IngredientRecipe
     {
-        public int recipeId;
-        public Recipe recipe;
-        public int ingredientId;
-        public Ingredient ingredient;
+        public int recipeId { get; set; }
+        public Recipe recipe { get; set; }
+        public int ingredientId { get; set; }
+        public Ingredient ingredient { get; set; }
     }
 }

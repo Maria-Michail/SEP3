@@ -6,18 +6,25 @@
 @inject NavigationManager NavigationManager
 <AuthorizeView>
     <NotAuthorized>
-        <div class="form-group m-2">
-            <input class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" @bind-value="username"/>
+        <div class="loginStripe">
+
+            <input class="form-control login" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" @bind-value="username"/>
+            <input class="form-control login" type="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" @bind-value="password"/>
+
+            <div style="color:red">@errorMessage</div>
+            <button type="button" class="btn btn-light login">
+                <a href="" @onclick="PerformLogin">Login</a>
+            </button>
         </div>
-        <div class="form-group m-2">
-           <input class="form-control" type="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" @bind-value="password"/>
-        </div>
-        <div style="color:red">@errorMessage</div> 
-        <button type="button" class="btn btn-light"><a href="" @onclick="PerformLogin">Login</a></button>
+
     </NotAuthorized>
     <Authorized>
-        <button type="button" class="btn btn-light"><a href="" @onclick="PerformLogout">Log out</a></button>
-        
+        <div class="loginStripe">
+            <button type="button" class="btn btn-light">
+                <a href="" @onclick="PerformLogout">Log out</a>
+            </button>
+        </div>
+
 
     </Authorized>
 </AuthorizeView>
@@ -53,7 +60,7 @@
         try
         {
             await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/home");
         }
         catch (Exception e)
         {

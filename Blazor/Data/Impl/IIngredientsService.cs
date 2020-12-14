@@ -9,6 +9,7 @@ namespace Blazor.Data
     {
         public IList<Ingredient> Ingredients { get; }
         public IList<OrderedShopIngredients> OrderedShopIngredients { get; }
+        public void UpdateOrderedShopIngredients(OrderedShopIngredients orderedShopIngredients);
         Task<List<Ingredient>> GetIngredientsAsync(int id);
         Task<List<OrderedShopIngredients>> GetShopIngredientsAsync();
     }

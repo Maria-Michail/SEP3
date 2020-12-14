@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Db;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using Database.Networking;
 using Microsoft.EntityFrameworkCore;
 using Model;
@@ -26,66 +25,12 @@ namespace Server
                     Seed(dataContext);
                 }
             }
-            IDbAccountService accountService = new DbAccountService();
-            IDbRecipeService recipeService = new DbRecipeService();
-            IDbAddressService addresService = new DbAddressService();
-            IDbShopIngrService shopIngrService = new DbShopIngreService();
-            IDbBankInfoService bankInfoService = new DbBankInfoService();
-            IDbIngredientService ingredientService = new DbIngredientService();
-            IDbShopService shopService = new DbShopService();
-
-            /*
-            List<ShopIngredient> shopIngredients = await shopIngrService.getShopIngredientsAsync();
-            List<Shop> shops = await shopService.getShopsAsync();
-
-            ShopIngredient shopIngredient = new ShopIngredient();
-            Shop shop = new Shop();
-            if (shopIngredients.Count < 1)
-            {
-                Amount amount = new Amount();
-                amount.number = 1;
-                amount.unitType = "kg";
-                shopIngredient.id = shopIngredients.Count + 1;
-                shopIngredient.name = "Danish Potatoes";
-                shopIngredient.price = 20;
-                shopIngredient.ShopVares = new List<ShopVare>();
-                shopIngredient.unitType = "DKK";
-                await shopIngrService.addShopIngredientAsync(shopIngredient);
-            }
-
-            if (shops.Count < 1)
-            {
-                Address address = new Address();
-                address.city = "Horsens";
-                address.street = "Kollegievænget 3";
-                address.zipCode = 8700;
-                address.AccountAddresses = new List<AccountAddress>();
-                shop.shopAddress = address;
-                shop.shopId = shops.Count + 1;
-                shop.shopName = "Rema";
-                shop.shopVares = new List<ShopVare>();
-                shop.vares = new List<ShopIngredient>();
-                await shopService.addShopAsync(shop);
-            }
-
-            if (shops.Count == 1 && shopIngredients.Count == 1)
-            {
-                await shopService.linkShopVareAsync(shops[0].shopId, shopIngredients[0].id);
-            }*/
-            //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
-            ServerToJava toJava = new ServerToJava();
+            //ServerToJava toJava = new ServerToJava();
             IDbOrderedShopIngreService orderedShopIngreService = new DbOrderedShopIngreService();
             IDbOrderService orderService = new DbOrderService();
-            //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService, ingredientService, orderedShopIngreService, orderService);
-            //server.start();
-            
-            /*
-            FirstSetup setup = new FirstSetup();
-            List<Account> accounts = setup.GetAccounts();
-            await tmp.saveAccountAsync(accounts[0]);
-            await tmp.saveAccountAsync(accounts[1]);
-            */
-            toJava.start();
+            Server server = new Server(orderedShopIngreService, orderService);
+            server.start();
+            //toJava.start();
         }
 
         private static async Task Seed(DatabaseContext databaseContext)
@@ -134,6 +79,9 @@ namespace Server
             Category[] categories = {
                 new Category(){
                     categoryName = "Italian",
+                },
+                new Category(){
+                    categoryName = "Greek",
                 },
             };
 
@@ -336,7 +284,7 @@ namespace Server
             await databaseContext.SaveChangesAsync();
             
             Recipe steve6 = await databaseContext.recipes.FirstAsync(s => s.recipeId == 2 );
-            Category bankInfo6 = await databaseContext.categories.FirstAsync(c => c.categoryName.Equals("Italian"));
+            Category bankInfo6 = await databaseContext.categories.FirstAsync(c => c.categoryName.Equals("Greek"));
             
             RecipeCategory sc6 = new RecipeCategory()
             {
@@ -397,8 +345,8 @@ namespace Server
             Recipe recipeUp1 = recipes[0];
             Recipe recipeUp2 = recipes[1];
             List<Category> categoriesUp = await databaseContext.categories.ToListAsync();
-            recipeUp1.Category = categoriesUp[0];
-            recipeUp2.Category = categoriesUp[0];
+            recipeUp1.category = categoriesUp[0];
+            recipeUp2.category = categoriesUp[1];
             databaseContext.recipes.Update(recipeUp1);
             databaseContext.recipes.Update(recipeUp2);
             await databaseContext.SaveChangesAsync();

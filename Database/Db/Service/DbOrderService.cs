@@ -13,21 +13,21 @@ namespace Db
         DatabaseContext ctx = new DatabaseContext();
         public async Task<List<Order>> getOrdersAsync()
         {
-            List<Order> temp = await ctx.orders.ToListAsync();
+            List<Order> temp = await ctx.orders.Include(o => o.recipe).Include(o=>o.account).Include(o=>o.recipe.category).ToListAsync();
             return temp;
         }
 
         public async Task<Order> getOrderAsync(int id)
         {
-            Order temp = await ctx.orders.FirstOrDefaultAsync(s => s.orderId == id);
+            Order temp = await ctx.orders.FirstOrDefaultAsync(o => o.orderId == id);
             return temp;
         }
 
         public async Task addOrderAsync(Order order)
         {
             order.OrderedShopIngredients = new List<OrderedShopIngredients>();
-            order.Recipe = ctx.recipes.FirstOrDefault(r => r.recipeId == order.recipeId);
-            order.Account = ctx.accounts.FirstOrDefault(a => a.username.Equals(order.username));
+            order.recipe = ctx.recipes.FirstOrDefault(r => r.recipeId == order.recipeId);
+            order.account = ctx.accounts.FirstOrDefault(a => a.username.Equals(order.username));
             await ctx.orders.AddAsync(order);
             await ctx.SaveChangesAsync();
         }

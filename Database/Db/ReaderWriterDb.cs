@@ -1,6 +1,5 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Database.Model;
@@ -21,7 +20,10 @@ namespace Db
         private IDbAccountService AccountService = new DbAccountService();
         private IDbShopService ShopService = new DbShopService();
         private IDbShopIngrService ShopIngrService = new DbShopIngreService();
+        private IDbAddressService AddressService = new DbAddressService();
+        private IDbBankInfoService BankInfoService = new DbBankInfoService();
         private IDbOrderService OrderService = new DbOrderService();
+        private IDbOrderedShopIngreService OrderedShopIngreService = new DbOrderedShopIngreService();
 
         private ReaderWriterDb()
         {
@@ -158,12 +160,18 @@ namespace Db
                 {
                     ShopIngredient shopIngredient = (ShopIngredient) o1;
                     Shop shop = (Shop) o2;
-                    await ShopIngrService.addShopIngredientAsync(shopIngredient);
                     await ShopService.linkShopVareAsync(shop.shopId,shopIngredient.id);
                     return "linked";
                 }
             }
+
             return "Error";
+        }
+
+        public async Task<String> getCategoriesAsync()
+        {
+            List<Category> categories = await RecipeService.getCategoriesAsync();
+            return JsonSerializer.Serialize(categories);
         }
 
         public async Task<string> getIngredientsAsync()
@@ -175,19 +183,6 @@ namespace Db
         public async Task<string> getShopsAsync()
         {
             List<Shop> shops = await ShopService.getShopsAsync();
-            List<ShopVare> shopVares = await ShopService.getShopVaresAsync();
-            List<ShopIngredient> shopIngredients = await ShopIngrService.getShopIngredientsAsync();
-            foreach (var shop in shops)
-            {
-                shop.vares = new List<ShopIngredient>();
-                shop.shopVares = null;
-            }
-            foreach (var vare in shopVares)
-            {
-                Shop shop = shops.Find(s => s.shopId == vare.shopId);
-                ShopIngredient shopIngredient = shopIngredients.Find(s => s.id == vare.shopIngredientId);
-                shop.vares.Add(shopIngredient);
-            }
             return JsonSerializer.Serialize(shops);
         }
 
@@ -208,17 +203,45 @@ namespace Db
             List<Account> accounts = await AccountService.GetAccountsAcyns();
             return JsonSerializer.Serialize(accounts);
         }
-
+        
+        public async Task<string> getAddresses()
+        {
+            List<Address> addresses = await AddressService.GetAddressesAcyns();
+            return JsonSerializer.Serialize(addresses);
+        }
+        public async Task<string> getBankInfos()
+        {
+            List<BankInfo> bankInfos = await BankInfoService.GetBankInfosAcyns();
+            return JsonSerializer.Serialize(bankInfos);
+        }
         public async Task<string> getOrdersAsync()
         {
             List<Order> orders = await OrderService.getOrdersAsync();
             return JsonSerializer.Serialize(orders);
         }
-
-        public async Task<string> getCategoriesAsync()
+        public async Task<string> getIngredientsForRecipe(int receipeint)
         {
-            List<Category> categories = await RecipeService.getCatoriesAsync();
-            return JsonSerializer.Serialize(categories);
+            List<Ingredient> recipes = await IngredientService.getIngredientsOfRecipeAsync(receipeint);
+            return JsonSerializer.Serialize(recipes);
+        }
+        
+        public async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
+        {
+            await OrderService.addOrderAsync(order);
+            await OrderedShopIngreService.addOrderedShopIngredientsAsync(orderedShopIngredients, order);
+        }
+
+        public async Task<Account> Register(Register addAccount)
+        {
+            Account newAccount = addAccount.account;
+            Address newaddress = addAccount.address;
+            BankInfo newbankInfo = addAccount.bankInfo;
+            await AccountService.addAccountAsync(newAccount);
+            await AddressService.saveAddressAsync(newaddress);
+            await BankInfoService.addBankInfoAsync(newbankInfo);
+            await AccountService.LinkAddress(newAccount, newaddress);
+            await AccountService.LinkBankInfo(newAccount, newbankInfo);
+            return newAccount;
         }
     }
 }
