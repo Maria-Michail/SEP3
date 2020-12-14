@@ -10,16 +10,13 @@ namespace Database.Model
         [Required]
         [Key]
         [MaxLength(12)]
-        [JsonPropertyName("username")]
         public string username{get; set;}
 
         [Required]
         [MaxLength(12)]
-        [JsonPropertyName("password")]
         public string password{get;set;}
 
         [Required]
-        [JsonPropertyName("email")]
         public string email{get;set;}
         
         
@@ -27,8 +24,5 @@ namespace Database.Model
         public IList<AccountAddress> AccountAddresses { get; set; }
         [JsonIgnore]
         public IList<AccountBankInfo> AccountBankInfos { get; set; }
-        
-        
-
     }
 }

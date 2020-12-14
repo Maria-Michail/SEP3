@@ -27,7 +27,7 @@ namespace Model
         [Required,MaxLength(40)]
         public string unitType { get; set; }
         
-        public IList<ShopVare> ShopVares { get; set; }
+        public List<ShopVare> shopVares { get; set; }
 
         public override string ToString()
         {

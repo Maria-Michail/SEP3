@@ -24,6 +24,12 @@ namespace Db
             return temp;
         }
 
+        public async Task<List<Category>> getCatoriesAsync()
+        {
+            List<Category> categories = await ctx.categories.ToListAsync();
+            return categories;
+        }
+
         public async Task removeRecipeAsync(string recipeName)
         {
             ctx.recipes.Remove(await ctx.recipes.FirstAsync(r => r.recipeName.Equals(recipeName)));

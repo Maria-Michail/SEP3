@@ -12,7 +12,13 @@ namespace Db
         DatabaseContext ctx = new DatabaseContext();
         public async Task<List<Shop>> getShopsAsync()
         {
-            List<Shop> temp = await ctx.shops.Include(s => s.shopAddress).Include(s=>s.vares).ToListAsync();
+            List<Shop> shops = await ctx.shops.Include(s=>s.shopAddress).ToListAsync();
+            return shops;
+        }
+
+        public async Task<List<ShopVare>> getShopVaresAsync()
+        {
+            List<ShopVare> temp = await ctx.shopvares.ToListAsync();
             return temp;
         }
 
@@ -25,6 +31,7 @@ namespace Db
                     return shop;
                 }
             }
+
             await ctx.shops.AddAsync(shop);
             await ctx.SaveChangesAsync();
             return shop;
@@ -47,17 +54,27 @@ namespace Db
 
         public async Task linkShopVareAsync(int shopId, int shopIngredientId)
         {
-            Shop shop1 = await ctx.shops.FirstAsync(s => s.shopId == shopId);
+            Shop shop1 = await ctx.shops.Include(s => s.shopVares).FirstAsync(s => s.shopId == shopId);
+            foreach (var vare in ctx.shopvares.ToList())
+            {
+                if (shopId == vare.shopId)
+                {
+                    shop1.shopVares.Add(vare);
+                }
+            }
             ShopIngredient shopIngredient1 = await ctx.shopIngredients.FirstAsync(s => s.id == shopIngredientId);
             ShopVare sv2 = new ShopVare()
             {
                 shop = shop1,
                 shopIngredient = shopIngredient1
             };
-            shop1.shopVares = new List<ShopVare>();
+            if (shop1.shopVares == null)
+            {
+                shop1.shopVares = new List<ShopVare>();
+            }
             shop1.shopVares.Add(sv2);
-            shop1.vares.Add(shopIngredient1);
             ctx.Update(shop1);
+            ctx.Update(shopIngredient1);
             await ctx.SaveChangesAsync();
         }
     }

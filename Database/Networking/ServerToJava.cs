@@ -15,7 +15,7 @@ namespace Database.Networking{
     class ServerToJava{
 
         private string content;
-        private Shop shopToLink = new Shop();
+        private Shop shopToLink;
 
         public ServerToJava()
         {
@@ -53,18 +53,25 @@ namespace Database.Networking{
 
                     }else if (rcv.Contains("Shops"))
                     {
+                        Console.WriteLine("Trying to get shops");
                         content = await readerWriterDb.getShopsAsync();
                     }else if (rcv.Contains("Ingredients"))
                     {
+                        Console.WriteLine("Trying to get ingredients");
                         content = await readerWriterDb.getIngredientsAsync();
                     }else if (rcv.Contains("Recipes"))
                     {
                         content = await readerWriterDb.getRecipesAsync();
+                    }else if (rcv.Contains("Orders"))
+                    {
+                        content = await readerWriterDb.getOrdersAsync();
+                    }else if (rcv.Contains("Categories"))
+                    {
+                        content = await readerWriterDb.getCategoriesAsync();
                     }
                  //Add methods    
                 }else if (rcv.Contains("add"))
                 {
-                    string subString = rcv.Substring(3);
                     if (rcv.Contains("ShopIngredient"))
                     {
                         content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "ShopIngredient"), "shopIngredient");
@@ -73,6 +80,7 @@ namespace Database.Networking{
                         content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Ingredient"), "ingredient");
                     }else if (rcv.Contains("Shop"))
                     {
+                        Console.WriteLine("Trying to add");
                         content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Shop"), "shop");
                     }else if (rcv.Contains("Recipe"))
                     {
@@ -113,6 +121,7 @@ namespace Database.Networking{
                         content = "received";
                     }else if (rcv.Contains("ShopIngredientToShop2"))
                     {
+                        Console.WriteLine(shopToLink);
                         ShopIngredient shopIngredientToLink =(ShopIngredient) getClientsObject(stream, "ShopIngredient");
                         if (shopToLink != null && shopIngredientToLink != null)
                         {
@@ -125,6 +134,7 @@ namespace Database.Networking{
                     }
                 }
                 // Sending
+                Console.WriteLine(content);
                 byte[] toSendBytes = System.Text.Encoding.ASCII.GetBytes(content);
                 stream.Write(toSendBytes);
 

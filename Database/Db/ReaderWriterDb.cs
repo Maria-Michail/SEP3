@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Database.Model;
@@ -20,6 +21,7 @@ namespace Db
         private IDbAccountService AccountService = new DbAccountService();
         private IDbShopService ShopService = new DbShopService();
         private IDbShopIngrService ShopIngrService = new DbShopIngreService();
+        private IDbOrderService OrderService = new DbOrderService();
 
         private ReaderWriterDb()
         {
@@ -156,11 +158,11 @@ namespace Db
                 {
                     ShopIngredient shopIngredient = (ShopIngredient) o1;
                     Shop shop = (Shop) o2;
+                    await ShopIngrService.addShopIngredientAsync(shopIngredient);
                     await ShopService.linkShopVareAsync(shop.shopId,shopIngredient.id);
                     return "linked";
                 }
             }
-
             return "Error";
         }
 
@@ -173,6 +175,19 @@ namespace Db
         public async Task<string> getShopsAsync()
         {
             List<Shop> shops = await ShopService.getShopsAsync();
+            List<ShopVare> shopVares = await ShopService.getShopVaresAsync();
+            List<ShopIngredient> shopIngredients = await ShopIngrService.getShopIngredientsAsync();
+            foreach (var shop in shops)
+            {
+                shop.vares = new List<ShopIngredient>();
+                shop.shopVares = null;
+            }
+            foreach (var vare in shopVares)
+            {
+                Shop shop = shops.Find(s => s.shopId == vare.shopId);
+                ShopIngredient shopIngredient = shopIngredients.Find(s => s.id == vare.shopIngredientId);
+                shop.vares.Add(shopIngredient);
+            }
             return JsonSerializer.Serialize(shops);
         }
 
@@ -192,6 +207,18 @@ namespace Db
         {
             List<Account> accounts = await AccountService.GetAccountsAcyns();
             return JsonSerializer.Serialize(accounts);
+        }
+
+        public async Task<string> getOrdersAsync()
+        {
+            List<Order> orders = await OrderService.getOrdersAsync();
+            return JsonSerializer.Serialize(orders);
+        }
+
+        public async Task<string> getCategoriesAsync()
+        {
+            List<Category> categories = await RecipeService.getCatoriesAsync();
+            return JsonSerializer.Serialize(categories);
         }
     }
 }

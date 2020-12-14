@@ -8,6 +8,7 @@ namespace Db
     {
         Task<List<Recipe>> getRecipiesAsync();
         Task<Recipe> getRecipeAsync(string recipeName);
+        Task<List<Category>> getCatoriesAsync();
         Task removeRecipeAsync(string recipeName);
         Task addRecipeAsync(Recipe recipe);
         Task updateRecipeAsync(Recipe recipe);

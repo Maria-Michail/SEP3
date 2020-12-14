@@ -9,7 +9,7 @@ namespace Model
     {
         [Key] 
         [Required] 
-        [Range(0, int.MaxValue, ErrorMessage = "Id must be above 0")] [JsonPropertyName("Id")]
+        [Range(0, int.MaxValue, ErrorMessage = "Id must be above 0")]
         public int shopId { get; set; }
         
         [Required,MaxLength(25)]
