@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Db;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Database.Networking;
 using Microsoft.EntityFrameworkCore;
 using Model;
@@ -25,12 +26,12 @@ namespace Server
                     Seed(dataContext);
                 }
             }
-            //ServerToJava toJava = new ServerToJava();
-            IDbOrderedShopIngreService orderedShopIngreService = new DbOrderedShopIngreService();
-            IDbOrderService orderService = new DbOrderService();
-            Server server = new Server(orderedShopIngreService, orderService);
-            server.start();
-            //toJava.start();
+            ServerToJava toJava = new ServerToJava();
+            Server server = new Server();
+            Thread th1 = new Thread(new ThreadStart(toJava.start));
+            Thread th2 = new Thread(new ThreadStart(server.start));
+            th1.Start();
+            th2.Start();
         }
 
         private static async Task Seed(DatabaseContext databaseContext)

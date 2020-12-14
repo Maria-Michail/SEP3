@@ -14,15 +14,10 @@ using Model;
 namespace Server
 {
     class Server{
-
-        private IDbOrderedShopIngreService orderedShopIngService;
-        private IDbOrderService orderService;
         private string content;
-        public Server(IDbOrderedShopIngreService orderedShopIngService, IDbOrderService orderService){
-            this.orderedShopIngService = orderedShopIngService;
-            this.orderService = orderService;
+        public Server(){
         }
-        public async Task start(){
+        public async void start(){
             Console.WriteLine("Starting server...");
 
             IPAddress ip = IPAddress.Parse("127.0.0.1");
@@ -101,14 +96,13 @@ namespace Server
                         Console.WriteLine(objectString);
                         IList<OrderedShopIngredients> newOrderedShopIngredients =
                             addOrder.OrderedShopIngredients;
-                        await addNewOrder(addOrder, newOrderedShopIngredients);
+                        await readerWriterDb.addNewOrder(addOrder, newOrderedShopIngredients);
                         content = JsonSerializer.Serialize("Added order");
                         break;
                     }
                     case "GetOrders":
                     {
-                        content = await getOrders();
-                        Console.WriteLine(content + "-->Database/Networking/Server.cs");
+                        content = await readerWriterDb.getOrdersAsync();
                         break;
                     }
                 }
@@ -130,19 +124,5 @@ namespace Server
             string objectString = Encoding.ASCII.GetString(objectFromClient, 0, objectRead);
             return objectString;
         }
-        
-        private async Task addNewOrder(Order order, IList<OrderedShopIngredients> orderedShopIngredients)
-        {
-            await orderService.addOrderAsync(order);
-            await orderedShopIngService.addOrderedShopIngredientsAsync(orderedShopIngredients, order);
-        }
-        
-        private async Task<string> getOrders()
-        {
-            List<Order> orders = await orderService.getOrdersAsync();
-            return JsonSerializer.Serialize(orders);
-        }
-
-        
     }
 }

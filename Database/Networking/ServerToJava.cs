@@ -26,7 +26,7 @@ namespace Database.Networking{
 
             IPAddress ip = IPAddress.Parse("127.0.0.1");
 
-            TcpListener listener = new TcpListener(ip, 2920);
+            TcpListener listener = new TcpListener(ip, 2921);
             listener.Start();
 
             ReaderWriterDb readerWriterDb = ReaderWriterDb.getInstance();
