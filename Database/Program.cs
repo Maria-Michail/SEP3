@@ -72,18 +72,18 @@ namespace Server
                 await shopService.linkShopVareAsync(shops[0].shopId, shopIngredients[0].id);
             }*/
             //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService);
-            //ServerToJava toJava = new ServerToJava();
+            ServerToJava toJava = new ServerToJava();
             IDbOrderedShopIngreService orderedShopIngreService = new DbOrderedShopIngreService();
             IDbOrderService orderService = new DbOrderService();
-            Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService, ingredientService, orderedShopIngreService, orderService);
-            server.start();
+            //Server server = new Server(accountService,recipeService,addresService,shopIngrService, bankInfoService, ingredientService, orderedShopIngreService, orderService);
+            //server.start();
             /*
             FirstSetup setup = new FirstSetup();
             List<Account> accounts = setup.GetAccounts();
             await tmp.saveAccountAsync(accounts[0]);
             await tmp.saveAccountAsync(accounts[1]);
             */
-            //toJava.start();
+            toJava.start();
         }
 
         private static async Task Seed(DatabaseContext databaseContext)
