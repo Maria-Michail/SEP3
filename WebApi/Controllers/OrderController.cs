@@ -25,25 +25,20 @@ namespace WebApi.Controllers
         public async Task<ActionResult<Order>> SendOrder([FromBody] Order order) {
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("som");
                 return BadRequest(ModelState);
             }
             try {
-                Console.WriteLine("WebApi recieved" );
                 await orderService.AddOrderAsync(order);
                 return Ok(); 
             } catch (Exception e) {
-                Console.WriteLine(e); 
                 return StatusCode(500, e.Message);
             }
         }
         
         
-        [HttpGet("k/{username}")] 
-        public async Task<ActionResult<IList<Order>>> GetOrders(string username) {
-            Console.WriteLine("OrderController");
-            IList<Order> orders = await orderService.GetOrders(username);
-            Console.WriteLine(orders[0].username);
+        [HttpGet] 
+        public async Task<ActionResult<IList<Order>>> GetOrders() {
+            IList<Order> orders = await orderService.GetOrders();
             return Ok(orders); 
         }
     }

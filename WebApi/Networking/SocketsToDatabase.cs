@@ -218,30 +218,7 @@ class SocketsToDatabase : ISocketsToDatabase{
         client.Close();
     }
 
-    public object getAllOrders()
-    {
-        Console.WriteLine("Starting client..");
-
-        TcpClient client = new TcpClient("127.0.0.1", 2920);
-
-        NetworkStream stream = client.GetStream();
-
-        byte[] dataToServer = Encoding.ASCII.GetBytes("GetAllOrders");
-        stream.Write(dataToServer, 0, dataToServer.Length);
-
-        byte[] dataFromServer = new byte[1024];
-        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
-        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
-        IList<Order> request = JsonSerializer.Deserialize<List<Order>>(response);
-        Console.WriteLine(request.ToString() + "--> WebApi/Networking/SocketsToDatabase.cs -->getAllOrders");
-        Console.WriteLine(request);
-        
-        stream.Close();
-        client.Close();
-        return request;
-    }
-
-    public object getOrders(string username)
+    public object getOrders()
     {
         Console.WriteLine("Starting client..");
 
@@ -256,46 +233,11 @@ class SocketsToDatabase : ISocketsToDatabase{
         int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
         IList<Order> request = JsonSerializer.Deserialize<List<Order>>(response);
-        Console.WriteLine(request.ToString() + "--> WebApi/Networking/SocketsToDatabase.cs -->getOrders");
         
         stream.Close();
         client.Close();
         return request;
     }
-
-
-    /*public Object ValidateUser(string username, string password) {
-        Console.WriteLine("Starting client..");
-
-        TcpClient client = new TcpClient("127.0.0.1", 2920);
-
-        NetworkStream stream = client.GetStream();
-
-        byte[] dataToServer = Encoding.ASCII.GetBytes("ValidateUser");
-        stream.Write(dataToServer, 0, dataToServer.Length);
-        
-        byte[] receive = new byte[1024];
-        int receiveRead = stream.Read(receive, 0, receive.Length);
-        
-        byte[] userToBytes = Encoding.ASCII.GetBytes(username);
-        stream.Write(userToBytes, 0, userToBytes.Length);
-        
-        byte[] receive2 = new byte[1024];
-        int receiveRead2 = stream.Read(receive2, 0, receive2.Length);
-        
-        byte[] passwordToBytes = Encoding.ASCII.GetBytes(password);
-        stream.Write(passwordToBytes, 0, passwordToBytes.Length);
-
-        byte[] dataFromServer = new byte[1024];
-        int bytesRead = stream.Read(dataFromServer, 0, dataFromServer.Length);
-        string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
-        Account request = JsonSerializer.Deserialize<Account>(response);
-        Console.WriteLine("received username from database " + request.username);
-        Console.WriteLine("received age from database " + request.age);
-        
-        stream.Close();
-        client.Close();
-        return request;
-    }*/
+    
 }
 }

@@ -76,23 +76,6 @@ namespace WebApi.Controllers
             }
         }
 
-        /*public async Task<ActionResult<IList<Account>>> ValidateUser([FromQuery] string username, [FromQuery] string password)
-        {
-            Console.WriteLine("Here");
-            try
-            {
-                var user = await accountService.ValidateUser(username, password);
-                Console.WriteLine("console is sending " + user.username);
-                IList<Account> accounts = new List<Account>();
-                accounts.Add(user);
-                return Ok(accounts);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }*/
 
-        
     }   
 }

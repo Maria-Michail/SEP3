@@ -42,13 +42,10 @@ namespace Blazor.Data
         public async Task<List<Order>> GetOrdersAsync()
         {
             string username = CustomAuthenticationStateProvider.getUser().username;
-            Task<string> stringAsync = client.GetStringAsync($"https://localhost:5001/Order/k/{username}");
+            Task<string> stringAsync = client.GetStringAsync($"https://localhost:5001/Order");
             string message = await stringAsync;
-            Console.WriteLine(message +"--> OrderService --1");
             List<Order> result = JsonSerializer.Deserialize<List<Order>>(message);
-            Console.WriteLine(result.ToString() +"--> OrderService --2");
             Order = result;
-            Console.WriteLine(result.ToString() +"resultPrint");
             return result;
         }
     }

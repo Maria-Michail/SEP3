@@ -16,11 +16,7 @@ namespace Db
             return bankInfos;
         }
 
-        public async Task removeBankInfoAsync(BankInfo bankInfo)
-        {
-            ctx.bankInfos.Remove(bankInfo);
-            await ctx.SaveChangesAsync();
-        }
+        
 
         public async Task<BankInfo> addBankInfoAsync(BankInfo bankInfo)
         {
@@ -36,11 +32,7 @@ namespace Db
             return bankInfo;
         }
 
-        public async Task updateBankInfoAsync(BankInfo bankInfo)
-        {
-            ctx.bankInfos.Update(bankInfo);
-            await ctx.SaveChangesAsync();
-        }
+        
         
     }
 }

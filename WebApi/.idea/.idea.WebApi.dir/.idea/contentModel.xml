@@ -2,26 +2,61 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.01" t="ExcludeRecursive" />
+    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
     <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\WebApi" t="IncludeRecursive">
+    <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\WebApi" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="Controllers" t="Include">
         <e p="AccountsController.cs" t="Include" />
+        <e p="IngredientController.cs" t="Include" />
+        <e p="OrderController.cs" t="Include" />
+        <e p="RecipeController.cs" t="Include" />
       </e>
       <e p="Data" t="Include">
         <e p="Impl" t="Include">
           <e p="AccountService.cs" t="Include" />
           <e p="IAccountService.cs" t="Include" />
+          <e p="IIngredientsService.cs" t="Include" />
+          <e p="IngredientService.cs" t="Include" />
+          <e p="IOrderService.cs" t="Include" />
+          <e p="IRecipeService.cs" t="Include" />
+          <e p="OrderService.cs" t="Include" />
+          <e p="RecipeService.cs" t="Include" />
         </e>
-        <e p="Models" t="Include">
-          <e p="Account.cs" t="Include" />
+        <e p="Model" t="Include">
+          <e p="Account" t="Include">
+            <e p="Account.cs" t="Include" />
+            <e p="AccountAddress.cs" t="Include" />
+            <e p="AccountBankInfo.cs" t="Include" />
+            <e p="Address.cs" t="Include" />
+            <e p="BankInfo.cs" t="Include" />
+            <e p="Register.cs" t="Include" />
+          </e>
+          <e p="Order" t="Include">
+            <e p="Order.cs" t="Include" />
+            <e p="OrderedShopIngredients.cs" t="Include" />
+            <e p="OSIngredients.cs" t="Include" />
+          </e>
+          <e p="Recipe" t="Include">
+            <e p="Category.cs" t="Include" />
+            <e p="Ingredient.cs" t="Include" />
+            <e p="IngredientRecipe.cs" t="Include" />
+            <e p="Recipe.cs" t="Include" />
+            <e p="RecipeCategory.cs" t="Include" />
+          </e>
+          <e p="ShopRelated" t="Include">
+            <e p="Shop.cs" t="Include" />
+            <e p="ShopIngredient.cs" t="Include" />
+            <e p="ShopVare.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Networking" t="Include">
+        <e p="ISocketsToDatabase.cs" t="Include" />
         <e p="SocketsToDatabase.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">

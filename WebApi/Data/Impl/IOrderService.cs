@@ -9,6 +9,6 @@ namespace WebApi.Data.Impl
     {
         Task AddOrderAsync(Order order);
         
-        Task<IList<Order>> GetOrders(string username);
+        Task<IList<Order>> GetOrders();
     }
 }

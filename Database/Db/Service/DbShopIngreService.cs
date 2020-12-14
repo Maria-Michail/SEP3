@@ -40,23 +40,6 @@ namespace Db
             await ctx.SaveChangesAsync();
         }
         
-        public async Task LinkShop(ShopIngredient shopIngredient, Shop shop)
-        {
-            ShopIngredient shoping1 = await ctx.shopIngredients.FirstAsync(s => s.id == shopIngredient.id );
-            Shop shop1 = await ctx.shops.FirstAsync(c => c.shopId == shop.shopId);
-            ShopVare sc2 = new ShopVare()
-            {
-                shop = shop1,
-                shopIngredient = shoping1
-            };
-            if (shop1.shopVares == null)
-            {
-                shop1.shopVares = new List<ShopVare>();
-            }
-            shop1.shopVares.Add(sc2);
-            ctx.Update(shop1);
-            await ctx.SaveChangesAsync();
-        }
 
         public async Task updateShopIngredientAsync(ShopIngredient ingredient)
         {

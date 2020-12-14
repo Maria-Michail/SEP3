@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Janni\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Janni\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Janni\AppData\Roaming\JetBrains\Rider2020.2\consoles\Db" t="IncludeRecursive" />
-    <e p="C:\Users\Janni\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Janni\OneDrive\Skrivebord\SEP3Code\Database" t="IncludeRecursive">
+    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\consoles\Db" t="IncludeRecursive" />
+    <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\Database" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="Database.csproj" t="IncludeRecursive" />
       <e p="Db" t="Include">
@@ -37,11 +38,9 @@
         </e>
       </e>
       <e p="MainDb.db" t="Include" />
-      <e p="MainDb.db-shm" t="Include" />
-      <e p="MainDb.db-wal" t="Include" />
       <e p="Migrations" t="Include">
-        <e p="20201209090315_initialCreate.cs" t="Include" />
-        <e p="20201209090315_initialCreate.Designer.cs" t="Include" />
+        <e p="20201210163142_initialCreate.cs" t="Include" />
+        <e p="20201210163142_initialCreate.Designer.cs" t="Include" />
         <e p="DatabaseContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Model" t="Include">
@@ -53,7 +52,6 @@
           <e p="BankInfo.cs" t="Include" />
           <e p="Register.cs" t="Include" />
         </e>
-        <e p="Delivery.cs" t="Include" />
         <e p="Order" t="Include">
           <e p="Order.cs" t="Include" />
           <e p="OrderedShopIngredients.cs" t="Include" />

@@ -80,15 +80,5 @@ namespace Data.Impl
             return addedAccount;
         }
         
-
-        /*public async Task<Account> ValidateUser(string username, string password)
-        {
-            Account user = (Account)so.ValidateUser(username, password);
-            if (user != null)
-            {
-                return user;
-            } 
-            throw new Exception("User not found");
-        }*/
     }
 }

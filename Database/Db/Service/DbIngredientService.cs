@@ -16,11 +16,7 @@ namespace Db
             return temp;
         }
 
-        public async Task<Ingredient> getIngredientAsync(string name)
-        {
-            Ingredient temp = await ctx.ingredients.FirstOrDefaultAsync(i => i.ingredientName.Equals(name));
-            return temp;
-        }
+       
 
         public async Task addIngredientAsync(Ingredient ingredient)
         {

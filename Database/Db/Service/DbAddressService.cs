@@ -29,16 +29,6 @@ namespace Db
             return address;
         }
 
-        public async Task updateAddressAsync(Address address)
-        {
-            ctx.addresses.Update(address);
-            ctx.SaveChangesAsync();
-        }
-
-        public async Task removeAddressAsync(Address address)
-        {
-            ctx.addresses.Remove(address);
-            ctx.SaveChangesAsync();
-        }
+        
     }
 }

@@ -24,10 +24,9 @@ namespace WebApi.Data.Impl
             so.AddOrder(order);
         }
 
-        public async Task<IList<Order>> GetOrders(string username)
+        public async Task<IList<Order>> GetOrders()
         {
-            orders = (List<Order>) so.getOrders(username);
-           Console.WriteLine(orders.ToString() +"orderService");
+            orders = (List<Order>) so.getOrders();
            return orders;
         }
     }

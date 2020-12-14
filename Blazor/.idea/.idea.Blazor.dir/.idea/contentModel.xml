@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.02" t="ExcludeRecursive" />
-    <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\SEP3\Blazor" t="IncludeRecursive">
+    <e p="C:\Users\maria\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\maria\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\maria\OneDrive\Documents\Rider\SEP3\Blazor" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
       <e p="_Imports.razor" t="Include" />
       <e p="App.razor" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
@@ -14,12 +17,45 @@
       <e p="bin" t="ExcludeRecursive" />
       <e p="Blazor.csproj" t="IncludeRecursive" />
       <e p="Data" t="Include">
-        <e p="AccountService.cs" t="Include" />
-        <e p="IAccountService.cs" t="Include" />
+        <e p="Impl" t="Include">
+          <e p="AccountService.cs" t="Include" />
+          <e p="IAccountService.cs" t="Include" />
+          <e p="IIngredientsService.cs" t="Include" />
+          <e p="IngredientService.cs" t="Include" />
+          <e p="IOrderService.cs" t="Include" />
+          <e p="IRecipeService.cs" t="Include" />
+          <e p="OrderService.cs" t="Include" />
+          <e p="RecipeService.cs" t="Include" />
+        </e>
+        <e p="Model" t="Include">
+          <e p="Account" t="Include">
+            <e p="Account.cs" t="Include" />
+            <e p="AccountAddress.cs" t="Include" />
+            <e p="AccountBankInfo.cs" t="Include" />
+            <e p="Address.cs" t="Include" />
+            <e p="BankInfo.cs" t="Include" />
+            <e p="Register.cs" t="Include" />
+          </e>
+          <e p="Order" t="Include">
+            <e p="Order.cs" t="Include" />
+            <e p="OrderedShopIngredients.cs" t="Include" />
+            <e p="OSIngredients.cs" t="Include" />
+          </e>
+          <e p="Recipe" t="Include">
+            <e p="Category.cs" t="Include" />
+            <e p="Ingredient.cs" t="Include" />
+            <e p="IngredientRecipe.cs" t="Include" />
+            <e p="Recipe.cs" t="Include" />
+            <e p="RecipeCategory.cs" t="Include" />
+          </e>
+          <e p="ShopRelated" t="Include">
+            <e p="Shop.cs" t="Include" />
+            <e p="ShopIngredient.cs" t="Include" />
+            <e p="ShopVare.cs" t="Include" />
+          </e>
+        </e>
       </e>
-      <e p="Models" t="Include">
-        <e p="Account.cs" t="Include" />
-      </e>
+      <e p="ImagesTemp" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
           <e p="netcoreapp3.1" t="Include">
@@ -32,7 +68,14 @@
       <e p="Pages" t="Include">
         <e p="_Host.cshtml" t="Include" />
         <e p="Error.cshtml" t="Include" />
+        <e p="Home.razor" t="Include" />
+        <e p="IngredientsList.razor" t="Include" />
         <e p="Login.razor" t="Include" />
+        <e p="OrdersView.razor" t="Include" />
+        <e p="Payment.razor" t="Include" />
+        <e p="RecipeView.razor" t="Include" />
+        <e p="Register.razor" t="Include" />
+        <e p="ViewRecipes.razor" t="Include" />
         <e p="ViewUsers.razor" t="Include" />
       </e>
       <e p="Program.cs" t="Include" />
@@ -71,6 +114,13 @@
           <e p="site.css" t="Include" />
         </e>
         <e p="favicon.ico" t="Include" />
+        <e p="Images" t="Include">
+          <e p="Arrabiata.jpg" t="Include" />
+          <e p="background-main.jpg" t="Include" />
+          <e p="bruschetta.jpg" t="Include" />
+          <e p="lasagne.jpg" t="Include" />
+          <e p="Pizza.jpeg" t="Include" />
+        </e>
       </e>
     </e>
   </component>

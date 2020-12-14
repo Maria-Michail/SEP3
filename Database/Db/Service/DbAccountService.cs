@@ -21,11 +21,7 @@ namespace Db
             return accounts;
         }
 
-        public async Task removeAccountAsync(Account account)
-        {
-            ctx.accounts.Remove(account);
-            await ctx.SaveChangesAsync();
-        }
+       
 
         public async Task<Account> addAccountAsync(Account account)
         {
@@ -41,11 +37,7 @@ namespace Db
             return account;
         }
 
-        public async Task updateAccountAsync(Account account)
-        {
-            ctx.accounts.Update(account);
-            await ctx.SaveChangesAsync();
-        }
+        
         
         public async Task LinkAddress(Account newaccount, Address newaddress)
         {
@@ -82,11 +74,5 @@ namespace Db
             ctx.Update(account1);
             await ctx.SaveChangesAsync();
         }
-        /*public async Task<Account> ValidateUser(string username, string password)
-        {
-            Account account = ctx.accounts.FirstOrDefault(u => u.username.Equals(username) && u.password.Equals(password));
-            Console.Write(account.username);
-            return account;
-        }*/
     }
 }

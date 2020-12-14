@@ -11,8 +11,5 @@ namespace Data.Impl
         Task<IList<Address>> getAddressesAsync();
         Task<IList<BankInfo>> getBankInfosAsync();
         Task<Account> AddAccountAsync(Register register);
-        
-        
-        //Task<Account> ValidateUser(string username, string password);
     }
 }

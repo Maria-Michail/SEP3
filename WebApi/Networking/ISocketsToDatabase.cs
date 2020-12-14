@@ -15,8 +15,7 @@ namespace WebApi.Networking
         Object getAllIngredients();
         Object getShopIngredients();
         void AddOrder(Order order);
-        Object getAllOrders();
-        Object getOrders(string username);
+        Object getOrders();
 
 
     }

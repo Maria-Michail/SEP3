@@ -9,10 +9,6 @@ namespace Db
         Task<List<BankInfo>> GetBankInfosAcyns();
         
         Task<BankInfo> addBankInfoAsync(BankInfo bankInfo);
-
-
-        Task removeBankInfoAsync(BankInfo bankInfo);
-
-        Task updateBankInfoAsync(BankInfo bankInfo);
+        
     }
 }

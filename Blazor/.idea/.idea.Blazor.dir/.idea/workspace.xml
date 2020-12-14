@@ -23,38 +23,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2ad8a0f-9136-4afe-a787-09a899c861e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/obj/Blazor.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Blazor.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Blazor.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Blazor.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.SEP3.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.idea.SEP3.dir/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.RazorAssemblyInfo.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.RazorAssemblyInfo.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.RazorAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.RazorAssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.RazorComponent.input.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.RazorComponent.input.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/Blazor.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/App.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Home.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Home.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/IngredientsList.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/IngredientsList.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Login.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/OrdersView.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/OrdersView.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Payment.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Payment.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/RecipeView.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/RecipeView.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Register.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Register.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewRecipes.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewRecipes.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewUsers.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/ViewUsers.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/MainLayout.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/bin/Debug/netcoreapp3.1/Database.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/.idea/.idea.Database.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/.idea/.idea.Database.dir/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/.idea/.idea.Database.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/.idea/.idea.Database.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Database.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/Debug/netcoreapp3.1/Database.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebApi/.idea/.idea.WebApi.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/.idea/.idea.WebApi.dir/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebApi/.idea/.idea.WebApi.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/.idea/.idea.WebApi.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WebApi/obj/WebApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../WebApi/obj/WebApi.csproj.nuget.dgspec.json" afterDir="false" />
@@ -125,10 +131,11 @@
       <option name="presentableId" value="Default" />
       <updated>1605603454807</updated>
       <workItem from="1605603508859" duration="26000" />
+      <workItem from="1607949519355" duration="8000" />
     </task>
     <servers />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -140,6 +147,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

@@ -8,15 +8,10 @@ namespace Db{
         Task<List<Account>> GetAccountsAcyns();
         
         Task<Account> addAccountAsync(Account account);
-
-
-        Task removeAccountAsync(Account account);
-
-        Task updateAccountAsync(Account account);
+        
 
         Task LinkAddress(Account newaccount, Address newaddress);
         Task LinkBankInfo(Account newaccount, BankInfo newbankInfo);
 
-        //Task<Account> ValidateUser(string username, string password);
     }
 }

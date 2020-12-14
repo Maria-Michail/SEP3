@@ -43,7 +43,7 @@
             await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
             username = "";
             password = "";
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/home");
         }
         catch (Exception e)
         {

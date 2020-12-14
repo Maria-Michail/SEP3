@@ -12,69 +12,12 @@
 @attribute [Authorize]
 
 
-
-
-<!--
-<div class="row">
-<EditForm class="regForm col-7 bg-white" Model="@bankInfo" OnValidSubmit="@HandleValidPayment" OnInvalidSubmit="@HandleInvalidPayment">
-    <div class="p-2 m-2">
-        <h2 class="title">Payment</h2>
-        <div class="p-2 m-2">
-            <div class="row ">
-                <DataAnnotationsValidator/>
-                <ValidationSummary/>
-                    
-                <div class="col-11 bg-white">
-                    <ul class="orderPageList" data-role="listview" style="list-style-type: none">
-                        <li>
-                            <div class="form-group">
-                                Card holder:<br/>
-                                <InputText class="regInput" style="width:90%" @bind-Value="bankInfo.cardHolder"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="form-group">
-                                Card Number:<br/>
-                                <InputNumber class="regInput" style="width:90%" @bind-Value="bankInfo.cardNumber"/>
-                            </div>
-                        </li>
-                        <div class="row">
-                            <div class="col-6">
-                                <li>
-                                    <div class="form-group">
-                                        Expiry Date:<br/>
-                                        <InputDate class="regInput" style="width:80%" @bind-Value="expiryDate"/>
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="col-6">
-                                <li>
-                                    <div class="form-group">
-                                        CVV:<br/>
-                                        <InputNumber class="regInput" style="width:80%" @bind-Value="cvv"/>
-                                    </div>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-center">
-                            <p class="actions ">
-                                <button class="btn btn-primary order-button" type="submit">Pay Now</button>
-                            </p>
-                        </div>
-                    </ul>
-                </div>
-                <div class="col-1 bg-white">
-                            
-                </div>
-            </div>
-        </div>
-    </div>
-</EditForm>-->
-
 <div class="row m-5">
     <div class="col-lg-6 col-md-12 bg-white">
         <div class="jumbotron">
             <EditForm class="regForm col-12 bg-white p-4" Model="@bankInfo" OnValidSubmit="@HandleValidPayment" OnInvalidSubmit="@HandleInvalidPayment">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
                 <div class="row">
                     <div class="form-group">
                         Card holder:<br/>
@@ -111,7 +54,7 @@
                             </p>
                         </div>
                     </div>
-                    </div>
+                </div>
             </EditForm>
             </div>
     </div>
@@ -140,49 +83,6 @@
         </div>
     </div>
 </div>
-
-<!--
-<div class="col-5 bg-light">
-    <div class="p-2 m-3">
-        <h3 class="text-center text-secondary">Order</h3>
-    </div>
-    <div class="row">
-        <div class="col-2">
-        </div>
-        <div class="col-8">
-            <div class="row">
-                <div class="col-8">
-                    <h1 class="display-4">@Recipe.recipeName</h1>
-                </div>
-                <div class="col-4">
-                    <p>$ 400</p>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 100px">
-                <div class="col-8">
-                    <p class="text-secondary">Shipping</p>
-                </div>
-                <div class="col-4">
-                    <p class="text-secondary">Free</p>
-                </div>
-            </div>
-            <hr/>
-            <div class="row">
-                <div class="col-8">
-                    <p class="text-secondary">TOTAL</p>
-                </div>
-                <div class="col-4">
-                    <p class="text-secondary">$400</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2">
-        </div>
-    </div>
-</div>
-</div>
--->
-
 @code {
 
 
@@ -235,8 +135,16 @@
             newOrder.username = currentUser.username;
             newOrder.OrderedShopIngredients = newShopIngredientsWithoutUnchecked;
             Console.WriteLine("Trying paying");
-            await OrderService.storeOrder(newOrder);
-            NavigationManager.NavigateTo("/");
+            if (cvv >= 100 && cvv <= 999)
+            {
+                Console.WriteLine("cvv fine");
+                if (expiryDate > DateTime.Now)
+                {
+                    Console.WriteLine("expiry date fine");
+                    await OrderService.storeOrder(newOrder);
+                    NavigationManager.NavigateTo("/orders");
+                }
+            }
         }
         catch (Exception e)
         {

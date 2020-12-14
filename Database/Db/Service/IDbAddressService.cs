@@ -9,7 +9,5 @@ namespace Db
     {
         Task<List<Address>> GetAddressesAcyns();
         Task<Address> saveAddressAsync(Address address);
-        Task updateAddressAsync(Address address);
-        Task removeAddressAsync(Address address);
     }
 }
