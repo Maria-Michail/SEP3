@@ -14,6 +14,7 @@ namespace Db
         private Boolean activeWriter;
         private int activeReader;
         private int waitingReaders;
+        private string categoryName;
         
         private IDbRecipeService RecipeService = new DbRecipeService();
         private IDbIngredientService IngredientService = new DbIngredientService();
@@ -54,7 +55,7 @@ namespace Db
                 case "recipe":
                 {
                     Recipe recipe = (Recipe) o;
-                    await RecipeService.addRecipeAsync(recipe);
+                    await RecipeService.addRecipeAsync(recipe, categoryName);
                     return recipe.recipeName + " added";
                 }
                 case "ingredient":
@@ -69,12 +70,12 @@ namespace Db
                     await ShopService.addShopAsync(shop);
                     return shop.shopName + " added";
                 }
-                case "shopIngredient":
+                /*case "shopIngredient":
                 {
                     ShopIngredient shopIngredient = (ShopIngredient) o;
                     await ShopIngrService.addShopIngredientAsync(shopIngredient);
                     return shopIngredient.name + " added";
-                }
+                }*/
                 case "account":
                 {
                     Account account = (Account) o;
@@ -160,7 +161,7 @@ namespace Db
                 {
                     ShopIngredient shopIngredient = (ShopIngredient) o1;
                     Shop shop = (Shop) o2;
-                    await ShopService.linkShopVareAsync(shop.shopId,shopIngredient.id);
+                    await ShopIngrService.addShopIngredientAsync(shopIngredient,shop);
                     return "linked";
                 }
             }
@@ -242,6 +243,11 @@ namespace Db
             await AccountService.LinkAddress(newAccount, newaddress);
             await AccountService.LinkBankInfo(newAccount, newbankInfo);
             return newAccount;
+        }
+
+        public void sendCategory(string name)
+        {
+            categoryName = name;
         }
     }
 }

@@ -82,6 +82,12 @@ namespace Database.Networking{
                         content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Shop"), "shop");
                     }else if (rcv.Contains("Recipe"))
                     {
+                        String categoryName = "";
+                        int stringEnd = rcv.IndexOf(":");
+                        int stringStart = 9;
+                        int length = stringEnd - 9;
+                        categoryName = rcv.Substring(stringStart, length);
+                        readerWriterDb.sendCategory(categoryName);
                         content = await readerWriterDb.addObjectAsync(getClientsObject(stream, "Recipe"),
                             "recipe");
                     }

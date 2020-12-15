@@ -25,32 +25,35 @@ namespace Db
             await ctx.SaveChangesAsync();
         }
 
-        public async Task addRecipeAsync(Recipe recipe)
+        public async Task addRecipeAsync(Recipe recipe, string categoryName2)
         {
-            if (recipe.ingredients.Count > 0)
+            IList<Ingredient> ingredients = recipe.ingredients;
+            Console.WriteLine(ingredients.Count);
+            if (ingredients.Count > 0)
             {
                 foreach (var ingr in recipe.ingredients)
                 {
-                    if (!ctx.ingredients.Contains(ingr))
-                    {
-                        ctx.ingredients.Add(ingr);
-                    }
+                    ingr.ingredientId = 0;
+                    Console.WriteLine(ingr.ingredientName + ingr.ingredientId);
+                    await ctx.ingredients.AddAsync(ingr);
                 }
             }
+            
+            await ctx.SaveChangesAsync();
 
-            if (!ctx.categories.Contains(recipe.category))
-            {
-                ctx.categories.Add(recipe.category);
-            }
-
-            String categoryName = recipe.category.categoryName;
-            linkCategoryAsync(recipe.recipeName, categoryName);
-            IList<Ingredient> ingredients = recipe.ingredients;
-            recipe.ingredients = new List<Ingredient>();
+            Recipe recipe1 = recipe;
+            recipe1.category = null;
+            recipe1.ingredients = null;
             await ctx.recipes.AddAsync(recipe);
+            await ctx.SaveChangesAsync();
+
+            //Category category = ctx.categories.FirstOrDefault(c => c.categoryName.Equals(categoryName2));
+            //String categoryName = category.categoryName;
+            await linkCategoryAsync(recipe.recipeName, categoryName2);
+            
             foreach (var ingredient in ingredients)
             {
-                linkIngredientAsync(recipe.recipeName, ingredient.ingredientId);
+                await linkIngredientAsync(recipe.recipeName, ingredient.ingredientId);
             }
         }
 
@@ -69,17 +72,11 @@ namespace Db
                 ingredient = temp2,
                 recipe = temp1
             };
-            if (temp1.IngredientRecipes != null)
-            {
-                temp1.IngredientRecipes.Add(ir3);
-            }
-            else
+            if (temp1.IngredientRecipes == null)
             {
                 temp1.IngredientRecipes = new List<IngredientRecipe>();
-                temp1.IngredientRecipes.Add(ir3);
             }
-            temp1.ingredients.Add(temp2);
-            ctx.Update(temp1);
+            temp1.IngredientRecipes.Add(ir3);
             await ctx.SaveChangesAsync();
         }
 
@@ -92,8 +89,13 @@ namespace Db
                 category = temp2,
                 recipe = temp1
             };
-            temp1.RecipeCategories = new List<RecipeCategory>();
+            if (temp1.RecipeCategories == null)
+            {
+                temp1.RecipeCategories = new List<RecipeCategory>();
+            }
             temp1.RecipeCategories.Add(rc3);
+            ctx.Update(temp1);
+            await ctx.SaveChangesAsync();
             temp1.category = temp2;
             ctx.Update(temp1);
             await ctx.SaveChangesAsync();

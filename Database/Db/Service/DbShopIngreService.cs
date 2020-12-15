@@ -21,8 +21,9 @@ namespace Db
             ShopIngredient temp = await ctx.shopIngredients.FirstOrDefaultAsync(s => s.id == id);
             return temp;
         }
+        
 
-        public async Task addShopIngredientAsync(ShopIngredient ingredient)
+        public async Task addShopIngredientAsync(ShopIngredient ingredient, Shop shop)
         {
             bool boolShopIngExists = false;
             foreach (var shopIngExists in ctx.shopIngredients)
@@ -37,6 +38,34 @@ namespace Db
             {
                 ctx.shopIngredients.Add(ingredient);
             }
+            await ctx.SaveChangesAsync();
+
+            ShopIngredient getSI = ctx.shopIngredients.FirstOrDefault(n => n.name.Equals(ingredient.name));
+            Shop getS = ctx.shops.FirstOrDefault(s => s.shopName.Equals(shop.shopName));
+            await linkShopVareAsync(getS.shopId, getSI.id);
+        }
+        
+        public async Task linkShopVareAsync(int shopId, int shopIngredientId)
+        {
+            Shop shop1 = await ctx.shops.FirstAsync(s => s.shopId == shopId);
+            /*foreach (var vare in ctx.shopvares.ToList())
+            {
+                if (shopId == vare.shopId)
+                {
+                    shop1.shopVares.Add(vare);
+                }
+            }*/
+            ShopIngredient shopIngredient1 = await ctx.shopIngredients.FirstAsync(s => s.id == shopIngredientId);
+            ShopVare sv2 = new ShopVare()
+            {
+                shop = shop1,
+                shopIngredient = shopIngredient1
+            };
+            if (shop1.shopVares == null)
+            {
+                shop1.shopVares = new List<ShopVare>();
+            }
+            shop1.shopVares.Add(sv2);
             await ctx.SaveChangesAsync();
         }
         
