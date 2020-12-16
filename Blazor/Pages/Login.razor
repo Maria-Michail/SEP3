@@ -13,15 +13,15 @@
 
             <div style="color:red">@errorMessage</div>
             <button type="button" class="btn btn-light login" @onclick="PerformLogin"> 
-                <a href="">Login</a>
+                Login
             </button>
         </div>
 
     </NotAuthorized>
     <Authorized>
         <div class="loginStripe">
-            <button type="button" class="btn btn-light">
-                <a href="" @onclick="PerformLogout">Log out</a>
+            <button type="button" class="btn btn-light" @onclick="PerformLogout">
+                Log out
             </button>
         </div>
 
