@@ -42,13 +42,11 @@ namespace WebApi.Controllers
         {
             try
             {
-                Console.WriteLine("The recipe with this name does not exist");
                 IList<Recipe> recipes = await recipeService.getRecipesAsync();
                 return Ok(recipes);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Wrong name of the recipe");
                 return BadRequest(e.Message);
             }
         }

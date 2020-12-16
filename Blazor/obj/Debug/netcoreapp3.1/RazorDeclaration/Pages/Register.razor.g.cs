@@ -108,14 +108,14 @@ using Database.Model;
 #line 73 "C:\Users\maria\OneDrive\Documents\Rider\SEP3\Blazor\Pages\Register.razor"
        
 
-    private string username;
-    private string password;
-    private string email;
-    private string street;
-    private string streetNumber;
-    private string city;
-    private int zipCode;
-    private long cardNumber;
+    //private string username;
+    //private string password;
+    //private string email;
+    //private string street;
+    //private string streetNumber;
+    //private string city;
+    //private int zipCode;
+    //private long cardNumber;
 
     private string errorMessage;
 

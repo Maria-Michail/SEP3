@@ -45,7 +45,7 @@ namespace Db
             }
         }
 
-        public async Task linkShopVareAsync(int shopId, int shopIngredientId)
+        /*public async Task linkShopVareAsync(int shopId, int shopIngredientId)
         {
             Shop shop1 = await ctx.shops.Include(s => s.shopVares).FirstAsync(s => s.shopId == shopId);
             foreach (var vare in ctx.shopvares.ToList())
@@ -69,6 +69,6 @@ namespace Db
             ctx.Update(shop1);
             ctx.Update(shopIngredient1);
             await ctx.SaveChangesAsync();
-        }
+        }*/
     }
 }

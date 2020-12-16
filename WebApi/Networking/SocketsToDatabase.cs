@@ -114,7 +114,6 @@ class SocketsToDatabase : ISocketsToDatabase{
         string response = Encoding.ASCII.GetString(dataFromServer, 0, bytesRead);
         Console.WriteLine(response);
         IList<Recipe> request = JsonSerializer.Deserialize<List<Recipe>>(response);
-        Console.WriteLine(request.ToString() + "--> WebApi/Networking/SocketsToDatabase.cs");
         
         stream.Close();
         client.Close();

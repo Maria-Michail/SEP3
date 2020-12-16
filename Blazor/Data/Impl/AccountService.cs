@@ -58,7 +58,7 @@ namespace Blazor.Data
             await client.PostAsync(uri+"/Accounts", content);
         }
 
-        public async Task storeOrder(int recipeId, string userName, DateTime orderDateTime, IList<OrderedShopIngredients> newShopIngredients, int orderId,
+        /*public async Task storeOrder(int recipeId, string userName, DateTime orderDateTime, IList<OrderedShopIngredients> newShopIngredients, int orderId,
             double orderPrice)
         {
             Order newOrder = new Order();
@@ -76,7 +76,7 @@ namespace Blazor.Data
                 Encoding.UTF8,
                 "application/json");
             await client.PostAsync(uri+"/Orders", content);
-        }
+        }*/
         
     }
 }

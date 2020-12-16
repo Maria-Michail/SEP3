@@ -10,6 +10,6 @@ namespace Db
         Task<Shop> addShopAsync(Shop shop);
         Task updateShopAsync(Shop shop);
         Task removeShopAsync(string shopName);
-        Task linkShopVareAsync(int shopId, int shopIngredientId);
+        //Task linkShopVareAsync(int shopId, int shopIngredientId);
     }
 }

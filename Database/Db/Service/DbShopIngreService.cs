@@ -16,11 +16,11 @@ namespace Db
             return temp;
         }
 
-        public async Task<ShopIngredient> getShopIngredientAsync(int id)
+        /*public async Task<ShopIngredient> getShopIngredientAsync(int id)
         {
             ShopIngredient temp = await ctx.shopIngredients.FirstOrDefaultAsync(s => s.id == id);
             return temp;
-        }
+        }*/
         
 
         public async Task addShopIngredientAsync(ShopIngredient ingredient, Shop shop)
