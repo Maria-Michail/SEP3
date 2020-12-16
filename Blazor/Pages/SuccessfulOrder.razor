@@ -1,0 +1,22 @@
+@page "/successfulOrder"
+@using Blazor.Authorization
+@inject NavigationManager NavigationManager
+
+<div class="jumbotron successJumbotron">
+  <h1 class="display-4">Thank you for your order @user!</h1>
+  <p class="lead">We hope that you will be satisified with our services and that you will make another order soon.</p>
+  <hr class="my-4">
+  <p>Click one of the buttons below to go back to the homepage or to display your orders.</p>
+  <p class="lead">
+    <button class="btn btn-primary btn-lg" @onclick="@(() => NavigateToComponent("home"))">Homepage</button>
+    <button class="btn btn-primary btn-lg" @onclick="@(() => NavigateToComponent("orders"))">Your orders</button>
+  </p>
+</div>
+
+@code {
+  string user = CustomAuthenticationStateProvider.getUser().username;
+  
+  private void NavigateToComponent(string page) {
+    NavigationManager.NavigateTo("/"+page);
+  }
+}
