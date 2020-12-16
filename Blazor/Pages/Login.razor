@@ -12,15 +12,15 @@
             <input class="form-control login" type="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" @bind-value="password"/>
 
             <div style="color:red">@errorMessage</div>
-            <button type="button" class="btn btn-light login">
-                <a href="" @onclick="PerformLogin">Login</a>
+            <button type="button" class="btn btn-light login" @onclick="PerformLogin">
+                <a href="" >Login</a>
             </button>
         </div>
 
     </NotAuthorized>
     <Authorized>
         <div class="loginStripe">
-            <button type="button" class="btn btn-light">
+            <button type="button" class="btn btn-light login">
                 <a href="" @onclick="PerformLogout">Log out</a>
             </button>
         </div>
