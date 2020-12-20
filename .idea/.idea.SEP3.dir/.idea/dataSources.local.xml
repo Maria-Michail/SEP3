@@ -13,5 +13,12 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+<<<<<<< HEAD
+=======
+    <data-source name="MainDb [2]" uuid="7d235c67-5320-47b9-b40e-4548491c9e84">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <schema-mapping />
+    </data-source>
+>>>>>>> e9d48594d9b14c8a4c5401f00b311020164141e5
   </component>
 </project>
